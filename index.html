@@ -3104,10 +3104,13 @@ function countWords(content) {
 marked.setOptions({ breaks: true, gfm: true });
 
 var origCodeRenderer = marked.Renderer.prototype.code;
-marked.Renderer.prototype.code = function(code, infostring, escaped) {
-  var lang = (infostring || '').trim();
-  var html = origCodeRenderer.call(this, code, infostring, escaped);
-  var copyBtn = '<button class="copy-btn" onclick="copyCode(this)" data-code="' + code.replace(/"/g, '&quot;').replace(/'/g, '&#39;') + '" aria-label="复制代码">复制</button>';
+marked.Renderer.prototype.code = function(obj) {
+  var code = typeof obj === 'string' ? obj : obj.text;
+  var lang = typeof obj === 'string' ? '' : (obj.lang || '');
+  var html = origCodeRenderer.call(this, obj);
+  var copyBtn = '<button class="copy-btn" onclick="copyCode(this)" data-code="'
+    + code.replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+    + '" aria-label="复制代码">复制</button>';
   return '<div class="code-block-wrapper">' + copyBtn + html + '</div>';
 };
 
