@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>萌神小天的博客</title>
+    <link>https://mengshenxiaotian.vercel.app</link>
+    <description>独立游戏开发者博客，分享 Unity 开发、游戏设计心得与技术日志。</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 31 Jul 2026 03:00:00 +0800</lastBuildDate>
+    <atom:link href="https://mengshenxiaotian.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Unity 零基础入门指南</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2026-07-31-Unity-零基础入门指南</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2026-07-31-Unity-零基础入门指南</guid>
+      <description># Unity 零基础入门指南  这份指南是写给完全没接触过编程和游戏开发的人的。 不需要任何基础，只需要一台电脑和想做游戏的心。  ---  ## 一、Unity 是什么  Unity 是一个**做游戏的工具**。  你不需要从零造引擎，Unity 帮你处理了渲染、物理、声音这些底层的东西。你只需要：   - 告诉 Unity 场景里有什么（GameObject） - 告诉 Unity 这些东西怎么动（脚本） - 点运行，看效果  Unity 用的编程语言是 **C#**（读作 C Sharp）。不用担心没学过，这份指南会从零讲起。  ---  ## 二、安装 Unity</description>
+      <pubDate>Thu, 31 Jul 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>Tiny Pet Sand Wars 更新来啦！🎉</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2026-07-14-Tiny-Pet-Sand-Wars-更新</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2026-07-14-Tiny-Pet-Sand-Wars-更新</guid>
+      <description>久等了！《Tiny Pet Sand Wars》迎来了一次大更新！这次的更新带来了五大全新系统，让你的沙暴世界更加精彩！  ## 武器进化系统  现在武器可以通过击败敌人积累经验值来进化了！不同的武器进化后会获得全新的外观和更强大的伤害属性。  - 经验槽：每把武器都有独立的经验值，击败敌人可获得经验 - 进化阶段：武器达到一定等级后会自动进化，外观和属性都会发生变化 - 进阶选择：进化时可以选择不同的发展方向，打造属于你的独一无二的武器  ## 挑战房间  在世界中随机生成的特殊房间，进入后可挑战强大的敌人。胜利后将获得稀有的武器和宠物蛋！  - 随机生成：每次游玩都会在不同位置出现挑战房间 - 特殊敌人：挑战房间内有强化版敌人，需要更高技巧才能击败 -</description>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>Tiny Pet Sand Wars 更新！</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2026-06-15-Tiny-Pet-Sand-Wars-更</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2026-06-15-Tiny-Pet-Sand-Wars-更</guid>
+      <description>《Tiny Pet Sand Wars》迎来了第一次版本更新！本次更新带来了许多新内容和改进。  ## 新宠物  新增 3 种宠物：  - 火焰龟：喷火攻击，范围伤害 - 冰霜鸟：减速敌人，冰冻效果 - 雷电蛇：连锁闪电，群体攻击  每种宠物都有独特的技能树和进化路线。  ## 新地图  新增沙漠绿洲地图，包含全新的地形和敌人。绿洲中有隐藏的宝箱，可以开出稀有道具。  ## 平衡性调整  - 降低了前期 Boss 的难度 - 提升了金币掉落率 - 优化了武器切换的流畅度  ## Bug 修复  - 修复了宠物偶尔卡住不动的问题 - 修复了存档丢失的问题 - 修复了部分设备上 UI 错位的问题</description>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>小宠沙暴大战 1.2 游戏更新啦！</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2026-05-31-小宠沙暴大战12-游戏更新啦</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2026-05-31-小宠沙暴大战12-游戏更新啦</guid>
+      <description>小宠沙暴大战 1.2 版本上线了！  ## 更新内容  - 新增了生存模式，可以挑战无尽的敌人波次 - 优化了游戏性能，低端设备也能流畅运行 - 新增成就系统，完成特定目标可获得奖励 - 修复了一些已知的 Bug  ---  欢迎下载体验！</description>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>游戏发布 itch 啦！</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2026-05-10-游戏发布itch啦</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2026-05-10-游戏发布itch啦</guid>
+      <description>经过几个月的开发，我的第一款游戏《小宠沙暴大战》终于发布在 itch.io 上了！  ## 游戏介绍  这是一款 Roguelike 动作游戏，你可以在沙漠世界中收集宠物、进化武器、挑战强大的敌人。  - 平台：PC / Web - 价格：免费 - itch.io 链接：https://msxiaotian.itch.io/tiny-pet-sand-wars  ## 开发心得  作为一个独立开发者，从零开始做一款完整的游戏真的不容易。从策划、美术、程序到音效，每一个环节都需要亲力亲为。但看到玩家们的好评，一切都值得了。  感谢所有支持我的朋友！</description>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>腾讯游戏客户端一面凉经</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-11-15-腾讯游戏客户端一面凉经</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-11-15-腾讯游戏客户端一面凉经</guid>
+      <description>记一次腾讯游戏客户端开发的面经，虽然挂了但是学到了很多。  ## 面试流程  - 自我介绍 - 简历项目深挖 - 算法题 - C++ 基础 - 图形学基础 - 反问环节  ## 算法题  LeetCode 200：岛屿数量（DFS）  做出来了，但是边界条件处理有点问题。  ## C++ 基础问答题  - 虚函数表原理 - 智能指针 shared_ptr 和 unique_ptr 的区别 - 右值引用和移动语义  ## 图形学  - 渲染管线流程 - 前向渲染和延迟渲染的区别 - PBR 基本原理  ## 总结  这次面试暴露了我在 C++ 底层原理和图形学方面的不足。回来后恶补了《Real-Time Rendering》和《Effective Modern C++》。  虽然有遗憾，但也是宝贵的经验。</description>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>TapTap 聚光灯开发日志 Day7</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-30-TapTap聚光灯开发日志Day7</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-30-TapTap聚光灯开发日志Day7</guid>
+      <description>聚光灯计划最后一天！  ## 今天的工作  - 完成了最后的 Bug 修复 - 提交了最终版本 - 写了一篇开发总结  ## 感受  21 天的开发马拉松结束了。从最初的灵光一现到现在的完整游戏，这段经历太珍贵了。  感谢 TapTap 提供的平台，感谢队友的支持！  不管结果如何，这都是一段难忘的旅程。</description>
+      <pubDate>Thu, 30 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>TapTap 聚光灯开发日志 Day6</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-27-TapTap聚光灯开发日志Day6</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-27-TapTap聚光灯开发日志Day6</guid>
+      <description>Day 6：最后冲刺！  ## 今日进展  - 完成了所有音效的添加 - 调整了 UI 布局 - 修复了几个关键 Bug - 开始做最终测试  ## 遇到的问题  - 音效在移动端有延迟，改用压缩格式解决 - 部分机型 UI 适配有问题  明天提交最终版本！</description>
+      <pubDate>Mon, 27 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>TapTap 聚光灯开发日志 Day5</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-24-TapTap聚光灯开发日志Day5</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-24-TapTap聚光灯开发日志Day5</guid>
+      <description>Day 5：关卡设计和剧情  ## 今日进展  - 设计了 3 个关卡的布局 - 编写了开场剧情对话 - 添加了背景音乐 - 完成了关卡之间的过渡动画  ## 经验  - 关卡设计时先画草稿再做，效率高很多 - 剧情对话用 ScriptableObject 管理，方便修改  还剩两天，冲刺！</description>
+      <pubDate>Fri, 24 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>Unity 新手学习推荐</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-20-Unity新手学习推荐</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-20-Unity新手学习推荐</guid>
+      <description>分享一些我学习 Unity 时用过的优质资源。  ## 官方教程  - Unity Learn：官方免费教程，从零开始 - Unity 文档：最好的参考手册  ## 视频教程  - Code Monkey：C# 和 Unity 实例教程 - Brackeys：经典 Unity 教程（已停更但内容仍有价值） - 游戏开发实验室（B 站）：国内优质的 Unity 教程  ## 书籍推荐  - 《Unity 实战》 - 《C# 图解教程》  ## 社区  - Unity 官方论坛 - Reddit r/Unity3D - 知乎 Unity 话题  最重要的建议：从做一个小项目开始，边做边学。只看不练是学不会的！</description>
+      <pubDate>Mon, 20 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>TapTap 聚光灯开发日志 Day4</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-19-TapTap聚光灯开发日志Day4</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-19-TapTap聚光灯开发日志Day4</guid>
+      <description>Day 4：AI 和敌人生成  ## 今日进展  - 实现了敌人的 AI 行为树 - 完成了波次生成系统 - 添加了 BOSS 的特殊技能 - 优化了寻路算法  ## 代码片段  ```csharp public class EnemyAI : MonoBehaviour {     private enum State { Idle, Patrol, Chase, Attack }     private State currentState;      void Update() {         switch(currentState) {             case State.Idle: IdleBehavior(); break;             case State.Patrol: PatrolBehavior(); break;             case State.Chase: ChaseBehavior(); break;             case State.Attack: AttackBehavior(); break;         }     } } ```  明天开始做关卡设计！</description>
+      <pubDate>Sun, 19 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>Unity 资源分享</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-19-Unity资源分享</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-19-Unity资源分享</guid>
+      <description>整理了一些常用的 Unity 免费资源和工具。  ## 美术资源  - Kenney Assets：大量免费游戏素材 - OpenGameArt：开源游戏美术 - itch.io 免费素材区  ## 音效  - Freesound：免费音效库 - Zapsplat：高质量免费音效  ## 工具  - DOTween：动画插件（免费版够用） - Odin Inspector：编辑器增强（有免费替代 NaughtyAttributes） - TextMeshPro：文字渲染（Unity 内置）  ## Asset Store 免费资源  - Standard Assets - Unity Particle Pack - Post Processing Stack  善用免费资源，可以大幅提升开发效率！</description>
+      <pubDate>Sun, 19 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>TapTap 聚光灯开发日志 Day3</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-17-TapTap聚光灯开发日志Day3</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-17-TapTap聚光灯开发日志Day3</guid>
+      <description>Day 3：战斗系统基础  ## 今日进展  - 完成了角色的攻击动画 - 实现了连击系统 - 添加了受击反馈 - 完成了简单的伤害计算  ## 收获  - 用 Animator Override Controller 管理不同武器的动画 - 用 ScriptableObject 存储武器数据，方便策划调整  ## 明日计划  - 实现 AI 行为系统 - 完成敌人生成逻辑</description>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>TapTap 聚光灯开发日志 Day2</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-14-TapTap聚光灯开发日志Day2</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-14-TapTap聚光灯开发日志Day2</guid>
+      <description>Day 2：角色控制器  ## 今日进展  - 完成了角色的基础移动 - 实现了跳跃和冲刺 - 搭建了简单的测试场景  ## 遇到的问题  - CharacterController 和 Rigidbody 的选择：最终选了 CharacterController，因为不需要物理模拟 - 斜坡滑动问题：通过修改 Slope Limit 解决  明天开始做战斗系统！</description>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>TapTap 聚光灯开发日志 Day1</title>
+      <link>https://mengshenxiaotian.vercel.app/#article/2025-10-11-TapTap聚光灯开发日志Day1</link>
+      <guid isPermaLink="true">https://mengshenxiaotian.vercel.app/#article/2025-10-11-TapTap聚光灯开发日志Day1</guid>
+      <description>今天是 TapTap 聚光灯计划的第一天！  ## 游戏构思  主题是「光」，我的想法是做一个以光为核心机制的平台跳跃游戏。玩家需要操控一个发光的小精灵，在黑暗的世界中寻找光源、照亮前路。  ## 今日工作  - 确定游戏核心玩法 - 搭建 Unity 项目 - 制作了主角的基础模型 - 实现了简单的光照系统  ## 灵感来源  - Ori and the Blind Forest - Hollow Knight - Celeste  期待 21 天后能拿出一个完整的作品！</description>
+      <pubDate>Sat, 11 Oct 2025 00:00:00 +0800</pubDate>
+    </item>
+  </channel>
+</rss>
