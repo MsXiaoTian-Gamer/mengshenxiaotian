@@ -1874,7 +1874,7 @@
 
   @keyframes mascotBreathe {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.04); }
+    50% { transform: scale(1.02); }
   }
 
   @keyframes mascotJump {
@@ -1936,7 +1936,11 @@
     right: 22px;
     z-index: 950;
     pointer-events: none;
-    transition: transform 0.1s linear;
+    transition: transform 0.1s linear, filter 0.3s;
+    filter: drop-shadow(0 3px 8px rgba(0,0,0,0.12));
+  }
+  .kawaii-mascot:hover {
+    filter: drop-shadow(0 5px 16px rgba(0,0,0,0.18));
   }
 
   .mascot-body {
@@ -1962,7 +1966,7 @@
     width: 18px;
     height: 56px;
     top: 14px;
-    background: linear-gradient(180deg, #6B4226 0%, #7D5238 40%, #a07050 100%);
+    background: linear-gradient(180deg, #4a4a5a 0%, #3a3a4a 100%);
     border-radius: 8px 8px 16px 16px;
     z-index: 0;
     box-shadow: inset 0 1px 3px rgba(255,255,255,0.08);
@@ -2011,7 +2015,7 @@
     transform: translateX(-50%);
     width: 62px;
     height: 64px;
-    background: linear-gradient(170deg, #ffe4d0 0%, #ffd4b0 35%, #fcc8a4 100%);
+    background: radial-gradient(ellipse at 40% 30%, #fff3e6 0%, #ffe0c0 60%, #f5c8a0 100%);
     border-radius: 52% 52% 44% 44%;
     z-index: 2;
     box-shadow: inset 0 -4px 8px rgba(0,0,0,0.05), 0 4px 16px rgba(255,140,100,0.22);
@@ -2085,37 +2089,37 @@
     position: absolute;
     top: 3px;
     right: 3px;
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
     background: #fff;
     border-radius: 50%;
     z-index: 5;
-    opacity: 0.9;
+    opacity: 0.95;
   }
 
   /* Kirakira sparkle */
   .mascot-eye-sparkle {
     position: absolute;
-    bottom: 4px;
-    left: 3px;
+    bottom: 3px;
+    left: 2px;
     width: 4px;
     height: 4px;
     background: #fff;
     border-radius: 50%;
     z-index: 5;
-    opacity: 0.6;
+    opacity: 0.7;
     animation: sparklePulse 2.2s ease-in-out infinite;
   }
   .mascot-eye-sparkle2 {
     position: absolute;
     top: 2px;
-    left: 2px;
-    width: 3px;
-    height: 3px;
+    left: 7px;
+    width: 2px;
+    height: 2px;
     background: #fff;
     border-radius: 50%;
     z-index: 5;
-    opacity: 0.45;
+    opacity: 0.55;
     animation: sparklePulse2 2.8s ease-in-out infinite;
   }
 
@@ -2137,9 +2141,9 @@
   .mascot-blush {
     position: absolute;
     top: 38px;
-    width: 15px;
-    height: 9px;
-    background: rgba(255,120,145,0.4);
+    width: 12px;
+    height: 6px;
+    background: radial-gradient(ellipse, rgba(255,150,150,0.5) 0%, transparent 70%);
     border-radius: 50%;
     z-index: 2;
     filter: blur(1px);
@@ -2178,7 +2182,7 @@
     left: 0;
     width: 100%;
     height: 26px;
-    background: linear-gradient(180deg, #fff 0%, #faf8fa 100%);
+    background: linear-gradient(180deg, #fff 0%, #f0f0f8 100%);
     border-radius: 8px 8px 0 0;
     z-index: 2;
   }
@@ -2223,10 +2227,10 @@
     transform: translateX(-50%);
     width: 8px;
     height: 16px;
-    background: var(--brand);
+    background: linear-gradient(135deg, #d64b8b 0%, #c0397b 100%);
     border-radius: 2px 2px 4px 4px;
     z-index: 5;
-    box-shadow: 0 1px 3px rgba(255,107,138,0.3);
+    box-shadow: 0 1px 3px rgba(200,60,100,0.3);
   }
   .mascot-tie::before {
     content: '';
@@ -2236,7 +2240,7 @@
     transform: translateX(-50%);
     width: 12px;
     height: 8px;
-    background: var(--brand);
+    background: linear-gradient(135deg, #d64b8b 0%, #c0397b 100%);
     border-radius: 50%;
   }
 
@@ -2313,57 +2317,38 @@
     border-radius: 4px 4px 3px 3px;
   }
 
-  /* ====== Speech Bubble (Pink Kawaii) ====== */
+  /* ====== Speech Bubble ====== */
   .mascot-bubble {
-    position: fixed;
-    bottom: 185px;
-    right: 16px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 8px;
     z-index: 955;
-    pointer-events: none;
     opacity: 0;
-    background: linear-gradient(135deg, #fff5f8 0%, #fff0f5 100%);
-    color: #5c4a58;
+    pointer-events: none;
+    background: #fff;
+    color: #5a4a5c;
+    padding: 6px 12px;
+    border-radius: 14px;
     font-size: 0.78rem;
-    font-family: system-ui, -apple-system, sans-serif;
-    padding: 12px 18px;
-    border-radius: 20px;
-    border: 2px solid #ffb8cc;
-    box-shadow: 0 4px 20px rgba(255,140,170,0.12), 0 1px 3px rgba(255,107,138,0.05);
     white-space: nowrap;
-    max-width: 230px;
-    text-align: center;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transform: translateY(4px);
+    transition: opacity 0.3s, transform 0.3s;
   }
-
   .mascot-bubble.show {
     animation: bubblePop 3.2s ease forwards;
   }
-
-  /* Bubble tail pointing to mascot */
   .mascot-bubble::after {
     content: '';
     position: absolute;
-    bottom: -10px;
-    right: 56px;
+    bottom: -6px;
+    right: 24px;
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #ffb8cc;
-    z-index: 1;
-  }
-  .mascot-bubble::before {
-    content: '';
-    position: absolute;
-    bottom: -7px;
-    right: 58px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid #fff5f8;
-    z-index: 2;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #fff;
   }
 
   /* ====== Hero Glow ====== */
@@ -2438,16 +2423,12 @@
   }
 
   [data-theme="dark"] .mascot-bubble {
-    background: linear-gradient(135deg, #3d2840 0%, #382238 100%);
-    border-color: #6a4a68;
-    color: #d4c8d6;
-    box-shadow: 0 4px 20px rgba(80,40,60,0.35);
+    background: #3d2a3e;
+    color: #e8dce8;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
   }
   [data-theme="dark"] .mascot-bubble::after {
-    border-top-color: #6a4a68;
-  }
-  [data-theme="dark"] .mascot-bubble::before {
-    border-top-color: #3d2840;
+    border-top-color: #3d2a3e;
   }
 
   /* ====== Print: Hide Mascot ====== */
@@ -3105,8 +3086,8 @@ pre {
       <div class="mascot-leg"></div>
     </div>
   </div>
+  <div class="mascot-bubble" id="mascotBubble" aria-live="polite"></div>
 </div>
-<div class="mascot-bubble" id="mascotBubble" aria-live="polite"></div>
 
 <!-- Back to Top -->
 <button id="back-to-top" onclick="scrollToTop()" title="返回顶部" aria-label="返回顶部">&#8593;</button>
@@ -4144,13 +4125,89 @@ function updateMascotParallax() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  // ====== 看板娘拖拽 ======
+  var mascot = document.getElementById('mascot');
   var mascotBody = document.getElementById('mascotBody');
-  if (mascotBody) {
-    mascotBody.addEventListener('click', function(e) {
-      e.stopPropagation();
-      showMascotBubble();
-    });
+  var isDragging = false;
+  var dragStartX = 0, dragStartY = 0;
+  var mascotStartX = 0, mascotStartY = 0;
+  var hasMoved = false;
+
+  // 从 localStorage 恢复位置
+  (function() {
+    var saved = localStorage.getItem('mascot_pos');
+    if (saved) {
+      try {
+        var pos = JSON.parse(saved);
+        mascot.style.left = pos.left + 'px';
+        mascot.style.top = pos.top + 'px';
+        mascot.style.right = 'auto';
+        mascot.style.bottom = 'auto';
+      } catch(e) {}
+    }
+  })();
+
+  function getMascotPos() {
+    var rect = mascot.getBoundingClientRect();
+    return { left: rect.left, top: rect.top };
   }
+
+  function onDragStart(e) {
+    e.preventDefault();
+    isDragging = true;
+    hasMoved = false;
+    var pos = getMascotPos();
+    mascotStartX = pos.left;
+    mascotStartY = pos.top;
+    var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    dragStartX = clientX;
+    dragStartY = clientY;
+    mascot.style.transition = 'none';
+    mascot.style.cursor = 'grabbing';
+    mascot.style.transform = 'none';
+  }
+
+  function onDragMove(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    var dx = clientX - dragStartX;
+    var dy = clientY - dragStartY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
+    var newLeft = mascotStartX + dx;
+    var newTop = mascotStartY + dy;
+    newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - 120));
+    newTop = Math.max(0, Math.min(newTop, window.innerHeight - 120));
+    mascot.style.left = newLeft + 'px';
+    mascot.style.top = newTop + 'px';
+    mascot.style.right = 'auto';
+    mascot.style.bottom = 'auto';
+  }
+
+  function onDragEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    mascot.style.cursor = '';
+    mascot.style.transition = '';
+    var pos = getMascotPos();
+    localStorage.setItem('mascot_pos', JSON.stringify({ left: pos.left, top: pos.top }));
+    if (typeof updateMascotParallax === 'function') updateMascotParallax();
+  }
+
+  mascotBody.addEventListener('mousedown', onDragStart);
+  mascotBody.addEventListener('touchstart', onDragStart, { passive: false });
+  document.addEventListener('mousemove', onDragMove);
+  document.addEventListener('touchmove', onDragMove, { passive: false });
+  document.addEventListener('mouseup', onDragEnd);
+  document.addEventListener('touchend', onDragEnd);
+
+  mascotBody.addEventListener('click', function(e) {
+    if (!hasMoved) {
+      showMascotBubble();
+    }
+  });
 });
 
 // ====== Lazy Image Setup ======
