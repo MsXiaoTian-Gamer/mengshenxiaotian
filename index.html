@@ -1873,21 +1873,27 @@
   }
 
   @keyframes mascotBreathe {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+    0%, 100% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.02) translateY(-3px); }
+  }
+  @keyframes mascotIdleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
   }
 
   @keyframes mascotJump {
     0% { transform: translateY(0) scale(1) rotate(0deg); }
-    30% { transform: translateY(-16px) scale(1.07) rotate(-3deg); }
-    50% { transform: translateY(0) scale(0.96) rotate(0deg); }
-    70% { transform: translateY(-7px) scale(1.03) rotate(2deg); }
+    25% { transform: translateY(-14px) scale(1.08) rotate(-4deg); }
+    45% { transform: translateY(0) scale(0.95) rotate(-1deg); }
+    65% { transform: translateY(-6px) scale(1.04) rotate(2deg); }
     100% { transform: translateY(0) scale(1) rotate(0deg); }
   }
 
   @keyframes mascotBlink {
-    0%, 88%, 100% { transform: scaleY(1); }
-    93% { transform: scaleY(0.08); }
+    0%, 85%, 100% { transform: scaleY(1); }
+    88% { transform: scaleY(0.05); }
+    91% { transform: scaleY(1); }
+    94% { transform: scaleY(0.05); }
   }
 
   @keyframes sparklePulse {
@@ -1902,11 +1908,15 @@
 
   @keyframes tailSwingL {
     0%, 100% { transform: rotate(-10deg); }
-    50% { transform: rotate(-16deg); }
+    50% { transform: rotate(-20deg); }
   }
   @keyframes tailSwingR {
     0%, 100% { transform: rotate(10deg); }
-    50% { transform: rotate(16deg); }
+    50% { transform: rotate(20deg); }
+  }
+  @keyframes ribbonSwing {
+    0%, 100% { transform: translateX(-50%) rotate(-3deg); }
+    50% { transform: translateX(-50%) rotate(3deg); }
   }
 
   @keyframes bubblePop {
@@ -1942,6 +1952,24 @@
   .kawaii-mascot:hover {
     filter: drop-shadow(0 5px 16px rgba(0,0,0,0.18));
   }
+  /* Ground shadow */
+  .kawaii-mascot::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 8px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: shadowBreathe 4.5s ease-in-out infinite;
+  }
+  @keyframes shadowBreathe {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+    50% { transform: translateX(-50%) scale(0.85); opacity: 0.5; }
+  }
 
   .mascot-body {
     pointer-events: auto;
@@ -1949,13 +1977,13 @@
     position: relative;
     width: 106px;
     height: 120px;
-    animation: mascotSway 5s ease-in-out infinite, mascotBreathe 4.5s ease-in-out infinite;
+    animation: mascotSway 5s ease-in-out infinite, mascotBreathe 4.5s ease-in-out infinite, mascotIdleFloat 3.5s ease-in-out infinite;
     transition: filter 0.3s;
   }
 
   .mascot-body:hover {
-    animation: mascotJump 0.65s ease forwards, mascotSway 5s ease-in-out infinite, mascotBreathe 4.5s ease-in-out infinite;
-    animation-delay: 0s, 0.65s, 0.65s;
+    animation: mascotJump 0.65s ease forwards, mascotSway 5s ease-in-out infinite, mascotBreathe 4.5s ease-in-out infinite, mascotIdleFloat 3.5s ease-in-out infinite;
+    animation-delay: 0s, 0.65s, 0.65s, 0.65s;
   }
 
   .mascot-body:active { transform: scale(0.93); }
@@ -1964,46 +1992,60 @@
   .mascot-tail {
     position: absolute;
     width: 18px;
-    height: 56px;
-    top: 14px;
-    background: linear-gradient(180deg, #4a4a5a 0%, #3a3a4a 100%);
-    border-radius: 8px 8px 16px 16px;
+    height: 62px;
+    top: 16px;
+    background: linear-gradient(180deg, #3d3d4a 0%, #555568 35%, #3d3d4a 70%, #2a2a36 100%);
+    border-radius: 9px 9px 18px 18px;
     z-index: 0;
-    box-shadow: inset 0 1px 3px rgba(255,255,255,0.08);
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), inset 0 -4px 6px rgba(0,0,0,0.15);
   }
   .mascot-tail.left {
-    left: 8px;
-    animation: tailSwingL 4s ease-in-out infinite;
+    left: 6px;
+    animation: tailSwingL 3.5s ease-in-out infinite;
     transform-origin: top center;
   }
   .mascot-tail.right {
-    right: 8px;
-    animation: tailSwingR 4s ease-in-out infinite;
+    right: 6px;
+    animation: tailSwingR 3.5s ease-in-out infinite;
     transform-origin: top center;
+  }
+
+  /* Tail highlight layer */
+  .mascot-tail::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 3px;
+    width: 6px;
+    height: 28px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+    border-radius: 3px;
+    z-index: 1;
   }
 
   /* Tail ribbons */
   .mascot-tail-ribbon {
     position: absolute;
-    top: 6px;
+    top: 5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 22px;
-    height: 12px;
-    background: var(--brand);
+    width: 24px;
+    height: 14px;
+    background: linear-gradient(135deg, rgba(214,75,139,0.85) 0%, rgba(192,57,123,0.85) 100%);
     border-radius: 50%;
-    z-index: 1;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    z-index: 2;
+    box-shadow: 0 1px 3px rgba(200,60,100,0.25), inset 0 1px 2px rgba(255,255,255,0.2);
+    animation: ribbonSwing 3s ease-in-out infinite;
   }
   .mascot-tail-ribbon::after {
     content: '';
     position: absolute;
-    top: 2px;
+    top: 3px;
     left: 50%;
     transform: translateX(-50%);
     width: 8px;
     height: 8px;
-    background: var(--brand-light);
+    background: rgba(255,255,255,0.3);
     border-radius: 50%;
   }
 
@@ -2015,10 +2057,10 @@
     transform: translateX(-50%);
     width: 62px;
     height: 64px;
-    background: radial-gradient(ellipse at 40% 30%, #fff3e6 0%, #ffe0c0 60%, #f5c8a0 100%);
-    border-radius: 52% 52% 44% 44%;
+    background: radial-gradient(ellipse at 45% 35%, #fff5ee 0%, #ffe4d0 50%, #f8d4b8 100%);
+    border-radius: 54% 54% 46% 46%;
     z-index: 2;
-    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.05), 0 4px 16px rgba(255,140,100,0.22);
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.04), 0 4px 18px rgba(255,150,110,0.18), 0 2px 4px rgba(200,100,60,0.08);
   }
 
   /* ====== M-Bangs ====== */
@@ -2027,32 +2069,33 @@
     top: -3px;
     left: 50%;
     transform: translateX(-50%);
-    width: 44px;
-    height: 22px;
-    background: #7D5238;
+    width: 48px;
+    height: 24px;
+    background: linear-gradient(180deg, #6b4830 0%, #5a3828 100%);
     border-radius: 50% 50% 0 0;
     z-index: 3;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.12);
   }
   .mascot-bangs::before {
     content: '';
     position: absolute;
     top: 8px;
-    left: -4px;
-    width: 16px;
-    height: 20px;
-    background: #7D5238;
-    border-radius: 0 0 0 60%;
+    left: -5px;
+    width: 18px;
+    height: 22px;
+    background: linear-gradient(135deg, #6b4830 0%, #5a3828 100%);
+    border-radius: 0 0 0 65%;
     z-index: 3;
   }
   .mascot-bangs::after {
     content: '';
     position: absolute;
     top: 8px;
-    right: -4px;
-    width: 16px;
-    height: 20px;
-    background: #7D5238;
-    border-radius: 0 0 60% 0;
+    right: -5px;
+    width: 18px;
+    height: 22px;
+    background: linear-gradient(225deg, #6b4830 0%, #5a3828 100%);
+    border-radius: 0 0 65% 0;
     z-index: 3;
   }
 
@@ -2064,7 +2107,7 @@
     transform: translateX(-50%);
     width: 8px;
     height: 12px;
-    background: #ffe4d0;
+    background: #fff5ee;
     z-index: 4;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   }
@@ -2072,29 +2115,42 @@
   /* ====== Eyes ====== */
   .mascot-eye {
     position: absolute;
-    top: 26px;
-    width: 16px;
-    height: 20px;
-    background: #2d1a2c;
-    border-radius: 50% 50% 46% 46%;
+    top: 25px;
+    width: 18px;
+    height: 22px;
+    background: radial-gradient(ellipse at 50% 45%, #3d2040 0%, #1a0a18 100%);
+    border-radius: 52% 52% 48% 48%;
     z-index: 2;
     animation: mascotBlink 3.5s ease-in-out infinite;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset 0 2px 2px rgba(80,30,70,0.15);
   }
-  .mascot-eye.left { left: 11px; }
-  .mascot-eye.right { right: 11px; }
+  .mascot-eye.left { left: 9px; }
+  .mascot-eye.right { right: 9px; }
 
   /* Main highlight */
   .mascot-eye-hl {
     position: absolute;
     top: 3px;
     right: 3px;
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     background: #fff;
     border-radius: 50%;
     z-index: 5;
     opacity: 0.95;
+    box-shadow: 0 0 4px rgba(255,255,255,0.6);
+  }
+  .mascot-eye-star {
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    z-index: 6;
+    opacity: 0.7;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   }
 
   /* Kirakira sparkle */
@@ -2112,56 +2168,66 @@
   }
   .mascot-eye-sparkle2 {
     position: absolute;
-    top: 2px;
-    left: 7px;
-    width: 2px;
-    height: 2px;
+    top: 4px;
+    left: 1px;
+    width: 3px;
+    height: 3px;
     background: #fff;
     border-radius: 50%;
     z-index: 5;
-    opacity: 0.55;
+    opacity: 0.4;
     animation: sparklePulse2 2.8s ease-in-out infinite;
   }
 
   /* ====== Eyebrows ====== */
   .mascot-brow {
     position: absolute;
-    top: 21px;
-    width: 16px;
-    height: 2px;
-    background: #7D5238;
-    border-radius: 1px;
+    top: 20px;
+    width: 14px;
+    height: 2.5px;
+    background: #6b4830;
+    border-radius: 3px;
     z-index: 3;
-    opacity: 0.75;
+    opacity: 0.65;
   }
-  .mascot-brow.left { left: 10px; }
-  .mascot-brow.right { right: 10px; }
+  .mascot-brow.left { left: 9px; }
+  .mascot-brow.right { right: 9px; }
 
   /* ====== Blush ====== */
   .mascot-blush {
     position: absolute;
-    top: 38px;
-    width: 12px;
-    height: 6px;
-    background: radial-gradient(ellipse, rgba(255,150,150,0.5) 0%, transparent 70%);
+    top: 36px;
+    width: 14px;
+    height: 7px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255,140,140,0.55) 0%, rgba(255,170,170,0.2) 50%, transparent 100%);
     border-radius: 50%;
     z-index: 2;
-    filter: blur(1px);
+    filter: blur(1.5px);
   }
-  .mascot-blush.left { left: 3px; }
-  .mascot-blush.right { right: 3px; }
+  .mascot-blush.left { left: 1px; }
+  .mascot-blush.right { right: 1px; }
 
   /* ====== Mouth ====== */
   .mascot-mouth {
     position: absolute;
-    top: 44px;
+    top: 43px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 7px;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .mascot-mouth::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 10px;
     height: 5px;
-    border-bottom: 2px solid #e09080;
+    border-bottom: 2px solid #e89080;
     border-radius: 0 0 6px 6px;
-    z-index: 2;
   }
 
   /* ====== Body ====== */
@@ -2170,7 +2236,7 @@
     top: 62px;
     left: 50%;
     transform: translateX(-50%);
-    width: 42px;
+    width: 40px;
     height: 44px;
     z-index: 1;
   }
@@ -2182,9 +2248,10 @@
     left: 0;
     width: 100%;
     height: 26px;
-    background: linear-gradient(180deg, #fff 0%, #f0f0f8 100%);
-    border-radius: 8px 8px 0 0;
+    background: linear-gradient(180deg, #fff 0%, #f7f6fc 40%, #eceaf4 100%);
+    border-radius: 9px 9px 0 0;
     z-index: 2;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.5);
   }
 
   /* Sailor collar */
@@ -2193,31 +2260,45 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 12px;
+    height: 14px;
     z-index: 3;
   }
   .mascot-collar::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 2px;
+    left: 1px;
     width: 0;
     height: 0;
-    border-left: 14px solid #6DB3D8;
-    border-bottom: 12px solid transparent;
+    border-left: 15px solid #6DB3D8;
+    border-bottom: 14px solid transparent;
     z-index: 4;
+    filter: drop-shadow(1px 0 0 rgba(255,255,255,0.3));
   }
   .mascot-collar::after {
     content: '';
     position: absolute;
     top: 0;
-    right: 2px;
+    right: 1px;
     width: 0;
     height: 0;
-    border-right: 14px solid #6DB3D8;
-    border-bottom: 12px solid transparent;
+    border-right: 15px solid #6DB3D8;
+    border-bottom: 14px solid transparent;
     z-index: 4;
+    filter: drop-shadow(-1px 0 0 rgba(255,255,255,0.3));
   }
+  /* White trim on collar */
+  .mascot-collar-stripe {
+    position: absolute;
+    top: 2px;
+    width: 3px;
+    height: 10px;
+    background: rgba(255,255,255,0.5);
+    z-index: 5;
+    border-radius: 1px;
+  }
+  .mascot-collar-stripe.left { left: 6px; }
+  .mascot-collar-stripe.right { right: 6px; }
 
   /* Red ribbon tie */
   .mascot-tie {
@@ -2225,23 +2306,38 @@
     top: 6px;
     left: 50%;
     transform: translateX(-50%);
-    width: 8px;
-    height: 16px;
-    background: linear-gradient(135deg, #d64b8b 0%, #c0397b 100%);
+    width: 7px;
+    height: 15px;
+    background: linear-gradient(180deg, #e0508e 0%, #d64b8b 40%, #b83070 100%);
     border-radius: 2px 2px 4px 4px;
     z-index: 5;
-    box-shadow: 0 1px 3px rgba(200,60,100,0.3);
+    box-shadow: 0 1px 3px rgba(180,40,70,0.35), inset 0 1px 2px rgba(255,255,255,0.15);
   }
   .mascot-tie::before {
     content: '';
     position: absolute;
-    top: -1px;
+    top: -2px;
     left: 50%;
     transform: translateX(-50%);
-    width: 12px;
-    height: 8px;
-    background: linear-gradient(135deg, #d64b8b 0%, #c0397b 100%);
-    border-radius: 50%;
+    width: 14px;
+    height: 9px;
+    background: linear-gradient(135deg, #e86a9e 0%, #c0397b 100%);
+    border-radius: 50% 50% 30% 30%;
+    box-shadow: 0 1px 3px rgba(180,40,70,0.3), inset 0 1px 1px rgba(255,255,255,0.2);
+  }
+  /* Bow tie wings */
+  .mascot-tie::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 7px;
+    background: linear-gradient(135deg, #e86a9e 0%, #b83070 100%);
+    border-radius: 4px;
+    z-index: -1;
+    box-shadow: 0 1px 2px rgba(180,40,70,0.25);
   }
 
   /* Pleated skirt */
@@ -2250,52 +2346,53 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 44px;
-    height: 20px;
-    background: linear-gradient(180deg, #4a6fa5 0%, #3d5f8a 100%);
-    border-radius: 2px 2px 10px 10px;
+    width: 46px;
+    height: 22px;
+    background: linear-gradient(180deg, #556f9e 0%, #4a6fa5 15%, #3d5f8a 50%, #345178 100%);
+    border-radius: 2px 2px 11px 11px;
     z-index: 2;
-    box-shadow: inset 0 1px 2px rgba(255,255,255,0.15);
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.18), 0 1px 3px rgba(0,0,0,0.1);
   }
   /* Skirt pleats */
   .mascot-skirt::before {
     content: '';
     position: absolute;
-    top: 1px;
+    top: 2px;
     left: 50%;
     transform: translateX(-50%);
     width: 1px;
-    height: 16px;
-    background: rgba(255,255,255,0.2);
+    height: 17px;
+    background: rgba(255,255,255,0.15);
     border-radius: 1px;
-    box-shadow: -6px 0 0 rgba(255,255,255,0.12), 6px 0 0 rgba(255,255,255,0.12);
+    box-shadow: -7px 0 0 rgba(255,255,255,0.1), 7px 0 0 rgba(255,255,255,0.1), -14px 0 0 rgba(255,255,255,0.08), 14px 0 0 rgba(255,255,255,0.08);
   }
 
   /* ====== Arms ====== */
   .mascot-arm {
     position: absolute;
     top: 8px;
-    width: 12px;
-    height: 28px;
-    background: linear-gradient(180deg, #ffe4d0 0%, #ffd4b0 100%);
-    border-radius: 6px;
+    width: 10px;
+    height: 26px;
+    background: linear-gradient(180deg, #ffe4d0 0%, #f8d4b8 100%);
+    border-radius: 5px 5px 6px 6px;
     z-index: 1;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
   }
-  .mascot-arm.left { left: -16px; transform: rotate(18deg); }
-  .mascot-arm.right { right: -16px; transform: rotate(-18deg); }
+  .mascot-arm.left { left: -15px; transform: rotate(15deg); }
+  .mascot-arm.right { right: -15px; transform: rotate(-15deg); }
 
   /* Sleeves */
   .mascot-arm::before {
     content: '';
     position: absolute;
-    top: -2px;
+    top: -3px;
     left: -2px;
-    width: 16px;
+    width: 14px;
     height: 8px;
-    background: #fff;
+    background: linear-gradient(180deg, #fff 0%, #f0f0f8 100%);
     border-radius: 50%;
     z-index: 2;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
 
   /* ====== Legs & Socks ====== */
@@ -2311,10 +2408,11 @@
     z-index: 1;
   }
   .mascot-leg {
-    width: 10px;
-    height: 14px;
-    background: linear-gradient(180deg, #ffe4d0 0%, #ffd4b0 60%, #fff 60%, #fff 100%);
-    border-radius: 4px 4px 3px 3px;
+    width: 11px;
+    height: 15px;
+    background: linear-gradient(180deg, #ffe4d0 0%, #f8d4b8 58%, #fff 58%, #f7f6fc 100%);
+    border-radius: 5px 5px 4px 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
 
   /* ====== Speech Bubble ====== */
@@ -2387,8 +2485,8 @@
 
   /* ====== Dark Mode Mascot ====== */
   [data-theme="dark"] .mascot-head {
-    background: linear-gradient(170deg, #ecd8c8 0%, #dcc4a8 35%, #ccb098 100%);
-    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.10), 0 4px 16px rgba(140,100,80,0.28);
+    background: radial-gradient(ellipse at 45% 35%, #f0ddd0 0%, #e0c8b0 50%, #d4b898 100%);
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.08), 0 4px 18px rgba(100,70,50,0.3), 0 2px 4px rgba(80,40,30,0.1);
   }
 
   [data-theme="dark"] .mascot-bangs,
@@ -2398,7 +2496,10 @@
   [data-theme="dark"] .mascot-bangs-notch { background: #ecd8c8; }
 
   [data-theme="dark"] .mascot-tail {
-    background: linear-gradient(180deg, #5a3520 0%, #6B4226 40%, #8a6050 100%);
+    background: linear-gradient(180deg, #2a2230 0%, #3d2e44 35%, #2a2230 70%, #1a1520 100%);
+  }
+  [data-theme="dark"] .mascot-tail::after {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
   }
 
   [data-theme="dark"] .mascot-brow { background: #5a3520; }
@@ -2406,20 +2507,20 @@
   [data-theme="dark"] .mascot-arm {
     background: linear-gradient(180deg, #ecd8c8 0%, #dcc4a8 100%);
   }
-  [data-theme="dark"] .mascot-arm::before { background: #f0e8e0; }
+  [data-theme="dark"] .mascot-arm::before { background: linear-gradient(180deg, #f0e8e0 0%, #e8e0d8 100%); }
 
   [data-theme="dark"] .mascot-leg {
-    background: linear-gradient(180deg, #ecd8c8 0%, #dcc4a8 60%, #f0e8e0 60%, #f0e8e0 100%);
+    background: linear-gradient(180deg, #ecd8c8 0%, #dcc4a8 58%, #f0e8e0 58%, #e8e0d8 100%);
   }
 
-  [data-theme="dark"] .mascot-eye { background: #120a10; }
+  [data-theme="dark"] .mascot-eye { background: radial-gradient(ellipse at 50% 45%, #1a0a18 0%, #0a0208 100%); }
 
-  [data-theme="dark"] .mascot-top { background: linear-gradient(180deg, #f0e8e0 0%, #e8e0d8 100%); }
+  [data-theme="dark"] .mascot-top { background: linear-gradient(180deg, #f0e8e0 0%, #e5dcd4 40%, #dcd4cc 100%); }
 
-  [data-theme="dark"] .mascot-mouth { border-bottom-color: #c87868; }
+  [data-theme="dark"] .mascot-mouth::before { border-bottom-color: #c87868; }
 
   [data-theme="dark"] .mascot-blush {
-    background: rgba(255,110,130,0.3);
+    background: radial-gradient(ellipse at 50% 50%, rgba(255,110,130,0.35) 0%, rgba(255,140,140,0.1) 50%, transparent 100%);
   }
 
   [data-theme="dark"] .mascot-bubble {
@@ -3059,11 +3160,13 @@ pre {
       <div class="mascot-brow right"></div>
       <div class="mascot-eye left">
         <div class="mascot-eye-hl"></div>
+        <div class="mascot-eye-star"></div>
         <div class="mascot-eye-sparkle"></div>
         <div class="mascot-eye-sparkle2"></div>
       </div>
       <div class="mascot-eye right">
         <div class="mascot-eye-hl"></div>
+        <div class="mascot-eye-star"></div>
         <div class="mascot-eye-sparkle"></div>
         <div class="mascot-eye-sparkle2"></div>
       </div>
@@ -3074,7 +3177,10 @@ pre {
     <!-- Body -->
     <div class="mascot-torso">
       <div class="mascot-top">
-        <div class="mascot-collar"></div>
+        <div class="mascot-collar">
+          <div class="mascot-collar-stripe left"></div>
+          <div class="mascot-collar-stripe right"></div>
+        </div>
         <div class="mascot-tie"></div>
       </div>
       <div class="mascot-skirt"></div>
