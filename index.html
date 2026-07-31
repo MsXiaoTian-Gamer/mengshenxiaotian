@@ -3576,6 +3576,7 @@ function loadArticle(idx) {
 
   fadeContent(function() {
     renderArticle(article);
+    history.replaceState(null, '', '#article/' + article.path.replace('.md', ''));
     renderTags();
     renderArticleList();
 
@@ -3694,6 +3695,7 @@ function resetAll() {
   updateFooter();
   updateHeroStats();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  history.replaceState(null, '', window.location.pathname);
 }
 
 function renderIntroCardHTML() {
@@ -4097,6 +4099,33 @@ function initVisitorCounter() {
       closeFlPanel();
     }
   });
+
+  // ====== Hash 路由：文章直链分享 + 浏览器前进后退 ======
+  function handleHashRoute() {
+    var hash = window.location.hash;
+    if (hash.startsWith('#article/')) {
+      var targetPath = hash.replace('#article/', '') + '.md';
+      activeTag = 'all';
+      var all = getAllArticles();
+      for (var i = 0; i < all.length; i++) {
+        if (all[i].path === targetPath) {
+          loadArticle(i);
+          break;
+        }
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', function() {
+    var hash = window.location.hash;
+    if (!hash.startsWith('#article/')) {
+      resetAll();
+    } else {
+      handleHashRoute();
+    }
+  });
+
+  handleHashRoute();
 })();
 </script>
 
