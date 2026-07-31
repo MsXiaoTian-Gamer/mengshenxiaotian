@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="萌神小天 - 独立游戏开发者博客。专注于 Unity 游戏开发、独立游戏创作与技术分享。">
+<meta property="og:title" content="萌神小天的博客">
+<meta property="og:description" content="独立游戏开发者博客，分享 Unity 开发、游戏设计心得与技术日志。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mengshenxiaotian.vercel.app">
+<meta property="og:site_name" content="萌神小天的博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="萌神小天的博客">
+<meta name="twitter:description" content="独立游戏开发者博客，分享 Unity 开发、游戏设计心得与技术日志。">
+<link rel="canonical" href="https://mengshenxiaotian.vercel.app">
 <title>萌神小天 — 博客</title>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="hljs-light">
@@ -2905,6 +2915,14 @@ pre {
 .nav-open .hamburger span:nth-child(2) { opacity: 0; }
 .nav-open .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
 
+/* ====== Giscus ====== */
+.giscus-comments {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color, #f0d6e8);
+  min-height: 100px;
+}
+
 </style>
 </head>
 <body>
@@ -3720,6 +3738,22 @@ function renderArticle(article) {
 
   document.getElementById('heroSection').style.display = 'none';
 
+  // 动态 SEO
+  document.title = article.title + ' - 萌神小天';
+  var desc = stripFrontMatter(getArticleContent(article)).replace(/#{1,6}\s/g, '').replace(/\n/g, ' ').substring(0, 160).trim();
+  var metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', desc);
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', article.title + ' - 萌神小天');
+  var ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', desc);
+  var ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', window.location.href);
+  var twTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twTitle) twTitle.setAttribute('content', article.title + ' - 萌神小天');
+  var twDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twDesc) twDesc.setAttribute('content', desc);
+
   area.innerHTML = '';
   var headerDiv = document.createElement('div');
   headerDiv.className = 'article-header';
@@ -3783,6 +3817,30 @@ function renderArticle(article) {
     '<a class="share-btn" href="https://service.weibo.com/share/share.php?url=' + shareUrl + '&title=' + shareTitle + '" target="_blank" rel="noopener" aria-label="分享到微博">&#xe000; 微博</a>' +
     '<a class="share-btn" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + shareUrl + '&title=' + shareTitle + '" target="_blank" rel="noopener" aria-label="分享到QQ空间">&#xe001; QQ空间</a>';
   area.appendChild(shareDiv);
+
+  // Giscus 评论
+  // 注意：请前往 https://giscus.app/zh-CN 填写仓库信息获取真实的 data-repo-id 和 data-category-id
+  var commentDiv = document.createElement('div');
+  commentDiv.className = 'giscus-comments';
+  commentDiv.id = 'giscus-container';
+  area.appendChild(commentDiv);
+
+  var giscusScript = document.createElement('script');
+  giscusScript.src = 'https://giscus.app/client.js';
+  giscusScript.setAttribute('data-repo', 'MsXiaoTian-Gamer/mengshenxiaotian');
+  giscusScript.setAttribute('data-repo-id', 'R_kgDOOZ12345');
+  giscusScript.setAttribute('data-category', 'Announcements');
+  giscusScript.setAttribute('data-category-id', 'DIC_kwDOOZ12345');
+  giscusScript.setAttribute('data-mapping', 'pathname');
+  giscusScript.setAttribute('data-strict', '0');
+  giscusScript.setAttribute('data-reactions-enabled', '1');
+  giscusScript.setAttribute('data-emit-metadata', '0');
+  giscusScript.setAttribute('data-input-position', 'bottom');
+  giscusScript.setAttribute('data-theme', 'preferred_color_scheme');
+  giscusScript.setAttribute('data-lang', 'zh-CN');
+  giscusScript.setAttribute('crossorigin', 'anonymous');
+  giscusScript.async = true;
+  commentDiv.appendChild(giscusScript);
 
   // ====== 代码块语言标签 ======
   bodyDiv.querySelectorAll('pre').forEach(function(pre) {
@@ -3894,6 +3952,19 @@ function resetAll() {
   updateHeroStats();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   history.replaceState(null, '', window.location.pathname);
+  document.title = '萌神小天的博客';
+  var metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', '萌神小天 - 独立游戏开发者博客。专注于 Unity 游戏开发、独立游戏创作与技术分享。');
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', '萌神小天的博客');
+  var ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', '独立游戏开发者博客，分享 Unity 开发、游戏设计心得与技术日志。');
+  var ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', 'https://mengshenxiaotian.vercel.app');
+  var twTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twTitle) twTitle.setAttribute('content', '萌神小天的博客');
+  var twDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twDesc) twDesc.setAttribute('content', '独立游戏开发者博客，分享 Unity 开发、游戏设计心得与技术日志。');
 }
 
 function renderIntroCardHTML() {
