@@ -74,7 +74,7 @@
     --surface: #352238;
     --surface-hover: #3d2840;
     --surface-alt: #301e34;
-    --text: #d4c8d6;
+    --text: #e8dce8;
     --text-heading: #e8dce8;
     --text-muted: #a898aa;
     --text-faint: #7e6e80;
@@ -1536,13 +1536,27 @@
   /* ====== Responsive ====== */
   @media (max-width: 900px) {
     .layout { flex-direction: column; max-width: 100%; }
+    .hamburger { display: flex; }
     .sidebar {
-      width: 100%;
-      height: auto;
-      position: static;
-      border-right: none;
-      border-bottom: 1px solid var(--border);
+      position: fixed;
+      left: -100%;
+      top: 0;
+      height: 100vh;
+      width: 280px;
+      z-index: 1050;
+      transition: left 0.3s ease;
+      overflow-y: auto;
+      box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+      border-right: 1px solid var(--border);
       padding: 20px 18px 16px;
+    }
+    .nav-open .sidebar { left: 0; }
+    .nav-open::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1040;
     }
 
     .article-item { min-height: 40px; }
@@ -2781,9 +2795,122 @@
       border-radius: 10px 0 0 10px;
     }
   }
+/* ====== TOC ====== */
+.article-toc {
+  background: var(--card-bg, #fdf2f8);
+  border: 1px solid var(--border-color, #f0d6e8);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+.toc-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: var(--brand, #d64b8b);
+}
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc-item {
+  padding: 2px 0;
+}
+.toc-item a {
+  color: var(--text-secondary, #7a6e7e);
+  text-decoration: none;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  transition: color 0.2s;
+}
+.toc-item a:hover {
+  color: var(--brand, #d64b8b);
+}
+.toc-h3 {
+  padding-left: 16px;
+}
+
+/* ====== Code Lang Label ====== */
+.code-lang-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-faint, #b8a8bc);
+  background: rgba(0,0,0,0.05);
+  border-bottom-left-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+[data-theme="dark"] .code-lang-label {
+  background: rgba(255,255,255,0.06);
+  color: #a89ab0;
+}
+pre {
+  position: relative;
+}
+
+/* ====== Lightbox ====== */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  animation: fadeIn 0.2s ease;
+}
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+/* ====== Hamburger ====== */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1100;
+  width: 36px;
+  height: 36px;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #f0d6e8);
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 8px;
+}
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text-primary, #5a4a5c);
+  border-radius: 1px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav-open .hamburger span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.nav-open .hamburger span:nth-child(2) { opacity: 0; }
+.nav-open .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
 </style>
 </head>
 <body>
+  <button class="hamburger" aria-label="菜单" onclick="document.body.classList.toggle('nav-open')">
+    <span></span><span></span><span></span>
+  </button>
 
 <div class="hearts-bg" aria-hidden="true">
   <div class="heart-wrap" style="top:8%;left:5%;--size:28px;--dur:7s;--delay:0s;"><div class="heart"></div></div>
@@ -3613,6 +3740,38 @@ function renderArticle(article) {
   bodyDiv.innerHTML = html;
   area.appendChild(bodyDiv);
 
+  // ====== TOC 目录生成 ======
+  var headings = bodyDiv.querySelectorAll('h2, h3');
+  if (headings.length >= 2) {
+    var toc = document.createElement('nav');
+    toc.className = 'article-toc';
+    toc.setAttribute('aria-label', '文章目录');
+    var tocTitle = document.createElement('div');
+    tocTitle.className = 'toc-title';
+    tocTitle.textContent = '目录';
+    toc.appendChild(tocTitle);
+    var tocList = document.createElement('ul');
+    tocList.className = 'toc-list';
+    headings.forEach(function(h, idx) {
+      var id = 'heading-' + idx;
+      h.id = id;
+      var li = document.createElement('li');
+      li.className = 'toc-item toc-' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.href = '#' + id;
+      a.textContent = h.textContent;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.getElementById(this.getAttribute('href').substring(1));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+    toc.appendChild(tocList);
+    area.insertBefore(toc, bodyDiv);
+  }
+
   // Share buttons
   var shareDiv = document.createElement('div');
   shareDiv.className = 'share-section';
@@ -3625,6 +3784,27 @@ function renderArticle(article) {
     '<a class="share-btn" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + shareUrl + '&title=' + shareTitle + '" target="_blank" rel="noopener" aria-label="分享到QQ空间">&#xe001; QQ空间</a>';
   area.appendChild(shareDiv);
 
+  // ====== 代码块语言标签 ======
+  bodyDiv.querySelectorAll('pre').forEach(function(pre) {
+    var code = pre.querySelector('code');
+    if (code) {
+      var classes = code.className.split(' ');
+      var lang = '';
+      for (var ci = 0; ci < classes.length; ci++) {
+        if (classes[ci].startsWith('language-')) {
+          lang = classes[ci].replace('language-', '');
+          break;
+        }
+      }
+      if (lang) {
+        var langLabel = document.createElement('div');
+        langLabel.className = 'code-lang-label';
+        langLabel.textContent = lang;
+        pre.insertBefore(langLabel, pre.firstChild);
+      }
+    }
+  });
+
   bodyDiv.querySelectorAll('pre code').forEach(function(block) {
     hljs.highlightElement(block);
   });
@@ -3632,6 +3812,24 @@ function renderArticle(article) {
   bodyDiv.querySelectorAll('.copy-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       copyCode(this);
+    });
+  });
+
+  // ====== 图片 lightbox 点击放大 ======
+  bodyDiv.querySelectorAll('img').forEach(function(img) {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+      var overlay = document.createElement('div');
+      overlay.className = 'lightbox-overlay';
+      var lbImg = document.createElement('img');
+      lbImg.src = img.src;
+      lbImg.className = 'lightbox-img';
+      overlay.appendChild(lbImg);
+      overlay.addEventListener('click', function() { overlay.remove(); });
+      document.addEventListener('keydown', function closeEsc(e) {
+        if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', closeEsc); }
+      });
+      document.body.appendChild(overlay);
     });
   });
 
