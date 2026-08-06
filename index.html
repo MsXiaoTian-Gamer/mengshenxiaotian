@@ -3006,6 +3006,290 @@ pre {
   min-height: 100px;
 }
 
+/* ====== Feature 1: TOC Scroll Highlight ====== */
+.toc-list .toc-item a.active {
+  color: var(--primary, #e87da0);
+  font-weight: 700;
+  position: relative;
+}
+.toc-list .toc-item a.active::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 14px;
+  background: var(--primary, #e87da0);
+  border-radius: 2px;
+}
+
+/* ====== Feature 2: Related Articles ====== */
+.related-section {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color, #f0d6e8);
+}
+.related-section h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary, #4a2c3e);
+  margin-bottom: 16px;
+}
+.related-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.related-card {
+  display: block;
+  text-decoration: none;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #f0d6e8);
+  border-radius: 10px;
+  padding: 14px;
+  transition: all .2s;
+  cursor: pointer;
+}
+.related-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(232, 125, 160, 0.15);
+  border-color: var(--primary, #e87da0);
+}
+.related-card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary, #4a2c3e);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.related-card-meta {
+  font-size: 0.75rem;
+  color: var(--text-faint, #b096a8);
+}
+.related-card-tags {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.related-card-tags span {
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* ====== Feature 3: Search Keyword Highlight ====== */
+mark.search-highlight {
+  background: #ffe066;
+  color: #4a2c3e;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+[data-theme="dark"] mark.search-highlight {
+  background: #6b5c00;
+  color: #ffe066;
+}
+
+/* ====== Feature 4: Pinned Article ====== */
+.article-item.pinned {
+  border-left: 3px solid var(--primary, #e87da0);
+  background: linear-gradient(135deg, rgba(232,125,160,0.06), transparent);
+}
+.pin-indicator {
+  font-size: 0.7rem;
+  margin-left: 4px;
+  user-select: none;
+}
+
+/* ====== Feature 5: Site Runtime ====== */
+.site-runtime {
+  font-size: 0.72rem;
+  color: var(--text-faint, #b096a8);
+  text-align: center;
+  padding: 4px 0;
+}
+
+/* ====== Feature 6: Article Views ====== */
+.article-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-faint, #b096a8);
+  font-size: 0.85rem;
+}
+.article-views::before {
+  content: '👁';
+  font-size: 0.8rem;
+}
+
+/* ====== Feature 7: MD Editor Toolbar ====== */
+.md-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+  padding: 6px;
+  background: var(--card-bg-soft, #fdf2f7);
+  border: 1px solid var(--border-color, #f0d6e8);
+  border-radius: 8px;
+}
+.md-toolbar button {
+  width: 32px;
+  height: 28px;
+  border: 1px solid var(--border-color, #f0d6e8);
+  background: var(--card-bg, #fff);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--text-primary, #4a2c3e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .15s;
+  padding: 0;
+}
+.md-toolbar button:hover {
+  background: var(--primary, #e87da0);
+  color: #fff;
+  border-color: var(--primary, #e87da0);
+}
+[data-theme="dark"] .md-toolbar {
+  background: rgba(255,255,255,0.04);
+}
+
+/* ====== Feature 8: Code Preview Run ====== */
+.code-run-btn {
+  position: absolute;
+  top: 6px;
+  right: 70px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  border: 1px solid var(--border-color, #f0d6e8);
+  background: var(--card-bg, #fff);
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--primary, #e87da0);
+  font-weight: 600;
+  transition: all .15s;
+  z-index: 2;
+}
+.code-run-btn:hover {
+  background: var(--primary, #e87da0);
+  color: #fff;
+}
+.code-preview-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.code-preview-container {
+  background: var(--card-bg, #fff);
+  border-radius: 12px;
+  width: 90vw;
+  max-width: 900px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.code-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color, #f0d6e8);
+}
+.code-preview-header span {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary, #4a2c3e);
+}
+.code-preview-header button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--text-faint, #b096a8);
+}
+.code-preview-iframe {
+  flex: 1;
+  border: none;
+  width: 100%;
+}
+
+/* ====== Feature 9: PWA Note (manifest/service worker handled in JS) ====== */
+
+/* ====== Feature 10: Like Button ====== */
+.like-section {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color, #f0d6e8);
+  text-align: center;
+}
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border: 1px solid var(--border-color, #f0d6e8);
+  background: var(--card-bg, #fff);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-primary, #4a2c3e);
+  transition: all .2s;
+  user-select: none;
+}
+.like-btn:hover {
+  border-color: var(--primary, #e87da0);
+  background: rgba(232,125,160,0.05);
+}
+.like-btn.liked {
+  border-color: var(--primary, #e87da0);
+  background: rgba(232,125,160,0.1);
+  color: var(--primary, #e87da0);
+}
+.like-btn .like-icon {
+  font-size: 1.1rem;
+  transition: transform .2s;
+}
+.like-btn.liked .like-icon {
+  transform: scale(1.2);
+}
+.like-count {
+  font-weight: 600;
+}
+
+/* ====== Dark Mode for new features ====== */
+[data-theme="dark"] .related-card {
+  background: var(--card-bg, #2a1f28);
+}
+[data-theme="dark"] .code-run-btn {
+  background: var(--card-bg, #2a1f28);
+}
+[data-theme="dark"] .md-toolbar button {
+  background: var(--card-bg, #2a1f28);
+}
+[data-theme="dark"] .like-btn {
+  background: var(--card-bg, #2a1f28);
+}
+[data-theme="dark"] .code-preview-container {
+  background: var(--card-bg, #2a1f28);
+}
+
+/* ====== Mobile responsive for new features ====== */
+@media (max-width: 768px) {
+  .related-cards { grid-template-columns: 1fr; }
+  .md-toolbar button { width: 28px; height: 26px; font-size: 0.7rem; }
+  .code-run-btn { right: 8px; top: 36px; }
+  .code-preview-container { width: 95vw; height: 85vh; }
+}
+
 </style>
 </head>
 <body>
@@ -3069,6 +3353,7 @@ pre {
 
     <div class="sidebar-footer">
       <div id="footer-info" aria-live="polite"></div>
+      <div class="site-runtime" id="siteRuntime"></div>
       <div class="social-links">
         <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener" title="GitHub"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
         <a href="https://msxiaotian.itch.io" target="_blank" rel="noopener" title="itch.io">&#x1F3AE;</a>
@@ -3230,6 +3515,15 @@ pre {
     </div>
     <div class="modal-body">
       <label for="editContent">Markdown 内容</label>
+      <div class="md-toolbar" id="editToolbar">
+        <button onclick="mdInsert('editContent','**','**')" title="加粗">B</button>
+        <button onclick="mdInsert('editContent','*','*')" title="斜体">I</button>
+        <button onclick="mdInsert('editContent','## ','')" title="标题">H</button>
+        <button onclick="mdInsert('editContent','[','](url)')" title="链接">&#128279;</button>
+        <button onclick="mdInsert('editContent','![alt](','')" title="图片">&#128247;</button>
+        <button onclick="mdInsert('editContent','\n```\n','\n```\n')" title="代码块">&lt;/&gt;</button>
+        <button onclick="mdInsert('editContent','\n- ','')" title="列表">&#8801;</button>
+      </div>
       <textarea id="editContent" placeholder="输入 Markdown 内容..."></textarea>
     </div>
     <div class="modal-footer">
@@ -3254,6 +3548,18 @@ pre {
       <label for="newTags">标签（逗号分隔）</label>
       <input type="text" id="newTags" placeholder="例如: Unity, GameDev">
       <label for="newContent">Markdown 内容</label>
+      <div class="md-toolbar" id="newToolbar">
+        <button onclick="mdInsert('newContent','**','**')" title="加粗">B</button>
+        <button onclick="mdInsert('newContent','*','*')" title="斜体">I</button>
+        <button onclick="mdInsert('newContent','## ','')" title="标题">H</button>
+        <button onclick="mdInsert('newContent','[','](url)')" title="链接">&#128279;</button>
+        <button onclick="mdInsert('newContent','![alt](','')" title="图片">&#128247;</button>
+        <button onclick="mdInsert('newContent','\n```\n','\n```\n')" title="代码块">&lt;/&gt;</button>
+        <button onclick="mdInsert('newContent','\n- ','')" title="列表">&#8801;</button>
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:0.85rem;cursor:pointer;">
+        <input type="checkbox" id="newPinned" style="width:auto;margin:0;"> 置顶文章
+      </label>
       <textarea id="newContent" placeholder="输入 Markdown 内容..."></textarea>
     </div>
     <div class="modal-footer">
@@ -3541,6 +3847,13 @@ function getAllArticles() {
   var newArticles = getNewArticles().filter(function(a) { return deleted.indexOf(a.path) === -1; });
   var all = baseArticles.concat(newArticles).sort(function(a, b) { return b.date.localeCompare(a.date); });
 
+  // Feature 4: Pinned articles first
+  all.sort(function(a, b) {
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+    return b.date.localeCompare(a.date);
+  });
+
   all.forEach(function(a) {
     a.tags.forEach(function(t) {
       if (!seen[t]) { seen[t] = true; allTags.push(t); }
@@ -3575,6 +3888,11 @@ function handleSearch() {
   searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
   renderTags();
   renderArticleList();
+
+  // Feature 3: Re-render current article with search highlighting if viewing an article
+  if (currentArticle) {
+    renderArticle(currentArticle);
+  }
 
   if (searchQuery && getFiltered().length === 0) {
     document.getElementById('content-area').innerHTML = '<div class="empty-state"><p>没有找到匹配"<strong>' + searchQuery + '</strong>"的文章</p></div>';
@@ -3665,12 +3983,14 @@ function saveNewArticle() {
   if (!content) { alert('请输入内容'); return; }
 
   var tags = tagsRaw ? tagsRaw.split(',').map(function(t) { return t.trim(); }).filter(Boolean) : [];
+  var pinned = document.getElementById('newPinned').checked;
 
   var article = saveNewArticleData({
     title: title,
     date: date,
     tags: tags,
-    content: content
+    content: content,
+    pinned: pinned
   });
 
   closeNew();
@@ -3738,6 +4058,7 @@ function renderArticleList() {
   filtered.forEach(function(a, idx) {
     var isActive = currentArticle && currentArticle.path === a.path;
     var cls = isActive ? ' active' : '';
+    if (a.pinned) cls += ' pinned';
     var badge = getDateBadge(a.date);
     var content = getArticleContent(a);
     var readMin = estimateReadingTime(content);
@@ -3747,6 +4068,13 @@ function renderArticleList() {
     if (isActive) {
       itemAccentStyle = ' style="--item-accent:' + ptc.color + ';--item-accent-bg:' + ptc.bg + ';--item-accent-border:' + ptc.bg + '"';
     }
+    // Feature 3: search highlight in title
+    var displayTitle = a.title;
+    if (searchQuery) {
+      displayTitle = highlightSearchTerm(displayTitle, searchQuery);
+    }
+    // Feature 4: pinned indicator
+    var pinBadge = a.pinned ? ' <span class="pin-indicator">📌</span>' : '';
     html +=
       '<div class="article-item' + cls + '" data-idx="' + idx + '" role="listitem" tabindex="0"' + itemAccentStyle + '>' +
         '<div class="date-badge" onclick="loadArticle(' + idx + ')" aria-hidden="true">' +
@@ -3754,7 +4082,7 @@ function renderArticleList() {
           '<div class="badge-day">' + badge.day + '</div>' +
         '</div>' +
         '<div class="item-body" onclick="loadArticle(' + idx + ')">' +
-          '<div class="item-title">' + a.title + '</div>' +
+          '<div class="item-title">' + displayTitle + pinBadge + '</div>' +
           '<div class="item-meta">' +
             '<span>' + formatDateCN(a.date) + '</span>' +
             '<span class="reading-time">' + readMin + ' min read</span>' +
@@ -3826,6 +4154,11 @@ function renderArticle(article) {
 
   document.getElementById('heroSection').style.display = 'none';
 
+  // Feature 6: Article views tracking
+  var viewKey = 'blog_views_' + article.path;
+  var views = parseInt(localStorage.getItem(viewKey) || '0', 10) + 1;
+  localStorage.setItem(viewKey, views);
+
   // 动态 SEO
   document.title = article.title + ' - 萌神小天';
   var desc = stripFrontMatter(getArticleContent(article)).replace(/#{1,6}\s/g, '').replace(/\n/g, ' ').substring(0, 160).trim();
@@ -3853,6 +4186,7 @@ function renderArticle(article) {
     '<div class="meta-line">' +
       '<span>' + formatDateCN(article.date) + '</span>' +
       '<span>' + wordCount + ' 字 &middot; ' + readMin + ' 分钟阅读</span>' +
+      '<span class="article-views">' + views + ' 次浏览</span>' +
       article.tags.map(function(t) { var tc = getTagColors(t); return '<span class="tag-pill" style="--tag-pill-color:' + tc.color + ';--tag-pill-bg:' + tc.bg + '">#' + t + '</span>'; }).join('') +
     '</div>';
   area.appendChild(headerDiv);
@@ -3860,6 +4194,12 @@ function renderArticle(article) {
   var bodyDiv = document.createElement('div');
   bodyDiv.className = 'markdown-body';
   bodyDiv.innerHTML = html;
+
+  // Feature 3: Search keyword highlighting in article content
+  if (searchQuery) {
+    highlightContentKeywords(bodyDiv, searchQuery);
+  }
+
   area.appendChild(bodyDiv);
 
   // ====== TOC 目录生成 ======
@@ -3892,7 +4232,28 @@ function renderArticle(article) {
     });
     toc.appendChild(tocList);
     area.insertBefore(toc, bodyDiv);
+
+    // Feature 1: TOC IntersectionObserver for scroll highlighting
+    var tocLinks = tocList.querySelectorAll('.toc-item a');
+    var headingEls = [];
+    headings.forEach(function(h) { headingEls.push(h); });
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var id = entry.target.id;
+        var link = tocList.querySelector('a[href="#' + id + '"]');
+        if (link) {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(function(l) { l.classList.remove('active'); });
+            link.classList.add('active');
+          }
+        }
+      });
+    }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+    headingEls.forEach(function(h) { observer.observe(h); });
   }
+
+  // Feature 2: Related articles
+  renderRelatedArticles(article, area);
 
   // Share buttons
   var shareDiv = document.createElement('div');
@@ -3905,6 +4266,16 @@ function renderArticle(article) {
     '<a class="share-btn" href="https://service.weibo.com/share/share.php?url=' + shareUrl + '&title=' + shareTitle + '" target="_blank" rel="noopener" aria-label="分享到微博">&#xe000; 微博</a>' +
     '<a class="share-btn" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + shareUrl + '&title=' + shareTitle + '" target="_blank" rel="noopener" aria-label="分享到QQ空间">&#xe001; QQ空间</a>';
   area.appendChild(shareDiv);
+
+  // Feature 10: Like button
+  var likeSection = document.createElement('div');
+  likeSection.className = 'like-section';
+  var likeKey = 'blog_likes_' + article.path;
+  var liked = localStorage.getItem(likeKey) === '1';
+  var likeCount = parseInt(localStorage.getItem(likeKey + '_count') || '0', 10);
+  likeSection.innerHTML = '<button class="like-btn' + (liked ? ' liked' : '') + '" id="likeBtn" onclick="toggleLike(\'' + article.path.replace(/'/g, "\\'") + '\')">' +
+    '<span class="like-icon">❤️</span> <span class="like-count" id="likeCount">' + likeCount + '</span> 次点赞</button>';
+  area.appendChild(likeSection);
 
   // Giscus 评论
   // 注意：请前往 https://giscus.app/zh-CN 填写仓库信息获取真实的 data-repo-id 和 data-category-id
@@ -3930,7 +4301,7 @@ function renderArticle(article) {
   giscusScript.async = true;
   commentDiv.appendChild(giscusScript);
 
-  // ====== 代码块语言标签 ======
+  // ====== 代码块语言标签 + Feature 8: Code Run Button ======
   bodyDiv.querySelectorAll('pre').forEach(function(pre) {
     var code = pre.querySelector('code');
     if (code) {
@@ -3947,6 +4318,16 @@ function renderArticle(article) {
         langLabel.className = 'code-lang-label';
         langLabel.textContent = lang;
         pre.insertBefore(langLabel, pre.firstChild);
+      }
+      // Feature 8: Add run button for web languages
+      var lowerLang = (lang || '').toLowerCase();
+      if (lowerLang === 'html' || lowerLang === 'css' || lowerLang === 'javascript' || lowerLang === 'js') {
+        var runBtn = document.createElement('button');
+        runBtn.className = 'code-run-btn';
+        runBtn.textContent = '▶ 运行';
+        runBtn.onclick = function() { runCodePreview(code.textContent, lowerLang); };
+        pre.style.position = 'relative';
+        pre.appendChild(runBtn);
       }
     }
   });
@@ -4184,6 +4565,254 @@ document.addEventListener('keydown', function(e) {
     }
   }
 });
+
+// ====== Feature 3: Search Highlight Helpers ======
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function highlightSearchTerm(text, query) {
+  if (!query) return text;
+  var escaped = escapeRegex(query);
+  var regex = new RegExp('(' + escaped + ')', 'gi');
+  return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+}
+
+function highlightContentKeywords(container, query) {
+  if (!query) return;
+  var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+  var textNodes = [];
+  while (walker.nextNode()) {
+    var node = walker.currentNode;
+    if (node.parentNode.tagName !== 'SCRIPT' && node.parentNode.tagName !== 'STYLE' &&
+        node.parentNode.tagName !== 'MARK' && node.parentNode.tagName !== 'CODE' &&
+        node.parentNode.tagName !== 'PRE' && !node.parentNode.classList.contains('code-run-btn') &&
+        !node.parentNode.classList.contains('copy-btn')) {
+      textNodes.push(node);
+    }
+  }
+  var escaped = escapeRegex(query);
+  var regex = new RegExp('(' + escaped + ')', 'gi');
+  textNodes.forEach(function(node) {
+    var text = node.textContent;
+    if (regex.test(text)) {
+      regex.lastIndex = 0;
+      var frag = document.createDocumentFragment();
+      var lastIdx = 0;
+      var match;
+      while ((match = regex.exec(text)) !== null) {
+        if (match.index > lastIdx) {
+          frag.appendChild(document.createTextNode(text.substring(lastIdx, match.index)));
+        }
+        var mark = document.createElement('mark');
+        mark.className = 'search-highlight';
+        mark.textContent = match[0];
+        frag.appendChild(mark);
+        lastIdx = match.index + match[0].length;
+      }
+      if (lastIdx < text.length) {
+        frag.appendChild(document.createTextNode(text.substring(lastIdx)));
+      }
+      node.parentNode.replaceChild(frag, node);
+    }
+  });
+}
+
+// ====== Feature 2: Related Articles ======
+function renderRelatedArticles(article, area) {
+  var all = getAllArticles();
+  var candidates = all.filter(function(a) { return a.path !== article.path; });
+  if (candidates.length === 0) return;
+
+  var scored = candidates.map(function(a) {
+    var commonTags = 0;
+    if (article.tags && a.tags) {
+      article.tags.forEach(function(t) {
+        if (a.tags.indexOf(t) >= 0) commonTags++;
+      });
+    }
+    return { article: a, score: commonTags };
+  }).filter(function(item) { return item.score > 0; })
+    .sort(function(a, b) { return b.score - a.score; })
+    .slice(0, 3);
+
+  if (scored.length === 0) return;
+
+  var section = document.createElement('div');
+  section.className = 'related-section';
+  var title = document.createElement('h3');
+  title.textContent = '相关文章推荐';
+  section.appendChild(title);
+
+  var cards = document.createElement('div');
+  cards.className = 'related-cards';
+  scored.forEach(function(item) {
+    var a = item.article;
+    var badge = getDateBadge(a.date);
+    var card = document.createElement('a');
+    card.className = 'related-card';
+    card.onclick = function(e) {
+      e.preventDefault();
+      var allArts = getAllArticles();
+      for (var i = 0; i < allArts.length; i++) {
+        if (allArts[i].path === a.path) {
+          currentArticle = allArts[i];
+          renderArticle(allArts[i]);
+          renderArticleList();
+          if (isAdmin()) document.getElementById('articleAdminActions').style.display = 'flex';
+          history.replaceState(null, '', '#article/' + a.path.replace('.md', ''));
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          break;
+        }
+      }
+    };
+    var pt = getPrimaryTag(a);
+    var ptc = getTagColors(pt);
+    card.innerHTML =
+      '<div class="related-card-title">' + a.title + '</div>' +
+      '<div class="related-card-meta">' + badge.month + ' ' + badge.day + ' &middot; ' + formatDateCN(a.date) + '</div>' +
+      '<div class="related-card-tags">' +
+        a.tags.slice(0, 3).map(function(t) { var tc = getTagColors(t); return '<span style="color:' + tc.color + ';background:' + tc.bg + '">#' + t + '</span>'; }).join('') +
+      '</div>';
+    cards.appendChild(card);
+  });
+  section.appendChild(cards);
+  area.appendChild(section);
+}
+
+// ====== Feature 10: Toggle Like ======
+function toggleLike(path) {
+  var likeKey = 'blog_likes_' + path;
+  var liked = localStorage.getItem(likeKey) === '1';
+  var countKey = likeKey + '_count';
+  var btn = document.getElementById('likeBtn');
+  var countEl = document.getElementById('likeCount');
+
+  if (liked) {
+    localStorage.removeItem(likeKey);
+    var count = Math.max(0, parseInt(localStorage.getItem(countKey) || '0', 10) - 1);
+    localStorage.setItem(countKey, count);
+    if (btn) { btn.classList.remove('liked'); }
+    if (countEl) { countEl.textContent = count; }
+  } else {
+    localStorage.setItem(likeKey, '1');
+    var count = parseInt(localStorage.getItem(countKey) || '0', 10) + 1;
+    localStorage.setItem(countKey, count);
+    if (btn) { btn.classList.add('liked'); }
+    if (countEl) { countEl.textContent = count; }
+  }
+}
+
+// ====== Feature 8: Code Preview Runner ======
+function runCodePreview(code, lang) {
+  var modal = document.createElement('div');
+  modal.className = 'code-preview-modal';
+
+  var container = document.createElement('div');
+  container.className = 'code-preview-container';
+
+  var header = document.createElement('div');
+  header.className = 'code-preview-header';
+  var title = document.createElement('span');
+  title.textContent = '代码预览 (' + lang.toUpperCase() + ')';
+  var closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '&times;';
+  closeBtn.onclick = function() { modal.remove(); };
+  header.appendChild(title);
+  header.appendChild(closeBtn);
+
+  var iframe = document.createElement('iframe');
+  iframe.className = 'code-preview-iframe';
+  iframe.sandbox = 'allow-scripts allow-same-origin';
+
+  if (lang === 'html' || lang === 'js' || lang === 'javascript') {
+    var htmlContent = code;
+    if (lang === 'js' || lang === 'javascript') {
+      htmlContent = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body><script>' + code + '<\/script></body></html>';
+    } else if (lang === 'html') {
+      if (!/<html/i.test(code) && !/<body/i.test(code) && !/<head/i.test(code)) {
+        htmlContent = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>' + code + '</body></html>';
+      }
+    }
+    iframe.srcdoc = htmlContent;
+  } else if (lang === 'css') {
+    var cssHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>' + code + '</style></head><body><div style="padding:20px;font-family:sans-serif;">CSS 预览（请查看样式效果）</div></body></html>';
+    iframe.srcdoc = cssHtml;
+  }
+
+  container.appendChild(header);
+  container.appendChild(iframe);
+  modal.appendChild(container);
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) modal.remove();
+  });
+  document.addEventListener('keydown', function closeEsc(e) {
+    if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', closeEsc); }
+  });
+
+  document.body.appendChild(modal);
+}
+
+// ====== Feature 7: MD Toolbar Insert ======
+function mdInsert(textareaId, prefix, suffix) {
+  var ta = document.getElementById(textareaId);
+  if (!ta) return;
+  var start = ta.selectionStart;
+  var end = ta.selectionEnd;
+  var text = ta.value;
+  var selected = text.substring(start, end);
+  var before = text.substring(0, start);
+  var after = text.substring(end);
+  var replacement = prefix + selected + suffix;
+  ta.value = before + replacement + after;
+  ta.focus();
+  var newCursorPos = before.length + prefix.length + selected.length;
+  ta.setSelectionRange(newCursorPos, newCursorPos);
+}
+
+// ====== Feature 5: Site Runtime ======
+var SITE_CREATED = new Date('2025-01-01');
+function updateSiteRuntime() {
+  var el = document.getElementById('siteRuntime');
+  if (!el) return;
+  var now = new Date();
+  var diff = Math.floor((now - SITE_CREATED) / (1000 * 60 * 60 * 24));
+  el.textContent = '博客已运行 ' + diff + ' 天';
+}
+
+// ====== Feature 9: PWA Support ======
+function initPWA() {
+  // Generate manifest blob URL
+  var manifest = {
+    name: '萌神小天的博客',
+    short_name: '萌神小天',
+    start_url: '.',
+    display: 'standalone',
+    background_color: '#fdf2f7',
+    theme_color: '#e87da0',
+    description: '独立游戏开发者博客',
+    icons: [{
+      src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">萌</text></svg>',
+      sizes: 'any',
+      type: 'image/svg+xml'
+    }]
+  };
+  var blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+  var manifestUrl = URL.createObjectURL(blob);
+  var link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = manifestUrl;
+  document.head.appendChild(link);
+
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    var swCode = 'self.addEventListener("install",function(e){e.waitUntil(caches.open("blog-v1").then(function(c){return c.addAll(["/"].concat(self.location.pathname.endsWith("/")?[]:[]))}))});self.addEventListener("fetch",function(e){e.respondWith(caches.match(e.request).then(function(r){return r||fetch(e.request)}))});';
+    var swBlob = new Blob([swCode], { type: 'application/javascript' });
+    var swUrl = URL.createObjectURL(swBlob);
+    navigator.serviceWorker.register(swUrl).catch(function() {});
+  }
+}
 
 // ====== Kawaii Mascot Logic ======
 var MASCOT_QUOTES = [
@@ -4510,6 +5139,9 @@ function initVisitorCounter() {
   initDailyQuote();
   initVisitorCounter();
   observeContentImages();
+  updateSiteRuntime();
+  setInterval(updateSiteRuntime, 60000);
+  initPWA();
 
   window.addEventListener('scroll', updateProgress, { passive: true });
   window.addEventListener('scroll', updateMascotParallax, { passive: true });
