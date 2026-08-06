@@ -65,7 +65,8 @@
       transition: opacity 0.2s, transform 0.2s;
     }
     .intro-social-btn:hover::after,
-    .intro-social-btn:focus-visible::after {
+    .intro-social-btn:focus-visible::after,
+    .intro-social-btn.show-tooltip::after {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
@@ -130,6 +131,26 @@ function toggleTheme() {
   else if (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('data-theme', 'dark');
   }
+})();
+
+(function() {
+  var btns = document.querySelectorAll('.intro-social-btn');
+  var timer = null;
+  btns.forEach(function(btn) {
+    btn.addEventListener('touchstart', function() {
+      // Clear any existing timer
+      if (timer) clearTimeout(timer);
+      // Remove tooltip from all buttons first
+      btns.forEach(function(b) { b.classList.remove('show-tooltip'); });
+      // Show tooltip on this button
+      btn.classList.add('show-tooltip');
+      // Auto-hide after 1.5s
+      timer = setTimeout(function() {
+        btn.classList.remove('show-tooltip');
+        timer = null;
+      }, 1500);
+    });
+  });
 })();
 </script>
 <!-- Kawaii Mascot (Anime Style) -->
