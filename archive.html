@@ -42,6 +42,8 @@
       font-size: 1.1rem; font-weight: 700; color: var(--brand);
       margin-bottom: 14px; padding-left: 12px;
       border-left: 3px solid var(--brand);
+      cursor: pointer; user-select: none;
+      display: flex; align-items: center; gap: 6px;
     }
     .archive-item {
       display: flex; align-items: baseline; gap: 16px;
@@ -65,17 +67,13 @@
       font-size: 0.78rem; color: var(--brand);
       font-weight: 600; margin-left: 8px;
     }
-    .archive-year-title {
-      cursor: pointer; user-select: none;
-      display: flex; align-items: center; gap: 6px;
-    }
+    .archive-year-body { overflow: hidden; transition: max-height 0.3s ease; }
+    .archive-year-body.collapsed { max-height: 0 !important; }
     .archive-year-title .collapse-icon {
       font-size: 0.7rem; transition: transform 0.25s;
       display: inline-block;
     }
     .archive-year-title.collapsed .collapse-icon { transform: rotate(-90deg); }
-    .archive-year-body { overflow: hidden; transition: max-height 0.3s ease; }
-    .archive-year-body.collapsed { max-height: 0 !important; }
     /* Tag filter bar */
     .archive-tag-filters {
       display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
