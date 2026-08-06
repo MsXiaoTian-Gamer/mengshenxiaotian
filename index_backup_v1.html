@@ -1,0 +1,4101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>萌神小天 — 博客</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="hljs-light">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" id="hljs-dark" disabled>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  /* ====== CSS Variables ====== */
+  :root {
+    --bg: #faf8f5;
+    --bg-hero: #faf5f0;
+    --surface: #ffffff;
+    --surface-hover: #fff5f3;
+    --surface-alt: #faf8f5;
+    --text: #5c4a58;
+    --text-heading: #3d2a38;
+    --text-muted: #8a7a88;
+    --text-faint: #b8a8b4;
+    --brand: #ff6b8a;
+    --brand-light: #ff8da5;
+    --brand-soft: #ffecf2;
+    --brand-ghost: #fff5f8;
+    --accent: #98e4b0;
+    --accent-light: #b0f0c2;
+    --accent-soft: #e0faea;
+    --accent-ghost: #f0fdf4;
+    --border: #f0e5e0;
+    --border-light: #f8f2f0;
+    --divider-color: #ebe0d8;
+    --focus-ring: rgba(255,107,138,0.3);
+    --shadow-sm: 0 1px 3px rgba(100,80,80,0.06);
+    --shadow: 0 2px 8px rgba(100,80,80,0.08);
+    --shadow-md: 0 4px 16px rgba(100,80,80,0.10);
+    --shadow-lg: 0 8px 32px rgba(100,80,80,0.12);
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --transition: 0.2s ease;
+    --transition-slow: 0.35s ease;
+    --content-width: 680px;
+    --code-bg: #faf8f5;
+    --code-border: #ffecf2;
+    --kbd-bg: #faf8f5;
+    --kbd-border: #ebe0d8;
+    --table-stripe: #faf8f5;
+    --scrollbar-thumb: #e8d5d8;
+    --scrollbar-track: #faf8f5;
+    --sidebar-width: 300px;
+    /* ====== Tag Color System (Light) — pastel candy ====== */
+    --c-blue:       #ff6b8a;  --c-blue-bg:    #ffecf2;
+    --c-green:      #98e4b0;  --c-green-bg:    #e0faea;
+    --c-purple:     #c4a0e8;  --c-purple-bg:   #f2e8fc;
+    --c-orange:     #ffae80;  --c-orange-bg:   #fff0e6;
+    --c-red:        #ff8a98;  --c-red-bg:      #ffe8ec;
+    --c-teal:       #80d4c8;  --c-teal-bg:     #e0f8f4;
+    --c-cyan:       #80c8e0;  --c-cyan-bg:     #e4f4fa;
+    --c-amber:      #ffeaa7;  --c-amber-bg:    #fffce8;
+    --c-indigo:     #b0a0e0;  --c-indigo-bg:   #eee8fa;
+    --c-rose:       #ff90a8;  --c-rose-bg:     #ffeaf0;
+    --c-default:    #ff6b8a;  --c-default-bg:  #ffecf2;
+
+  }
+
+  /* ====== Dark Mode ====== */
+  [data-theme="dark"] {
+    --bg: #2d1b2e;
+    --bg-hero: #28192a;
+    --surface: #352238;
+    --surface-hover: #3d2840;
+    --surface-alt: #301e34;
+    --text: #d4c8d6;
+    --text-heading: #e8dce8;
+    --text-muted: #a898aa;
+    --text-faint: #7e6e80;
+    --brand: #ff8da5;
+    --brand-light: #ffa8ba;
+    --brand-soft: #3d2030;
+    --brand-ghost: #2e1a26;
+    --accent: #98e4b0;
+    --accent-light: #b8f0cc;
+    --accent-soft: #1a3024;
+    --accent-ghost: #14261c;
+    --border: #3d2e40;
+    --border-light: #342638;
+    --divider-color: #4a3850;
+    --focus-ring: rgba(255,141,165,0.5);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.30);
+    --shadow: 0 2px 8px rgba(0,0,0,0.40);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.45);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.50);
+    --code-bg: #261828;
+    --code-border: #3d2e40;
+    --kbd-bg: #2e1c30;
+    --kbd-border: #4a3850;
+    --table-stripe: #2a1a2c;
+    --scrollbar-thumb: #5a4060;
+    --scrollbar-track: #2d1b2e;
+    /* ====== Tag Color System (Dark — neon pastel) ====== */
+    --c-blue:       #ff8da5;  --c-blue-bg:    #3d1e2c;
+    --c-green:      #98e4b0;  --c-green-bg:    #1a3024;
+    --c-purple:     #d0b8f0;  --c-purple-bg:   #2a2040;
+    --c-orange:     #ffb090;  --c-orange-bg:   #3d2818;
+    --c-red:        #ff9aaa;  --c-red-bg:      #3d1e24;
+    --c-teal:       #90e0d8;  --c-teal-bg:     #1a302c;
+    --c-cyan:       #90d8f0;  --c-cyan-bg:     #1a2a36;
+    --c-amber:      #ffeaa7;  --c-amber-bg:    #3d3810;
+    --c-indigo:     #c0b0f0;  --c-indigo-bg:   #262040;
+    --c-rose:       #ffa0b8;  --c-rose-bg:     #3d1e28;
+    --c-default:    #ff8da5;  --c-default-bg: #3d1e2c;
+
+  }
+
+  /* ====== Reset & Base ====== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+  ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background var(--transition-slow), color var(--transition-slow);
+  }
+
+  .mono { font-family: "JetBrains Mono", "Fira Code", "SF Mono", monospace; }
+
+  /* ====== Skip Link (Accessibility) ====== */
+  .skip-link {
+    position: fixed;
+    top: -100%;
+    left: 16px;
+    z-index: 9999;
+    background: var(--brand);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 12px;
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* ====== Global Focus-Visible ====== */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  /* Suppress focus ring for mouse clicks */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* ====== Reading Progress Bar ====== */
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand), #ffb0c8, var(--accent), var(--c-amber));
+    z-index: 2000;
+    width: 0%;
+    transition: width 0.15s linear;
+    border-radius: 0 2px 2px 0;
+    will-change: width;
+  }
+
+  /* ====== Layout ====== */
+  .layout {
+    display: flex;
+    min-height: 100vh;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* ====== Sidebar ====== */
+  .sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 32px 20px 24px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    transition: background var(--transition-slow), border-color var(--transition-slow);
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    margin-bottom: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .sidebar-header-left a {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: color var(--transition);
+  }
+  .sidebar-header-left a:hover { color: var(--brand); }
+
+  .sidebar-header-left p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .header-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-faint);
+    font-size: 0.88rem;
+    padding: 4px 6px;
+    border-radius: 5px;
+    font-family: "JetBrains Mono", monospace;
+    transition: all var(--transition);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+  }
+  .header-btn:hover { color: var(--brand); background: var(--brand-ghost); transform: scale(1.1); }
+  .header-btn:active { transform: scale(0.95); }
+
+  /* Search */
+  .search-wrap {
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 8px 12px 8px 34px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: all var(--transition);
+  }
+  .search-input:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-soft);
+  }
+  .search-input::placeholder { color: var(--text-faint); }
+
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-faint);
+    font-size: 0.75rem;
+    pointer-events: none;
+  }
+
+  /* Admin Bar */
+  .admin-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .admin-bar button {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: "JetBrains Mono", monospace;
+    transition: all var(--transition);
+  }
+  .admin-bar button:hover {
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-color: var(--brand);
+    transform: scale(1.03);
+  }
+  .admin-bar button:active { transform: scale(0.97); }
+
+  /* ====== Tag Cloud ====== */
+  .tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tag-btn {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.60rem;
+    padding: 4px 9px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+    position: relative;
+  }
+  .tag-btn:hover {
+    background: var(--tag-btn-bg-soft, var(--brand-soft));
+    color: var(--tag-btn-bg, var(--brand));
+    border-color: var(--tag-btn-bg, var(--brand-light));
+    transform: scale(1.05);
+  }
+  .tag-btn:active { transform: scale(0.96); }
+  .tag-btn.active {
+    background: var(--tag-btn-bg, var(--brand));
+    color: #fff;
+    border-color: var(--tag-btn-bg, var(--brand));
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(255,107,138,0.3);
+  }
+
+  @keyframes tagPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,138,0.15); }
+    50% { box-shadow: 0 0 0 6px rgba(255,107,138,0); }
+  }
+  .tag-btn.active {
+    animation: tagPulse 3s ease-in-out infinite;
+  }
+
+  /* ====== Article List ====== */
+  .article-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .article-list-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .article-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 10px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text);
+    border: 1px solid transparent;
+    transition: all var(--transition);
+    margin-bottom: 4px;
+    position: relative;
+    min-height: 44px;
+  }
+
+  .article-item:hover {
+    background: var(--surface-alt);
+    border-color: var(--border);
+    transform: translateX(4px);
+  }
+  .article-item:active { transform: translateX(2px) scale(0.99); }
+
+  .article-item.active {
+    background: var(--item-accent-bg, var(--brand-ghost));
+    border-color: var(--item-accent-border, var(--brand-soft));
+    box-shadow: inset 3px 0 0 var(--item-accent, var(--brand));
+  }
+
+  .article-item .date-badge {
+    flex-shrink: 0;
+    width: 42px;
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    line-height: 1.2;
+    padding-top: 1px;
+  }
+
+  .article-item .date-badge .badge-month {
+    font-size: 0.63rem;
+    color: var(--brand);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .article-item .date-badge .badge-day {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1;
+  }
+
+  .article-item.active .date-badge .badge-day { color: var(--brand); }
+
+  .article-item .item-body { flex: 1; min-width: 0; }
+
+  .article-item .item-title {
+    font-size: 0.84rem;
+    line-height: 1.45;
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+  .article-item.active .item-title { color: var(--brand); }
+
+  .article-item .item-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    color: var(--text-faint);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .article-item .item-meta .reading-time {
+    color: var(--text-faint);
+    opacity: 0.75;
+    font-size: 0.6rem;
+  }
+
+  .article-item .item-tags {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .article-item .item-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.58rem;
+    color: var(--item-tag-color, var(--brand));
+    background: var(--item-tag-bg, var(--brand-soft));
+    padding: 1px 7px;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: all var(--transition);
+  }
+  .article-item:hover .item-tag {
+    background: var(--item-tag-color, var(--brand));
+    color: #fff;
+  }
+
+  .article-item-actions {
+    display: none;
+    gap: 2px;
+    margin-left: 6px;
+    flex-shrink: 0;
+  }
+  .admin-visible .article-item-actions { display: flex; }
+
+  .article-item-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-faint);
+    font-size: 0.72rem;
+    padding: 3px 5px;
+    border-radius: 4px;
+    transition: all var(--transition);
+    line-height: 1;
+    min-width: 26px;
+    min-height: 26px;
+  }
+  .article-item-actions button:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+    transform: scale(1.15);
+  }
+  .article-item-actions button:active { transform: scale(0.9); }
+  .article-item-actions .btn-del:hover { color: #ff6b8a; background: #fff0f4; }
+
+  [data-theme="dark"] .article-item-actions .btn-del:hover { color: #ff8da5; background: #3d1e2c; }
+
+  .sidebar-footer {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+
+  .social-links {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-faint);
+    text-decoration: none;
+    font-size: 0.63rem;
+    transition: color var(--transition), background var(--transition);
+    padding: 3px 6px;
+    border-radius: 4px;
+  }
+
+  .social-links a:hover {
+    color: var(--brand);
+    background: var(--brand-ghost);
+  }
+
+  .social-links .social-icon {
+    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  /* ====== Main Content ====== */
+  .main {
+    flex: 1;
+    min-width: 0;
+    padding: 0 52px 72px;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 44px;
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,107,138,0.04) 0%, rgba(255,107,138,0.01) 50%, transparent 100%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  /* Wave decoration */
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20' preserveAspectRatio='none'%3E%3Cpath d='M0,10 C100,0 200,20 300,10 C400,0 500,20 600,10 C700,0 800,20 900,10 C1000,0 1100,20 1200,10 L1200,20 L0,20 Z' fill='%23ff6b8a' opacity='0.07'/%3E%3C/svg%3E") repeat-x bottom;
+    background-size: 600px 20px;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--brand);
+    border-radius: 1px;
+  }
+
+  .hero-inner {
+    max-width: var(--content-width);
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    transition: color var(--transition-slow);
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--brand), #ffb0c8, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 560px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--text-faint);
+  }
+
+  .hero-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Article Header */
+  .article-header {
+    max-width: var(--content-width);
+    margin-bottom: 36px;
+    position: relative;
+    padding-bottom: 24px;
+  }
+
+  .article-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--brand);
+    border-radius: 1px;
+    opacity: 0.6;
+  }
+
+  .article-header h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1.35;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .article-header .meta-line {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .article-header .meta-line .tag-pill {
+    display: inline-block;
+    font-size: 0.65rem;
+    color: var(--tag-pill-color, var(--brand));
+    background: var(--tag-pill-bg, var(--brand-soft));
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  .article-header .meta-line .reading-time {
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    opacity: 0.75;
+  }
+
+  /* Admin actions */
+  .article-admin-actions {
+    display: none;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .admin-visible .article-admin-actions { display: flex; }
+
+  .article-admin-actions button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    padding: 6px 16px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: "JetBrains Mono", monospace;
+    transition: all var(--transition);
+  }
+  .article-admin-actions button:hover {
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-color: var(--brand-light);
+    animation: btnBounce 0.4s ease;
+  }
+  .article-admin-actions button:active { transform: scale(0.97); }
+  .article-admin-actions .btn-delete:hover {
+    color: #ef4444;
+    border-color: #ef4444;
+    background: #fef2f2;
+  }
+
+  [data-theme="dark"] .article-admin-actions .btn-delete:hover {
+    background: #3d1e2c;
+  }
+
+  /* ====== Content Area Crossfade ====== */
+  #content-area {
+    transition: opacity 0.25s ease;
+    will-change: opacity;
+  }
+  #content-area.fading {
+    opacity: 0;
+  }
+
+  /* ====== Markdown Body ====== */
+  .markdown-body {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 44px 48px;
+    border: 1px solid var(--border);
+    max-width: var(--content-width);
+    transition: background var(--transition-slow), border-color var(--transition-slow), box-shadow var(--transition-slow);
+    animation: fadeSlideIn 0.35s ease;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .markdown-body > *:first-child { margin-top: 0 !important; }
+  .markdown-body > *:last-child { margin-bottom: 0 !important; }
+
+  /* ====== Headings ====== */
+  .markdown-body h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin: 2.4rem 0 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .markdown-body h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin: 2rem 0 0.7rem;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .markdown-body h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.12em;
+    bottom: 0.12em;
+    width: 3px;
+    background: var(--brand);
+    border-radius: 2px;
+  }
+
+  .markdown-body h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 1.6rem 0 0.55rem;
+    color: var(--text-heading);
+    letter-spacing: -0.005em;
+  }
+
+  .markdown-body h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1.3rem 0 0.45rem;
+    letter-spacing: 0;
+  }
+
+  /* ====== Paragraphs ====== */
+  .markdown-body p {
+    margin: 0.8rem 0;
+    line-height: 1.82;
+  }
+
+  .markdown-body a {
+    color: var(--brand);
+    text-decoration: none;
+    border-bottom: 1px solid var(--brand-soft);
+    transition: all var(--transition);
+  }
+  .markdown-body a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .markdown-body a:active { opacity: 0.8; }
+
+  /* ====== Blockquote ====== */
+  .markdown-body blockquote {
+    border-left: 4px solid var(--brand);
+    padding: 1rem 1.2rem;
+    margin: 1.4rem 0;
+    color: var(--text-muted);
+    background: var(--brand-ghost);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: normal;
+    font-size: 0.93rem;
+    line-height: 1.75;
+  }
+
+  .markdown-body blockquote p { margin: 0.35rem 0; }
+
+  /* Blockquote citation / footer */
+  .markdown-body blockquote p:last-child {
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    font-style: italic;
+  }
+  .markdown-body blockquote p:last-child::before {
+    content: '— ';
+    opacity: 0.6;
+  }
+
+  /* Nested blockquotes */
+  .markdown-body blockquote blockquote {
+    margin: 0.6rem 0;
+    border-left-color: var(--accent-light);
+    background: var(--accent-ghost);
+    font-size: 0.9rem;
+  }
+
+  [data-theme="dark"] .markdown-body blockquote {
+    background: rgba(255,107,138,0.08);
+    border-left-color: var(--brand);
+    color: #d0c0d0;
+  }
+
+  /* ====== Images & Video ====== */
+  .markdown-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin: 1.4rem 0;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .markdown-body img:hover {
+    box-shadow: var(--shadow-md);
+    transform: scale(1.01);
+  }
+
+  .markdown-body video {
+    max-width: 100%;
+    border-radius: var(--radius);
+    margin: 1.4rem 0;
+  }
+
+  /* ====== Code ====== */
+  .markdown-body code {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.85em;
+    background: var(--code-bg);
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+    color: #ff6b8a;
+    border: 1px solid var(--code-border);
+    word-break: break-all;
+  }
+  [data-theme="dark"] .markdown-body code { color: #ffb0c8; }
+
+  .markdown-body pre {
+    background: var(--code-bg) !important;
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem;
+    overflow-x: auto;
+    margin: 1.4rem 0;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.84rem;
+    line-height: 1.65;
+    border: 1px solid var(--code-border);
+    transition: background var(--transition-slow), border-color var(--transition-slow);
+    position: relative;
+  }
+
+  [data-theme="dark"] .markdown-body pre {
+    background: var(--code-bg) !important;
+    border-color: var(--code-border);
+  }
+
+  .markdown-body pre code {
+    background: none !important;
+    padding: 0;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    word-break: normal;
+  }
+
+  .markdown-body pre code.hljs {
+    background: transparent !important;
+    padding: 0;
+  }
+
+  /* ====== KBD ====== */
+  .markdown-body kbd {
+    display: inline-block;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.78em;
+    padding: 0.15em 0.5em;
+    line-height: 1.5;
+    color: var(--text);
+    background: var(--kbd-bg);
+    border: 1px solid var(--kbd-border);
+    border-radius: 4px;
+    box-shadow: 0 1px 0 var(--kbd-border), inset 0 1px 0 #fff;
+    vertical-align: 0.05em;
+  }
+  [data-theme="dark"] .markdown-body kbd {
+    box-shadow: 0 1px 0 var(--kbd-border);
+  }
+
+  /* Copy button */
+  .code-block-wrapper {
+    position: relative;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all var(--transition);
+    z-index: 1;
+  }
+  .code-block-wrapper:hover .copy-btn { opacity: 1; }
+  .copy-btn:hover {
+    background: var(--brand-soft);
+    color: var(--brand);
+    transform: scale(1.05);
+  }
+  .copy-btn:active { transform: scale(0.95); }
+  .copy-btn.copied { color: #98e4b0; border-color: #98e4b0; background: #f0fdf4; }
+
+  [data-theme="dark"] .copy-btn.copied {
+    background: #1a3024; border-color: #98e4b0; color: #98e4b0;
+  }
+
+  /* ====== Lists ====== */
+  .markdown-body ul,
+  .markdown-body ol {
+    margin: 0.85rem 0;
+    padding-left: 1.6rem;
+  }
+
+  .markdown-body li {
+    margin: 0.4rem 0;
+    line-height: 1.78;
+  }
+
+  /* Custom bullet for top-level ul */
+  .markdown-body > ul > li,
+  .markdown-body > ol > li + li ul > li {
+    list-style: none;
+    position: relative;
+  }
+
+  .markdown-body > ul > li::before {
+    content: '';
+    position: absolute;
+    left: -1.2rem;
+    top: 0.65em;
+    width: 5px;
+    height: 5px;
+    background: var(--brand);
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+
+  /* Nested lists get native bullets */
+  .markdown-body ul ul > li { list-style: disc; }
+  .markdown-body ul ul ul > li { list-style: circle; }
+  .markdown-body ul ul > li::before { display: none; }
+  .markdown-body ul ul ul > li::before { display: none; }
+
+  .markdown-body ol > li::marker {
+    font-weight: 600;
+    font-size: 0.88em;
+    color: var(--brand);
+  }
+
+  /* ====== Horizontal Rule ====== */
+  .markdown-body hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--divider-color), transparent);
+    margin: 2.4rem 0;
+    position: relative;
+  }
+
+  .markdown-body hr::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    box-shadow: -10px 0 0 var(--brand), 10px 0 0 var(--c-purple);
+    opacity: 0.4;
+  }
+
+  .markdown-body strong { font-weight: 600; color: var(--text-heading); }
+
+  /* ====== Tables ====== */
+  .markdown-body table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin: 1.5rem 0;
+    font-size: 0.85rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    will-change: auto;
+  }
+
+  .markdown-body th,
+  .markdown-body td {
+    border-bottom: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+    padding: 11px 16px;
+    text-align: left;
+  }
+
+  .markdown-body th:last-child,
+  .markdown-body td:last-child { border-right: none; }
+  .markdown-body tr:last-child td { border-bottom: none; }
+
+  .markdown-body th {
+    background: var(--brand-ghost);
+    font-weight: 600;
+    color: var(--text-heading);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+
+  .markdown-body tr:nth-child(even) td { background: var(--table-stripe); }
+
+  [data-theme="dark"] .markdown-body table { border-color: var(--border); }
+  [data-theme="dark"] .markdown-body th { background: rgba(255,107,138,0.12); }
+  [data-theme="dark"] .markdown-body tr:nth-child(even) td { background: rgba(255,107,138,0.03); }
+
+  .markdown-body tr:hover td { background: var(--brand-ghost); }
+
+  [data-theme="dark"] .markdown-body tr:hover td { background: rgba(255,107,138,0.08); }
+
+  /* ====== Intro Card ====== */
+  .intro-card {
+    text-align: center;
+    padding: 56px 40px 48px;
+    max-width: 460px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    animation: fadeSlideIn 0.35s ease;
+    transition: background var(--transition-slow), border-color var(--transition-slow), box-shadow var(--transition-slow);
+  }
+
+  .intro-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand), #ffb0c8, var(--accent));
+    color: #fff;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    user-select: none;
+    box-shadow: 0 4px 16px rgba(255,107,138,0.25);
+  }
+
+  .intro-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+    transition: color var(--transition-slow);
+  }
+
+  .intro-name-sub {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .intro-role {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--brand);
+    margin: 0 0 22px;
+    font-weight: 500;
+  }
+
+  .intro-bio {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.78;
+    margin: 0 auto 26px;
+    max-width: 380px;
+  }
+
+  .intro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 26px;
+  }
+
+  .intro-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+    color: var(--brand);
+    background: var(--brand-soft);
+    padding: 3px 11px;
+    border-radius: 11px;
+    font-weight: 500;
+  }
+
+  .intro-social {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .intro-social-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.05rem;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+  }
+
+  .intro-social-btn:hover {
+    color: var(--brand);
+    background: var(--brand-ghost);
+    border-color: var(--brand-soft);
+    transform: translateY(-2px);
+  }
+
+  /* ====== Empty State (search / notifications) ====== */
+  .empty-state {
+    text-align: center;
+    padding: 96px 16px;
+    color: var(--text-muted);
+    max-width: var(--content-width);
+    animation: fadeSlideIn 0.35s ease;
+  }
+
+  .empty-state .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    opacity: 0.35;
+  }
+
+  .empty-state p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  /* ====== Back to Top ====== */
+  #back-to-top {
+    position: fixed;
+    bottom: 36px;
+    right: 36px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--brand);
+    border: 1px solid var(--brand);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    z-index: 900;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all var(--transition);
+    box-shadow: 0 2px 12px rgba(255,107,138,0.35);
+    will-change: transform, opacity;
+  }
+
+  #back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  #back-to-top:hover {
+    background: var(--brand-light);
+    border-color: var(--brand-light);
+    box-shadow: 0 4px 20px rgba(255,107,138,0.5);
+    animation: btnBounce 0.4s ease;
+  }
+  #back-to-top:active { transform: translateY(-1px) scale(0.96); }
+
+  /* ====== Share Buttons ====== */
+  .share-section {
+    max-width: var(--content-width);
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    text-decoration: none;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+    white-space: nowrap;
+  }
+
+  .share-btn:hover {
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-color: var(--brand-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+  .share-btn:active { transform: scale(0.97); }
+  .share-btn.copied { color: #98e4b0; border-color: #98e4b0; background: #f0fdf4; }
+
+  [data-theme="dark"] .share-btn.copied {
+    background: #1a3024; border-color: #98e4b0; color: #98e4b0;
+  }
+
+  [data-theme="dark"] .share-btn {
+    background: var(--surface);
+  }
+
+  /* ====== Floating Prev/Next Nav ====== */
+  .float-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 850;
+    opacity: 0.45;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+  .float-nav:hover {
+    opacity: 0.9;
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-color: var(--brand-light);
+    box-shadow: var(--shadow);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .float-nav:active { transform: translateY(-50%) scale(0.95); }
+  .float-nav.disabled {
+    opacity: 0.18;
+    pointer-events: none;
+    cursor: default;
+  }
+  #float-prev { left: 12px; }
+  #float-next { right: 12px; }
+
+  @media (max-width: 768px) {
+    .float-nav { width: 32px; height: 32px; font-size: 0.85rem; }
+    #float-prev { left: 6px; }
+    #float-next { right: 6px; }
+    .share-section { gap: 6px; }
+    .share-btn { padding: 6px 12px; font-size: 0.65rem; }
+  }
+
+  @media (max-width: 480px) {
+    .float-nav { display: none; }
+    .share-section { flex-wrap: wrap; }
+  }
+
+  /* ====== Modal ====== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(45,27,46,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .modal-overlay.show { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    animation: modalIn 0.22s ease;
+    transition: background var(--transition-slow);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(-16px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 5px;
+    transition: all var(--transition);
+  }
+  .modal-close:hover {
+    color: var(--text);
+    background: var(--bg);
+    transform: scale(1.1);
+  }
+  .modal-close:active { transform: scale(0.95); }
+
+  .modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .modal-body label {
+    display: block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .modal-body input,
+  .modal-body textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    margin-bottom: 18px;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    background: var(--bg);
+    color: var(--text);
+  }
+  .modal-body input:focus,
+  .modal-body textarea:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-soft);
+  }
+
+  .modal-body textarea {
+    min-height: 280px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    resize: vertical;
+  }
+
+  .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .modal-footer button {
+    padding: 9px 22px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: "JetBrains Mono", monospace;
+    transition: all var(--transition);
+  }
+  .btn-cancel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .btn-cancel:hover { background: var(--bg); color: var(--text); }
+  .btn-cancel:active { transform: scale(0.97); }
+  .btn-primary {
+    background: var(--brand);
+    border: 1px solid var(--brand);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--brand-light);
+    border-color: var(--brand-light);
+    transform: scale(1.03);
+  }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .login-form { max-width: 340px; margin: 0; }
+
+  /* ====== Responsive ====== */
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; max-width: 100%; }
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: static;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 18px 16px;
+    }
+
+    .article-item { min-height: 40px; }
+
+    .main {
+      padding: 24px 20px 56px;
+    }
+
+    .hero {
+      padding: 28px 0 28px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 { font-size: 1.5rem; }
+    .hero p { font-size: 0.85rem; }
+
+    .markdown-body {
+      padding: 28px 22px;
+      max-width: 100%;
+    }
+
+    #back-to-top {
+      bottom: 24px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      padding: 16px 14px 14px;
+    }
+
+    .sidebar-header { margin-bottom: 14px; padding-bottom: 14px; }
+
+    .main { padding: 20px 16px 48px; }
+
+    .hero { padding: 22px 0 22px; margin-bottom: 22px; }
+    .hero h1 { font-size: 1.4rem; }
+    .hero p { font-size: 0.82rem; }
+    .hero-meta { gap: 16px; font-size: 0.68rem; }
+
+    .article-header h1 { font-size: 1.35rem; }
+
+    .markdown-body {
+      padding: 22px 16px;
+      border-radius: var(--radius);
+      font-size: 0.93rem;
+    }
+
+    .markdown-body h1 { font-size: 1.35rem; }
+    .markdown-body h2 { font-size: 1.1rem; }
+    .markdown-body h3 { font-size: 0.98rem; }
+
+    .markdown-body table { font-size: 0.78rem; }
+    .markdown-body th, .markdown-body td { padding: 8px 10px; }
+
+    .article-item { padding: 10px 8px; gap: 8px; }
+    .article-item .item-title { font-size: 0.8rem; }
+
+    .tag-filters { gap: 3px; }
+    .tag-btn { font-size: 0.57rem; padding: 3px 7px; }
+
+    .modal {
+      max-width: 100%;
+      margin: 0 4px;
+    }
+    .modal-body { padding: 18px; }
+    .modal-footer { padding: 12px 18px; }
+  }
+
+  @media (max-width: 480px) {
+    .sidebar {
+      padding: 14px 10px 12px;
+    }
+
+    .sidebar-header-left a { font-size: 1.15rem; }
+
+    .main { padding: 16px 12px 40px; }
+
+    .hero h1 { font-size: 1.25rem; }
+    .hero p { font-size: 0.78rem; }
+    .hero-meta { flex-direction: column; gap: 6px; }
+
+    .article-header h1 { font-size: 1.2rem; }
+    .article-header .meta-line { font-size: 0.68rem; gap: 6px; }
+
+    .markdown-body {
+      padding: 18px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+    }
+    .markdown-body h1 { font-size: 1.2rem; }
+    .markdown-body h2 { font-size: 1.05rem; }
+    .markdown-body pre { padding: 0.9rem 1rem; font-size: 0.74rem; }
+    .markdown-body th, .markdown-body td { padding: 7px 8px; font-size: 0.73rem; }
+
+    .article-item .date-badge { width: 34px; }
+    .article-item .date-badge .badge-day { font-size: 0.9rem; }
+    .article-item .item-title { font-size: 0.76rem; }
+    .article-item .item-meta { font-size: 0.58rem; }
+
+    .empty-state { padding: 64px 12px; }
+    .empty-state .empty-icon { font-size: 2.4rem; }
+
+    .intro-card { padding: 40px 22px 36px; max-width: 100%; }
+    .intro-avatar { width: 62px; height: 62px; font-size: 1.3rem; }
+    .intro-name { font-size: 1.1rem; }
+    .intro-name-sub { font-size: 0.85rem; }
+    .intro-bio { font-size: 0.82rem; }
+
+    #back-to-top {
+      bottom: 16px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      font-size: 0.9rem;
+    }
+
+    .search-input { padding: 7px 10px 7px 30px; font-size: 0.74rem; }
+  }
+
+  /* ====== Print Styles ====== */
+  @media print {
+    *,
+    *::before,
+    *::after {
+      background: transparent !important;
+      color: #000 !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    #progress-bar,
+    .sidebar,
+    #back-to-top,
+    .modal-overlay,
+    .article-admin-actions,
+    .copy-btn,
+    .intro-card {
+      display: none !important;
+    }
+
+    .layout {
+      display: block;
+      max-width: 100%;
+    }
+
+    .main {
+      padding: 0;
+      max-width: 100%;
+    }
+
+    .hero {
+      padding: 16px 0;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    .hero::after { display: none; }
+    .hero h1 { font-size: 1.5rem; }
+
+    .article-header::after { display: none; }
+    .article-header h1 { font-size: 1.3rem; }
+
+    .markdown-body {
+      box-shadow: none;
+      border: none;
+      padding: 0;
+      max-width: 100%;
+      animation: none;
+    }
+
+    .markdown-body h2::before { display: none; }
+    .markdown-body h2 { padding-left: 0; }
+
+    .markdown-body a {
+      border-bottom: 1px solid #999;
+      color: #000;
+    }
+    .markdown-body a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      color: #666;
+    }
+
+    .markdown-body pre,
+    .markdown-body code {
+      border: 1px solid #ccc;
+      background: #f9f9f9 !important;
+      font-size: 0.82rem;
+    }
+
+    .markdown-body img {
+      max-width: 100% !important;
+      page-break-inside: avoid;
+    }
+
+    .markdown-body table {
+      border: 1px solid #ccc;
+    }
+    .markdown-body th,
+    .markdown-body td {
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+    }
+
+    .markdown-body blockquote {
+      border-left: 2px solid #999;
+      background: none !important;
+      padding: 0.5rem 1rem;
+    }
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4 {
+      page-break-after: avoid;
+    }
+
+    .markdown-body p,
+    .markdown-body li,
+    .markdown-body blockquote {
+      orphans: 3;
+      widows: 3;
+    }
+
+    body {
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+
+    @page {
+      margin: 2cm 1.8cm;
+    }
+  }
+
+  /* ====== Floating Hearts ====== */
+  .hearts-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .heart-wrap {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    animation: float var(--dur) ease-in-out infinite;
+    animation-delay: var(--delay);
+    opacity: 0.06;
+  }
+  .heart,
+  .heart::before,
+  .heart::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--brand, #ff6b8a);
+  }
+  .heart {
+    transform: rotate(45deg);
+    border-radius: 0 0 2px 0;
+  }
+  .heart::before {
+    content: "";
+    top: -50%;
+    left: 0;
+    border-radius: 50%;
+  }
+  .heart::after {
+    content: "";
+    top: 0;
+    left: -50%;
+    border-radius: 50%;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(3deg); }
+  }
+
+  [data-theme="dark"] .heart,
+  [data-theme="dark"] .heart::before,
+  [data-theme="dark"] .heart::after {
+    background: #6a4a6a;
+  }
+  [data-theme="dark"] .heart-wrap {
+    opacity: 0.07;
+  }
+
+  @media print {
+    .hearts-bg { display: none; }
+  }
+
+  /* ====== Kawaii Mascot (Anime Style) ====== */
+  @keyframes mascotSway {
+    0%, 100% { transform: rotate(-1.8deg) translateY(0); }
+    25% { transform: rotate(0deg) translateY(-2px); }
+    50% { transform: rotate(1.8deg) translateY(0); }
+    75% { transform: rotate(0deg) translateY(-2px); }
+  }
+
+  @keyframes mascotBreathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  @keyframes mascotJump {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    30% { transform: translateY(-16px) scale(1.07) rotate(-3deg); }
+    50% { transform: translateY(0) scale(0.96) rotate(0deg); }
+    70% { transform: translateY(-7px) scale(1.03) rotate(2deg); }
+    100% { transform: translateY(0) scale(1) rotate(0deg); }
+  }
+
+  @keyframes mascotBlink {
+    0%, 88%, 100% { transform: scaleY(1); }
+    93% { transform: scaleY(0.08); }
+  }
+
+  @keyframes sparklePulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+
+  @keyframes sparklePulse2 {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    60% { opacity: 0.95; transform: scale(1.35); }
+  }
+
+  @keyframes tailSwingL {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(-16deg); }
+  }
+  @keyframes tailSwingR {
+    0%, 100% { transform: rotate(10deg); }
+    50% { transform: rotate(16deg); }
+  }
+
+  @keyframes bubblePop {
+    0% { opacity: 0; transform: translateY(10px) scale(0.8); }
+    12% { opacity: 1; transform: translateY(-3px) scale(1.06); }
+    22% { transform: translateY(0) scale(1); }
+    80% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-12px) scale(0.88); }
+  }
+
+  @keyframes heroGlow {
+    0%, 100% { filter: brightness(1) saturate(1); }
+    50% { filter: brightness(1.18) saturate(1.1); }
+  }
+
+  @keyframes tagShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-2.5px) rotate(-1deg); }
+    40% { transform: translateX(2.5px) rotate(1deg); }
+    60% { transform: translateX(-1.5px) rotate(-0.5deg); }
+    80% { transform: translateX(1.5px) rotate(0.5deg); }
+  }
+
+  .kawaii-mascot {
+    position: fixed;
+    bottom: 74px;
+    right: 22px;
+    z-index: 950;
+    pointer-events: none;
+    transition: transform 0.1s linear;
+  }
+
+  .mascot-body {
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+    width: 106px;
+    height: 120px;
+    animation: mascotSway 5s ease-in-out infinite, mascotBreathe 4.5s ease-in-out infinite;
+    transition: filter 0.3s;
+  }
+
+  .mascot-body:hover {
+    animation: mascotJump 0.65s ease forwards, mascotSway 5s ease-in-out infinite, mascotBreathe 4.5s ease-in-out infinite;
+    animation-delay: 0s, 0.65s, 0.65s;
+  }
+
+  .mascot-body:active { transform: scale(0.93); }
+
+  /* ====== Twin Tails ====== */
+  .mascot-tail {
+    position: absolute;
+    width: 18px;
+    height: 56px;
+    top: 14px;
+    background: linear-gradient(180deg, #6B4226 0%, #7D5238 40%, #a07050 100%);
+    border-radius: 8px 8px 16px 16px;
+    z-index: 0;
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.08);
+  }
+  .mascot-tail.left {
+    left: 8px;
+    animation: tailSwingL 4s ease-in-out infinite;
+    transform-origin: top center;
+  }
+  .mascot-tail.right {
+    right: 8px;
+    animation: tailSwingR 4s ease-in-out infinite;
+    transform-origin: top center;
+  }
+
+  /* Tail ribbons */
+  .mascot-tail-ribbon {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 12px;
+    background: var(--brand);
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .mascot-tail-ribbon::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--brand-light);
+    border-radius: 50%;
+  }
+
+  /* ====== Head ====== */
+  .mascot-head {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 62px;
+    height: 64px;
+    background: linear-gradient(170deg, #ffe4d0 0%, #ffd4b0 35%, #fcc8a4 100%);
+    border-radius: 52% 52% 44% 44%;
+    z-index: 2;
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.05), 0 4px 16px rgba(255,140,100,0.22);
+  }
+
+  /* ====== M-Bangs ====== */
+  .mascot-bangs {
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 22px;
+    background: #7D5238;
+    border-radius: 50% 50% 0 0;
+    z-index: 3;
+  }
+  .mascot-bangs::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: -4px;
+    width: 16px;
+    height: 20px;
+    background: #7D5238;
+    border-radius: 0 0 0 60%;
+    z-index: 3;
+  }
+  .mascot-bangs::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: -4px;
+    width: 16px;
+    height: 20px;
+    background: #7D5238;
+    border-radius: 0 0 60% 0;
+    z-index: 3;
+  }
+
+  /* M-notch */
+  .mascot-bangs-notch {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 12px;
+    background: #ffe4d0;
+    z-index: 4;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+  /* ====== Eyes ====== */
+  .mascot-eye {
+    position: absolute;
+    top: 26px;
+    width: 16px;
+    height: 20px;
+    background: #2d1a2c;
+    border-radius: 50% 50% 46% 46%;
+    z-index: 2;
+    animation: mascotBlink 3.5s ease-in-out infinite;
+    overflow: hidden;
+  }
+  .mascot-eye.left { left: 11px; }
+  .mascot-eye.right { right: 11px; }
+
+  /* Main highlight */
+  .mascot-eye-hl {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 5;
+    opacity: 0.9;
+  }
+
+  /* Kirakira sparkle */
+  .mascot-eye-sparkle {
+    position: absolute;
+    bottom: 4px;
+    left: 3px;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 5;
+    opacity: 0.6;
+    animation: sparklePulse 2.2s ease-in-out infinite;
+  }
+  .mascot-eye-sparkle2 {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 5;
+    opacity: 0.45;
+    animation: sparklePulse2 2.8s ease-in-out infinite;
+  }
+
+  /* ====== Eyebrows ====== */
+  .mascot-brow {
+    position: absolute;
+    top: 21px;
+    width: 16px;
+    height: 2px;
+    background: #7D5238;
+    border-radius: 1px;
+    z-index: 3;
+    opacity: 0.75;
+  }
+  .mascot-brow.left { left: 10px; }
+  .mascot-brow.right { right: 10px; }
+
+  /* ====== Blush ====== */
+  .mascot-blush {
+    position: absolute;
+    top: 38px;
+    width: 15px;
+    height: 9px;
+    background: rgba(255,120,145,0.4);
+    border-radius: 50%;
+    z-index: 2;
+    filter: blur(1px);
+  }
+  .mascot-blush.left { left: 3px; }
+  .mascot-blush.right { right: 3px; }
+
+  /* ====== Mouth ====== */
+  .mascot-mouth {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 5px;
+    border-bottom: 2px solid #e09080;
+    border-radius: 0 0 6px 6px;
+    z-index: 2;
+  }
+
+  /* ====== Body ====== */
+  .mascot-torso {
+    position: absolute;
+    top: 62px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 42px;
+    height: 44px;
+    z-index: 1;
+  }
+
+  /* Sailor top */
+  .mascot-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 26px;
+    background: linear-gradient(180deg, #fff 0%, #faf8fa 100%);
+    border-radius: 8px 8px 0 0;
+    z-index: 2;
+  }
+
+  /* Sailor collar */
+  .mascot-collar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    z-index: 3;
+  }
+  .mascot-collar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: 0;
+    height: 0;
+    border-left: 14px solid #6DB3D8;
+    border-bottom: 12px solid transparent;
+    z-index: 4;
+  }
+  .mascot-collar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 2px;
+    width: 0;
+    height: 0;
+    border-right: 14px solid #6DB3D8;
+    border-bottom: 12px solid transparent;
+    z-index: 4;
+  }
+
+  /* Red ribbon tie */
+  .mascot-tie {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 16px;
+    background: var(--brand);
+    border-radius: 2px 2px 4px 4px;
+    z-index: 5;
+    box-shadow: 0 1px 3px rgba(255,107,138,0.3);
+  }
+  .mascot-tie::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 8px;
+    background: var(--brand);
+    border-radius: 50%;
+  }
+
+  /* Pleated skirt */
+  .mascot-skirt {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 20px;
+    background: linear-gradient(180deg, #4a6fa5 0%, #3d5f8a 100%);
+    border-radius: 2px 2px 10px 10px;
+    z-index: 2;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.15);
+  }
+  /* Skirt pleats */
+  .mascot-skirt::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 1px;
+    box-shadow: -6px 0 0 rgba(255,255,255,0.12), 6px 0 0 rgba(255,255,255,0.12);
+  }
+
+  /* ====== Arms ====== */
+  .mascot-arm {
+    position: absolute;
+    top: 8px;
+    width: 12px;
+    height: 28px;
+    background: linear-gradient(180deg, #ffe4d0 0%, #ffd4b0 100%);
+    border-radius: 6px;
+    z-index: 1;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .mascot-arm.left { left: -16px; transform: rotate(18deg); }
+  .mascot-arm.right { right: -16px; transform: rotate(-18deg); }
+
+  /* Sleeves */
+  .mascot-arm::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 16px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  /* ====== Legs & Socks ====== */
+  .mascot-legs {
+    position: absolute;
+    top: 102px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 14px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+  }
+  .mascot-leg {
+    width: 10px;
+    height: 14px;
+    background: linear-gradient(180deg, #ffe4d0 0%, #ffd4b0 60%, #fff 60%, #fff 100%);
+    border-radius: 4px 4px 3px 3px;
+  }
+
+  /* ====== Speech Bubble (Pink Kawaii) ====== */
+  .mascot-bubble {
+    position: fixed;
+    bottom: 185px;
+    right: 16px;
+    z-index: 955;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(135deg, #fff5f8 0%, #fff0f5 100%);
+    color: #5c4a58;
+    font-size: 0.78rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    padding: 12px 18px;
+    border-radius: 20px;
+    border: 2px solid #ffb8cc;
+    box-shadow: 0 4px 20px rgba(255,140,170,0.12), 0 1px 3px rgba(255,107,138,0.05);
+    white-space: nowrap;
+    max-width: 230px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .mascot-bubble.show {
+    animation: bubblePop 3.2s ease forwards;
+  }
+
+  /* Bubble tail pointing to mascot */
+  .mascot-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 56px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ffb8cc;
+    z-index: 1;
+  }
+  .mascot-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    right: 58px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fff5f8;
+    z-index: 2;
+  }
+
+  /* ====== Hero Glow ====== */
+  .hero h1 span {
+    animation: heroGlow 3.5s ease-in-out infinite;
+  }
+
+  /* ====== Card Hover Float ====== */
+  .markdown-body {
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  }
+  .markdown-body:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .intro-card {
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  }
+  .intro-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* ====== Tag Pill Hover Shake ====== */
+  .tag-btn:hover {
+    animation: tagShake 0.45s ease;
+  }
+
+  .tag-pill {
+    transition: transform 0.2s ease;
+  }
+  .tag-pill:hover {
+    animation: tagShake 0.5s ease;
+  }
+
+  /* ====== Dark Mode Mascot ====== */
+  [data-theme="dark"] .mascot-head {
+    background: linear-gradient(170deg, #ecd8c8 0%, #dcc4a8 35%, #ccb098 100%);
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.10), 0 4px 16px rgba(140,100,80,0.28);
+  }
+
+  [data-theme="dark"] .mascot-bangs,
+  [data-theme="dark"] .mascot-bangs::before,
+  [data-theme="dark"] .mascot-bangs::after { background: #5a3520; }
+
+  [data-theme="dark"] .mascot-bangs-notch { background: #ecd8c8; }
+
+  [data-theme="dark"] .mascot-tail {
+    background: linear-gradient(180deg, #5a3520 0%, #6B4226 40%, #8a6050 100%);
+  }
+
+  [data-theme="dark"] .mascot-brow { background: #5a3520; }
+
+  [data-theme="dark"] .mascot-arm {
+    background: linear-gradient(180deg, #ecd8c8 0%, #dcc4a8 100%);
+  }
+  [data-theme="dark"] .mascot-arm::before { background: #f0e8e0; }
+
+  [data-theme="dark"] .mascot-leg {
+    background: linear-gradient(180deg, #ecd8c8 0%, #dcc4a8 60%, #f0e8e0 60%, #f0e8e0 100%);
+  }
+
+  [data-theme="dark"] .mascot-eye { background: #120a10; }
+
+  [data-theme="dark"] .mascot-top { background: linear-gradient(180deg, #f0e8e0 0%, #e8e0d8 100%); }
+
+  [data-theme="dark"] .mascot-mouth { border-bottom-color: #c87868; }
+
+  [data-theme="dark"] .mascot-blush {
+    background: rgba(255,110,130,0.3);
+  }
+
+  [data-theme="dark"] .mascot-bubble {
+    background: linear-gradient(135deg, #3d2840 0%, #382238 100%);
+    border-color: #6a4a68;
+    color: #d4c8d6;
+    box-shadow: 0 4px 20px rgba(80,40,60,0.35);
+  }
+  [data-theme="dark"] .mascot-bubble::after {
+    border-top-color: #6a4a68;
+  }
+  [data-theme="dark"] .mascot-bubble::before {
+    border-top-color: #3d2840;
+  }
+
+  /* ====== Print: Hide Mascot ====== */
+  @media print {
+    .kawaii-mascot,
+    .mascot-bubble { display: none !important; }
+  }
+
+  /* ====== Lazy Load Images ====== */
+  .lazy-img {
+    filter: blur(12px);
+    opacity: 0;
+    transition: opacity 0.45s ease, filter 0.45s ease;
+  }
+  .lazy-img.loaded {
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  /* ====== Daily Quotes (Sidebar) ====== */
+  .daily-quotes {
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    background: var(--brand-ghost);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--brand-soft);
+    text-align: center;
+    transition: background var(--transition-slow), border-color var(--transition-slow);
+  }
+  .daily-quotes .quote-text {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ====== Social Links (Sidebar) ====== */
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .social-links a:hover {
+    background: var(--brand-ghost);
+    color: var(--brand);
+    border-color: var(--brand-soft);
+    transform: translateY(-2px);
+  }
+
+  /* ====== Visitor Counter ====== */
+  .visitor-counter {
+    margin-top: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    text-align: center;
+    padding: 6px 0;
+    transition: color var(--transition-slow);
+  }
+  .visitor-counter .vc-count {
+    color: var(--brand);
+    font-weight: 600;
+    font-size: 0.78rem;
+  }
+
+  /* ====== Right-side Friend Link Panel ====== */
+  .fl-trigger {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 900;
+    width: 36px;
+    height: 100px;
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    border-radius: 14px 0 0 14px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 600;
+    writing-mode: vertical-rl;
+    letter-spacing: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -2px 0 12px rgba(255,107,138,0.25);
+    transition: all var(--transition);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .fl-trigger:hover {
+    background: var(--brand-light);
+    box-shadow: -2px 0 20px rgba(255,107,138,0.35);
+  }
+  .fl-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(60,30,40,0.35);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .fl-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .fl-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    max-width: 88vw;
+    height: 100vh;
+    z-index: 999;
+    background: var(--surface);
+    box-shadow: -4px 0 32px rgba(100,80,80,0.18);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .fl-panel.active {
+    transform: translateX(0);
+  }
+  .fl-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .fl-panel-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+  .fl-panel-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .fl-panel-close:hover {
+    background: var(--brand-ghost);
+    color: var(--brand);
+    border-color: var(--brand-soft);
+  }
+  .fl-panel-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fl-item {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: all var(--transition);
+    position: relative;
+  }
+  .fl-item:hover {
+    border-color: var(--brand-soft);
+    background: var(--brand-ghost);
+    box-shadow: var(--shadow-sm);
+  }
+  .fl-item .fl-item-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--brand);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  .fl-item .fl-item-name:hover {
+    text-decoration: underline;
+  }
+  .fl-item .fl-item-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .fl-item .fl-item-del {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border-light);
+    color: var(--text-faint);
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .fl-item.fl-admin .fl-item-del {
+    display: flex;
+  }
+  .fl-item .fl-item-del:hover {
+    background: #ffe8ec;
+    color: #e0556a;
+  }
+  .fl-item.fl-admin .fl-item-name {
+    padding-right: 30px;
+  }
+  .fl-panel-footer {
+    border-top: 1px solid var(--border);
+    padding: 16px 20px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fl-add-form {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .fl-add-form.active {
+    display: flex;
+  }
+  .fl-add-form input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+    font-family: inherit;
+    transition: border-color var(--transition);
+    box-sizing: border-box;
+  }
+  .fl-add-form input:focus {
+    border-color: var(--brand-soft);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+  }
+  .fl-add-form input::placeholder {
+    color: var(--text-faint);
+  }
+  .fl-btn-row {
+    display: flex;
+    gap: 8px;
+  }
+  .fl-btn {
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 500;
+    transition: all var(--transition);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .fl-btn.primary {
+    background: var(--brand);
+    color: #fff;
+  }
+  .fl-btn.primary:hover {
+    background: var(--brand-light);
+  }
+  .fl-btn.ghost {
+    background: var(--border-light);
+    color: var(--text-muted);
+  }
+  .fl-btn.ghost:hover {
+    background: var(--border);
+    color: var(--text);
+  }
+  .fl-admin-toggle {
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    cursor: pointer;
+    text-align: center;
+    padding: 4px 0;
+    user-select: none;
+    transition: color var(--transition);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .fl-admin-toggle:hover {
+    color: var(--text-muted);
+  }
+
+  /* ====== Dark mode: Friend Link Panel ====== */
+  [data-theme="dark"] .fl-overlay {
+    background: rgba(0,0,0,0.55);
+  }
+  [data-theme="dark"] .fl-panel {
+    background: var(--surface);
+    box-shadow: -4px 0 40px rgba(0,0,0,0.4);
+  }
+  [data-theme="dark"] .fl-trigger {
+    box-shadow: -2px 0 16px rgba(255,107,138,0.3);
+  }
+
+  /* ====== Mobile: Friend Link Panel ====== */
+  @media (max-width: 480px) {
+    .fl-panel {
+      width: 100vw;
+      max-width: 100vw;
+    }
+    .fl-trigger {
+      width: 30px;
+      height: 80px;
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      border-radius: 10px 0 0 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts-bg" aria-hidden="true">
+  <div class="heart-wrap" style="top:8%;left:5%;--size:28px;--dur:7s;--delay:0s;"><div class="heart"></div></div>
+  <div class="heart-wrap" style="top:15%;right:10%;--size:22px;--dur:6.5s;--delay:1.5s;"><div class="heart"></div></div>
+  <div class="heart-wrap" style="top:60%;left:8%;--size:34px;--dur:8s;--delay:0.8s;"><div class="heart"></div></div>
+  <div class="heart-wrap" style="top:75%;right:5%;--size:26px;--dur:7.2s;--delay:2.2s;"><div class="heart"></div></div>
+  <div class="heart-wrap" style="top:30%;left:3%;--size:20px;--dur:5.8s;--delay:3s;"><div class="heart"></div></div>
+  <div class="heart-wrap" style="top:85%;left:20%;--size:24px;--dur:7.5s;--delay:1s;"><div class="heart"></div></div>
+  <div class="heart-wrap" style="top:45%;right:3%;--size:30px;--dur:6.8s;--delay:0.3s;"><div class="heart"></div></div>
+  <div class="heart-wrap" style="top:5%;left:40%;--size:18px;--dur:6.2s;--delay:3.5s;"><div class="heart"></div></div>
+</div>
+
+<!-- Skip to content (Accessibility) -->
+<a href="#mainContent" class="skip-link" aria-label="跳转到主要内容">跳到内容</a>
+
+<!-- Reading Progress Bar -->
+<div id="progress-bar" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar mono" id="sidebar" role="navigation" aria-label="文章导航">
+    <div class="sidebar-header">
+      <div class="sidebar-header-left">
+        <a href="#" onclick="resetAll();return false;" aria-label="回到首页">萌神小天</a>
+        <p>Game Dev &amp; Life</p>
+      </div>
+      <div class="header-actions">
+        <button class="header-btn" id="themeToggle" onclick="toggleTheme()" title="深浅切换" aria-label="切换深色/浅色模式">
+          <span id="themeIcon" aria-hidden="true">&#9790;</span>
+        </button>
+        <button class="header-btn" id="adminToggle" onclick="handleAdminToggle()" title="管理" aria-label="管理员登录">
+          <span id="adminIcon" aria-hidden="true">&#128274;</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <span class="search-icon" aria-hidden="true">&#128269;</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索文章..." oninput="handleSearch()" aria-label="搜索文章">
+    </div>
+
+    <div class="daily-quotes" id="dailyQuotes" aria-live="polite">
+      <div class="quote-text" id="dailyQuoteText"></div>
+    </div>
+
+    <div class="admin-bar" id="adminBar" style="display:none;">
+      <button onclick="showNewArticleDialog()" aria-label="新增文章">+ 新增</button>
+    </div>
+
+    <nav class="tag-filters" id="tag-filters" aria-label="标签筛选"></nav>
+
+    <div class="article-list" id="article-list" role="list" aria-label="文章列表">
+      <div class="article-list-title">Articles</div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div id="footer-info" aria-live="polite"></div>
+      <div class="social-links">
+        <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener" title="GitHub"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+        <a href="https://msxiaotian.itch.io" target="_blank" rel="noopener" title="itch.io">&#x1F3AE;</a>
+        <a href="mailto:msxiaotian@icloud.com" title="邮箱">&#x1F48C;</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main" id="mainContent" role="main" aria-label="文章内容">
+    <div class="hero" id="heroSection">
+      <div class="hero-inner">
+        <h1>萌神小天</h1>
+        <p>独立游戏萌新开发者。记录从零开始的游戏开发之路。</p>
+        <div class="hero-meta" id="heroMeta">
+          <span id="heroArticleCount"></span>
+          <span id="heroTagCount"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-admin-actions" id="articleAdminActions" style="margin-bottom:16px;">
+      <button onclick="editCurrentArticle()" aria-label="编辑当前文章">编辑</button>
+      <button class="btn-delete" onclick="deleteCurrentArticle()" aria-label="删除当前文章">删除</button>
+    </div>
+
+    <div id="content-area" aria-live="polite">
+      <div class="intro-card">
+        <div class="intro-avatar" aria-hidden="true">萌</div>
+        <h2 class="intro-name">萌神小天</h2>
+        <p class="intro-role">独立游戏萌新开发者</p>
+        <p class="intro-bio">热爱游戏开发，专注于 Unity 与独立游戏创作。作品「小宠沙暴大战」已上架 itch.io。偶尔分享开发日志与技术心得。</p>
+        <div class="intro-tags">
+          <span class="intro-tag">Unity</span>
+          <span class="intro-tag">C#</span>
+          <span class="intro-tag">GameDev</span>
+          <span class="intro-tag">独立游戏</span>
+          <span class="intro-tag">TapTap</span>
+        </div>
+        <div class="intro-social">
+          <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener" title="GitHub" class="intro-social-btn" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          <a href="https://msxiaotian.itch.io" target="_blank" rel="noopener" title="itch.io" class="intro-social-btn" aria-label="itch.io">&#x1F3AE;</a>
+          <a href="mailto:msxiaotian@icloud.com" title="邮箱" class="intro-social-btn" aria-label="邮箱">&#x1F48C;</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ====== Friend Link Panel ====== -->
+<button class="fl-trigger" id="flTrigger" title="友情链接" aria-label="打开友情链接面板">友链</button>
+<div class="fl-overlay" id="flOverlay"></div>
+<div class="fl-panel" id="flPanel" role="dialog" aria-label="友情链接面板" aria-modal="true">
+  <div class="fl-panel-header">
+    <span class="fl-panel-title">友情链接</span>
+    <button class="fl-panel-close" id="flClose" aria-label="关闭面板">&times;</button>
+  </div>
+  <div class="fl-panel-list" id="flList"></div>
+  <div class="fl-panel-footer" id="flFooter" style="display:none;">
+    <div class="fl-add-form" id="flAddForm">
+      <input type="text" id="flInputName" placeholder="名称" aria-label="名称">
+      <input type="url" id="flInputUrl" placeholder="网址（https://...）" aria-label="网址">
+      <input type="text" id="flInputDesc" placeholder="一句话简介（选填）" aria-label="简介">
+      <div class="fl-btn-row">
+        <button class="fl-btn primary" id="flBtnAdd">添加</button>
+        <button class="fl-btn ghost" id="flBtnCancel">取消</button>
+      </div>
+    </div>
+    <span class="fl-admin-toggle" id="flAdminToggle">管理友链</span>
+  </div>
+</div>
+
+<!-- Kawaii Mascot (Anime Style) -->
+<div class="kawaii-mascot" id="mascot" aria-hidden="true">
+  <div class="mascot-body" id="mascotBody" title="点我试试~" aria-label="看板娘">
+    <!-- Twin Tails -->
+    <div class="mascot-tail left">
+      <div class="mascot-tail-ribbon"></div>
+    </div>
+    <div class="mascot-tail right">
+      <div class="mascot-tail-ribbon"></div>
+    </div>
+    <!-- Head -->
+    <div class="mascot-head">
+      <div class="mascot-bangs">
+        <div class="mascot-bangs-notch"></div>
+      </div>
+      <div class="mascot-brow left"></div>
+      <div class="mascot-brow right"></div>
+      <div class="mascot-eye left">
+        <div class="mascot-eye-hl"></div>
+        <div class="mascot-eye-sparkle"></div>
+        <div class="mascot-eye-sparkle2"></div>
+      </div>
+      <div class="mascot-eye right">
+        <div class="mascot-eye-hl"></div>
+        <div class="mascot-eye-sparkle"></div>
+        <div class="mascot-eye-sparkle2"></div>
+      </div>
+      <div class="mascot-blush left"></div>
+      <div class="mascot-blush right"></div>
+      <div class="mascot-mouth"></div>
+    </div>
+    <!-- Body -->
+    <div class="mascot-torso">
+      <div class="mascot-top">
+        <div class="mascot-collar"></div>
+        <div class="mascot-tie"></div>
+      </div>
+      <div class="mascot-skirt"></div>
+      <div class="mascot-arm left"></div>
+      <div class="mascot-arm right"></div>
+    </div>
+    <div class="mascot-legs">
+      <div class="mascot-leg"></div>
+      <div class="mascot-leg"></div>
+    </div>
+  </div>
+</div>
+<div class="mascot-bubble" id="mascotBubble" aria-live="polite"></div>
+
+<!-- Back to Top -->
+<button id="back-to-top" onclick="scrollToTop()" title="返回顶部" aria-label="返回顶部">&#8593;</button>
+
+<!-- Floating Prev/Next Nav -->
+<button id="float-prev" class="float-nav disabled" title="上一篇" aria-label="上一篇">&#8592;</button>
+<button id="float-next" class="float-nav disabled" title="下一篇" aria-label="下一篇">&#8594;</button>
+
+<!-- 密码登录 Modal -->
+<div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-label="管理员登录">
+  <div class="modal login-form">
+    <div class="modal-header">
+      <span>管理员登录</span>
+      <button class="modal-close" onclick="closeLogin()" aria-label="关闭登录窗口">&times;</button>
+    </div>
+    <div class="modal-body">
+      <label for="loginPassword">请输入密码</label>
+      <input type="password" id="loginPassword" placeholder="密码" onkeydown="if(event.key==='Enter')verifyPassword()">
+      <p id="loginError" style="color:#ef4444;font-size:0.75rem;display:none;margin-top:-10px;">密码错误</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeLogin()">取消</button>
+      <button class="btn-primary" onclick="verifyPassword()">验证</button>
+    </div>
+  </div>
+</div>
+
+<!-- 编辑文章 Modal -->
+<div class="modal-overlay" id="editModal" role="dialog" aria-modal="true" aria-label="编辑文章">
+  <div class="modal">
+    <div class="modal-header">
+      <span id="editModalTitle">编辑文章</span>
+      <button class="modal-close" onclick="closeEdit()" aria-label="关闭编辑窗口">&times;</button>
+    </div>
+    <div class="modal-body">
+      <label for="editContent">Markdown 内容</label>
+      <textarea id="editContent" placeholder="输入 Markdown 内容..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeEdit()">取消</button>
+      <button class="btn-primary" onclick="saveEdit()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 新增文章 Modal -->
+<div class="modal-overlay" id="newModal" role="dialog" aria-modal="true" aria-label="新增文章">
+  <div class="modal">
+    <div class="modal-header">
+      <span>新增文章</span>
+      <button class="modal-close" onclick="closeNew()" aria-label="关闭新增窗口">&times;</button>
+    </div>
+    <div class="modal-body">
+      <label for="newTitle">标题</label>
+      <input type="text" id="newTitle" placeholder="文章标题">
+      <label for="newDate">日期</label>
+      <input type="date" id="newDate">
+      <label for="newTags">标签（逗号分隔）</label>
+      <input type="text" id="newTags" placeholder="例如: Unity, GameDev">
+      <label for="newContent">Markdown 内容</label>
+      <textarea id="newContent" placeholder="输入 Markdown 内容..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeNew()">取消</button>
+      <button class="btn-primary" onclick="saveNewArticle()">保存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ====== Article Data ======
+var ARTICLES = [
+  {"title":"Unity 零基础入门指南","date":"2026-07-31","tags":["Unity","学习"],"path":"2026-07-31-Unity-零基础入门指南.md"},
+  {"title":"Tiny Pet Sand Wars 更新来啦！🎉","date":"2026-07-14","tags":["GameDev","独立游戏","更新"],"path":"2026-07-14-Tiny-Pet-Sand-Wars-更新.md"},
+  {"title":"Tiny Pet Sand Wars 更新来啦！","date":"2026-06-15","tags":["GameDev","独立游戏","更新"],"path":"2026-06-15-Tiny-Pet-Sand-Wars-更.md"},
+  {"title":"小宠沙暴大战1.2-游戏更新啦","date":"2026-05-31","tags":["GameDev","独立游戏","更新"],"path":"2026-05-31-小宠沙暴大战12-游戏更新啦.md"},
+  {"title":"游戏发布itch啦","date":"2026-05-10","tags":["GameDev","独立游戏"],"path":"2026-05-10-游戏发布itch啦.md"},
+  {"title":"腾讯游戏客户端一面凉经","date":"2025-11-15","tags":["面试","腾讯"],"path":"2025-11-15-腾讯游戏客户端一面凉经.md"},
+  {"title":"TapTap聚光灯开发日志Day7","date":"2025-10-30","tags":["TapTap","GameDev","聚光灯"],"path":"2025-10-30-TapTap聚光灯开发日志Day7.md"},
+  {"title":"TapTap聚光灯开发日志Day6","date":"2025-10-27","tags":["TapTap","GameDev","聚光灯"],"path":"2025-10-27-TapTap聚光灯开发日志Day6.md"},
+  {"title":"TapTap聚光灯开发日志Day5","date":"2025-10-24","tags":["TapTap","GameDev","聚光灯"],"path":"2025-10-24-TapTap聚光灯开发日志Day5.md"},
+  {"title":"Unity新手学习推荐","date":"2025-10-20","tags":["Unity","学习"],"path":"2025-10-20-Unity新手学习推荐.md"},
+  {"title":"TapTap聚光灯开发日志Day4","date":"2025-10-19","tags":["TapTap","GameDev","聚光灯"],"path":"2025-10-19-TapTap聚光灯开发日志Day4.md"},
+  {"title":"Unity资源分享","date":"2025-10-19","tags":["Unity"],"path":"2025-10-19-Unity资源分享.md"},
+  {"title":"TapTap聚光灯开发日志Day3","date":"2025-10-17","tags":["TapTap","GameDev","聚光灯"],"path":"2025-10-17-TapTap聚光灯开发日志Day3.md"},
+  {"title":"TapTap聚光灯开发日志Day2","date":"2025-10-14","tags":["TapTap","GameDev","聚光灯"],"path":"2025-10-14-TapTap聚光灯开发日志Day2.md"},
+  {"title":"TapTap聚光灯开发日志Day1","date":"2025-10-11","tags":["TapTap","GameDev","聚光灯"],"path":"2025-10-11-TapTap聚光灯开发日志Day1.md"}
+];
+var ARTICLES_CONTENT = {
+  "2026-07-31-Unity-零基础入门指南.md":"# Unity \u96f6\u57fa\u7840\u5165\u95e8\u6307\u5357\n\n> \u8fd9\u4efd\u6307\u5357\u662f\u5199\u7ed9\u5b8c\u5168\u6ca1\u63a5\u89e6\u8fc7\u7f16\u7a0b\u548c\u6e38\u620f\u5f00\u53d1\u7684\u4eba\u7684\u3002\n> \u4e0d\u9700\u8981\u4efb\u4f55\u57fa\u7840\uff0c\u53ea\u9700\u8981\u4e00\u53f0\u7535\u8111\u548c\u60f3\u505a\u6e38\u620f\u7684\u5fc3\u3002\n\n---\n\n## \u4e00\u3001Unity \u662f\u4ec0\u4e48\n\nUnity \u662f\u4e00\u4e2a**\u505a\u6e38\u620f\u7684\u5de5\u5177**\u3002\n\n\u4f60\u4e0d\u9700\u8981\u4ece\u96f6\u9020\u5f15\u64ce\uff0cUnity \u5e2e\u4f60\u5904\u7406\u4e86\u6e32\u67d3\u3001\u7269\u7406\u3001\u58f0\u97f3\u8fd9\u4e9b\u5e95\u5c42\u7684\u4e1c\u897f\u3002\u4f60\u53ea\u9700\u8981\uff1a\n- \u628a\u4e1c\u897f\u6446\u5230\u573a\u666f\u91cc\n- \u5199\u4e00\u4e9b\u7b80\u5355\u7684\u4ee3\u7801\u544a\u8bc9\u5b83\u4eec\"\u600e\u4e48\u52a8\"\n\n\u5f88\u591a\u4f60\u73a9\u8fc7\u7684\u6e38\u620f\u90fd\u662f\u7528 Unity \u505a\u7684\uff1a\u300a\u539f\u795e\u300b\u300a\u738b\u8005\u8363\u8000\u300b\u300a\u7a7a\u6d1e\u9a91\u58eb\u300b\u300a\u4eba\u7c7b\u4e00\u8d25\u6d82\u5730\u300b\u2026\u2026\n\n---\n\n## \u4e8c\u3001\u88c5\u73af\u5883\n\n### 2.1 \u5b89\u88c5 Unity Hub\n\n\u53bb [unity.com](https://unity.com) \u4e0b\u8f7d **Unity Hub**\u3002\n\nUnity Hub \u662f\u4e00\u4e2a\u7ba1\u7406\u5668\uff0c\u5e2e\u4f60\u88c5\u4e0d\u540c\u7248\u672c\u7684 Unity\u3001\u521b\u5efa\u9879\u76ee\u3001\u6253\u5f00\u9879\u76ee\u3002\n\n### 2.2 \u5b89\u88c5 Unity \u7f16\u8f91\u5668\n\n\u6253\u5f00 Unity Hub \u2192 \u5de6\u4fa7\u70b9\"\u5b89\u88c5\" \u2192 \u70b9\"\u5b89\u88c5\u7f16\u8f91\u5668\" \u2192 \u9009\u6700\u65b0\u7684**LTS \u7248\u672c**\uff08\u957f\u671f\u652f\u6301\u7248\uff0c\u7a33\u5b9a\uff09\u3002\n\n\u5b89\u88c5\u65f6\u52fe\u9009\uff1a\n- **Microsoft Visual Studio**\uff08\u5199\u4ee3\u7801\u7528\u7684\u7f16\u8f91\u5668\uff09\n- \u5982\u679c\u4f60\u60f3\u505a 2D \u6e38\u620f\uff0c\u52fe\u9009 2D \u6a21\u5757\n- \u5982\u679c\u4f60\u60f3\u505a 3D \u6e38\u620f\uff0c\u52fe\u9009 3D \u6a21\u5757\n\n### 2.3 \u521b\u5efa\u7b2c\u4e00\u4e2a\u9879\u76ee\n\nUnity Hub \u2192 \u5de6\u4fa7\u70b9\"\u9879\u76ee\" \u2192 \"\u65b0\u9879\u76ee\" \u2192 \u9009\"3D\"\u6a21\u677f \u2192 \u8d77\u4e2a\u540d\u5b57 \u2192 \u70b9\"\u521b\u5efa\u9879\u76ee\"\u3002\n\n\u7b49\u4e00\u4f1a\u513f\uff0cUnity \u7f16\u8f91\u5668\u5c31\u6253\u5f00\u4e86\u3002\n\n---\n\n## \u4e09\u3001\u8ba4\u8bc6 Unity \u7f16\u8f91\u5668\n\n\u6253\u5f00\u540e\u4f60\u4f1a\u770b\u5230\u597d\u51e0\u4e2a\u7a97\u53e3\uff0c\u4e0d\u7528\u7d27\u5f20\uff0c\u5e38\u7528\u7684\u5c31\u8fd9\u51e0\u4e2a\uff1a\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502  Scene\uff08\u573a\u666f\u7a97\u53e3\uff09                                    \u2502\n\u2502  \u5728\u8fd9\u91cc\u6446\u653e\u4f60\u7684\u6e38\u620f\u5bf9\u8c61\uff0c\u50cf\u642d\u79ef\u6728\u4e00\u6837                    \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 Hierarchy\uff08\u5c42\u7ea7\uff09   \u2502 Inspector\uff08\u68c0\u67e5\u5668\uff09              \u2502\n\u2502 \u573a\u666f\u91cc\u6709\u54ea\u4e9b\u4e1c\u897f     \u2502 \u9009\u4e2d\u4e00\u4e2a\u4e1c\u897f\u540e\uff0c\u8fd9\u91cc\u663e\u793a\u5b83\u7684\u5c5e\u6027   \u2502\n\u2502 \u5168\u90e8\u5217\u5728\u8fd9\u91cc         \u2502 \u53ef\u4ee5\u5728\u8fd9\u91cc\u4fee\u6539\u6570\u503c\u3001\u62d6\u62fd\u56fe\u7247       \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502  Project\uff08\u9879\u76ee\u7a97\u53e3\uff09                                   \u2502\n\u2502  \u4f60\u9879\u76ee\u91cc\u6240\u6709\u7684\u6587\u4ef6\u90fd\u5728\u8fd9\u91cc\uff1a\u811a\u672c\u3001\u56fe\u7247\u3001\u97f3\u6548\u2026\u2026          \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502  Console\uff08\u63a7\u5236\u53f0\uff09                                     \u2502\n\u2502  \u7a0b\u5e8f\u8fd0\u884c\u65f6\u7684\u4fe1\u606f\u4f1a\u663e\u793a\u5728\u8fd9\u91cc\uff0c\u62a5\u9519\u4e5f\u5728\u8fd9\u91cc\u770b            \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### \u73b0\u5728\u5c31\u8bd5\u8bd5\n\n1. \u5728 **Hierarchy** \u7a97\u53e3\u91cc\u53f3\u952e \u2192 3D Object \u2192 Cube\n2. \u4e00\u4e2a\u65b9\u5757\u51fa\u73b0\u5728\u573a\u666f\u91cc\u4e86\n3. \u6309\u952e\u76d8 **W**\uff0c\u65b9\u5757\u4e0a\u51fa\u73b0\u7bad\u5934\uff0c\u62d6\u52a8\u5b83\n4. \u6309 **E** \u65cb\u8f6c\uff0c\u6309 **R** \u7f29\u653e\n5. \u70b9\u9876\u90e8\u4e2d\u95f4\u7684 **\u25b6 \u64ad\u653e\u6309\u94ae**\uff0c\u770b\u770b\u6548\u679c\n6. \u518d\u70b9\u4e00\u6b21\u505c\u6b62\n\n\u606d\u559c\uff0c\u4f60\u5df2\u7ecf\u4f1a\u7528 Unity \u7684\u57fa\u672c\u64cd\u4f5c\u4e86\u3002\n\n---\n\n## \u56db\u3001\u4ec0\u4e48\u662f\u7f16\u7a0b\n\n\u7f16\u7a0b\u5c31\u662f**\u5199\u6307\u4ee4\u544a\u8bc9\u7535\u8111\u505a\u4ec0\u4e48**\u3002\n\n\u5c31\u50cf\u4f60\u5199\u83dc\u8c31\uff1a\n1. \u62ff\u4e00\u4e2a\u9e21\u86cb\n2. \u6253\u5230\u7897\u91cc\n3. \u6405\u62cc\n4. \u5012\u8fdb\u9505\u91cc\n\n\u7535\u8111\u4e0d\u4f1a\u81ea\u5df1\u601d\u8003\uff0c\u4f60\u544a\u8bc9\u5b83\u4e00\u6b65\uff0c\u5b83\u5c31\u505a\u4e00\u6b65\u3002\n\n\u5728 Unity \u91cc\uff0c\u4f60\u5199\u7684\u662f **C# \u8bed\u8a00**\uff08\u8bfb\u4f5c\"C sharp\"\uff09\u3002\u4e0d\u7528\u62c5\u5fc3\uff0c\u4e0d\u9700\u8981\u5b66\u5b8c\u6240\u6709\u8bed\u6cd5\uff0c\u53ea\u9700\u8981\u5b66\u4f1a\u6700\u5e38\u7528\u7684\u51e0\u4e2a\u4e1c\u897f\u3002\n\n---\n\n## \u4e94\u3001C# \u6700\u57fa\u7840\u7684\u51e0\u4e2a\u6982\u5ff5\n\n### 5.1 \u53d8\u91cf \u2014\u2014 \u5b58\u4e1c\u897f\u7684\u76d2\u5b50\n\n\u53d8\u91cf\u5c31\u662f\u4e00\u4e2a**\u6709\u540d\u5b57\u7684\u76d2\u5b50**\uff0c\u91cc\u9762\u53ef\u4ee5\u653e\u6570\u636e\u3002\n\n```csharp\nint age = 18;           // \u76d2\u5b50\u53eb age\uff0c\u91cc\u9762\u653e\u4e86\u6570\u5b57 18\nfloat weight = 65.5f;   // \u76d2\u5b50\u53eb weight\uff0c\u91cc\u9762\u653e\u4e86\u5c0f\u6570 65.5\nstring name = \"\u5c0f\u660e\";   // \u76d2\u5b50\u53eb name\uff0c\u91cc\u9762\u653e\u4e86\u6587\u5b57\nbool isAlive = true;    // \u76d2\u5b50\u53eb isAlive\uff0c\u91cc\u9762\u653e\u4e86\"\u662f\u6216\u5426\"\n```\n\n- `int` = \u6574\u6570\uff081, 2, 100, -5\uff09\n- `float` = \u5c0f\u6570\uff083.14, 0.5\uff09\u6ce8\u610f\u8981\u52a0 f\n- `string` = \u6587\u5b57\uff08\u7528\u53cc\u5f15\u53f7\u5305\u8d77\u6765\uff09\n- `bool` = \u5bf9\u6216\u9519\uff08true \u6216 false\uff09\n\n### 5.2 \u65b9\u6cd5 \u2014\u2014 \u4e00\u4e32\u6307\u4ee4\u6253\u5305\u5728\u4e00\u8d77\n\n\u65b9\u6cd5\u5c31\u662f\u628a\u51e0\u6b65\u64cd\u4f5c**\u6253\u5305\u6210\u4e00\u4e2a\u52a8\u4f5c**\uff0c\u8d77\u4e2a\u540d\u5b57\u3002\n\n```csharp\nvoid SayHello()    // \u5b9a\u4e49\u4e00\u4e2a\u53eb SayHello \u7684\u65b9\u6cd5\n{\n    Debug.Log(\"\u4f60\u597d\uff01\");   // \u6253\u5370\u4e00\u53e5\u8bdd\u5230\u63a7\u5236\u53f0\n}\n```\n\n- `void` = \u8fd9\u4e2a\u65b9\u6cd5\u505a\u5b8c\u4e0d\u9700\u8981\u8fd4\u56de\u7ed3\u679c\n- `()` = \u91cc\u9762\u53ef\u4ee5\u653e\u53c2\u6570\uff08\u540e\u9762\u4f1a\u8bb2\uff09\n- `{}` = \u5927\u62ec\u53f7\u91cc\u9762\u662f\u5177\u4f53\u8981\u505a\u7684\u4e8b\n\n\u8c03\u7528\u65b9\u6cd5\u5c31\u662f\uff1a\u5199\u5b83\u7684\u540d\u5b57 + \u62ec\u53f7\u3002\n\n```csharp\nSayHello();   // \u6267\u884c\u8fd9\u4e2a\u65b9\u6cd5\uff0c\u63a7\u5236\u53f0\u4f1a\u6253\u5370\"\u4f60\u597d\uff01\"\n```\n\n### 5.3 \u6761\u4ef6\u5224\u65ad \u2014\u2014 \u5982\u679c\u2026\u2026\u5c31\u2026\u2026\n\n```csharp\nint score = 80;\n\nif (score >= 60)\n{\n    Debug.Log(\"\u53ca\u683c\u4e86\uff01\");\n}\nelse\n{\n    Debug.Log(\"\u6ca1\u53ca\u683c\u2026\u2026\");\n}\n```\n\n\u610f\u601d\uff1a\u5982\u679c\u5206\u6570\u5927\u4e8e\u7b49\u4e8e 60\uff0c\u6253\u5370\"\u53ca\u683c\u4e86\"\uff0c\u5426\u5219\u6253\u5370\"\u6ca1\u53ca\u683c\"\u3002\n\n### 5.4 \u5faa\u73af \u2014\u2014 \u91cd\u590d\u505a\u67d0\u4e8b\n\n```csharp\nfor (int i = 0; i < 5; i++)\n{\n    Debug.Log(\"\u7b2c \" + i + \" \u6b21\");\n}\n```\n\n\u610f\u601d\uff1a\u8ba9 i \u4ece 0 \u5f00\u59cb\uff0c\u6bcf\u6b21\u52a0 1\uff0c\u76f4\u5230 i \u7b49\u4e8e 5 \u505c\u6b62\u3002\u4e00\u5171\u4f1a\u6253\u5370 5 \u6b21\u3002\n\n### \u4e0d\u7528\u5168\u8bb0\u4f4f\n\n\u73b0\u5728\u53ea\u9700\u8981**\u5927\u6982\u7406\u89e3**\u8fd9\u4e9b\u662f\u4ec0\u4e48\u610f\u601d\u5c31\u884c\u3002\u540e\u9762\u5199\u4ee3\u7801\u7684\u65f6\u5019\u4f1a\u53cd\u590d\u7528\u5230\uff0c\u7528\u591a\u4e86\u81ea\u7136\u5c31\u8bb0\u4f4f\u4e86\u3002\n\n---\n\n## \u516d\u3001Unity \u91cc\u6700\u91cd\u8981\u7684\u6982\u5ff5\uff1aGameObject \u548c Component\n\n### 6.1 GameObject \u2014\u2014 \u6e38\u620f\u91cc\u7684\"\u4e1c\u897f\"\n\n\u4f60\u5728\u573a\u666f\u91cc\u770b\u5230\u7684\u4e00\u5207\u90fd\u662f **GameObject**\uff08\u6e38\u620f\u5bf9\u8c61\uff09\uff1a\n- \u4e00\u4e2a\u65b9\u5757\u662f GameObject\n- \u4e00\u76cf\u706f\u662f GameObject\n- \u4e00\u4e2a\u6444\u50cf\u673a\u662f GameObject\n- \u4e00\u4e2a UI \u6309\u94ae\u4e5f\u662f GameObject\n\n### 6.2 Component \u2014\u2014 \u7ed9\u4e1c\u897f\"\u52a0\u80fd\u529b\"\n\nGameObject \u672c\u8eab\u4ec0\u4e48\u90fd\u5e72\u4e0d\u4e86\u3002\u5b83\u7684\u80fd\u529b\u6765\u81ea\u6302\u5728\u5b83\u8eab\u4e0a\u7684 **Component**\uff08\u7ec4\u4ef6\uff09\u3002\n\n\u5c31\u50cf\u624b\u673a\u672c\u8eab\u53ea\u662f\u4e2a\u58f3\uff0c\u88c5\u4e86\u6444\u50cf\u5934\u80fd\u62cd\u7167\uff0c\u88c5\u4e86\u5587\u53ed\u80fd\u653e\u97f3\u4e50\u3002\n\n\u4e00\u4e2a\u65b9\u5757\u7684\u7ec4\u4ef6\uff1a\n\n| \u7ec4\u4ef6 | \u4f5c\u7528 |\n|------|------|\n| Transform | \u51b3\u5b9a\u5b83\u5728\u54ea\u91cc\u3001\u8f6c\u4e86\u591a\u5c11\u5ea6\u3001\u591a\u5927 |\n| Mesh Renderer | \u8ba9\u5b83\u80fd\u88ab\u770b\u89c1\uff08\u6709\u989c\u8272\u6709\u5f62\u72b6\uff09 |\n| Box Collider | \u8ba9\u5b83\u6709\u78b0\u649e\u4f53\u79ef\uff08\u80fd\u88ab\u649e\u5230\uff09 |\n| Rigidbody | \u8ba9\u5b83\u53d7\u7269\u7406\u5f71\u54cd\uff08\u4f1a\u6389\u4e0b\u6765\uff09 |\n\n**\u9009\u4e2d\u573a\u666f\u91cc\u7684\u65b9\u5757\uff0c\u5728 Inspector \u7a97\u53e3\u5c31\u80fd\u770b\u5230\u5b83\u8eab\u4e0a\u6709\u54ea\u4e9b\u7ec4\u4ef6\u3002**\n\n### 6.3 \u811a\u672c\u4e5f\u662f\u4e00\u79cd\u7ec4\u4ef6\n\n\u4f60\u5199\u7684 C# \u811a\u672c\uff0c\u672c\u8d28\u4e0a\u4e5f\u662f\u4e00\u4e2a Component\uff0c\u6302\u5230 GameObject \u4e0a\u5c31\u80fd\u63a7\u5236\u5b83\u3002\n\n---\n\n## \u4e03\u3001\u5199\u7b2c\u4e00\u4e2a\u811a\u672c\n\n### 7.1 \u521b\u5efa\u811a\u672c\n\n1. \u5728 **Project** \u7a97\u53e3\u91cc\u53f3\u952e \u2192 Create \u2192 C# Script\n2. \u7ed9\u5b83\u8d77\u540d\u53eb `HelloWorld`\uff08\u4e0d\u8981\u7528\u4e2d\u6587\uff0c\u4e0d\u8981\u6709\u7a7a\u683c\uff09\n3. \u53cc\u51fb\u5b83\uff0cVisual Studio \u4f1a\u6253\u5f00\n\n\u4f60\u4f1a\u770b\u5230\u8fd9\u6837\u7684\u4ee3\u7801\uff1a\n\n```csharp\nusing UnityEngine;\n\npublic class HelloWorld : MonoBehaviour\n{\n    void Start()\n    {\n        \n    }\n\n    void Update()\n    {\n        \n    }\n}\n```\n\n\u5148\u4e0d\u7ba1\u6bcf\u4e00\u884c\u4ec0\u4e48\u610f\u601d\uff0c\u6211\u4eec\u6765\u52a0\u4e00\u884c\uff1a\n\n```csharp\nusing UnityEngine;\n\npublic class HelloWorld : MonoBehaviour\n{\n    void Start()\n    {\n        Debug.Log(\"\u6211\u7684\u7b2c\u4e00\u4e2a\u811a\u672c\uff01\");\n    }\n\n    void Update()\n    {\n        \n    }\n}\n```\n\n**Ctrl + S \u4fdd\u5b58**\uff0c\u5207\u56de Unity\u3002\n\n### 7.2 \u628a\u811a\u672c\u6302\u5230\u5bf9\u8c61\u4e0a\n\n1. \u5728\u573a\u666f\u91cc\u9009\u4e2d\u90a3\u4e2a\u65b9\u5757\n2. \u628a `HelloWorld` \u811a\u672c\u4ece Project \u7a97\u53e3**\u62d6\u5230 Inspector \u7a97\u53e3**\u4e0a\n3. \u6216\u8005\uff1a\u5728 Inspector \u70b9 \"Add Component\" \u2192 \u641c\u7d22 HelloWorld\n\n### 7.3 \u8fd0\u884c\n\n\u70b9 **\u25b6 \u64ad\u653e**\uff0c\u7136\u540e\u770b **Console** \u7a97\u53e3\uff0c\u4f60\u4f1a\u770b\u5230\uff1a\n\n```\n\u6211\u7684\u7b2c\u4e00\u4e2a\u811a\u672c\uff01\n```\n\n\u606d\u559c\uff01\u4f60\u5199\u4e86\u4eba\u751f\u4e2d\u7b2c\u4e00\u4e2a Unity \u811a\u672c\u3002\n\n---\n\n## \u516b\u3001\u7406\u89e3 Start \u548c Update\n\n```csharp\nvoid Start()\n{\n    // \u6e38\u620f\u5f00\u59cb\u65f6\u6267\u884c\u4e00\u6b21\n}\n\nvoid Update()\n{\n    // \u6bcf\u4e00\u5e27\u90fd\u6267\u884c\uff08\u5927\u7ea6\u6bcf\u79d2\u6267\u884c 60 \u6b21\uff09\n}\n```\n\n- **Start**\uff1a\u9002\u5408\u505a\u521d\u59cb\u5316\uff0c\u6bd4\u5982\"\u6e38\u620f\u5f00\u59cb\u65f6\u6253\u5370\u4e00\u53e5\u8bdd\"\n- **Update**\uff1a\u9002\u5408\u505a\u6301\u7eed\u7684\u4e8b\uff0c\u6bd4\u5982\"\u6bcf\u5e27\u68c0\u6d4b\u73a9\u5bb6\u6709\u6ca1\u6709\u6309\u952e\"\n\n\u8bd5\u8bd5\u770b\uff1a\n\n```csharp\nvoid Update()\n{\n    Debug.Log(\"\u6211\u5728\u4e00\u76f4\u6267\u884c\uff01\");\n}\n```\n\n\u8fd0\u884c\u540e\u4f60\u4f1a\u53d1\u73b0 Console \u4e00\u76f4\u5728\u5237\u5c4f\u3002**\u8bb0\u5f97\u6539\u56de\u6765\u6216\u8005\u5220\u6389**\uff0c\u4e0d\u7136\u4f1a\u5361\u3002\n\n---\n\n## \u4e5d\u3001\u8ba9\u4e1c\u897f\u52a8\u8d77\u6765\n\n### 9.1 \u6700\u7b80\u5355\u7684\u79fb\u52a8\n\n```csharp\nusing UnityEngine;\n\npublic class MoveCube : MonoBehaviour\n{\n    void Update()\n    {\n        // \u6bcf\u5e27\u5411\u524d\u79fb\u52a8\u4e00\u70b9\u70b9\n        transform.Translate(0, 0, 0.01f);\n    }\n}\n```\n\n- `transform` = \u8fd9\u4e2a\u5bf9\u8c61\u7684 Transform \u7ec4\u4ef6\uff08\u4f4d\u7f6e\u3001\u65cb\u8f6c\u3001\u7f29\u653e\uff09\n- `Translate(0, 0, 0.01f)` = \u6cbf Z \u8f74\u79fb\u52a8 0.01\n\n\u8fd0\u884c\u540e\u65b9\u5757\u4f1a\u4e00\u76f4\u5f80\u524d\u8d70\u3002\n\n### 9.2 \u52a0\u4e0a\u952e\u76d8\u63a7\u5236\n\n```csharp\nusing UnityEngine;\n\npublic class MoveCube : MonoBehaviour\n{\n    public float speed = 0.05f;\n\n    void Update()\n    {\n        float h = Input.GetAxis(\"Horizontal\");  // \u5de6\u53f3\uff08A/D \u6216 \u2190/\u2192\uff09\n        float v = Input.GetAxis(\"Vertical\");    // \u4e0a\u4e0b\uff08W/S \u6216 \u2191/\u2193\uff09\n\n        transform.Translate(h * speed, 0, v * speed);\n    }\n}\n```\n\n\u8fd0\u884c\u540e\uff0c\u7528 **WASD** \u6216**\u65b9\u5411\u952e**\u5c31\u80fd\u63a7\u5236\u65b9\u5757\u79fb\u52a8\u4e86\u3002\n\n### 9.3 \u4e3a\u4ec0\u4e48\u8981\u4e58\u4ee5 Time.deltaTime\n\n\u4e0a\u9762\u7684\u4ee3\u7801\u5728\u4e0d\u540c\u7535\u8111\u4e0a\u901f\u5ea6\u4f1a\u4e0d\u4e00\u6837\uff08\u5e27\u7387\u9ad8\u7684\u5feb\uff0c\u5e27\u7387\u4f4e\u7684\u6162\uff09\u3002\n\n\u52a0\u4e0a `Time.deltaTime` \u5c31\u80fd\u7edf\u4e00\u901f\u5ea6\uff1a\n\n```csharp\ntransform.Translate(h * speed * Time.deltaTime, 0, v * speed * Time.deltaTime);\n```\n\n`Time.deltaTime` = \u4e0a\u4e00\u5e27\u5230\u73b0\u5728\u8fc7\u4e86\u591a\u5c11\u79d2\uff08\u5927\u7ea6 0.016 \u79d2\uff09\u3002\n\n\u4e58\u4ee5\u5b83\u4e4b\u540e\uff0c\u4e0d\u7ba1\u5e27\u7387\u591a\u5c11\uff0c**\u6bcf\u79d2\u79fb\u52a8\u7684\u8ddd\u79bb\u662f\u4e00\u6837\u7684**\u3002\n\n---\n\n## \u5341\u3001\u7269\u7406\uff1a\u8ba9\u4e1c\u897f\u4f1a\u6389\u4e0b\u6765\n\n### 10.1 \u52a0 Rigidbody\n\n1. \u9009\u4e2d\u65b9\u5757\n2. \u5728 Inspector \u70b9 \"Add Component\"\n3. \u641c\u7d22 **Rigidbody**\uff0c\u6dfb\u52a0\n\n\u8fd0\u884c\uff0c\u65b9\u5757\u4f1a\u6389\u4e0b\u53bb\uff01\u56e0\u4e3a Rigidbody \u8ba9\u5b83\u53d7\u91cd\u529b\u5f71\u54cd\u4e86\u3002\n\n### 10.2 \u52a0\u5730\u9762\n\n1. Hierarchy \u53f3\u952e \u2192 3D Object \u2192 **Plane**\n2. \u628a\u5b83\u653e\u5230\u65b9\u5757\u4e0b\u65b9\n3. \u8c03\u6574\u4f4d\u7f6e\uff0c\u8ba9\u65b9\u5757\u5728\u5730\u9762\u4e0a\u65b9\n\n\u8fd0\u884c\uff0c\u65b9\u5757\u6389\u5230\u5730\u9762\u4e0a\u505c\u4f4f\u4e86\u3002\u56e0\u4e3a Plane \u81ea\u5e26\u78b0\u649e\u5668\uff0c\u65b9\u5757\u649e\u5230\u4e86\u5b83\u3002\n\n### 10.3 \u7528\u4ee3\u7801\u63a7\u5236\u7269\u7406\u5bf9\u8c61\n\n```csharp\nusing UnityEngine;\n\npublic class PhysicsMove : MonoBehaviour\n{\n    private Rigidbody rb;\n    public float speed = 5f;\n\n    void Start()\n    {\n        rb = GetComponent<Rigidbody>();  // \u83b7\u53d6 Rigidbody \u7ec4\u4ef6\n    }\n\n    void FixedUpdate()  // \u7269\u7406\u64cd\u4f5c\u653e FixedUpdate\n    {\n        float h = Input.GetAxis(\"Horizontal\");\n        float v = Input.GetAxis(\"Vertical\");\n\n        rb.velocity = new Vector3(h * speed, rb.velocity.y, v * speed);\n    }\n}\n```\n\n- `GetComponent<Rigidbody>()` = \u83b7\u53d6\u8fd9\u4e2a\u5bf9\u8c61\u4e0a\u7684 Rigidbody\n- `FixedUpdate` = \u56fa\u5b9a\u65f6\u95f4\u95f4\u9694\u8c03\u7528\uff0c\u9002\u5408\u7269\u7406\u64cd\u4f5c\n- `rb.velocity` = \u8bbe\u7f6e\u901f\u5ea6\uff08\u4e0d\u8981\u76f4\u63a5\u6539 transform\uff09\n\n---\n\n## \u5341\u4e00\u3001\u78b0\u649e\u68c0\u6d4b\n\n### 11.1 \u78b0\u649e\u5668\uff08Collider\uff09\n\n\u6bcf\u4e2a\u80fd\u78b0\u649e\u7684\u5bf9\u8c61\u90fd\u9700\u8981\u4e00\u4e2a **Collider**\uff08\u78b0\u649e\u5668\uff09\uff1a\n- Box Collider = \u65b9\u5f62\u78b0\u649e\u5668\n- Sphere Collider = \u7403\u5f62\u78b0\u649e\u5668\n- Capsule Collider = \u80f6\u56ca\u78b0\u649e\u5668\n\nCube \u81ea\u5e26 Box Collider\uff0cSphere \u81ea\u5e26 Sphere Collider\u3002\n\n### 11.2 \u68c0\u6d4b\u78b0\u649e\n\n```csharp\nusing UnityEngine;\n\npublic class CollisionDetector : MonoBehaviour\n{\n    // \u78b0\u5230\u4e1c\u897f\u65f6\u81ea\u52a8\u8c03\u7528\n    void OnCollisionEnter(Collision collision)\n    {\n        Debug.Log(\"\u649e\u5230\u4e86\uff1a\" + collision.gameObject.name);\n    }\n}\n```\n\n### 11.3 \u89e6\u53d1\u5668\uff08Trigger\uff09\n\n\u6709\u65f6\u5019\u4f60\u4e0d\u60f3\u8ba9\u5bf9\u8c61\"\u6321\u4f4f\"\uff0c\u800c\u662f\u60f3\u8ba9\u5bf9\u8c61\"\u7a7f\u8fc7\"\u4f46\u80fd\u68c0\u6d4b\u5230\uff08\u6bd4\u5982\u6361\u91d1\u5e01\uff09\u3002\n\n1. \u9009\u4e2d\u91d1\u5e01\u7684 Collider\n2. \u5728 Inspector \u91cc\u52fe\u9009 **Is Trigger**\n\n```csharp\nvoid OnTriggerEnter(Collider other)\n{\n    Debug.Log(\"\u6709\u4e1c\u897f\u8fdb\u6765\u4e86\uff1a\" + other.name);\n    Destroy(gameObject);  // \u9500\u6bc1\u81ea\u5df1\uff08\u91d1\u5e01\u6d88\u5931\u4e86\uff09\n}\n```\n\n**\u78b0\u649e\u6761\u4ef6\uff1a** \u81f3\u5c11\u4e00\u65b9\u6709 Rigidbody\uff0c\u78b0\u649e\u68c0\u6d4b\u624d\u80fd\u5de5\u4f5c\u3002\n\n---\n\n## \u5341\u4e8c\u3001\u9884\u5236\u4f53\uff08Prefab\uff09\n\n### 12.1 \u4ec0\u4e48\u662f\u9884\u5236\u4f53\n\n\u5047\u5982\u4f60\u505a\u4e86\u4e00\u4e2a\u91d1\u5e01\uff0c\u6e38\u620f\u91cc\u9700\u8981 100 \u4e2a\u91d1\u5e01\u3002\u4f60\u4e0d\u53ef\u80fd\u624b\u52a8\u6446 100 \u6b21\u3002\n\n**\u9884\u5236\u4f53**\u5c31\u662f\u4e00\u4e2a\"\u6a21\u677f\"\uff0c\u4f60\u53ef\u4ee5\u7528\u5b83\u590d\u5236\u51fa\u5f88\u591a\u4e2a\u3002\n\n### 12.2 \u600e\u4e48\u505a\n\n1. \u5728\u573a\u666f\u91cc\u628a\u91d1\u5e01\u914d\u7f6e\u597d\uff08\u52a0\u6a21\u578b\u3001\u52a0\u78b0\u649e\u5668\u3001\u52a0\u811a\u672c\uff09\n2. \u628a\u5b83\u4ece Hierarchy **\u62d6\u5230 Project** \u7a97\u53e3\n3. \u9884\u5236\u4f53\u5c31\u521b\u5efa\u597d\u4e86\n4. \u573a\u666f\u91cc\u90a3\u4e2a\u91d1\u5e01\u53d8\u6210\u4e86\u84dd\u8272\uff0c\u8868\u793a\u5b83\u662f\u9884\u5236\u4f53\u7684\u5b9e\u4f8b\n\n### 12.3 \u4ee3\u7801\u751f\u6210\u9884\u5236\u4f53\n\n```csharp\nusing UnityEngine;\n\npublic class Spawner : MonoBehaviour\n{\n    public GameObject coinPrefab;  // \u5728 Inspector \u91cc\u62d6\u5165\u9884\u5236\u4f53\n\n    void Update()\n    {\n        if (Input.GetKeyDown(KeyCode.Space))\n        {\n            Instantiate(coinPrefab, transform.position, Quaternion.identity);\n        }\n    }\n}\n```\n\n- `public GameObject coinPrefab` = \u58f0\u660e\u4e00\u4e2a\u53d8\u91cf\uff0c\u5728 Inspector \u91cc\u53ef\u4ee5\u62d6\u62fd\u8d4b\u503c\n- `Instantiate()` = \u590d\u5236\u51fa\u4e00\u4e2a\u65b0\u7684\n- \u6309\u7a7a\u683c\u952e\u5c31\u4f1a\u751f\u6210\u4e00\u4e2a\u91d1\u5e01\n\n---\n\n## \u5341\u4e09\u3001UI \u57fa\u7840\n\n### 13.1 \u521b\u5efa UI\n\n1. Hierarchy \u53f3\u952e \u2192 UI \u2192 **Text**\uff08\u6587\u5b57\uff09\n2. \u4f60\u4f1a\u53d1\u73b0\u81ea\u52a8\u521b\u5efa\u4e86\u4e00\u4e2a **Canvas**\uff08\u753b\u5e03\uff09\u548c **EventSystem**\n\n\u6240\u6709 UI \u5143\u7d20\u5fc5\u987b\u653e\u5728 Canvas \u4e0b\u9762\u3002\n\n### 13.2 \u663e\u793a\u6587\u5b57\n\n```csharp\nusing UnityEngine;\nusing UnityEngine.UI;  // \u8981\u52a0\u8fd9\u4e2a\u624d\u80fd\u7528 UI\n\npublic class ScoreUI : MonoBehaviour\n{\n    public Text scoreText;  // \u5728 Inspector \u91cc\u62d6\u5165 Text\n    private int score = 0;\n\n    public void AddScore()\n    {\n        score++;\n        scoreText.text = \"\u5206\u6570\uff1a\" + score;\n    }\n}\n```\n\n### 13.3 \u6309\u94ae\n\n1. Hierarchy \u53f3\u952e \u2192 UI \u2192 **Button**\n2. \u6309\u94ae\u81ea\u5e26\u4e00\u4e2a Text \u5b50\u5bf9\u8c61\uff0c\u53ef\u4ee5\u6539\u6309\u94ae\u6587\u5b57\n\n```csharp\npublic Button startButton;  // \u5728 Inspector \u91cc\u62d6\u5165\u6309\u94ae\n\nvoid Start()\n{\n    startButton.onClick.AddListener(OnStartClick);\n}\n\nvoid OnStartClick()\n{\n    Debug.Log(\"\u6309\u94ae\u88ab\u70b9\u4e86\uff01\");\n}\n```\n\n---\n\n## \u5341\u56db\u3001\u534f\u7a0b\uff1a\u5ef6\u8fdf\u6267\u884c\n\n\u6709\u65f6\u5019\u4f60\u60f3\"\u7b49 2 \u79d2\u518d\u505a\u67d0\u4e8b\"\uff0c\u7528\u534f\u7a0b\uff1a\n\n```csharp\nusing UnityEngine;\nusing System.Collections;  // \u8981\u52a0\u8fd9\u4e2a\n\npublic class Timer : MonoBehaviour\n{\n    void Start()\n    {\n        StartCoroutine(WaitAndPrint());\n    }\n\n    IEnumerator WaitAndPrint()\n    {\n        Debug.Log(\"\u5f00\u59cb\u7b49\u5f85...\");\n        yield return new WaitForSeconds(2f);  // \u7b49 2 \u79d2\n        Debug.Log(\"2 \u79d2\u5230\u4e86\uff01\");\n    }\n}\n```\n\n- `IEnumerator` = \u534f\u7a0b\u7684\u8fd4\u56de\u7c7b\u578b\n- `yield return new WaitForSeconds(2f)` = \u6682\u505c 2 \u79d2\u518d\u7ee7\u7eed\n\n---\n\n## \u5341\u4e94\u3001\u573a\u666f\u5207\u6362\n\n### 15.1 \u521b\u5efa\u591a\u4e2a\u573a\u666f\n\n1. File \u2192 New Scene\uff0c\u521b\u5efa\u7b2c\u4e8c\u4e2a\u573a\u666f\n2. \u4fdd\u5b58\u5b83\uff08Ctrl + S\uff09\uff0c\u8d77\u540d\u53eb \"Level2\"\n\n### 15.2 \u52a0\u5165 Build Settings\n\n1. File \u2192 Build Settings\n2. \u628a\u4e24\u4e2a\u573a\u666f\u90fd**\u62d6\u8fdb\u53bb**\n3. \u53ea\u6709\u5728\u8fd9\u91cc\u7684\u573a\u666f\u624d\u80fd\u88ab\u5207\u6362\n\n### 15.3 \u4ee3\u7801\u5207\u6362\u573a\u666f\n\n```csharp\nusing UnityEngine.SceneManagement;  // \u8981\u52a0\u8fd9\u4e2a\n\npublic class SceneSwitcher : MonoBehaviour\n{\n    public void GoToLevel2()\n    {\n        SceneManager.LoadScene(\"Level2\");\n    }\n}\n```\n\n---\n\n## \u5341\u516d\u3001\u8c03\u8bd5\uff1a\u627e Bug\n\n### 16.1 \u770b Console\n\n\u62a5\u9519\u65f6 Console \u4f1a\u663e\u793a\u7ea2\u8272\u6587\u5b57\uff0c\u544a\u8bc9\u4f60\uff1a\n- \u54ea\u4e2a\u811a\u672c\u51fa\u9519\u4e86\n- \u7b2c\u51e0\u884c\u51fa\u9519\u4e86\n- \u4ec0\u4e48\u7c7b\u578b\u7684\u9519\u8bef\n\n**\u53cc\u51fb\u7ea2\u8272\u9519\u8bef\u4fe1\u606f\uff0c\u4f1a\u81ea\u52a8\u8df3\u5230\u51fa\u9519\u7684\u4ee3\u7801\u3002**\n\n### 16.2 \u5e38\u89c1\u9519\u8bef\n\n| \u9519\u8bef | \u610f\u601d | \u600e\u4e48\u89e3\u51b3 |\n|------|------|----------|\n| NullReferenceException | \u4f60\u7528\u4e86\u4e00\u4e2a\"\u7a7a\"\u7684\u4e1c\u897f | \u68c0\u67e5\u53d8\u91cf\u6709\u6ca1\u6709\u8d4b\u503c |\n| \u4e00\u5806\u7ea2\u8272\u6ce2\u6d6a\u7ebf | \u8bed\u6cd5\u5199\u9519\u4e86 | \u68c0\u67e5\u62ec\u53f7\u3001\u5206\u53f7\u3001\u62fc\u5199 |\n| \u811a\u672c\u4e0d\u751f\u6548 | \u5fd8\u8bb0\u6302\u5230\u5bf9\u8c61\u4e0a | \u628a\u811a\u672c\u62d6\u5230 Inspector |\n\n### 16.3 \u7528 Debug.Log \u8c03\u8bd5\n\n\u4e0d\u786e\u5b9a\u67d0\u4e2a\u53d8\u91cf\u7684\u503c\uff1f\u6253\u5370\u51fa\u6765\u770b\uff1a\n\n```csharp\nDebug.Log(\"\u5f53\u524d\u5206\u6570\uff1a\" + score);\nDebug.Log(\"\u73a9\u5bb6\u4f4d\u7f6e\uff1a\" + transform.position);\n```\n\n---\n\n## \u5341\u4e03\u3001\u7b2c\u4e00\u4e2a\u5c0f\u9879\u76ee\uff1a\u6eda\u7403\u5403\u65b9\u5757\n\n\u73b0\u5728\u4f60\u5df2\u7ecf\u5b66\u4e86\u8db3\u591f\u7684\u77e5\u8bc6\uff0c\u6765\u505a\u4e00\u4e2a\u5c0f\u6e38\u620f\u5427\uff01\n\n### \u76ee\u6807\n- \u4e00\u4e2a\u7403\uff0c\u7528\u952e\u76d8\u63a7\u5236\u6eda\u52a8\n- \u5730\u4e0a\u6563\u843d\u7740\u65b9\u5757\n- \u7403\u78b0\u5230\u65b9\u5757\uff0c\u65b9\u5757\u6d88\u5931\uff0c\u5206\u6570\u52a0 1\n- \u5c4f\u5e55\u4e0a\u663e\u793a\u5206\u6570\n\n### \u6b65\u9aa4\n\n**\u7b2c 1 \u6b65\uff1a\u642d\u573a\u666f**\n1. \u521b\u5efa Plane \u505a\u5730\u9762\n2. \u521b\u5efa Sphere \u505a\u73a9\u5bb6\u7403\n3. \u521b\u5efa\u51e0\u4e2a Cube \u6563\u843d\u5728\u5730\u9762\u4e0a\n\n**\u7b2c 2 \u6b65\uff1a\u8ba9\u7403\u80fd\u6eda\u52a8**\n1. \u7ed9\u7403\u52a0 Rigidbody\n2. \u7ed9\u7403\u52a0\u811a\u672c\uff0c\u7528 WASD \u63a7\u5236\u79fb\u52a8\n\n```csharp\nusing UnityEngine;\n\npublic class PlayerBall : MonoBehaviour\n{\n    private Rigidbody rb;\n    public float speed = 5f;\n\n    void Start()\n    {\n        rb = GetComponent<Rigidbody>();\n    }\n\n    void FixedUpdate()\n    {\n        float h = Input.GetAxis(\"Horizontal\");\n        float v = Input.GetAxis(\"Vertical\");\n        rb.velocity = new Vector3(h * speed, rb.velocity.y, v * speed);\n    }\n}\n```\n\n**\u7b2c 3 \u6b65\uff1a\u8ba9\u65b9\u5757\u80fd\u88ab\u5403**\n1. \u7ed9\u65b9\u5757\u52a0 Collider\uff0c\u52fe\u9009 Is Trigger\n2. \u7ed9\u65b9\u5757\u52a0\u811a\u672c\uff1a\n\n```csharp\nusing UnityEngine;\n\npublic class Coin : MonoBehaviour\n{\n    void OnTriggerEnter(Collider other)\n    {\n        if (other.CompareTag(\"Player\"))\n        {\n            Destroy(gameObject);\n        }\n    }\n}\n```\n\n3. \u7ed9\u7403\u8bbe\u7f6e Tag \u4e3a \"Player\"\uff08\u9009\u4e2d\u7403 \u2192 Inspector \u9876\u90e8 \u2192 Tag \u2192 Player\uff09\n\n**\u7b2c 4 \u6b65\uff1a\u52a0\u5206\u6570 UI**\n1. Hierarchy \u53f3\u952e \u2192 UI \u2192 Text\n2. \u5199\u4e00\u4e2a\u5206\u6570\u7ba1\u7406\u5668\uff1a\n\n```csharp\nusing UnityEngine;\nusing UnityEngine.UI;\n\npublic class ScoreManager : MonoBehaviour\n{\n    public Text scoreText;\n    private int score = 0;\n\n    public void AddScore()\n    {\n        score++;\n        scoreText.text = \"\u5206\u6570\uff1a\" + score;\n    }\n}\n```\n\n3. \u5728\u65b9\u5757\u7684\u811a\u672c\u91cc\u8c03\u7528 AddScore\uff1a\n\n```csharp\nvoid OnTriggerEnter(Collider other)\n{\n    if (other.CompareTag(\"Player\"))\n    {\n        FindObjectOfType<ScoreManager>().AddScore();\n        Destroy(gameObject);\n    }\n}\n```\n\n**\u7b2c 5 \u6b65\uff1a\u8fd0\u884c\u6d4b\u8bd5**\n\n\u70b9\u64ad\u653e\uff0c\u7528 WASD \u63a7\u5236\u7403\u6eda\u5411\u65b9\u5757\uff0c\u78b0\u5230\u540e\u65b9\u5757\u6d88\u5931\uff0c\u5206\u6570\u589e\u52a0\u3002\n\n---\n\n## \u5341\u516b\u3001\u5b66\u5b8c\u8fd9\u4e9b\u4e4b\u540e\n\n\u4f60\u73b0\u5728\u5df2\u7ecf\u4f1a\u4e86\uff1a\n- Unity \u7f16\u8f91\u5668\u7684\u57fa\u672c\u64cd\u4f5c\n- C# \u6700\u57fa\u7840\u7684\u8bed\u6cd5\n- GameObject \u548c Component \u7684\u5173\u7cfb\n- \u8ba9\u4e1c\u897f\u79fb\u52a8\n- \u7269\u7406\u548c\u78b0\u649e\n- \u505a UI\n- \u7528\u9884\u5236\u4f53\n- \u573a\u666f\u5207\u6362\n- \u8c03\u8bd5\u627e Bug\n\n\u63a5\u4e0b\u6765\u53ef\u4ee5\u7ee7\u7eed\u5b66\uff1a\n- **\u8bbe\u8ba1\u6a21\u5f0f**\uff1a\u8ba9\u4ee3\u7801\u66f4\u6574\u6d01\uff0c\u66f4\u597d\u6539\n- **\u9879\u76ee\u67b6\u6784**\uff1a\u8ba9\u5927\u9879\u76ee\u4e0d\u4f1a\u4e71\u6389\n- **\u8fdb\u9636\u7cfb\u7edf**\uff1a\u80cc\u5305\u3001Buff\u3001\u5bf9\u8bdd\u3001\u4efb\u52a1\u2026\u2026\n\n\u4f46\u6700\u91cd\u8981\u7684\u662f\uff1a**\u5148\u505a\u4e1c\u897f**\u3002\n\n\u4e0d\u8981\u4e00\u76f4\u770b\u6559\u7a0b\uff0c\u770b\u4e00\u70b9\u5199\u4e00\u70b9\u3002\u5199\u51fa\u6765\u7684\u4ee3\u7801\u518d\u7b80\u5355\uff0c\u4e5f\u6bd4\u8111\u5b50\u91cc\u60f3\u4e00\u5343\u884c\u6709\u7528\u3002\n\n---\n\n## \u9644\u5f55\uff1a\u5e38\u7528\u5feb\u6377\u952e\n\n| \u5feb\u6377\u952e | \u4f5c\u7528 |\n|--------|------|\n| W | \u79fb\u52a8\u5de5\u5177 |\n| E | \u65cb\u8f6c\u5de5\u5177 |\n| R | \u7f29\u653e\u5de5\u5177 |\n| Q | \u624b\u5f62\u5de5\u5177\uff08\u5e73\u79fb\u89c6\u89d2\uff09 |\n| F | \u805a\u7126\u9009\u4e2d\u7684\u5bf9\u8c61 |\n| Ctrl+S | \u4fdd\u5b58 |\n| Ctrl+Z | \u64a4\u9500 |\n| Ctrl+D | \u590d\u5236 |\n| Delete | \u5220\u9664 |\n| Space | \u5207\u6362\u64ad\u653e |\n\n---\n\n## \u9644\u5f55\uff1aC# \u901f\u67e5\n\n```csharp\n// \u53d8\u91cf\nint a = 1;\nfloat b = 1.5f;\nstring c = \"hello\";\nbool d = true;\n\n// \u6761\u4ef6\nif (\u6761\u4ef6) { }\nelse if (\u6761\u4ef6) { }\nelse { }\n\n// \u5faa\u73af\nfor (int i = 0; i < 10; i++) { }\n\n// \u65b9\u6cd5\nvoid DoSomething() { }\nint Add(int a, int b) { return a + b; }\n\n// \u83b7\u53d6\u7ec4\u4ef6\nGetComponent<Rigidbody>();\n\n// \u6253\u5370\nDebug.Log(\"\u5185\u5bb9\");\n\n// \u5b9e\u4f8b\u5316\nInstantiate(prefab, position, rotation);\n\n// \u9500\u6bc1\nDestroy(gameObject);\n```\n"",
+  "2026-07-14-Tiny-Pet-Sand-Wars-更新.md":"---\ntitle: \"Tiny Pet Sand Wars 更新来啦！🎉\"\ndate: 2026-07-14\ntags: [GameDev, 独立游戏, 更新]\n---\n\n## ⚔️ 2026-07-14 武器进化系统\n\n武器可以通过战斗积累进化，变得更强！\n\n### 进化阶段\n\n| 阶段 | 伤害 | 射速 | 颜色 |\n|------|------|------|------|\n| 基础 | 1x | 1x | 白色 |\n| 进化 | 1.5x | 1.2x | 蓝色 |\n| 终极 | 2.25x | 1.44x | 金色 |\n\n### 进化条件\n\n**基础 → 进化：**\n- 击杀50个敌人，或\n- 使用120秒\n\n**进化 → 终极：**\n- 击杀120个敌人，或\n- 使用300秒\n\n### 视觉效果\n\n- 进化后武器颜色变化（白→蓝→金）\n- 进化后武器体积略微增大\n- 进化时有粒子特效和通知\n\n### UI显示\n\n- HUD显示武器进化进度\n- 进化/终极进度实时更新\n\n---\n\n## 🏛️ 2026-07-14 挑战房间系统\n\n地图上会随机出现传送门，进入后开始挑战，完成获得丰厚奖励！\n\n### 挑战类型\n\n| 挑战 | 目标 | 奖励 |\n|------|------|------|\n| 生存挑战 | 存活20秒 | 15甲壳币 |\n| 击杀挑战 | 限时击杀15个敌人 | 20甲壳币 |\n| 无伤挑战 | 15秒内不受伤 | 25甲壳币 |\n| Boss挑战 | 击败守护者Boss | 30甲壳币 |\n\n### 规则\n\n- 游戏开始30秒后首次出现\n- 每60秒检查是否生成新挑战\n- 每局最多3个挑战房间\n- 完成挑战有35%几率获得宠物\n- 失败不会惩罚，传送门消失\n\n### 视觉效果\n\n- 紫色传送门，脉冲动画\n- 挑战中显示进度/计时UI\n- 完成/失败有通知提示\n\n---\n\n## 🐾 2026-07-14 宠物系统\n\n战斗中可以获得可爱的小宠物帮忙！最多携带3只，重复获得会升级。\n\n### 宠物类型\n\n| 宠物 | 效果 |\n|------|------|\n| 火焰精灵 | 发射火球攻击敌人 |\n| 冰霜精灵 | 攻击并减速敌人 |\n| 雷电精灵 | 连锁闪电最多4个目标 |\n| 治疗精灵 | 持续回复玩家生命 |\n\n### 获取方式\n\n- 开宝箱有20%几率获得宠物\n- 已有宠物再获得会升级，伤害+25%\n- 最多携带3只宠物\n\n### 宠物行为\n\n- 自动围绕玩家旋转\n- 自动攻击范围内最近的敌人\n- 不同宠物有不同的攻击方式和冷却时间\n\n---\n\n## 🏃 2026-07-14 冲刺/闪避系统\n\n按Shift或Space键冲刺，短暂无敌快速位移，关键时刻躲开致命攻击！\n\n### 新增\n\n- **冲刺系统** — 按Shift或Space触发，向当前移动方向快速冲刺\n- **冲刺无敌** — 冲刺期间完全免疫伤害\n- **冲刺冷却** — 1.5秒冷却时间，HUD显示剩余时间\n- **冲刺特效** — 冲刺时留下蓝色残影，结束时有扩散效果\n- **移动端支持** — 新增DASH按钮，触屏也能冲刺\n\n### 操作说明\n\n| 平台 | 操作 |\n|------|------|\n| PC | 按 `Shift` 或 `Space` |\n| 手机 | 点击右下角 `DASH` 按钮 |\n\n### 参数\n\n- 冲刺持续时间：0.2秒\n- 冲刺速度：4倍移动速度\n- 冷却时间：1.5秒\n\n---\n\n## 🌦️ 2026-07-14 天气系统\n\n战场不再是晴天到底了！新增动态天气系统，不同天气会带来不同的视觉效果和游戏影响。\n\n### 新增\n\n- **5种天气类型** — 晴天、沙尘暴、雨天、雷暴、大风，各有特色\n- **动态天气切换** — 天气会随游戏时间自动变化，每局体验都不同\n- **沙尘暴** — 降低移动速度和能见度，沙尘漫天飞舞\n- **雨天** — 略微减速，雨滴从天而降\n- **雷暴** — 随机闪电劈下，对范围内的敌人造成伤害\n- **大风** — 影响玩家移动和子弹速度，风吹草动\n- **天气UI** — HUD显示当前天气状态\n- **天气音效** — 雷声、风声，增强沉浸感\n",
+  "2026-06-15-Tiny-Pet-Sand-Wars-更.md":"---\ntitle: \"Tiny Pet Sand Wars 更新来啦！\"\ndate: 2026-06-15\ntags: [GameDev, 独立游戏, 更新]\n---\n\n## 🗺️ 超大背景地图\n\n现在主战场后面多了一大片远景地形，画面看起来更有层次感了！\n\n- 背景地图比战斗区大上好多倍，一眼望去真的像在沙漠里\n\n- 地形会自动生成岛屿、草地、水域，每局都独一无二\n\n- 远景会自然变淡，不会抢视线\n\n- 地图周围还有可爱的装饰边框\n\n---\n\n## 🎨 界面全面换新\n\n整套 UI 走的是暖萌路线，配色软软的甜甜的～\n\n- 米白底配粉、黄、蓝、绿的面板，看着就舒服\n\n- 菜单上飘着肉垫、花朵、云朵和小星星，鼠标放上去还会弹弹的\n\n- 主菜单可以换角色、选武器，一目了然\n\n- 支持中英文随时切换\n\n游戏里的选择界面也统一了风格——升升级、捡武器、开宝箱、逛商店，全是一个好看的三卡片布局，动画又顺又可爱。\n\n---\n\n## ⚔️ 12 把武器随你挑\n\n近战武器会围着你转，远程武器自动帮你打最近的敌人。\n\n**近战（贴身肉搏）：**\n\n- 生锈小刀 —— 免费初始武器\n\n- 风暴战斧 —— 大斧头，伤害高\n\n**远程（哒哒哒自动射击）：**\n\n- 砾石冲锋枪、双牙冲锋枪 —— 射速快\n\n- 沙畔手枪、商队手枪 —— 手感佳\n\n- 沙线步枪、鬃刺步枪 —— 伤害稳定\n\n- 穿日狙击枪 —— 一枪一个\n\n- 散射手炮、沙暴发射器 —— 爆发力强\n\n- 水晶光束 —— 高射速激光\n\n武器还有品质区分：**普通、稀有、史诗、传说**，越往后越帅，金色传说谁不爱呢？\n\n### 支援武器\n\n多出来的武器不会闲着，它们会变成小跟班围着你自动打怪！升级后伤害越来越高，颜色也越来越金闪闪。\n\n### 子弹特效\n\n毒液弹会让敌人持续掉血，冰弹能减速，雷弹有额外爆发。打到敌人还有华丽的爆炸特效，敌人攻击前也会有明显的预警提示～躲起来很方便。\n\n---\n\n## 👾 怪物大军\n\n一共 12 种怪物，各有各的绝活：\n\n| 怪物 | 特点 |\n\n|------|------|\n\n| 沙行虫 | 普通小怪，会冲过来咬你 |\n\n| 尘奔者 | 跑得飞快，突然冲刺撞你 |\n\n| 鬃刺吐息 | 远远地吐口水打你 |\n\n| 日光虫群 | 一群蜂拥而上 |\n\n| 甲壳蛮兽 | 血超厚的大坦克 |\n\n| 琥珀哨兵 | 一次射两发 |\n\n| 沙之幻影 | 会隐身！突然现身冲刺 |\n\n| 甲壳分裂体 | 打死会分裂成两只小的 |\n\n| 沙丘修补匠 | 会奶其他怪物 |\n\n| 风暴精英 | 一次射三发 |\n\n| 沙之暴君 | 大 Boss！全屏弹幕 + 追踪弹，画面都在震 |\n\n怪物会随游戏时间越来越多种类，也越来越强。打到 12 分钟就会出现最终 Boss，打赢就胜利啦～\n\n---\n\n## 🏆 20 个成就等你解锁\n\n从\"第一次击杀\"到\"击败 Boss\"，每个成就都有零食奖励！有的还能解锁新武器和角色。慢慢玩慢慢收集就好～\n\n---\n\n## 📈 成长系统\n\n每升一级从 14 种强化里三选一，想堆伤害、加攻速、加血量都随你。还有 20 多种被动道具可以从宝箱和商店获得，挂着就生效。\n\n4 个角色各有特色：\n\n- **沙漠侦察兵**\n",
+  "2026-05-31-小宠沙暴大战12-游戏更新啦.md":"---\ntitle: \"小宠沙暴大战1.2-游戏更新啦\"\ndate: 2026-05-31\ntags: [GameDev, 独立游戏, 更新]\n---\n\n全新更新来了，重点关注**用户体验优化**和**长期游戏动力**！我们刷新了游戏界面风格，并正式推出了游戏内成就系统，让你的每一刻游戏体验都更加精致和有成就感。\n\n## 🎨 全面UI风格大改\n\n我彻底改造了游戏内界面，从视觉风格到互动细节，摒弃了旧有僵硬的布局，呈现出更统一、简洁且沉浸感强的美学。所有核心界面模块——包括主菜单、设置面板、游戏界面和次要弹窗——在颜色匹配、图标设计、边框样式和间距布局方面均进行了调整。\n\n新界面遵循极简且直观的设计逻辑，减少多余的视觉元素，同时提升屏幕层级。关键的功能按钮和信息显示更吸引眼球，也更容易找到。同时，我们优化了界面过渡动画，使每次切换和互动更加流畅自然，有效提升了游戏整体视觉质感和操作流畅度。\n\n这一版本不仅提升了视觉表现，还适应了不同的展示场景，确保所有玩家都能获得一致且舒适的观赏体验。\n\n## 🏆 全新成就系统\n\n为了记录每位玩家的成长和精彩的游戏时刻，我们正式新增了完整的成就系统。我们设计了丰富的差异化成就，涵盖核心玩法、探索、挑战、收集和隐藏玩法维度，涵盖传统游戏流程和小众隐藏内容。\n\n游戏中的每一次突破、探索和挑战现在都获得了相应的荣誉认可。玩家可以通过完成特定的游戏目标解锁成就，所有已解锁的成就会同步记录在个人成就图库中，随时可查看和查看。系统还支持未完成成就的进度提醒，帮助你清晰掌握游戏进展，探索更多游戏内容。\n\n我希望成就系统能带来更多的成就感和游戏动力，让游戏中的每一次努力和探索都被见证和肯定，并为游戏增添更多乐趣和重玩价值。\n\n## 📌 后续计划\n\n我将继续根据玩家反馈优化新UI细节，修复细微的互动问题，并补充更具特色的成就内容。欢迎大家体验新版本，并提出宝贵的意见和建议！\n\n游戏链接:[小宠物沙战 作者：小天女士](https://msxiaotian.itch.io/tiny-pet-sand-wars)\n",
+  "2026-05-10-游戏发布itch啦.md":"---\ntitle: \"游戏发布itch啦\"\ndate: 2026-05-10\ntags: [GameDev, 独立游戏]\n---\n\n《小宠沙暴大战》是一款轻量快节奏的俯视角肉鸽生存射击游戏。你将操控一只小宠物进入沙地战场，在不断升级的怪潮里边移动、边射击、边选择成长路线，尽量把这一局构筑推到更后期。\n\n游戏当前已经具备比较完整的一套单局循环：开局选择角色与武器，中途通过击杀奖励、升级选项、宝箱被动和流浪商店持续强化；怪物会随着时间进一步加速、变强，并在后期形成更高压的包围节奏。你可以冲击 10 分钟 Boss，也可以在中途通过暂停菜单直接结算本局收益。\n\n如果你喜欢《Vampire Survivors》式生存体验，但又希望加入更明确的鼠标朝向、换弹节奏、宝箱被动和局外成长，这个版本已经可以提供一套比较扎实的可重复游玩框架。\n\n- 'W / A / S / D'：移动\n\n- '鼠标'：瞄准\n\n- '按住左键'：持续射击\n\n- 'R'：手动换弹\n\n- 'Esc'：暂停 / 中途结算\n\n链接:[Tiny Pet Sand Wars by MsXiaoTian](https://msxiaotian.itch.io/tiny-pet-sand-wars)\n\n欢迎大家来游玩评论，提出意见\n",
+  "2025-11-15-腾讯游戏客户端一面凉经.md":"---\ntitle: \"腾讯游戏客户端一面凉经\"\ndate: 2025-11-15\ntags: [面试, 腾讯]\n---\n\n面的岗位是IEG游戏客户端\n\n面的工作室是做王者荣耀国际版那个工作室\n\n首先面试官是个很和蔼的人，刚开始来了个自我介绍有点紧张，然后后面就放松了。\n\n面试官开始从简历问，问了几个渲染管线的区别，光线阴影怎么调整。这方面没怎么了解过，给面试官说不了解就跳过了。\n\n然后我简历上的Magicloth，问了最基础的用法，性能优化，这些简单的都答上来了，但面试官深入问Magicloth的深入的算法，是怎么计算物理效果的，没了解过也凉。\n\n接着又问了ai行为树，对象池，GC，DrawCall一些比较的简单的八股，也都答上了。\n\n还问了UnityProfile，了解不多，模模糊糊回答了一些。\n\n然后我简历上是没写C++的面试官问了我是否学过C++我说学过的，面试官问我指针和数组不同的运用场景，如果问区别的话我应该能答上来，但场景一下没想到。\n\n最后问了一些多态，虚函数之类的都答上来了。\n\n最后就是反问环节\n\n问了工作的地点-北京(因为去查岗位的工作地点都没有在国内的)\n\n还问了些目前工作室具体在干啥-工作室是做的最前沿的技术研发\n\n他问我最早什么时候能上班，我说7月(有点后悔了，该说能马上到岗的)，然后问了我玩哪些游戏有没有遇到BUG，最后闲聊完了。\n\n共面了37分钟，没有手撕。\n\n第二天一早就看到凉了。\n",
+  "2025-10-30-TapTap聚光灯开发日志Day7.md":"---\ntitle: \"TapTap聚光灯开发日志Day7\"\ndate: 2025-10-30\ntags: [TapTap, GameDev, 聚光灯]\n---\n\n正式版中加入了最后一关50x50的大地图，加入了计时器用于后面速通KFC奖励的凭证。\n\n后续将继续进行安卓的适配\n\n![](https://img.tapimg.com/market/images/0f170d4b1ecf80c267e5a44b5992a199.png)\n\n游戏主页:[小绿虫的冒险蹦践电脑/主机 - TapTap](https://www.taptap.cn/app/779424?os=pc)\n\nTapTap链接:[开发日志Day7-正式版上下啦 - 小绿虫的冒险蹦践综合讨论 - TapTap 小绿虫的冒险蹦践论坛](https://www.taptap.cn/moment/731126756550902341)\n",
+  "2025-10-27-TapTap聚光灯开发日志Day6.md":"---\ntitle: \"TapTap聚光灯开发日志Day6\"\ndate: 2025-10-27\ntags: [TapTap, GameDev, 聚光灯]\n---\n\n游戏已经上架TapTapPC版,为了博主的完赛奖来乞讨50下载量了\n\n[小绿虫的冒险蹦践电脑/主机 - TapTap](https://www.taptap.cn/app/779424?os=pc)\n\nTapTap链接:[开发日志Day6-试玩版已经完成了 - 小绿虫的冒险蹦践综合讨论 - TapTap 小绿虫的冒险蹦践论坛](https://www.taptap.cn/moment/730756653195988896)\n\n（感谢感谢喵~)\n",
+  "2025-10-24-TapTap聚光灯开发日志Day5.md":"---\ntitle: \"TapTap聚光灯开发日志Day5\"\ndate: 2025-10-24\ntags: [TapTap, GameDev, 聚光灯]\n---\n\n游戏道具介绍\n\n血包: 吃了可以恢复10点生命值\n\n体力包:吃了以后可以恢复10点体力\n\n**游戏道具吃了以后都能恢复2段跳，合理利用游戏道具可以加快通关速度。**\n\n### 后续打算:\n\n1.完成剩下关卡\n\nTapTap链接：[开发日志Day5-游戏道具 - 小绿虫的冒险蹦跶综合讨论 - TapTap 小绿虫的冒险蹦跶论坛](https://www.taptap.cn/moment/729692413102129293)\n",
+  "2025-10-20-Unity新手学习推荐.md":"---\ntitle: \"Unity新手学习推荐\"\ndate: 2025-10-20\ntags: [Unity, 学习]\n---\n\n(首先声明:博主也只是一个刚学Unity没多久的菜鸡,如若博客涉及侵权,联系2408710670@qq.com,48小时内删除)\n\n首先博主是经历了半年乱学(自己画图学了很多分裂的系统强行凑了一个很废的demo),是学到了一些东西比如熟悉Unity的界面和一些函数的使用,但这确实有点慢了,所以博主推荐大家可以从SIKI学院开始(主要是免费提供了不错的资源),可以从[Unity6零基础小白入门教程-2025最新版 - SiKi学院|SiKi学堂 - unity|u3d|虚幻|ue4/5|java|python|人工智能|视频教程|在线课程](https://www.sikiedu.com/course/2119)开始,先跟着SIKI学院熟悉Unity的界面,然后根据自己兴趣从SIKI学院中选取一些Demo制作,在学习过程中,如果是纯新手很建议跟敲代码(这个看你自己的熟悉程度吧),同时还可以改善自己的码风(让别人能看懂自己代码/自己代码看着舒服)。\n\n然后就是B站,B站中有很多好的教程\n\n这里分享一些自己看过感觉很好的分享一下:\n\n1.[[Unity] 存档系统 Part 1 | PlayerPrefs | Unity初学者系列教程 | 数据存取 | 存档读档 | Save&Load_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1nQ4y1z7pZ/?spm_id_from=333.1387.favlist.content.click)\n\n2.[](https://www.bilibili.com/video/BV1mu4y1E7de/?spm_id_from=333.1387.favlist.content.click)[人物可互动标识｜Unity2022.2 最新教程《勇士传说》入门到进阶｜4K_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV13w411c7zU?spm_id_from=333.788.videopod.sections&vd_source=cc486b4d3ab902702c751f1f302d79d9)\n\n3.[【Unity】打造2D多武器系统【01】 系统概览！- Unity中的多武器系统 - 第1部分 System Overview! - Multi-Weapon_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV12A6BYdEe7/?spm_id_from=333.1387.favlist.content.click&vd_source=cc486b4d3ab902702c751f1f302d79d9)\n\n4.[【Unity 2D游戏开发教程】第1课：2D俯视角角色如何移动？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV14j411j7Un?spm_id_from=333.788.videopod.sections&vd_source=cc486b4d3ab902702c751f1f302d79d9)\n\n5.[Unity商店里那些好用的插件（第一期）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1RG411K7Wd/?spm_id_from=333.1387.favlist.content.click&vd_source=cc486b4d3ab902702c751f1f302d79d9)\n\n然后就是关于代码管理,建议熟练Git或者Git的图形用户界面如(**GitHub Desktop**)随时控制好代码的版本,以防不知改错了某处的代码还找不到问题最后导致的从头再来。\n\n最后希望我的这篇博客能帮助到你呀~（博主也是新手,大佬轻喷)\n",
+  "2025-10-19-TapTap聚光灯开发日志Day4.md":"---\ntitle: \"TapTap聚光灯开发日志Day4\"\ndate: 2025-10-19\ntags: [TapTap, GameDev, 聚光灯]\n---\n\n## 游戏制作进度汇报\n\n游戏主要玩法基本完成，后期就是关卡的制作和游戏的美化了(已经在压力美术老师了嘿嘿)\n\n![](https://img.tapimg.com/market/images/48516f625646b5ea2c66f0cab3c9c52a.png)\n\n后续打算:先制作5个关卡发布试玩版，在时间截止前制作10关然后开始速通KFC活动\n\nTapTap链接:[开发日志Day4-游戏制作进度 - 小绿虫的冒险蹦跶综合讨论 - TapTap 小绿虫的冒险蹦跶论坛](https://www.taptap.cn/moment/728972127977341997)\n",
+  "2025-10-19-Unity资源分享.md":"---\ntitle: \"Unity资源分享\"\ndate: 2025-10-19\ntags: [Unity]\n---\n\nGitHub:[MsXiaoT/Unity-resource-sharing-for-learning: 分享一些从网上找到的资源(如果侵权了秒删)(顺便督促自己学习)Share some resources found online (delete immediately if there is any infringement) (also to encourage myself to study)](https://github.com/MsXiaoT/Unity-resource-sharing-for-learning)\n",
+  "2025-10-17-TapTap聚光灯开发日志Day3.md":"---\ntitle: \"TapTap聚光灯开发日志Day3\"\ndate: 2025-10-17\ntags: [TapTap, GameDev, 聚光灯]\n---\n\n## 游戏关卡的设置\n\n*游戏开始界面*\n\n*主视角*\n\n*第一关的搭建*\n\n> **关卡先随便搭一下，后面在美化**。\n\n> **基本实现主要玩法**\n\n1.必须保证血条不为0。                     \n\n2.必须保证达到终点前体力条不为0。\n\n3.游戏主要是速通玩法体验流程争取在10min左右,如果成功完赛,应该会推出速通第一疯狂星期四(V50)活动\n\n> **后续计划**\n\n会加入一些道具，用于贴合主题，一些意想不到的BUG，却成为了通关的关键。\n\nTapTap链接:[开发日志Day3-游戏关卡的设置 - 小绿虫的冒险蹦跶综合讨论 - TapTap 小绿虫的冒险蹦跶论坛](https://www.taptap.cn/moment/728280765111995398)\n",
+  "2025-10-14-TapTap聚光灯开发日志Day2.md":"---\ntitle: \"TapTap聚光灯开发日志Day2\"\ndate: 2025-10-14\ntags: [TapTap, GameDev, 聚光灯]\n---\n\n## 角色和场景的画风的确定\n\n*游戏主角:小绿虫*\n\n*游戏第一个怪物:怪物*\n\n游戏玩法介绍: 游戏以2D平台跳跃为主,需要在生命值和体力条均不为0的情况下利用一些\"特性\"才能完成关卡任务。\n\n游戏后续打算:加入生命值和体力条,加入新怪物。\n\n游戏交流群(可以进来交朋友~):819415442\n\nTapTap链接:[开发日志Day2-角色和场景的画风的确定 - 小绿虫的冒险蹦跶综合讨论 - TapTap 小绿虫的冒险蹦跶论坛](https://www.taptap.cn/moment/726840006617859249)\n",
+  "2025-10-11-TapTap聚光灯开发日志Day1.md":"---\ntitle: \"TapTap聚光灯开发日志Day1\"\ndate: 2025-10-11\ntags: [TapTap, GameDev, 聚光灯]\n---\n\n## 关于题目\"BUG\"的解读\n\n首先看到\"BUG\"肯定是想到了玩游戏遇到的\"问题\",\"漏洞\"或者说\"特性\"导致可以更改游戏流程(比如偷鸡)，或者导致卡死在某一关卡。而本次游戏题目为\"BUG\"应该需要我们从变量溢出、模型穿模、逻辑冲突，这些程序世界的 \"意外\" 来着手制作我们的游戏。\n\n然后我偶然间发现了bug除了缺陷还有虫子的意思,所以为了防止跑题我们这次游戏就由虫子做了主角.\n\n以上均为个人观点。\n\nTapTap链接:[开发日志Day1-关于题目\"BUG\"的解读 - 小绿虫的冒险蹦跶综合讨论 - TapTap 小绿虫的冒险蹦跶论坛](https://www.taptap.cn/moment/725803338892837036)\n"
+};
+
+// ====== Helpers ======
+var MONTHS_CN = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+var MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function formatDateCN(dateStr) {
+  var parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  var y = parseInt(parts[0]), m = parseInt(parts[1]), d = parseInt(parts[2]);
+  return y + '年' + m + '月' + d + '日';
+}
+
+function getDateBadge(dateStr) {
+  var parts = dateStr.split('-');
+  if (parts.length !== 3) return { month: '', day: '' };
+  var m = parseInt(parts[1]), d = parseInt(parts[2]);
+  return { month: MONTHS_EN[m - 1], day: d };
+}
+
+function estimateReadingTime(content) {
+  var text = content.replace(/[#*`\-_>\[\]()!|~]/g, ' ').replace(/\s+/g, ' ').trim();
+  var chineseChars = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+  var englishWords = text.replace(/[\u4e00-\u9fff]/g, '').split(/\s+/).filter(Boolean).length;
+  var minutes = Math.max(1, Math.ceil((chineseChars / 300) + (englishWords / 200)));
+  return minutes;
+}
+
+function countWords(content) {
+  var text = content.replace(/[#*`\-_>\[\]()!|~]/g, ' ').replace(/\s+/g, ' ').trim();
+  var chineseChars = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+  var englishWords = text.replace(/[\u4e00-\u9fff]/g, '').split(/\s+/).filter(Boolean).length;
+  return chineseChars + englishWords;
+}
+
+// ====== Custom marked renderer for code blocks ======
+marked.setOptions({ breaks: true, gfm: true });
+
+var origCodeRenderer = marked.Renderer.prototype.code;
+marked.Renderer.prototype.code = function(code, infostring, escaped) {
+  var lang = (infostring || '').trim();
+  var html = origCodeRenderer.call(this, code, infostring, escaped);
+  var copyBtn = '<button class="copy-btn" onclick="copyCode(this)" data-code="' + code.replace(/"/g, '&quot;').replace(/'/g, '&#39;') + '" aria-label="复制代码">复制</button>';
+  return '<div class="code-block-wrapper">' + copyBtn + html + '</div>';
+};
+
+// ====== Custom marked renderer for lazy images ======
+var origImageRenderer = marked.Renderer.prototype.image;
+marked.Renderer.prototype.image = function(href, title, text) {
+  var img = '<img src="' + href + '" alt="' + (text || '') + '"';
+  if (title) img += ' title="' + title + '"';
+  img += ' loading="lazy" class="lazy-img" />';
+  return img;
+};
+
+// ====== Global State ======
+var activeTag = 'all';
+var currentArticle = null;
+var searchQuery = '';
+
+var allTags = [];
+// ====== Tag Color System ======
+var TAG_COLORS = {
+  'GameDev':   { color: 'var(--c-blue)',   bg: 'var(--c-blue-bg)'   },
+  '独立游戏':  { color: 'var(--c-green)',  bg: 'var(--c-green-bg)'  },
+  'Unity':     { color: 'var(--c-purple)', bg: 'var(--c-purple-bg)' },
+  '更新':      { color: 'var(--c-orange)', bg: 'var(--c-orange-bg)' },
+  '面试':      { color: 'var(--c-red)',    bg: 'var(--c-red-bg)'    },
+  '腾讯':      { color: 'var(--c-teal)',   bg: 'var(--c-teal-bg)'   },
+  'TapTap':    { color: 'var(--c-cyan)',   bg: 'var(--c-cyan-bg)'   },
+  '聚光灯':    { color: 'var(--c-amber)',  bg: 'var(--c-amber-bg)'  },
+  '学习':      { color: 'var(--c-indigo)', bg: 'var(--c-indigo-bg)' },
+};
+
+function getTagColors(tag) {
+  return TAG_COLORS[tag] || { color: 'var(--c-default)', bg: 'var(--c-default-bg)' };
+}
+
+function getPrimaryTag(article) {
+  if (!article.tags || article.tags.length === 0) return null;
+  for (var i = 0; i < article.tags.length; i++) {
+    if (TAG_COLORS[article.tags[i]]) return article.tags[i];
+  }
+  return article.tags[0];
+}
+
+
+var seen = {};
+ARTICLES.forEach(function(a) {
+  a.tags.forEach(function(t) {
+    if (!seen[t]) { seen[t] = true; allTags.push(t); }
+  });
+});
+
+// ====== Theme ======
+function getTheme() {
+  return localStorage.getItem('blog_theme') || 'light';
+}
+
+function applyTheme() {
+  var theme = getTheme();
+  document.documentElement.setAttribute('data-theme', theme);
+  var icon = document.getElementById('themeIcon');
+  icon.innerHTML = theme === 'dark' ? '&#9788;' : '&#9790;';
+
+  var hljsLight = document.getElementById('hljs-light');
+  var hljsDark = document.getElementById('hljs-dark');
+  if (theme === 'dark') {
+    hljsLight.disabled = true;
+    hljsDark.disabled = false;
+  } else {
+    hljsLight.disabled = false;
+    hljsDark.disabled = true;
+  }
+}
+
+function toggleTheme() {
+  var newTheme = getTheme() === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('blog_theme', newTheme);
+  applyTheme();
+}
+
+// ====== Admin ======
+var ADMIN_PASSWORD = 'Yxh20051027';
+
+function isAdmin() {
+  return sessionStorage.getItem('blog_admin') === '1';
+}
+
+function applyAdminVisibility() {
+  var sidebar = document.getElementById('sidebar');
+  var adminBar = document.getElementById('adminBar');
+  var adminIcon = document.getElementById('adminIcon');
+  if (isAdmin()) {
+    sidebar.classList.add('admin-visible');
+    adminBar.style.display = 'flex';
+    adminIcon.innerHTML = '&#128275;';
+  } else {
+    sidebar.classList.remove('admin-visible');
+    adminBar.style.display = 'none';
+    adminIcon.innerHTML = '&#128274;';
+  }
+  var articleActions = document.getElementById('articleAdminActions');
+  articleActions.style.display = (isAdmin() && currentArticle) ? 'flex' : 'none';
+  renderArticleList();
+}
+
+function handleAdminToggle() {
+  if (isAdmin()) {
+    sessionStorage.removeItem('blog_admin');
+    applyAdminVisibility();
+  } else {
+    showLogin();
+  }
+}
+
+function showLogin() {
+  document.getElementById('loginModal').classList.add('show');
+  document.getElementById('loginPassword').value = '';
+  document.getElementById('loginError').style.display = 'none';
+  setTimeout(function() {
+    document.getElementById('loginPassword').focus();
+  }, 100);
+}
+
+function closeLogin() {
+  document.getElementById('loginModal').classList.remove('show');
+}
+
+function verifyPassword() {
+  var pw = document.getElementById('loginPassword').value;
+  if (pw === ADMIN_PASSWORD) {
+    sessionStorage.setItem('blog_admin', '1');
+    closeLogin();
+    applyAdminVisibility();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+}
+
+// ====== Data Layer ======
+function getDeletedList() {
+  try { return JSON.parse(localStorage.getItem('blog_deleted') || '[]'); }
+  catch(e) { return []; }
+}
+
+function addDeleted(filename) {
+  var list = getDeletedList();
+  if (list.indexOf(filename) === -1) list.push(filename);
+  localStorage.setItem('blog_deleted', JSON.stringify(list));
+}
+
+function removeDeleted(filename) {
+  var list = getDeletedList().filter(function(f) { return f !== filename; });
+  localStorage.setItem('blog_deleted', JSON.stringify(list));
+}
+
+function getEditedContent(filename) {
+  return localStorage.getItem('blog_edited_' + filename);
+}
+
+function saveEditedContent(filename, content) {
+  localStorage.setItem('blog_edited_' + filename, content);
+}
+
+function removeEditedContent(filename) {
+  localStorage.removeItem('blog_edited_' + filename);
+}
+
+function getNewArticles() {
+  var result = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (key.indexOf('blog_new_') === 0) {
+      try { result.push(JSON.parse(localStorage.getItem(key))); }
+      catch(e) {}
+    }
+  }
+  return result;
+}
+
+function saveNewArticleData(article) {
+  var id = Date.now();
+  article.id = id;
+  article.path = 'blog_new_' + id;
+  article.isNew = true;
+  localStorage.setItem('blog_new_' + id, JSON.stringify(article));
+  return article;
+}
+
+function deleteNewArticle(id) {
+  localStorage.removeItem('blog_new_' + id);
+}
+
+function getAllArticles() {
+  var deleted = getDeletedList();
+  var baseArticles = ARTICLES.filter(function(a) { return deleted.indexOf(a.path) === -1; });
+  var newArticles = getNewArticles().filter(function(a) { return deleted.indexOf(a.path) === -1; });
+  var all = baseArticles.concat(newArticles).sort(function(a, b) { return b.date.localeCompare(a.date); });
+
+  all.forEach(function(a) {
+    a.tags.forEach(function(t) {
+      if (!seen[t]) { seen[t] = true; allTags.push(t); }
+    });
+  });
+
+  return all;
+}
+
+function getArticleContent(article) {
+  if (article.isNew) {
+    return article.content || '';
+  }
+  var edited = getEditedContent(article.path);
+  if (edited !== null) return edited;
+  return stripFrontMatter(ARTICLES_CONTENT[article.path] || '');
+}
+
+function stripFrontMatter(md) {
+  if (!md) return '';
+  if (md.indexOf('---') === 0) {
+    var end = md.indexOf('---', 3);
+    if (end !== -1) {
+      return md.substring(end + 3).trim();
+    }
+  }
+  return md;
+}
+
+// ====== Search ======
+function handleSearch() {
+  searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+  renderTags();
+  renderArticleList();
+
+  if (searchQuery && getFiltered().length === 0) {
+    document.getElementById('content-area').innerHTML = '<div class="empty-state"><p>没有找到匹配"<strong>' + searchQuery + '</strong>"的文章</p></div>';
+  }
+}
+
+// ====== Edit Article ======
+var editingArticle = null;
+
+function editCurrentArticle() {
+  if (!currentArticle) return;
+  editingArticle = currentArticle;
+  var content = getArticleContent(currentArticle);
+  document.getElementById('editModalTitle').textContent = '编辑: ' + currentArticle.title;
+  document.getElementById('editContent').value = content;
+  document.getElementById('editModal').classList.add('show');
+}
+
+function closeEdit() {
+  document.getElementById('editModal').classList.remove('show');
+  editingArticle = null;
+}
+
+function saveEdit() {
+  if (!editingArticle) return;
+  var newContent = document.getElementById('editContent').value;
+  if (editingArticle.isNew) {
+    var data = JSON.parse(localStorage.getItem('blog_new_' + editingArticle.id) || '{}');
+    data.content = newContent;
+    localStorage.setItem('blog_new_' + editingArticle.id, JSON.stringify(data));
+    currentArticle.content = newContent;
+  } else {
+    saveEditedContent(editingArticle.path, newContent);
+  }
+  closeEdit();
+  if (currentArticle && currentArticle.path === editingArticle.path) {
+    renderArticle(currentArticle);
+  }
+}
+
+// ====== Delete Article ======
+function deleteCurrentArticle() {
+  if (!currentArticle) return;
+  if (!confirm('确定要删除文章「' + currentArticle.title + '」吗？')) return;
+
+  if (currentArticle.isNew) {
+    deleteNewArticle(currentArticle.id);
+  }
+  addDeleted(currentArticle.path);
+  removeEditedContent(currentArticle.path);
+
+  currentArticle = null;
+  document.getElementById('articleAdminActions').style.display = 'none';
+  document.getElementById('content-area').innerHTML =
+    '<div class="empty-state"><div class="empty-icon">&#10005;</div><p>文章已删除。从左侧选择其他文章。</p></div>';
+
+  renderTags();
+  renderArticleList();
+  updateFooter();
+  updateHeroStats();
+}
+
+// ====== New Article ======
+function showNewArticleDialog() {
+  document.getElementById('newTitle').value = '';
+  document.getElementById('newTags').value = '';
+  document.getElementById('newContent').value = '';
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var dd = String(today.getDate()).padStart(2, '0');
+  document.getElementById('newDate').value = yyyy + '-' + mm + '-' + dd;
+  document.getElementById('newModal').classList.add('show');
+}
+
+function closeNew() {
+  document.getElementById('newModal').classList.remove('show');
+}
+
+function saveNewArticle() {
+  var title = document.getElementById('newTitle').value.trim();
+  var date = document.getElementById('newDate').value;
+  var tagsRaw = document.getElementById('newTags').value.trim();
+  var content = document.getElementById('newContent').value;
+
+  if (!title) { alert('请输入标题'); return; }
+  if (!date) { alert('请选择日期'); return; }
+  if (!content) { alert('请输入内容'); return; }
+
+  var tags = tagsRaw ? tagsRaw.split(',').map(function(t) { return t.trim(); }).filter(Boolean) : [];
+
+  var article = saveNewArticleData({
+    title: title,
+    date: date,
+    tags: tags,
+    content: content
+  });
+
+  closeNew();
+  currentArticle = article;
+  resetSearch();
+  renderTags();
+  renderArticleList();
+  renderArticle(article);
+  updateFooter();
+  updateHeroStats();
+  document.getElementById('articleAdminActions').style.display = 'flex';
+}
+
+// ====== UI Rendering ======
+function renderTags() {
+  var container = document.getElementById('tag-filters');
+  var html = '<button class="tag-btn' + (activeTag === 'all' ? ' active' : '') + '" onclick="filterByTag(\'all\')" aria-label="显示全部文章">all</button>';
+  allTags.forEach(function(t) {
+    var tc = getTagColors(t);
+    var style = (activeTag === t) ? (' style="--tag-btn-bg:' + tc.color + ';--tag-btn-bg-soft:' + tc.bg + '"') : (' style="--tag-btn-bg:' + tc.color + ';--tag-btn-bg-soft:' + tc.bg + '"');
+    var cls = 'tag-btn' + (activeTag === t ? ' active' : '');
+    html += '<button class="' + cls + '" data-tag="' + t + '" onclick="filterByTag(\'' + t.replace(/'/g, "\\'") + '\')"' + style + ' aria-label="筛选标签 ' + t + '">#' + t + '</button>';
+  });
+  container.innerHTML = html;
+}
+
+function filterByTag(tag) {
+  activeTag = tag;
+  renderTags();
+  renderArticleList();
+}
+
+function resetSearch() {
+  searchQuery = '';
+  document.getElementById('searchInput').value = '';
+}
+
+function getFiltered() {
+  var all = getAllArticles();
+  if (activeTag !== 'all') {
+    all = all.filter(function(a) { return a.tags.indexOf(activeTag) >= 0; });
+  }
+  if (searchQuery) {
+    all = all.filter(function(a) {
+      var content = getArticleContent(a);
+      return a.title.toLowerCase().indexOf(searchQuery) >= 0 ||
+             content.toLowerCase().indexOf(searchQuery) >= 0 ||
+             a.tags.some(function(t) { return t.toLowerCase().indexOf(searchQuery) >= 0; });
+    });
+  }
+  return all;
+}
+
+function renderArticleList() {
+  var container = document.getElementById('article-list');
+  var listTitle = '<div class="article-list-title">Articles</div>';
+  var filtered = getFiltered();
+
+  if (filtered.length === 0 && searchQuery) {
+    container.innerHTML = listTitle + '<div style="padding:16px 10px;color:var(--text-faint);font-size:0.8rem;">无匹配结果</div>';
+    return;
+  }
+
+  var html = listTitle;
+  filtered.forEach(function(a, idx) {
+    var isActive = currentArticle && currentArticle.path === a.path;
+    var cls = isActive ? ' active' : '';
+    var badge = getDateBadge(a.date);
+    var content = getArticleContent(a);
+    var readMin = estimateReadingTime(content);
+    var primTag = getPrimaryTag(a);
+    var ptc = getTagColors(primTag);
+    var itemAccentStyle = '';
+    if (isActive) {
+      itemAccentStyle = ' style="--item-accent:' + ptc.color + ';--item-accent-bg:' + ptc.bg + ';--item-accent-border:' + ptc.bg + '"';
+    }
+    html +=
+      '<div class="article-item' + cls + '" data-idx="' + idx + '" role="listitem" tabindex="0"' + itemAccentStyle + '>' +
+        '<div class="date-badge" onclick="loadArticle(' + idx + ')" aria-hidden="true">' +
+          '<div class="badge-month">' + badge.month + '</div>' +
+          '<div class="badge-day">' + badge.day + '</div>' +
+        '</div>' +
+        '<div class="item-body" onclick="loadArticle(' + idx + ')">' +
+          '<div class="item-title">' + a.title + '</div>' +
+          '<div class="item-meta">' +
+            '<span>' + formatDateCN(a.date) + '</span>' +
+            '<span class="reading-time">' + readMin + ' min read</span>' +
+          '</div>' +
+          '<div class="item-tags">' +
+            a.tags.map(function(t) { var tc = getTagColors(t); return '<span class="item-tag" style="--item-tag-color:' + tc.color + ';--item-tag-bg:' + tc.bg + '">' + t + '</span>'; }).join('') +
+          '</div>' +
+        '</div>' +
+        '<div class="article-item-actions">' +
+          '<button title="编辑" onclick="event.stopPropagation();editArticleFromList(' + idx + ')" aria-label="编辑文章">&#9998;</button>' +
+          '<button class="btn-del" title="删除" onclick="event.stopPropagation();deleteArticleFromList(' + idx + ')" aria-label="删除文章">&#10005;</button>' +
+        '</div>' +
+      '</div>';
+  });
+
+  container.innerHTML = html;
+  updateFooter();
+}
+
+function updateFooter() {
+  var all = getAllArticles();
+  var key = 'blog_visitor_count';
+  var count = parseInt(localStorage.getItem(key) || '0', 10);
+  var footer = document.getElementById('footer-info');
+  footer.innerHTML = '<span>' + all.length + ' articles &middot; ' + count + ' 次访问</span>';
+}
+
+function updateHeroStats() {
+  var all = getAllArticles();
+  document.getElementById('heroArticleCount').textContent = all.length + ' 篇文章';
+  document.getElementById('heroTagCount').textContent = allTags.length + ' 个标签';
+  var etc = document.getElementById('emptyTotalCount');
+  if (etc) etc.textContent = all.length;
+}
+
+// ====== Crossfade transition helper ======
+function fadeContent(callback) {
+  var area = document.getElementById('content-area');
+  area.classList.add('fading');
+  setTimeout(function() {
+    callback();
+    area.classList.remove('fading');
+  }, 200);
+}
+
+function loadArticle(idx) {
+  var filtered = getFiltered();
+  var article = filtered[idx];
+  if (!article) return;
+  currentArticle = article;
+  resetSearch();
+
+  fadeContent(function() {
+    renderArticle(article);
+    renderTags();
+    renderArticleList();
+
+    if (isAdmin()) {
+      document.getElementById('articleAdminActions').style.display = 'flex';
+    }
+  });
+}
+
+function renderArticle(article) {
+  var md = getArticleContent(article);
+  var html = marked.parse(md);
+  var area = document.getElementById('content-area');
+
+  document.getElementById('heroSection').style.display = 'none';
+
+  area.innerHTML = '';
+  var headerDiv = document.createElement('div');
+  headerDiv.className = 'article-header';
+
+  var readMin = estimateReadingTime(md);
+  var wordCount = countWords(md);
+  headerDiv.innerHTML =
+    '<h1>' + article.title + '</h1>' +
+    '<div class="meta-line">' +
+      '<span>' + formatDateCN(article.date) + '</span>' +
+      '<span>' + wordCount + ' 字 &middot; ' + readMin + ' 分钟阅读</span>' +
+      article.tags.map(function(t) { var tc = getTagColors(t); return '<span class="tag-pill" style="--tag-pill-color:' + tc.color + ';--tag-pill-bg:' + tc.bg + '">#' + t + '</span>'; }).join('') +
+    '</div>';
+  area.appendChild(headerDiv);
+
+  var bodyDiv = document.createElement('div');
+  bodyDiv.className = 'markdown-body';
+  bodyDiv.innerHTML = html;
+  area.appendChild(bodyDiv);
+
+  // Share buttons
+  var shareDiv = document.createElement('div');
+  shareDiv.className = 'share-section';
+  var shareUrl = encodeURIComponent(window.location.href);
+  var shareTitle = encodeURIComponent(article.title);
+  shareDiv.innerHTML =
+    '<span>分享：</span>' +
+    '<button class="share-btn" onclick="shareCopyLink(event)" title="复制链接" aria-label="复制链接">&#128279; 复制链接</button>' +
+    '<a class="share-btn" href="https://service.weibo.com/share/share.php?url=' + shareUrl + '&title=' + shareTitle + '" target="_blank" rel="noopener" aria-label="分享到微博">&#xe000; 微博</a>' +
+    '<a class="share-btn" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + shareUrl + '&title=' + shareTitle + '" target="_blank" rel="noopener" aria-label="分享到QQ空间">&#xe001; QQ空间</a>';
+  area.appendChild(shareDiv);
+
+  bodyDiv.querySelectorAll('pre code').forEach(function(block) {
+    hljs.highlightElement(block);
+  });
+
+  bodyDiv.querySelectorAll('.copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      copyCode(this);
+    });
+  });
+
+  updateFloatNav(article);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function editArticleFromList(idx) {
+  var filtered = getFiltered();
+  editingArticle = filtered[idx];
+  if (!editingArticle) return;
+  var content = getArticleContent(editingArticle);
+  document.getElementById('editModalTitle').textContent = '编辑: ' + editingArticle.title;
+  document.getElementById('editContent').value = content;
+  document.getElementById('editModal').classList.add('show');
+}
+
+function deleteArticleFromList(idx) {
+  var filtered = getFiltered();
+  var article = filtered[idx];
+  if (!article) return;
+  if (!confirm('确定要删除文章「' + article.title + '」吗？')) return;
+
+  if (article.isNew) {
+    deleteNewArticle(article.id);
+  }
+  addDeleted(article.path);
+  removeEditedContent(article.path);
+
+  if (currentArticle && currentArticle.path === article.path) {
+    currentArticle = null;
+    document.getElementById('articleAdminActions').style.display = 'none';
+    fadeContent(function() {
+      document.getElementById('content-area').innerHTML =
+        '<div class="empty-state"><div class="empty-icon">&#10005;</div><p>文章已删除。从左侧选择其他文章。</p></div>';
+      document.getElementById('heroSection').style.display = 'block';
+    });
+  }
+
+  renderTags();
+  renderArticleList();
+  updateFooter();
+  updateHeroStats();
+}
+
+function resetAll() {
+  activeTag = 'all';
+  currentArticle = null;
+  resetSearch();
+  document.getElementById('articleAdminActions').style.display = 'none';
+  document.getElementById('float-prev').classList.add('disabled');
+  document.getElementById('float-prev').onclick = null;
+  document.getElementById('float-next').classList.add('disabled');
+  document.getElementById('float-next').onclick = null;
+  fadeContent(function() {
+    document.getElementById('heroSection').style.display = 'block';
+    document.getElementById('content-area').innerHTML = renderIntroCardHTML();
+  });
+  renderTags();
+  renderArticleList();
+  updateFooter();
+  updateHeroStats();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderIntroCardHTML() {
+  return '<div class="intro-card">' +
+    '<div class="intro-avatar" aria-hidden="true">萌</div>' +
+    '<h2 class="intro-name">萌神小天</h2>' +
+    '<p class="intro-role">独立游戏萌新开发者</p>' +
+    '<p class="intro-bio">热爱游戏开发，专注于 Unity 与独立游戏创作。作品「小宠沙暴大战」已上架 itch.io。偶尔分享开发日志与技术心得。</p>' +
+    '<div class="intro-tags">' +
+      '<span class="intro-tag">Unity</span>' +
+      '<span class="intro-tag">C#</span>' +
+      '<span class="intro-tag">GameDev</span>' +
+      '<span class="intro-tag">独立游戏</span>' +
+      '<span class="intro-tag">TapTap</span>' +
+    '</div>' +
+    '<div class="intro-social">' +
+      '<a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener" title="GitHub" class="intro-social-btn" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>' +
+      '<a href="https://msxiaotian.itch.io" target="_blank" rel="noopener" title="itch.io" class="intro-social-btn" aria-label="itch.io">&#x1F3AE;</a>' +
+      '<a href="mailto:msxiaotian@icloud.com" title="邮箱" class="intro-social-btn" aria-label="邮箱">&#x1F48C;</a>' +
+    '</div>' +
+  '</div>';
+}
+
+// ====== Copy Code ======
+function copyCode(btn) {
+  var code = btn.getAttribute('data-code');
+  var textarea = document.createElement('textarea');
+  textarea.innerHTML = code;
+  var decoded = textarea.value;
+  navigator.clipboard.writeText(decoded).then(function() {
+    btn.textContent = '已复制';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = '复制';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+// ====== Back to Top ======
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ====== Share ======
+function shareCopyLink(event) {
+  var btn = event.target.closest('.share-btn');
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    btn.textContent = '\u2714 已复制';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.innerHTML = '&#128279; 复制链接';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(function() {
+    btn.textContent = '复制失败';
+    setTimeout(function() {
+      btn.innerHTML = '&#128279; 复制链接';
+    }, 2000);
+  });
+}
+
+// ====== Floating Prev/Next Nav ======
+function updateFloatNav(article) {
+  var filtered = getAllArticles();
+  var idx = -1;
+  for (var i = 0; i < filtered.length; i++) {
+    if (filtered[i].path === article.path) { idx = i; break; }
+  }
+  var prevBtn = document.getElementById('float-prev');
+  var nextBtn = document.getElementById('float-next');
+
+  if (idx > 0) {
+    prevBtn.classList.remove('disabled');
+    prevBtn.onclick = function() { loadArticleByFilteredIdx(idx - 1); };
+  } else {
+    prevBtn.classList.add('disabled');
+    prevBtn.onclick = null;
+  }
+
+  if (idx >= 0 && idx < filtered.length - 1) {
+    nextBtn.classList.remove('disabled');
+    nextBtn.onclick = function() { loadArticleByFilteredIdx(idx + 1); };
+  } else {
+    nextBtn.classList.add('disabled');
+    nextBtn.onclick = null;
+  }
+}
+
+function loadArticleByFilteredIdx(idx) {
+  var filtered = getAllArticles();
+  var article = filtered[idx];
+  if (!article) return;
+  currentArticle = article;
+  fadeContent(function() {
+    renderArticle(article);
+    renderArticleList();
+    if (isAdmin()) {
+      document.getElementById('articleAdminActions').style.display = 'flex';
+    }
+  });
+}
+
+// ====== Reading Progress ======
+function updateProgress() {
+  var scrollTop = window.scrollY;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  var bar = document.getElementById('progress-bar');
+  bar.style.width = Math.min(progress, 100) + '%';
+  bar.setAttribute('aria-valuenow', Math.round(Math.min(progress, 100)));
+
+  var btn = document.getElementById('back-to-top');
+  if (scrollTop > 400) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+}
+
+// ====== Keyboard Navigation for Article List ======
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    var activeEl = document.activeElement;
+    if (activeEl && activeEl.classList.contains('article-item')) {
+      e.preventDefault();
+      var idx = parseInt(activeEl.getAttribute('data-idx'));
+      if (!isNaN(idx)) loadArticle(idx);
+    }
+  }
+});
+
+// ====== Kawaii Mascot Logic ======
+var MASCOT_QUOTES = [
+  '老板好！',
+  '今天也要加油哦~',
+  '文章写得真棒！',
+  '代码如诗，bug 退散~',
+  '吃零食了没？',
+  '休息一下，喝杯水吧~',
+  '新游戏做好了吗？',
+  '你是最棒的开发者！',
+  '喵~有什么事吗？',
+  '灵感来了就赶紧写！',
+  '别忘了保存代码哦~',
+  '早点休息，健康第一！'
+];
+
+var mascotBubbleTimer = null;
+var lastScrollY = 0;
+
+function showMascotBubble() {
+  var bubble = document.getElementById('mascotBubble');
+  if (!bubble) return;
+  var quote = MASCOT_QUOTES[Math.floor(Math.random() * MASCOT_QUOTES.length)];
+  bubble.textContent = quote;
+  bubble.classList.remove('show');
+  void bubble.offsetWidth; // force reflow
+  bubble.classList.add('show');
+  if (mascotBubbleTimer) clearTimeout(mascotBubbleTimer);
+  mascotBubbleTimer = setTimeout(function() {
+    bubble.classList.remove('show');
+  }, 3000);
+}
+
+function updateMascotParallax() {
+  var mascot = document.getElementById('mascot');
+  if (!mascot) return;
+  var scrollY = window.scrollY;
+  var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  if (maxScroll <= 0) return;
+  var ratio = scrollY / maxScroll;
+  var angle = (ratio - 0.5) * 10; // -5deg to +5deg
+  mascot.style.transform = 'rotate(' + angle.toFixed(2) + 'deg)';
+  lastScrollY = scrollY;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var mascotBody = document.getElementById('mascotBody');
+  if (mascotBody) {
+    mascotBody.addEventListener('click', function(e) {
+      e.stopPropagation();
+      showMascotBubble();
+    });
+  }
+});
+
+// ====== Lazy Image Setup ======
+function setupLazyImg(img) {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', function() {
+      img.classList.add('loaded');
+    });
+    img.addEventListener('error', function() {
+      img.classList.add('loaded');
+    });
+  }
+}
+
+function observeContentImages() {
+  var contentArea = document.getElementById('content-area');
+  if (!contentArea) return;
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === 1) {
+          if (node.classList && node.classList.contains('lazy-img')) {
+            setupLazyImg(node);
+          }
+          if (node.querySelectorAll) {
+            node.querySelectorAll('img.lazy-img').forEach(function(img) {
+              setupLazyImg(img);
+            });
+          }
+        }
+      });
+    });
+  });
+  observer.observe(contentArea, { childList: true, subtree: true });
+  // Also handle any already-existing lazy images
+  contentArea.querySelectorAll('img.lazy-img').forEach(function(img) {
+    setupLazyImg(img);
+  });
+}
+
+// ====== Daily Quotes ======
+var DAILY_QUOTES = [
+  '做完比完美更重要，先发布再说！',
+  '每一个伟大的游戏都始于一行代码。',
+  'Bug 不是敌人，是通往更好的路标。',
+  '游戏开发者是造梦的人。',
+  '代码写累了？去吃块巧克力吧~',
+  '独立游戏开发 = 1% 灵感 + 99% 坚持。',
+  '玩家的一句"好玩"胜过千万广告。',
+  '别和别人比，和昨天的自己比。',
+  'GameDev 是一场马拉松，不是冲刺。',
+  '每次崩溃都是学习的机会。',
+  '创意无限，键盘为笔。',
+  '做游戏，首先是为了让自己开心。',
+  'prototype 要快，polish 要慢。',
+  'Ship it, then iterate!',
+  '热爱是最好的引擎。'
+];
+
+function initDailyQuote() {
+  var el = document.getElementById('dailyQuoteText');
+  if (!el) return;
+  var idx = Math.floor(Math.random() * DAILY_QUOTES.length);
+  el.textContent = DAILY_QUOTES[idx];
+}
+
+// ====== Friend Link Management ======
+var FLINKS_DEFAULT = [
+  { name: 'indienova', url: 'https://indienova.com', desc: '独立游戏开发者社区' },
+  { name: 'TapTap', url: 'https://www.taptap.cn', desc: '发现好游戏' },
+  { name: 'itch.io', url: 'https://itch.io', desc: '独立游戏发布平台' }
+];
+
+function loadFlinks() {
+  var stored = localStorage.getItem('blog_friend_links');
+  if (stored) {
+    try { return JSON.parse(stored); } catch (e) {}
+  }
+  localStorage.setItem('blog_friend_links', JSON.stringify(FLINKS_DEFAULT));
+  return FLINKS_DEFAULT.slice();
+}
+
+function saveFlinks(links) {
+  localStorage.setItem('blog_friend_links', JSON.stringify(links));
+}
+
+var flinks = loadFlinks();
+var flAdmin = false;
+
+function renderFlinks() {
+  var list = document.getElementById('flList');
+  var html = '';
+  for (var i = 0; i < flinks.length; i++) {
+    var f = flinks[i];
+    var cls = flAdmin ? ' fl-item fl-admin' : ' fl-item';
+    html += '<div class="' + cls + '">';
+    html += '<a class="fl-item-name" href="' + f.url + '" target="_blank" rel="noopener">' + f.name + '</a>';
+    html += f.desc ? '<span class="fl-item-desc">' + f.desc + '</span>' : '';
+    html += '<button class="fl-item-del" data-index="' + i + '" title="删除">&times;</button>';
+    html += '</div>';
+  }
+  list.innerHTML = html;
+
+  var dels = list.querySelectorAll('.fl-item-del');
+  for (var j = 0; j < dels.length; j++) {
+    dels[j].addEventListener('click', function(e) {
+      e.stopPropagation();
+      var idx = parseInt(this.getAttribute('data-index'), 10);
+      flinks.splice(idx, 1);
+      saveFlinks(flinks);
+      renderFlinks();
+    });
+  }
+}
+
+function openFlPanel() {
+  document.getElementById('flPanel').classList.add('active');
+  document.getElementById('flOverlay').classList.add('active');
+  document.getElementById('flTrigger').style.opacity = '0';
+  document.getElementById('flTrigger').style.pointerEvents = 'none';
+  renderFlinks();
+}
+
+function closeFlPanel() {
+  document.getElementById('flPanel').classList.remove('active');
+  document.getElementById('flOverlay').classList.remove('active');
+  document.getElementById('flTrigger').style.opacity = '1';
+  document.getElementById('flTrigger').style.pointerEvents = 'auto';
+}
+
+function resetFlAddForm() {
+  document.getElementById('flAddForm').classList.remove('active');
+  document.getElementById('flInputName').value = '';
+  document.getElementById('flInputUrl').value = '';
+  document.getElementById('flInputDesc').value = '';
+}
+
+function initFlinks() {
+  document.getElementById('flTrigger').addEventListener('click', openFlPanel);
+  document.getElementById('flOverlay').addEventListener('click', closeFlPanel);
+  document.getElementById('flClose').addEventListener('click', closeFlPanel);
+
+  var footer = document.getElementById('flFooter');
+  var adminToggle = document.getElementById('flAdminToggle');
+  adminToggle.addEventListener('click', function() {
+    flAdmin = !flAdmin;
+    adminToggle.textContent = flAdmin ? '退出管理' : '管理友链';
+    if (flAdmin) {
+      document.getElementById('flAddForm').classList.add('active');
+    } else {
+      resetFlAddForm();
+    }
+    footer.style.display = flAdmin ? 'flex' : 'none';
+    renderFlinks();
+  });
+
+  footer.style.display = 'none';
+
+  document.getElementById('flBtnAdd').addEventListener('click', function() {
+    var name = document.getElementById('flInputName').value.trim();
+    var url = document.getElementById('flInputUrl').value.trim();
+    var desc = document.getElementById('flInputDesc').value.trim();
+    if (!name || !url) return;
+    flinks.push({ name: name, url: url, desc: desc });
+    saveFlinks(flinks);
+    renderFlinks();
+    resetFlAddForm();
+    document.getElementById('flAddForm').classList.add('active');
+  });
+
+  document.getElementById('flBtnCancel').addEventListener('click', resetFlAddForm);
+
+  renderFlinks();
+}
+
+// ====== Visitor Counter ======
+function initVisitorCounter() {
+  var key = 'blog_visitor_count';
+  var count = parseInt(localStorage.getItem(key) || '0', 10) + 1;
+  localStorage.setItem(key, count);
+}
+
+// ====== Initialization ======
+(function init() {
+  applyTheme();
+  applyAdminVisibility();
+  renderTags();
+  renderArticleList();
+  initFlinks();
+  updateFooter();
+  updateHeroStats();
+  initDailyQuote();
+  initVisitorCounter();
+  observeContentImages();
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('scroll', updateMascotParallax, { passive: true });
+
+  document.getElementById('loginModal').addEventListener('click', function(e) {
+    if (e.target === this) closeLogin();
+  });
+  document.getElementById('editModal').addEventListener('click', function(e) {
+    if (e.target === this) closeEdit();
+  });
+  document.getElementById('newModal').addEventListener('click', function(e) {
+    if (e.target === this) closeNew();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLogin();
+      closeEdit();
+      closeNew();
+      closeFlPanel();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

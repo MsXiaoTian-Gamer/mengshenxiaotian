@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章归档 - 萌神小天</title>
+  <meta name="description" content="萌神小天博客文章归档">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>萌</text></svg>">
+  <style>
+    body { background: var(--bg); }
+    .archive-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px; display: flex; align-items: center; gap: 16px;
+    }
+    .archive-nav a {
+      color: var(--text); text-decoration: none; font-size: 0.95rem;
+      display: flex; align-items: center; gap: 6px; font-weight: 500;
+    }
+    .archive-nav a:hover { color: var(--brand); }
+    .archive-nav .nav-divider { flex: 1; }
+    .archive-nav .theme-btn {
+      background: none; border: none; cursor: pointer; font-size: 1.1rem;
+      color: var(--text); padding: 4px 8px;
+    }
+    .archive-container {
+      max-width: 680px; margin: 0 auto; padding: 48px 20px 72px;
+    }
+    .archive-title {
+      font-size: 1.6rem; font-weight: 700; color: var(--text-heading);
+      margin-bottom: 36px; padding-bottom: 16px;
+      border-bottom: 2px solid var(--brand-soft);
+    }
+    .archive-year {
+      margin-bottom: 32px;
+    }
+    .archive-year-title {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1.1rem; font-weight: 700; color: var(--brand);
+      margin-bottom: 14px; padding-left: 12px;
+      border-left: 3px solid var(--brand);
+    }
+    .archive-item {
+      display: flex; align-items: baseline; gap: 16px;
+      padding: 8px 12px; border-radius: var(--radius-sm);
+      transition: background var(--transition);
+    }
+    .archive-item:hover { background: var(--surface-hover); }
+    .archive-item .archive-date {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem; color: var(--text-faint);
+      white-space: nowrap; min-width: 90px;
+    }
+    .archive-item .archive-link {
+      font-size: 0.92rem; color: var(--text);
+      text-decoration: none; line-height: 1.4;
+      transition: color var(--transition);
+    }
+    .archive-item .archive-link:hover { color: var(--brand); }
+    .archive-count {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem; color: var(--text-faint);
+      font-weight: 400; margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="archive-nav">
+  <a href="/" title="回到首页">&#8592; 萌神小天</a>
+  <span class="nav-divider"></span>
+  <span style="font-size:0.9rem;color:var(--text-secondary);">归档</span>
+  <button class="theme-btn" onclick="toggleTheme()" title="切换深色/浅色模式" aria-label="切换主题">&#9790;</button>
+</nav>
+
+<div class="archive-container">
+  <h1 class="archive-title">文章归档</h1>
+  <div id="archiveContent"></div>
+</div>
+
+<script src="/js/articles.js"></script>
+<script>
+function toggleTheme() {
+  var html = document.documentElement;
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('blog_theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('blog_theme', 'dark');
+  }
+}
+
+(function() {
+  var saved = localStorage.getItem('blog_theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else if (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+
+// Render archive
+(function() {
+  var articles = ARTICLES.slice().sort(function(a, b) { return b.date.localeCompare(a.date); });
+  var years = {};
+  articles.forEach(function(a) {
+    var year = a.date.substring(0, 4);
+    if (!years[year]) years[year] = [];
+    years[year].push(a);
+  });
+
+  var yearKeys = Object.keys(years).sort(function(a, b) { return b.localeCompare(a); });
+  var html = '';
+  yearKeys.forEach(function(year) {
+    var items = years[year];
+    html += '<div class="archive-year">';
+    html += '<h2 class="archive-year-title">' + year + ' 年<span class="archive-count">' + items.length + ' 篇</span></h2>';
+    items.forEach(function(a) {
+      html += '<div class="archive-item">';
+      html += '<span class="archive-date">' + a.date + '</span>';
+      html += '<a class="archive-link" href="/articles/' + a.path.replace('.md', '.html') + '">' + a.title + '</a>';
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+
+  document.getElementById('archiveContent').innerHTML = html;
+})();
+</script>
+</body>
+</html>
