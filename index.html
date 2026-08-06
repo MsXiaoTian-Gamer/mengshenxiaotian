@@ -401,7 +401,7 @@ function renderMobileCards(articles) {
   if (!container) return;
   var html = '';
   articles.forEach(function(a) {
-    var badge = getDateBadge(a);
+    var badge = getDateBadge(a.date);
     var tagsHtml = (a.tags || []).map(function(t) {
       return '<span class="mobile-card-tag">' + t + '</span>';
     }).join('');
