@@ -233,56 +233,29 @@
 </div>
 
 <!-- Kawaii Mascot -->
-<!-- Kawaii Mascot (Anime Style) -->
-<div class="kawaii-mascot" id="mascot" aria-hidden="true">
-  <div class="mascot-body" id="mascotBody" title="点我试试~" aria-label="看板娘">
-    <!-- Twin Tails -->
-    <div class="mascot-tail left">
+<div class="mascot-wrap" id="mascotWrap">
+  <div class="mascot-bubble" id="mascotBubble">你好呀~</div>
+  <div class="mascot" id="mascot" onclick="mascotClick()">
+    <div class="mascot-tail">
       <div class="mascot-tail-ribbon"></div>
     </div>
-    <div class="mascot-tail right">
-      <div class="mascot-tail-ribbon"></div>
+    <div class="mascot-torso">
+      <div class="mascot-top"></div>
+      <div class="mascot-collar">
+        <div class="mascot-collar-stripe left"></div>
+        <div class="mascot-collar-stripe right"></div>
+      </div>
+      <div class="mascot-tie"></div>
     </div>
-    <!-- Head -->
     <div class="mascot-head">
-      <div class="mascot-bangs">
-        <div class="mascot-bangs-notch"></div>
-      </div>
-      <div class="mascot-brow left"></div>
-      <div class="mascot-brow right"></div>
-      <div class="mascot-eye left">
-        <div class="mascot-eye-hl"></div>
-        <div class="mascot-eye-star"></div>
-        <div class="mascot-eye-sparkle"></div>
-        <div class="mascot-eye-sparkle2"></div>
-      </div>
-      <div class="mascot-eye right">
-        <div class="mascot-eye-hl"></div>
-        <div class="mascot-eye-star"></div>
-        <div class="mascot-eye-sparkle"></div>
-        <div class="mascot-eye-sparkle2"></div>
-      </div>
+      <div class="mascot-bangs"><div class="mascot-bangs-notch"></div></div>
+      <div class="mascot-eye left"><div class="mascot-eye-shine"></div></div>
+      <div class="mascot-eye right"><div class="mascot-eye-shine"></div></div>
+      <div class="mascot-mouth"></div>
       <div class="mascot-blush left"></div>
       <div class="mascot-blush right"></div>
-      <div class="mascot-mouth"></div>
-    </div>
-    <!-- Body -->
-    <div class="mascot-torso">
-      <div class="mascot-top">
-        <div class="mascot-collar"></div>
-        <div class="mascot-tie"></div>
-      </div>
-      <div class="mascot-skirt"></div>
-      <div class="mascot-arm left"></div>
-      <div class="mascot-arm right"></div>
-    </div>
-    <div class="mascot-legs">
-      <div class="mascot-leg"></div>
-      <div class="mascot-leg"></div>
     </div>
   </div>
-  <div class="mascot-bubble" id="mascotBubble" aria-live="polite">你好呀~</div>
-</div>
 </div>
 
 <script src="js/articles.js"></script>
@@ -554,7 +527,6 @@ var mascotMessages = [
 ];
 function mascotClick() {
   var bubble = document.getElementById('mascotBubble');
-  if (!bubble) return;
   var msg = mascotMessages[Math.floor(Math.random() * mascotMessages.length)];
   bubble.textContent = msg;
   bubble.classList.remove('show');
@@ -563,7 +535,6 @@ function mascotClick() {
 }
 function initMascot() {
   var bubble = document.getElementById('mascotBubble');
-  if (!bubble) return;
   bubble.classList.add('show');
   setInterval(function() {
     if (!bubble.classList.contains('show')) {

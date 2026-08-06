@@ -127,6 +127,8 @@ function toggleTheme() {
 
 // ====== Admin ======
 
+function getDeletedList() {
+
   try { return JSON.parse(localStorage.getItem('blog_deleted') || '[]'); }
   catch(e) { return []; }
 }
@@ -451,7 +453,7 @@ function loadArticleByFilteredIdx(idx) {
     renderArticle(article);
     renderArticleList();
     if (isAdmin()) {
-      document.getElementById('articleAdminActions').style.display = 'flex';
+      document.getElementById("articleAdminActions").style.display = "flex";
     }
   });
 }
@@ -534,6 +536,12 @@ function loadArticle(idx) {
 
   fadeContent(function() {
     renderArticle(article);
+    renderArticleList();
+    if (isAdmin()) {
+      document.getElementById("articleAdminActions").style.display = "flex";
+    }
+  });
+}
 
 function renderArticle(article) {
   var md = getArticleContent(article);
