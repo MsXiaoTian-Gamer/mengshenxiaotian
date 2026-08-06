@@ -11,7 +11,6 @@
     --text: #5c4a58;
     --text-heading: #3d2a38;
     --text-muted: #8a7a88;
-    --text-secondary: #8a7a88;
     --text-faint: #b8a8b4;
     --brand: #ff6b8a;
     --brand-light: #ff8da5;
@@ -39,9 +38,6 @@
     --code-border: #ffecf2;
     --kbd-bg: #faf8f5;
     --kbd-border: #ebe0d8;
-    --font-mono: 'SF Mono','Fira Code','Consolas',monospace;
-    --tag-bg: #ffecf2;
-    --tag-text: #ff6b8a;
     --table-stripe: #faf8f5;
     --scrollbar-thumb: #e8d5d8;
     --scrollbar-track: #faf8f5;
