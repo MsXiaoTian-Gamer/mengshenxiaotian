@@ -35,6 +35,17 @@
       border-radius: var(--radius); text-align: center;
       color: var(--text-muted); font-size: 0.85rem; line-height: 1.7;
     }
+    .social-label {
+      font-size: 0.75rem; margin-left: 4px; font-weight: 500;
+    }
+    .intro-social-btn {
+      display: inline-flex; align-items: center; gap: 2px;
+      padding: 6px 14px; border: 1px solid var(--border);
+      border-radius: 20px; text-decoration: none;
+      color: var(--text); font-size: 0.88rem;
+      transition: all 0.2s; background: var(--surface);
+    }
+    .intro-social-btn:hover { background: var(--brand-soft); border-color: var(--brand); }
   </style>
 </head>
 <body>
@@ -63,17 +74,18 @@
       <span class="intro-tag">独立游戏</span>
       <span class="intro-tag">TapTap</span>
     </div>
-    <div class="intro-social" style="display:flex;justify-content:center;gap:8px;padding-top:20px;border-top:1px solid var(--border-light);">
-      <a href="https://github.com/MsXiaoT-Gamer" target="_blank" class="intro-social-btn" title="GitHub">&#9906;</a>
-      <a href="https://www.taptap.cn/app/779424" target="_blank" class="intro-social-btn" title="TapTap">&#9654;</a>
-      <a href="https://msxiaotian.itch.io/tiny-pet-sand-wars" target="_blank" class="intro-social-btn" title="itch.io">&#9881;</a>
-      <a href="mailto:2408710670@qq.com" class="intro-social-btn" title="Email">&#9993;</a>
+    <div class="intro-social" style="display:flex;justify-content:center;gap:8px;padding-top:20px;border-top:1px solid var(--border-light);flex-wrap:wrap;">
+      <a href="https://github.com/MsXiaoT-Gamer" target="_blank" class="intro-social-btn" title="GitHub">&#9906;<span class="social-label">GitHub</span></a>
+      <a href="https://www.taptap.cn/app/779424" target="_blank" class="intro-social-btn" title="TapTap">&#9654;<span class="social-label">TapTap</span></a>
+      <a href="https://msxiaotian.itch.io/tiny-pet-sand-wars" target="_blank" class="intro-social-btn" title="itch.io">&#9881;<span class="social-label">itch.io</span></a>
+      <a href="mailto:2408710670@qq.com" class="intro-social-btn" title="Email">&#9993;<span class="social-label">邮箱</span></a>
     </div>
   </div>
 
-  <div class="about-blog-note">
-    这个博客记录了我的独立游戏开发历程，从 Unity 学习笔记到 TapTap 聚光灯参赛日志，
-    再到《小宠沙暴大战》的持续更新。希望这些内容能帮助到同样热爱游戏开发的你。
+  <div class="about-contact-card" style="margin-top:28px;padding:18px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);text-align:center;font-size:0.88rem;color:var(--text-muted);line-height:1.8;">
+    <strong style="color:var(--text-heading);display:block;margin-bottom:6px;">联系方式</strong>
+    邮箱：2408710670@qq.com<br>
+    GitHub：<a href="https://github.com/MsXiaoT-Gamer" style="color:var(--brand);text-decoration:none;">MsXiaoT-Gamer</a>
   </div>
 </div>
 

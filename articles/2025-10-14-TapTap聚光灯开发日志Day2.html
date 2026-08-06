@@ -136,6 +136,12 @@ window.addEventListener('scroll', function() {
     if (endIdx !== -1) rawContent = rawContent.substring(endIdx + 3).trim();
   }
   
+  // Strip first H1 title to avoid duplication with page header
+  if (rawContent.startsWith('# ')) {
+    var nl = rawContent.indexOf('\n');
+    rawContent = nl !== -1 ? rawContent.substring(nl + 1).trim() : '';
+  }
+  
   // Render markdown
   var htmlContent;
   try {

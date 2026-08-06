@@ -8,9 +8,9 @@
     --surface: #ffffff;
     --surface-hover: #fff5f3;
     --surface-alt: #faf8f5;
-    --text: #5c4a58;
-    --text-heading: #3d2a38;
-    --text-muted: #8a7a88;
+    --text: #4a3646;
+    --text-heading: #2d1a2a;
+    --text-muted: #6a5a68;
     --text-secondary: #8a7a88;
     --text-faint: #b8a8b4;
     --brand: #ff6b8a;
@@ -25,10 +25,10 @@
     --border-light: #f8f2f0;
     --divider-color: #ebe0d8;
     --focus-ring: rgba(255,107,138,0.3);
-    --shadow-sm: 0 1px 3px rgba(100,80,80,0.06);
-    --shadow: 0 2px 8px rgba(100,80,80,0.08);
-    --shadow-md: 0 4px 16px rgba(100,80,80,0.10);
-    --shadow-lg: 0 8px 32px rgba(100,80,80,0.12);
+    --shadow-sm: 0 1px 3px rgba(100,80,80,0.10);
+    --shadow: 0 2px 8px rgba(100,80,80,0.12);
+    --shadow-md: 0 4px 16px rgba(100,80,80,0.15);
+    --shadow-lg: 0 8px 32px rgba(100,80,80,0.18);
     --radius-sm: 8px;
     --radius: 14px;
     --radius-lg: 20px;

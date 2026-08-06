@@ -62,8 +62,32 @@
     .archive-item .archive-link:hover { color: var(--brand); }
     .archive-count {
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem; color: var(--text-faint);
-      font-weight: 400; margin-left: 8px;
+      font-size: 0.78rem; color: var(--brand);
+      font-weight: 600; margin-left: 8px;
+    }
+    .archive-year-title {
+      cursor: pointer; user-select: none;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .archive-year-title .collapse-icon {
+      font-size: 0.7rem; transition: transform 0.25s;
+      display: inline-block;
+    }
+    .archive-year-title.collapsed .collapse-icon { transform: rotate(-90deg); }
+    .archive-year-body { overflow: hidden; transition: max-height 0.3s ease; }
+    .archive-year-body.collapsed { max-height: 0 !important; }
+    /* Tag filter bar */
+    .archive-tag-filters {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+    }
+    .archive-tag-btn {
+      padding: 4px 14px; border-radius: 16px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text-muted);
+      font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+    }
+    .archive-tag-btn:hover, .archive-tag-btn.active {
+      background: var(--brand-soft); color: var(--brand);
+      border-color: var(--brand);
     }
   </style>
 </head>
@@ -78,10 +102,12 @@
 
 <div class="archive-container">
   <h1 class="archive-title">文章归档</h1>
+  <div class="archive-tag-filters" id="archiveTagFilters"></div>
   <div id="archiveContent"></div>
 </div>
 
 <script src="js/articles.js"></script>
+<script src="js/app.js"></script>
 <script>
 function toggleTheme() {
   var html = document.documentElement;
@@ -102,11 +128,20 @@ function toggleTheme() {
   }
 })();
 
-// Render archive
-(function() {
+var currentArchiveTag = 'all';
+
+function renderArchive(filterTag) {
+  filterTag = filterTag || 'all';
   var articles = ARTICLES.slice().sort(function(a, b) { return b.date.localeCompare(a.date); });
+  
+  // Filter by tag
+  var filtered = articles;
+  if (filterTag !== 'all') {
+    filtered = articles.filter(function(a) { return (a.tags || []).indexOf(filterTag) >= 0; });
+  }
+  
   var years = {};
-  articles.forEach(function(a) {
+  filtered.forEach(function(a) {
     var year = a.date.substring(0, 4);
     if (!years[year]) years[year] = [];
     years[year].push(a);
@@ -116,18 +151,61 @@ function toggleTheme() {
   var html = '';
   yearKeys.forEach(function(year) {
     var items = years[year];
-    html += '<div class="archive-year">';
-    html += '<h2 class="archive-year-title">' + year + ' 年<span class="archive-count">' + items.length + ' 篇</span></h2>';
+    html += '<div class="archive-year" data-year="' + year + '">';
+    html += '<h2 class="archive-year-title" onclick="toggleYear(this)" title="点击折叠/展开">';
+    html += '<span class="collapse-icon">&#9660;</span>';
+    html += year + ' 年<span class="archive-count">' + items.length + ' 篇</span>';
+    html += '</h2>';
+    html += '<div class="archive-year-body">';
     items.forEach(function(a) {
+      var colors = typeof getTagColors === 'function' ? getTagColors((a.tags || [])[0]) : {color:'var(--brand)',bg:'var(--brand-soft)'};
+      var tagsMini = (a.tags || []).map(function(t) {
+        return '<span style="font-size:0.65rem;padding:1px 6px;border-radius:8px;margin-left:4px;background:' + colors.bg + ';color:' + colors.color + '">' + t + '</span>';
+      }).join('');
       html += '<div class="archive-item">';
       html += '<span class="archive-date">' + a.date + '</span>';
       html += '<a class="archive-link" href="/articles/' + a.path.replace('.md', '.html') + '">' + a.title + '</a>';
+      html += '<span style="flex:1"></span>' + tagsMini;
       html += '</div>';
     });
     html += '</div>';
+    html += '</div>';
   });
 
-  document.getElementById('archiveContent').innerHTML = html;
+  document.getElementById('archiveContent').innerHTML = html || '<p style="color:var(--text-muted);text-align:center;">没有匹配的文章</p>';
+}
+
+function toggleYear(el) {
+  el.classList.toggle('collapsed');
+  var body = el.nextElementSibling;
+  if (body) body.classList.toggle('collapsed');
+}
+
+// Render tag filters
+function renderArchiveTagFilters() {
+  var articles = ARTICLES.slice().sort(function(a, b) { return b.date.localeCompare(a.date); });
+  var tagCount = {};
+  articles.forEach(function(a) {
+    (a.tags || []).forEach(function(t) { tagCount[t] = (tagCount[t] || 0) + 1; });
+  });
+  var tags = Object.keys(tagCount).sort(function(a, b) { return tagCount[b] - tagCount[a]; });
+  var html = '<button class="archive-tag-btn active" data-tag="all" onclick="filterArchive(\'all\',this)">全部 (' + articles.length + ')</button>';
+  tags.forEach(function(t) {
+    html += '<button class="archive-tag-btn" data-tag="' + t + '" onclick="filterArchive(\'' + t.replace(/'/g, "\\'") + '\',this)">' + t + ' (' + tagCount[t] + ')</button>';
+  });
+  document.getElementById('archiveTagFilters').innerHTML = html;
+}
+
+function filterArchive(tag, btn) {
+  currentArchiveTag = tag;
+  document.querySelectorAll('.archive-tag-btn').forEach(function(b) { b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  renderArchive(tag);
+}
+
+(function() {
+  renderArchiveTagFilters();
+  renderArchive('all');
 })();
 </script>
 <!-- Kawaii Mascot (Anime Style) -->

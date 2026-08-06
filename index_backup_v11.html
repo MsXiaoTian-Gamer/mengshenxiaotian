@@ -452,17 +452,6 @@ function initSearch() {
 // ====== Refresh ======
 function refreshAll() {
   var all = getAllArticles();
-
-  // Update hero stats FIRST — before any render that might fail
-  var elCount = document.getElementById('articleCount');
-  var elTagCount = document.getElementById('tagCount');
-  if (elCount) elCount.innerHTML = '&#9998; ' + all.length + ' 篇文章';
-  if (elTagCount) {
-    var allTags = {};
-    all.forEach(function(a) { (a.tags || []).forEach(function(t) { allTags[t] = true; }); });
-    elTagCount.innerHTML = '&#127991; ' + Object.keys(allTags).length + ' 个标签';
-  }
-
   var query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
 
   var filtered;
@@ -486,8 +475,15 @@ function refreshAll() {
 
   var noResults = document.getElementById('noResults');
   var cardsGrid = document.getElementById('articleCardsGrid');
+  var mobileList = document.getElementById('mobileArticleList');
   if (noResults) noResults.style.display = filtered.length === 0 ? 'block' : 'none';
   if (cardsGrid) cardsGrid.style.display = filtered.length === 0 ? 'none' : '';
+
+  // Update hero stats
+  document.getElementById('articleCount').innerHTML = '&#9998; ' + all.length + ' 篇文章';
+  var allTags = {};
+  all.forEach(function(a) { (a.tags || []).forEach(function(t) { allTags[t] = true; }); });
+  document.getElementById('tagCount').innerHTML = '&#127991; ' + Object.keys(allTags).length + ' 个标签';
 }
 
 // ====== Daily Quote ======
