@@ -93,6 +93,8 @@ var seen = {};
 ARTICLES.forEach(function(a) {
   a.tags.forEach(function(t) {
     if (!seen[t]) { seen[t] = true; allTags.push(t); }
+  });
+});
 
 
 // ====== Theme ======
