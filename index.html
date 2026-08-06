@@ -4135,6 +4135,11 @@ function loadArticle(idx) {
   currentArticle = article;
   resetSearch();
 
+  // 手机端选择文章后自动关闭侧边栏
+  if (window.innerWidth <= 900) {
+    document.body.classList.remove('nav-open');
+  }
+
   fadeContent(function() {
     renderArticle(article);
     history.replaceState(null, '', '#article/' + article.path.replace('.md', ''));
@@ -4528,6 +4533,10 @@ function loadArticleByFilteredIdx(idx) {
   var article = filtered[idx];
   if (!article) return;
   currentArticle = article;
+  // 手机端自动关闭侧边栏
+  if (window.innerWidth <= 900) {
+    document.body.classList.remove('nav-open');
+  }
   fadeContent(function() {
     renderArticle(article);
     renderArticleList();
