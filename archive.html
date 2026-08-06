@@ -201,10 +201,15 @@ function filterArchive(tag, btn) {
   renderArchive(tag);
 }
 
-(function() {
-  renderArchiveTagFilters();
-  renderArchive('all');
-})();
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    renderArchiveTagFilters();
+    renderArchive('all');
+  } catch(e) {
+    console.error('Archive render error:', e);
+    document.getElementById('archiveContent').innerHTML = '<p style="color:var(--text-muted);text-align:center;">加载文章列表时出错，请刷新页面重试</p>';
+  }
+});
 </script>
 <!-- Kawaii Mascot (Anime Style) -->
 <div class="kawaii-mascot" id="mascot" aria-hidden="true">

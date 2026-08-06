@@ -3471,3 +3471,66 @@ mark.search-highlight {
     box-shadow: 0 1px 8px rgba(232,125,160,0.25);
   }
 }
+
+/* ====== Page Transition Animations ====== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Page content entrance */
+.archive-container,
+.about-container,
+.article-content-wrapper,
+.hero {
+  animation: fadeInUp 0.45s ease both;
+}
+
+/* Stagger: article cards & list items */
+.article-card,
+.archive-item {
+  opacity: 0;
+  animation: fadeInUp 0.4s ease forwards;
+}
+.article-card:nth-child(1),  .archive-item:nth-child(1)  { animation-delay: 0.05s; }
+.article-card:nth-child(2),  .archive-item:nth-child(2)  { animation-delay: 0.1s; }
+.article-card:nth-child(3),  .archive-item:nth-child(3)  { animation-delay: 0.15s; }
+.article-card:nth-child(4),  .archive-item:nth-child(4)  { animation-delay: 0.2s; }
+.article-card:nth-child(5),  .archive-item:nth-child(5)  { animation-delay: 0.25s; }
+.article-card:nth-child(6),  .archive-item:nth-child(6)  { animation-delay: 0.3s; }
+.article-card:nth-child(7),  .archive-item:nth-child(7)  { animation-delay: 0.35s; }
+.article-card:nth-child(8),  .archive-item:nth-child(8)  { animation-delay: 0.4s; }
+.article-card:nth-child(9),  .archive-item:nth-child(9)  { animation-delay: 0.45s; }
+.article-card:nth-child(10), .archive-item:nth-child(10) { animation-delay: 0.5s; }
+.article-card:nth-child(n+11), .archive-item:nth-child(n+11) { animation-delay: 0.55s; }
+
+/* Year groups also fade in */
+.archive-year {
+  animation: fadeInUp 0.4s ease both;
+}
+.archive-year:nth-child(1) { animation-delay: 0s; }
+.archive-year:nth-child(2) { animation-delay: 0.08s; }
+.archive-year:nth-child(3) { animation-delay: 0.16s; }
+.archive-year:nth-child(4) { animation-delay: 0.24s; }
+.archive-year:nth-child(n+5) { animation-delay: 0.3s; }
+
+/* Smooth page transitions via browser navigation */
+@view-transition { navigation: auto; }
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .archive-container,
+  .about-container,
+  .article-content-wrapper,
+  .hero,
+  .article-card,
+  .archive-item,
+  .archive-year {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
