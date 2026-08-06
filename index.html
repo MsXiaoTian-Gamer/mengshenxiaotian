@@ -513,8 +513,16 @@ function initStats() {
   // Site footer stats
   var statsEl = document.getElementById('siteStats');
   if (statsEl) {
-    statsEl.innerHTML = '共 ' + articles.length + ' 篇文章 | 始于 2025';
+    var vc = parseInt(localStorage.getItem('blog_visitor_count') || '0', 10);
+    statsEl.innerHTML = '共 ' + articles.length + ' 篇文章 · ' + vc + ' 次访问 | 始于 2025';
   }
+}
+
+// ====== Visitor Counter ======
+function initVisitorCounter() {
+  var key = 'blog_visitor_count';
+  var count = parseInt(localStorage.getItem(key) || '0', 10) + 1;
+  localStorage.setItem(key, count);
 }
 
 // ====== Running Time ======
@@ -717,6 +725,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initHamburger();
   initBackToTop();
   initDailyQuote();
+  initVisitorCounter();
   initStats();
   initRunningTime();
   initFlinks();

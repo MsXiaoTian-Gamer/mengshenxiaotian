@@ -233,29 +233,56 @@
 </div>
 
 <!-- Kawaii Mascot -->
-<div class="mascot-wrap" id="mascotWrap">
-  <div class="mascot-bubble" id="mascotBubble">你好呀~</div>
-  <div class="mascot" id="mascot" onclick="mascotClick()">
-    <div class="mascot-tail">
+<!-- Kawaii Mascot (Anime Style) -->
+<div class="kawaii-mascot" id="mascot" aria-hidden="true">
+  <div class="mascot-body" id="mascotBody" title="点我试试~" aria-label="看板娘">
+    <!-- Twin Tails -->
+    <div class="mascot-tail left">
       <div class="mascot-tail-ribbon"></div>
     </div>
-    <div class="mascot-torso">
-      <div class="mascot-top"></div>
-      <div class="mascot-collar">
-        <div class="mascot-collar-stripe left"></div>
-        <div class="mascot-collar-stripe right"></div>
-      </div>
-      <div class="mascot-tie"></div>
+    <div class="mascot-tail right">
+      <div class="mascot-tail-ribbon"></div>
     </div>
+    <!-- Head -->
     <div class="mascot-head">
-      <div class="mascot-bangs"><div class="mascot-bangs-notch"></div></div>
-      <div class="mascot-eye left"><div class="mascot-eye-shine"></div></div>
-      <div class="mascot-eye right"><div class="mascot-eye-shine"></div></div>
-      <div class="mascot-mouth"></div>
+      <div class="mascot-bangs">
+        <div class="mascot-bangs-notch"></div>
+      </div>
+      <div class="mascot-brow left"></div>
+      <div class="mascot-brow right"></div>
+      <div class="mascot-eye left">
+        <div class="mascot-eye-hl"></div>
+        <div class="mascot-eye-star"></div>
+        <div class="mascot-eye-sparkle"></div>
+        <div class="mascot-eye-sparkle2"></div>
+      </div>
+      <div class="mascot-eye right">
+        <div class="mascot-eye-hl"></div>
+        <div class="mascot-eye-star"></div>
+        <div class="mascot-eye-sparkle"></div>
+        <div class="mascot-eye-sparkle2"></div>
+      </div>
       <div class="mascot-blush left"></div>
       <div class="mascot-blush right"></div>
+      <div class="mascot-mouth"></div>
+    </div>
+    <!-- Body -->
+    <div class="mascot-torso">
+      <div class="mascot-top">
+        <div class="mascot-collar"></div>
+        <div class="mascot-tie"></div>
+      </div>
+      <div class="mascot-skirt"></div>
+      <div class="mascot-arm left"></div>
+      <div class="mascot-arm right"></div>
+    </div>
+    <div class="mascot-legs">
+      <div class="mascot-leg"></div>
+      <div class="mascot-leg"></div>
     </div>
   </div>
+  <div class="mascot-bubble" id="mascotBubble" aria-live="polite">你好呀~</div>
+</div>
 </div>
 
 <script src="js/articles.js"></script>
@@ -374,7 +401,7 @@ function renderMobileCards(articles) {
   if (!container) return;
   var html = '';
   articles.forEach(function(a) {
-    var badge = getDateBadge(a);
+    var badge = getDateBadge(a.date);
     var tagsHtml = (a.tags || []).map(function(t) {
       return '<span class="mobile-card-tag">' + t + '</span>';
     }).join('');
@@ -425,6 +452,17 @@ function initSearch() {
 // ====== Refresh ======
 function refreshAll() {
   var all = getAllArticles();
+
+  // Update hero stats FIRST — before any render that might fail
+  var elCount = document.getElementById('articleCount');
+  var elTagCount = document.getElementById('tagCount');
+  if (elCount) elCount.innerHTML = '&#9998; ' + all.length + ' 篇文章';
+  if (elTagCount) {
+    var allTags = {};
+    all.forEach(function(a) { (a.tags || []).forEach(function(t) { allTags[t] = true; }); });
+    elTagCount.innerHTML = '&#127991; ' + Object.keys(allTags).length + ' 个标签';
+  }
+
   var query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
 
   var filtered;
@@ -448,15 +486,8 @@ function refreshAll() {
 
   var noResults = document.getElementById('noResults');
   var cardsGrid = document.getElementById('articleCardsGrid');
-  var mobileList = document.getElementById('mobileArticleList');
   if (noResults) noResults.style.display = filtered.length === 0 ? 'block' : 'none';
   if (cardsGrid) cardsGrid.style.display = filtered.length === 0 ? 'none' : '';
-
-  // Update hero stats
-  document.getElementById('articleCount').innerHTML = '&#9998; ' + all.length + ' 篇文章';
-  var allTags = {};
-  all.forEach(function(a) { (a.tags || []).forEach(function(t) { allTags[t] = true; }); });
-  document.getElementById('tagCount').innerHTML = '&#127991; ' + Object.keys(allTags).length + ' 个标签';
 }
 
 // ====== Daily Quote ======
@@ -527,16 +558,126 @@ var mascotMessages = [
 ];
 function mascotClick() {
   var bubble = document.getElementById('mascotBubble');
+  if (!bubble) return;
   var msg = mascotMessages[Math.floor(Math.random() * mascotMessages.length)];
   bubble.textContent = msg;
   bubble.classList.remove('show');
   void bubble.offsetWidth;
   bubble.classList.add('show');
 }
+
+// ====== Mascot Drag ======
+(function() {
+  var container = document.getElementById('mascot');
+  var body = document.getElementById('mascotBody');
+  if (!container || !body) return;
+
+  var startX = 0, startY = 0, startLeft = 0, startTop = 0;
+  var dragging = false, movedDistance = 0;
+  var defaultRight = 22, defaultBottom = 74;
+
+  // Restore saved position
+  var savedX = localStorage.getItem('mascot_x');
+  var savedY = localStorage.getItem('mascot_y');
+  if (savedX !== null && savedY !== null) {
+    container.style.right = 'auto';
+    container.style.bottom = 'auto';
+    container.style.left = savedX + 'px';
+    container.style.top = savedY + 'px';
+  }
+
+  function clamp(val, min, max) { return Math.max(min, Math.min(max, val)); }
+
+  function setDragging(on) {
+    dragging = on;
+    if (on) {
+      container.classList.add('dragging');
+      container.style.transition = 'none';
+    } else {
+      container.classList.remove('dragging');
+      container.style.transition = '';
+    }
+  }
+
+  function onStart(e) {
+    e.preventDefault();
+    var pos = e.touches ? e.touches[0] : e;
+    startX = pos.clientX;
+    startY = pos.clientY;
+    var rect = container.getBoundingClientRect();
+    startLeft = rect.left;
+    startTop = rect.top;
+    movedDistance = 0;
+    setDragging(true);
+  }
+
+  function onMove(e) {
+    if (!dragging) return;
+    e.preventDefault();
+    var pos = e.touches ? e.touches[0] : e;
+    var dx = pos.clientX - startX;
+    var dy = pos.clientY - startY;
+    var newLeft = startLeft + dx;
+    var newTop = startTop + dy;
+    movedDistance = Math.sqrt(dx * dx + dy * dy);
+
+    var maxLeft = window.innerWidth - container.offsetWidth;
+    var maxTop = window.innerHeight - container.offsetHeight;
+    newLeft = clamp(newLeft, 0, maxLeft);
+    newTop = clamp(newTop, 0, maxTop);
+
+    container.style.right = 'auto';
+    container.style.bottom = 'auto';
+    container.style.left = newLeft + 'px';
+    container.style.top = newTop + 'px';
+  }
+
+  function onEnd(e) {
+    if (!dragging) return;
+    setDragging(false);
+
+    if (movedDistance < 3) {
+      // Click — restore saved/default position first
+      if (savedX !== null && savedY !== null) {
+        container.style.left = savedX + 'px';
+        container.style.top = savedY + 'px';
+      } else {
+        container.style.left = '';
+        container.style.top = '';
+        container.style.right = defaultRight + 'px';
+        container.style.bottom = defaultBottom + 'px';
+      }
+      mascotClick();
+      return;
+    }
+
+    // Save final position
+    var rect = container.getBoundingClientRect();
+    var left = Math.round(rect.left);
+    var top = Math.round(rect.top);
+    localStorage.setItem('mascot_x', left);
+    localStorage.setItem('mascot_y', top);
+    container.style.left = left + 'px';
+    container.style.top = top + 'px';
+    container.style.right = 'auto';
+    container.style.bottom = 'auto';
+  }
+
+  body.addEventListener('mousedown', onStart);
+  body.addEventListener('touchstart', onStart, { passive: false });
+  document.addEventListener('mousemove', onMove, { passive: false });
+  document.addEventListener('touchmove', onMove, { passive: false });
+  document.addEventListener('mouseup', onEnd);
+  document.addEventListener('touchend', onEnd);
+})();
+
+var _mascotBubbleTimer = null;
 function initMascot() {
   var bubble = document.getElementById('mascotBubble');
+  if (!bubble) return;
   bubble.classList.add('show');
-  setInterval(function() {
+  if (_mascotBubbleTimer) clearInterval(_mascotBubbleTimer);
+  _mascotBubbleTimer = setInterval(function() {
     if (!bubble.classList.contains('show')) {
       mascotClick();
     }
