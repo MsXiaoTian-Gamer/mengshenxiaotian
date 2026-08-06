@@ -194,11 +194,116 @@ function mascotClick() {
   void bubble.offsetWidth;
   bubble.classList.add('show');
 }
+
+// ====== Mascot Drag ======
+(function() {
+  var container = document.getElementById('mascot');
+  var body = document.getElementById('mascotBody');
+  if (!container || !body) return;
+
+  var startX = 0, startY = 0, startLeft = 0, startTop = 0;
+  var dragging = false, movedDistance = 0;
+  var defaultRight = 22, defaultBottom = 74;
+
+  var savedX = localStorage.getItem('mascot_x');
+  var savedY = localStorage.getItem('mascot_y');
+  if (savedX !== null && savedY !== null) {
+    container.style.right = 'auto';
+    container.style.bottom = 'auto';
+    container.style.left = savedX + 'px';
+    container.style.top = savedY + 'px';
+  }
+
+  function clamp(val, min, max) { return Math.max(min, Math.min(max, val)); }
+
+  function setDragging(on) {
+    dragging = on;
+    if (on) {
+      container.classList.add('dragging');
+      container.style.transition = 'none';
+    } else {
+      container.classList.remove('dragging');
+      container.style.transition = '';
+    }
+  }
+
+  function onStart(e) {
+    e.preventDefault();
+    var pos = e.touches ? e.touches[0] : e;
+    startX = pos.clientX;
+    startY = pos.clientY;
+    var rect = container.getBoundingClientRect();
+    startLeft = rect.left;
+    startTop = rect.top;
+    movedDistance = 0;
+    setDragging(true);
+  }
+
+  function onMove(e) {
+    if (!dragging) return;
+    e.preventDefault();
+    var pos = e.touches ? e.touches[0] : e;
+    var dx = pos.clientX - startX;
+    var dy = pos.clientY - startY;
+    var newLeft = startLeft + dx;
+    var newTop = startTop + dy;
+    movedDistance = Math.sqrt(dx * dx + dy * dy);
+
+    var maxLeft = window.innerWidth - container.offsetWidth;
+    var maxTop = window.innerHeight - container.offsetHeight;
+    newLeft = clamp(newLeft, 0, maxLeft);
+    newTop = clamp(newTop, 0, maxTop);
+
+    container.style.right = 'auto';
+    container.style.bottom = 'auto';
+    container.style.left = newLeft + 'px';
+    container.style.top = newTop + 'px';
+  }
+
+  function onEnd(e) {
+    if (!dragging) return;
+    setDragging(false);
+
+    if (movedDistance < 3) {
+      if (savedX !== null && savedY !== null) {
+        container.style.left = savedX + 'px';
+        container.style.top = savedY + 'px';
+      } else {
+        container.style.left = '';
+        container.style.top = '';
+        container.style.right = defaultRight + 'px';
+        container.style.bottom = defaultBottom + 'px';
+      }
+      mascotClick();
+      return;
+    }
+
+    var rect = container.getBoundingClientRect();
+    var left = Math.round(rect.left);
+    var top = Math.round(rect.top);
+    localStorage.setItem('mascot_x', left);
+    localStorage.setItem('mascot_y', top);
+    container.style.left = left + 'px';
+    container.style.top = top + 'px';
+    container.style.right = 'auto';
+    container.style.bottom = 'auto';
+  }
+
+  body.addEventListener('mousedown', onStart);
+  body.addEventListener('touchstart', onStart, { passive: false });
+  document.addEventListener('mousemove', onMove, { passive: false });
+  document.addEventListener('touchmove', onMove, { passive: false });
+  document.addEventListener('mouseup', onEnd);
+  document.addEventListener('touchend', onEnd);
+})();
+
+var _mascotBubbleTimer = null;
 function initMascot() {
   var bubble = document.getElementById('mascotBubble');
   if (!bubble) return;
   bubble.classList.add('show');
-  setInterval(function() {
+  if (_mascotBubbleTimer) clearInterval(_mascotBubbleTimer);
+  _mascotBubbleTimer = setInterval(function() {
     if (!bubble.classList.contains('show')) {
       mascotClick();
     }
