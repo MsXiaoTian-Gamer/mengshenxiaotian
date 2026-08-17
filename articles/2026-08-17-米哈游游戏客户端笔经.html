@@ -67,6 +67,16 @@
       .art-nav { padding: 10px 16px; }
       .art-nav .nav-title { display: none; }
     }
+  
+    /* LeetCode-style code tabs */
+    .lc-tabs{position:relative;margin:1em 0;border-radius:8px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.15);border:1px solid #333}
+    .lc-bar{display:flex;background:#1e1e1e;border-bottom:1px solid #333}
+    .lc-tab{padding:9px 18px;font-size:13px;color:#8a8a8a;cursor:pointer;user-select:none;border-bottom:2px solid transparent;transition:color .15s}
+    .lc-tab:hover{color:#d4d4d4}
+    .lc-tab.active{color:#ffa116;border-bottom-color:#ffa116}
+    .lc-panel{display:none;background:#1e1e1e;padding:14px 16px;overflow-x:auto}
+    .lc-panel pre{margin:0;background:transparent!important;box-shadow:none!important}
+    .lc-panel code{font-family:var(--font-mono,'SF Mono','Fira Code',monospace)!important;font-size:0.88em!important;line-height:1.65;color:#d4d4d4!important;background:transparent!important;padding:0!important}
   </style>
 </head>
 <body>
@@ -182,7 +192,65 @@ window.addEventListener('scroll', function() {
   
   document.getElementById('article-content').innerHTML = headerHtml + '<div class="art-content">' + htmlContent + '</div>';
   
-  // Highlight code
+  
+  // Convert <!-- code-tabs --> markers into LeetCode-style language tabs
+  (function() {
+    var root = document.getElementById('article-content');
+    if (!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null, false);
+    var starts = [];
+    var node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue === 'code-tabs') starts.push(node);
+    }
+    starts.forEach(function(start) {
+      var el = start.nextSibling;
+      var end = null;
+      var pres = [];
+      while (el) {
+        if (el.nodeType === Node.COMMENT_NODE && el.nodeValue === 'end-code-tabs') { end = el; break; }
+        if (el.nodeType === Node.ELEMENT_NODE && el.tagName === 'PRE') pres.push(el);
+        el = el.nextSibling;
+      }
+      if (!end || pres.length === 0) return;
+      var wrapper = document.createElement('div');
+      wrapper.className = 'lc-tabs';
+      var bar = document.createElement('div');
+      bar.className = 'lc-bar';
+      var panels = [];
+      var names = { python: 'Python', py: 'Python', cpp: 'C++', 'c++': 'C++', csharp: 'C#', cs: 'C#' };
+      pres.forEach(function(pre, i) {
+        var code = pre.querySelector('code');
+        var lang = '';
+        if (code) { var m = (code.className || '').match(/language-([\w-]+)/); if (m) lang = m[1]; }
+        var tab = document.createElement('span');
+        tab.className = 'lc-tab' + (i === 0 ? ' active' : '');
+        tab.textContent = names[lang] || lang || ('语言 ' + (i + 1));
+        tab.addEventListener('click', (function(idx) {
+          return function() {
+            var tabs = bar.querySelectorAll('.lc-tab');
+            for (var t = 0; t < tabs.length; t++) tabs[t].classList.toggle('active', t === idx);
+            for (var p = 0; p < panels.length; p++) panels[p].style.display = p === idx ? 'block' : 'none';
+          };
+        })(i));
+        bar.appendChild(tab);
+        var panel = document.createElement('div');
+        panel.className = 'lc-panel';
+        panel.style.display = i === 0 ? 'block' : 'none';
+        panel.appendChild(pre);
+        panels.push(panel);
+        wrapper.appendChild(panel);
+      });
+      wrapper.insertBefore(bar, wrapper.firstChild);
+      var cursor = start;
+      while (cursor && cursor !== end) { var nx = cursor.nextSibling; cursor.parentNode.removeChild(cursor); cursor = nx; }
+      if (end) end.parentNode.removeChild(end);
+      start.parentNode.insertBefore(wrapper, start);
+      start.parentNode.removeChild(start);
+    });
+  })();
+
+// Highlight code
   if (typeof hljs !== 'undefined') {
     document.querySelectorAll('.art-content pre code').forEach(function(el) { hljs.highlightElement(el); });
   }
