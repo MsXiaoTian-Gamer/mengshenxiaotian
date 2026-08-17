@@ -209,7 +209,7 @@ window.addEventListener('scroll', function() {
       var pres = [];
       while (el) {
         if (el.nodeType === Node.COMMENT_NODE && el.nodeValue.trim() === 'end-code-tabs') { end = el; break; }
-        if (el.nodeType === Node.ELEMENT_NODE && el.tagName === 'PRE') pres.push(el);
+        if (el.nodeType === Node.ELEMENT_NODE && (el.tagName === 'PRE' || (el.tagName === 'DIV' && el.classList.contains('code-block-wrapper')))) pres.push(el);
         el = el.nextSibling;
       }
       if (!end || pres.length === 0) return;
