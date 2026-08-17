@@ -201,14 +201,14 @@ window.addEventListener('scroll', function() {
     var starts = [];
     var node;
     while ((node = walker.nextNode())) {
-      if (node.nodeValue === 'code-tabs') starts.push(node);
+      if (node.nodeValue.trim() === 'code-tabs') starts.push(node);
     }
     starts.forEach(function(start) {
       var el = start.nextSibling;
       var end = null;
       var pres = [];
       while (el) {
-        if (el.nodeType === Node.COMMENT_NODE && el.nodeValue === 'end-code-tabs') { end = el; break; }
+        if (el.nodeType === Node.COMMENT_NODE && el.nodeValue.trim() === 'end-code-tabs') { end = el; break; }
         if (el.nodeType === Node.ELEMENT_NODE && el.tagName === 'PRE') pres.push(el);
         el = el.nextSibling;
       }
