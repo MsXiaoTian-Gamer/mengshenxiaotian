@@ -242,7 +242,7 @@ window.addEventListener('scroll', function() {
         wrapper.appendChild(panel);
       });
       wrapper.insertBefore(bar, wrapper.firstChild);
-      var cursor = start;
+      var cursor = start.nextSibling;
       while (cursor && cursor !== end) { var nx = cursor.nextSibling; cursor.parentNode.removeChild(cursor); cursor = nx; }
       if (end) end.parentNode.removeChild(end);
       start.parentNode.insertBefore(wrapper, start);
