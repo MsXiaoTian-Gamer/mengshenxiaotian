@@ -1,10 +1,17 @@
 // 由迁移脚本生成：文章元数据（与 src/content/*.md 一一对应）
+export interface DownloadItem {
+  name: string;
+  url: string;
+  desc?: string;
+}
+
 export interface ArticleMeta {
   title: string;
   date: string; // YYYY-MM-DD
   tags: string[];
   path: string;  // md 文件名，content key
   slug: string;  // 路由 slug（path 去掉 .md）
+  downloads?: DownloadItem[]; // 附件/资源下载（手写补充，脚本生成部分为空）
 }
 
 export const ARTICLES: ArticleMeta[] = [
@@ -22,7 +29,7 @@ export const ARTICLES: ArticleMeta[] = [
   { title: "TapTap聚光灯开发日志Day5", date: "2025-10-24", tags: ["TapTap", "GameDev", "聚光灯"], path: "2025-10-24-TapTap聚光灯开发日志Day5.md", slug: "2025-10-24-TapTap聚光灯开发日志Day5" },
   { title: "Unity新手学习推荐", date: "2025-10-20", tags: ["Unity", "学习"], path: "2025-10-20-Unity新手学习推荐.md", slug: "2025-10-20-Unity新手学习推荐" },
   { title: "TapTap聚光灯开发日志Day4", date: "2025-10-19", tags: ["TapTap", "GameDev", "聚光灯"], path: "2025-10-19-TapTap聚光灯开发日志Day4.md", slug: "2025-10-19-TapTap聚光灯开发日志Day4" },
-  { title: "Unity资源分享", date: "2025-10-19", tags: ["Unity"], path: "2025-10-19-Unity资源分享.md", slug: "2025-10-19-Unity资源分享" },
+  { title: "Unity资源分享", date: "2025-10-19", tags: ["Unity"], path: "2025-10-19-Unity资源分享.md", slug: "2025-10-19-Unity资源分享", downloads: [{ name: "Unity 学习资源合集", url: "https://github.com/MsXiaoT/Unity-resource-sharing-for-learning", desc: "网上收集整理的 Unity 学习资源（如侵权秒删），也包含本系列文章的配套资料" }] },
   { title: "TapTap聚光灯开发日志Day3", date: "2025-10-17", tags: ["TapTap", "GameDev", "聚光灯"], path: "2025-10-17-TapTap聚光灯开发日志Day3.md", slug: "2025-10-17-TapTap聚光灯开发日志Day3" },
   { title: "TapTap聚光灯开发日志Day2", date: "2025-10-14", tags: ["TapTap", "GameDev", "聚光灯"], path: "2025-10-14-TapTap聚光灯开发日志Day2.md", slug: "2025-10-14-TapTap聚光灯开发日志Day2" },
   { title: "TapTap聚光灯开发日志Day1", date: "2025-10-11", tags: ["TapTap", "GameDev", "聚光灯"], path: "2025-10-11-TapTap聚光灯开发日志Day1.md", slug: "2025-10-11-TapTap聚光灯开发日志Day1" },

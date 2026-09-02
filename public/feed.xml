@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>萌神小天</title>
+<link>https://msxiaotian.top/</link>
+<description>萌神小天的独立游戏开发博客，分享 Unity 学习、游戏开发与独立游戏心得</description>
+<language>zh-CN</language>
+<atom:link href="https://msxiaotian.top/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>吉比特 Unity 客户端面试经历</title>
+    <link>https://msxiaotian.top/post/2026-08-19-gbits-unity-client-interview</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-08-19-gbits-unity-client-interview</guid>
+    <pubDate>Tue, 18 Aug 2026 16:00:00 GMT</pubDate>
+    <description>吉比特 Unity 客户端面试经历：一场暴露短板的复盘 吉比特 Unity 客户端 · 一面经历 投了吉比特的 Unity 客户端岗位，面试整体氛围还算友好，但这场面试把我知识体系里的窟窿照得明明白白——&quot;用过&quot;和&quot;懂&quot;之间的距离，面试官一问就现形。趁还记得，把过程和技术点完整复盘一遍，给准备客户端方向的同学做个参考。 一、面试概况 项目 内容 面试公司 吉比特 意向岗位 Unity 客户端开发 考察方向 引擎基础、UGUI、渲染与 Shader、数据结构、架构与设计模式、网络与异步编程 面试结论 基础知识暴露较多缺口，项目广度尚可，深度不足 二、面试过程 1. 引擎基础与 UGUI：第一波就…</description>
+  </item>
+  <item>
+    <title>米哈游游戏客户端笔经</title>
+    <link>https://msxiaotian.top/post/2026-08-17-mihoyo-game-client-interview</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-08-17-mihoyo-game-client-interview</guid>
+    <pubDate>Sun, 16 Aug 2026 16:00:00 GMT</pubDate>
+    <description>米哈游游戏客户端笔经 米哈游程序通用 B 卷 准备了满满的 C 和 Unity 八股，结果试卷基本都是 C++ 的内容…… 大概率是凉了。 但还是把还记得的题目整理出来，供后来人参考。 一、题型概览 题型 数量 考察内容 单选题 11 道 C++ 基础、多线程、计算机网络 多选题 14 道 C++ 基础、STL、网络协议 算法题 2 道 括号序列计数、数论 + BFS vibecoding 1 道 现场修一个 HTML 小游戏 整体感受： 笔试内容和我准备的（C + Unity）完全错位 ，C++ 占比极高，纯靠 C 经验硬猜。如果有同学想去米哈游客户端，建议 优先复习 C++ ，Unity …</description>
+  </item>
+  <item>
+    <title>Unity 第一阶段：基础入门与核心概念学习笔记</title>
+    <link>https://msxiaotian.top/post/2026-08-11-Unity-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B8%8E%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-08-11-Unity-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B8%8E%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5</guid>
+    <pubDate>Mon, 10 Aug 2026 16:00:00 GMT</pubDate>
+    <description>Unity 第一阶段：基础入门与核心概念学习笔记 这份笔记适合刚接触 Unity，或者学过一点但基础不扎实，想把自己的 Unity 基础打牢的阶段。 第一阶段的重点不是学设计模式，也不是搭大型架构，而是学会： 怎么用 Unity 编辑器 怎么写能跑通的 C 脚本 怎么理解 GameObject 和 Component 的关系 怎么让对象动起来、有交互 怎么做一个能玩的简单游戏 核心目标： 从&quot;不知道怎么下手&quot;，进步到&quot;自己能做出一个小游戏&quot;。 一、第一阶段应该优先学什么 建议按顺序掌握这些内容： 1. Unity 编辑器基本操作 2. C 基础（变量、方法、条件、循环、类） 3. GameOb…</description>
+  </item>
+  <item>
+    <title>Unity 零基础入门指南</title>
+    <link>https://msxiaotian.top/post/2026-07-31-Unity-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-07-31-Unity-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</guid>
+    <pubDate>Thu, 30 Jul 2026 16:00:00 GMT</pubDate>
+    <description>Unity 零基础入门指南 这份指南是写给完全没接触过编程和游戏开发的人的。 不需要任何基础，只需要一台电脑和想做游戏的心。 一、Unity 是什么 Unity 是一个 做游戏的工具 。 你不需要从零造引擎，Unity 帮你处理了渲染、物理、声音这些底层的东西。你只需要： 把东西摆到场景里 写一些简单的代码告诉它们&quot;怎么动&quot; 很多你玩过的游戏都是用 Unity 做的：《原神》《王者荣耀》《空洞骑士》《人类一败涂地》…… 二、装环境 2.1 安装 Unity Hub 去 unity.com https://unity.com 下载 Unity Hub 。 Unity Hub 是一个管理器，帮你装…</description>
+  </item>
+  <item>
+    <title>Tiny Pet Sand Wars 更新来啦！🎉</title>
+    <link>https://msxiaotian.top/post/2026-07-14-Tiny-Pet-Sand-Wars-%E6%9B%B4%E6%96%B0</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-07-14-Tiny-Pet-Sand-Wars-%E6%9B%B4%E6%96%B0</guid>
+    <pubDate>Mon, 13 Jul 2026 16:00:00 GMT</pubDate>
+    <description>⚔️ 2026 07 14 武器进化系统 武器可以通过战斗积累进化，变得更强！ 进化阶段 阶段 伤害 射速 颜色 基础 1x 1x 白色 进化 1.5x 1.2x 蓝色 终极 2.25x 1.44x 金色 进化条件 基础 → 进化： 击杀50个敌人，或 使用120秒 进化 → 终极： 击杀120个敌人，或 使用300秒 视觉效果 进化后武器颜色变化（白→蓝→金） 进化后武器体积略微增大 进化时有粒子特效和通知 UI显示 HUD显示武器进化进度 进化/终极进度实时更新 🏛️ 2026 07 14 挑战房间系统 地图上会随机出现传送门，进入后开始挑战，完成获得丰厚奖励！ 挑战类型 挑战 目标 奖…</description>
+  </item>
+  <item>
+    <title>Tiny Pet Sand Wars 更新来啦！</title>
+    <link>https://msxiaotian.top/post/2026-06-15-Tiny-Pet-Sand-Wars-%E6%9B%B4</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-06-15-Tiny-Pet-Sand-Wars-%E6%9B%B4</guid>
+    <pubDate>Sun, 14 Jun 2026 16:00:00 GMT</pubDate>
+    <description>🗺️ 超大背景地图 现在主战场后面多了一大片远景地形，画面看起来更有层次感了！ 背景地图比战斗区大上好多倍，一眼望去真的像在沙漠里 地形会自动生成岛屿、草地、水域，每局都独一无二 远景会自然变淡，不会抢视线 地图周围还有可爱的装饰边框 🎨 界面全面换新 整套 UI 走的是暖萌路线，配色软软的甜甜的～ 米白底配粉、黄、蓝、绿的面板，看着就舒服 菜单上飘着肉垫、花朵、云朵和小星星，鼠标放上去还会弹弹的 主菜单可以换角色、选武器，一目了然 支持中英文随时切换 游戏里的选择界面也统一了风格——升升级、捡武器、开宝箱、逛商店，全是一个好看的三卡片布局，动画又顺又可爱。 ⚔️ 12 把武器随你挑 近战…</description>
+  </item>
+  <item>
+    <title>小宠沙暴大战1.2-游戏更新啦</title>
+    <link>https://msxiaotian.top/post/2026-05-31-%E5%B0%8F%E5%AE%A0%E6%B2%99%E6%9A%B4%E5%A4%A7%E6%88%9812-%E6%B8%B8%E6%88%8F%E6%9B%B4%E6%96%B0%E5%95%A6</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-05-31-%E5%B0%8F%E5%AE%A0%E6%B2%99%E6%9A%B4%E5%A4%A7%E6%88%9812-%E6%B8%B8%E6%88%8F%E6%9B%B4%E6%96%B0%E5%95%A6</guid>
+    <pubDate>Sat, 30 May 2026 16:00:00 GMT</pubDate>
+    <description>全新更新来了，重点关注 用户体验优化 和 长期游戏动力 ！我们刷新了游戏界面风格，并正式推出了游戏内成就系统，让你的每一刻游戏体验都更加精致和有成就感。 🎨 全面UI风格大改 我彻底改造了游戏内界面，从视觉风格到互动细节，摒弃了旧有僵硬的布局，呈现出更统一、简洁且沉浸感强的美学。所有核心界面模块——包括主菜单、设置面板、游戏界面和次要弹窗——在颜色匹配、图标设计、边框样式和间距布局方面均进行了调整。 新界面遵循极简且直观的设计逻辑，减少多余的视觉元素，同时提升屏幕层级。关键的功能按钮和信息显示更吸引眼球，也更容易找到。同时，我们优化了界面过渡动画，使每次切换和互动更加流畅自然，有效提升了游戏…</description>
+  </item>
+  <item>
+    <title>游戏发布itch啦</title>
+    <link>https://msxiaotian.top/post/2026-05-10-%E6%B8%B8%E6%88%8F%E5%8F%91%E5%B8%83itch%E5%95%A6</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-05-10-%E6%B8%B8%E6%88%8F%E5%8F%91%E5%B8%83itch%E5%95%A6</guid>
+    <pubDate>Sat, 09 May 2026 16:00:00 GMT</pubDate>
+    <description>《小宠沙暴大战》是一款轻量快节奏的俯视角肉鸽生存射击游戏。你将操控一只小宠物进入沙地战场，在不断升级的怪潮里边移动、边射击、边选择成长路线，尽量把这一局构筑推到更后期。 游戏当前已经具备比较完整的一套单局循环：开局选择角色与武器，中途通过击杀奖励、升级选项、宝箱被动和流浪商店持续强化；怪物会随着时间进一步加速、变强，并在后期形成更高压的包围节奏。你可以冲击 10 分钟 Boss，也可以在中途通过暂停菜单直接结算本局收益。 如果你喜欢《Vampire Survivors》式生存体验，但又希望加入更明确的鼠标朝向、换弹节奏、宝箱被动和局外成长，这个版本已经可以提供一套比较扎实的可重复游玩框架。 &apos;…</description>
+  </item>
+  <item>
+    <title>腾讯游戏客户端一面凉经</title>
+    <link>https://msxiaotian.top/post/2025-11-15-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%80%E9%9D%A2%E5%87%89%E7%BB%8F</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-11-15-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%80%E9%9D%A2%E5%87%89%E7%BB%8F</guid>
+    <pubDate>Fri, 14 Nov 2025 16:00:00 GMT</pubDate>
+    <description>腾讯游戏客户端一面凉经 腾讯 IEG 游戏客户端 · 一面凉经 一面 37 分钟，全程无手撕，问题整体偏基础，但渲染和物理模拟的深挖没有接住，第二天一早就收到了凉的消息。记录一下整个过程，复盘给自己，也供后来人参考。 一、面试概况 项目 内容 岗位 IEG 游戏客户端 工作室 做王者荣耀国际版的工作室 时长 约 37 分钟 手撕代码 无 结果 未通过（第二天一早收到凉经） 二、整体流程 面试官很和蔼，开场自我介绍时有点紧张，后面逐渐放松。流程大致是：简历项目深挖（渲染、Magicloth）→ 通用八股 → C++ 基础 → 反问环节。整体没有手撕，考察更偏&quot;对项目里技术点的理解深度&quot;。 三、问…</description>
+  </item>
+  <item>
+    <title>TapTap聚光灯开发日志Day7</title>
+    <link>https://msxiaotian.top/post/2025-10-30-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day7</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-30-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day7</guid>
+    <pubDate>Wed, 29 Oct 2025 16:00:00 GMT</pubDate>
+    <description>正式版中加入了最后一关50x50的大地图，加入了计时器用于后面速通KFC奖励的凭证。 后续将继续进行安卓的适配 https://img.tapimg.com/market/images/0f170d4b1ecf80c267e5a44b5992a199.png 游戏主页: 小绿虫的冒险蹦践电脑/主机 TapTap https://www.taptap.cn/app/779424?os=pc TapTap链接: 开发日志Day7 正式版上下啦 小绿虫的冒险蹦践综合讨论 TapTap 小绿虫的冒险蹦践论坛 https://www.taptap.cn/moment/731126756550902341</description>
+  </item>
+  <item>
+    <title>TapTap聚光灯开发日志Day6</title>
+    <link>https://msxiaotian.top/post/2025-10-27-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day6</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-27-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day6</guid>
+    <pubDate>Sun, 26 Oct 2025 16:00:00 GMT</pubDate>
+    <description>游戏已经上架TapTapPC版,为了博主的完赛奖来乞讨50下载量了 小绿虫的冒险蹦践电脑/主机 TapTap https://www.taptap.cn/app/779424?os=pc TapTap链接: 开发日志Day6 试玩版已经完成了 小绿虫的冒险蹦践综合讨论 TapTap 小绿虫的冒险蹦践论坛 https://www.taptap.cn/moment/730756653195988896 （感谢感谢喵</description>
+  </item>
+  <item>
+    <title>TapTap聚光灯开发日志Day5</title>
+    <link>https://msxiaotian.top/post/2025-10-24-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day5</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-24-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day5</guid>
+    <pubDate>Thu, 23 Oct 2025 16:00:00 GMT</pubDate>
+    <description>游戏道具介绍 血包: 吃了可以恢复10点生命值 体力包:吃了以后可以恢复10点体力 游戏道具吃了以后都能恢复2段跳，合理利用游戏道具可以加快通关速度。 后续打算: 1.完成剩下关卡 TapTap链接： 开发日志Day5 游戏道具 小绿虫的冒险蹦跶综合讨论 TapTap 小绿虫的冒险蹦跶论坛 https://www.taptap.cn/moment/729692413102129293</description>
+  </item>
+  <item>
+    <title>Unity新手学习推荐</title>
+    <link>https://msxiaotian.top/post/2025-10-20-Unity%E6%96%B0%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-20-Unity%E6%96%B0%E6%89%8B%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90</guid>
+    <pubDate>Sun, 19 Oct 2025 16:00:00 GMT</pubDate>
+    <description>首先声明:博主也只是一个刚学Unity没多久的菜鸡,如若博客涉及侵权,联系2408710670@qq.com,48小时内删除 首先博主是经历了半年乱学 自己画图学了很多分裂的系统强行凑了一个很废的demo ,是学到了一些东西比如熟悉Unity的界面和一些函数的使用,但这确实有点慢了,所以博主推荐大家可以从SIKI学院开始 主要是免费提供了不错的资源 ,可以从 Unity6零基础小白入门教程 2025最新版 SiKi学院 SiKi学堂 unity u3d 虚幻 ue4/5 java python 人工智能 视频教程 在线课程 https://www.sikiedu.com/course/2119…</description>
+  </item>
+  <item>
+    <title>TapTap聚光灯开发日志Day4</title>
+    <link>https://msxiaotian.top/post/2025-10-19-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day4</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-19-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day4</guid>
+    <pubDate>Sat, 18 Oct 2025 16:00:00 GMT</pubDate>
+    <description>游戏制作进度汇报 游戏主要玩法基本完成，后期就是关卡的制作和游戏的美化了 已经在压力美术老师了嘿嘿 https://img.tapimg.com/market/images/48516f625646b5ea2c66f0cab3c9c52a.png 后续打算:先制作5个关卡发布试玩版，在时间截止前制作10关然后开始速通KFC活动 TapTap链接: 开发日志Day4 游戏制作进度 小绿虫的冒险蹦跶综合讨论 TapTap 小绿虫的冒险蹦跶论坛 https://www.taptap.cn/moment/728972127977341997</description>
+  </item>
+  <item>
+    <title>Unity资源分享</title>
+    <link>https://msxiaotian.top/post/2025-10-19-Unity%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-19-Unity%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB</guid>
+    <pubDate>Sat, 18 Oct 2025 16:00:00 GMT</pubDate>
+    <description>GitHub: MsXiaoT/Unity resource sharing for learning: 分享一些从网上找到的资源 如果侵权了秒删 顺便督促自己学习 Share some resources found online delete immediately if there is any infringement also to encourage myself to study https://github.com/MsXiaoT/Unity resource sharing for learning</description>
+  </item>
+  <item>
+    <title>TapTap聚光灯开发日志Day3</title>
+    <link>https://msxiaotian.top/post/2025-10-17-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day3</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-17-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day3</guid>
+    <pubDate>Thu, 16 Oct 2025 16:00:00 GMT</pubDate>
+    <description>游戏关卡的设置 游戏开始界面 主视角 第一关的搭建 关卡先随便搭一下，后面在美化 。 基本实现主要玩法 1.必须保证血条不为0。 2.必须保证达到终点前体力条不为0。 3.游戏主要是速通玩法体验流程争取在10min左右,如果成功完赛,应该会推出速通第一疯狂星期四 V50 活动 后续计划 会加入一些道具，用于贴合主题，一些意想不到的BUG，却成为了通关的关键。 TapTap链接: 开发日志Day3 游戏关卡的设置 小绿虫的冒险蹦跶综合讨论 TapTap 小绿虫的冒险蹦跶论坛 https://www.taptap.cn/moment/728280765111995398</description>
+  </item>
+  <item>
+    <title>TapTap聚光灯开发日志Day2</title>
+    <link>https://msxiaotian.top/post/2025-10-14-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day2</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-14-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day2</guid>
+    <pubDate>Mon, 13 Oct 2025 16:00:00 GMT</pubDate>
+    <description>角色和场景的画风的确定 游戏主角:小绿虫 游戏第一个怪物:怪物 游戏玩法介绍: 游戏以2D平台跳跃为主,需要在生命值和体力条均不为0的情况下利用一些&quot;特性&quot;才能完成关卡任务。 游戏后续打算:加入生命值和体力条,加入新怪物。 游戏交流群 可以进来交朋友 :819415442 TapTap链接: 开发日志Day2 角色和场景的画风的确定 小绿虫的冒险蹦跶综合讨论 TapTap 小绿虫的冒险蹦跶论坛 https://www.taptap.cn/moment/726840006617859249</description>
+  </item>
+  <item>
+    <title>TapTap聚光灯开发日志Day1</title>
+    <link>https://msxiaotian.top/post/2025-10-11-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day1</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2025-10-11-TapTap%E8%81%9A%E5%85%89%E7%81%AF%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97Day1</guid>
+    <pubDate>Fri, 10 Oct 2025 16:00:00 GMT</pubDate>
+    <description>关于题目&quot;BUG&quot;的解读 首先看到&quot;BUG&quot;肯定是想到了玩游戏遇到的&quot;问题&quot;,&quot;漏洞&quot;或者说&quot;特性&quot;导致可以更改游戏流程 比如偷鸡 ，或者导致卡死在某一关卡。而本次游戏题目为&quot;BUG&quot;应该需要我们从变量溢出、模型穿模、逻辑冲突，这些程序世界的 &quot;意外&quot; 来着手制作我们的游戏。 然后我偶然间发现了bug除了缺陷还有虫子的意思,所以为了防止跑题我们这次游戏就由虫子做了主角. 以上均为个人观点。 TapTap链接: 开发日志Day1 关于题目&quot;BUG&quot;的解读 小绿虫的冒险蹦跶综合讨论 TapTap 小绿虫的冒险蹦跶论坛 https://www.taptap.cn/moment/72580333889…</description>
+  </item>
+</channel>
+</rss>

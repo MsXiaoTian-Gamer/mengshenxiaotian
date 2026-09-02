@@ -3858,3 +3858,36 @@ mark.search-highlight {
       .art-nav { padding: 10px 16px; }
       .art-nav .nav-title { display: none; }
     }
+
+/* ===== 新增功能样式：mermaid / KaTeX / 学习路线 ===== */
+.markdown-body .mermaid-box {
+  margin: 18px 0;
+  padding: 14px 10px 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  overflow-x: auto;
+  text-align: center;
+}
+.markdown-body .mermaid-box svg { max-width: 100%; height: auto; }
+.markdown-body .mermaid-box.mermaid-error {
+  color: var(--brand);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  text-align: left;
+  white-space: pre-wrap;
+}
+.math-marker { display: inline-block; min-width: 0.4em; }
+.math-marker[data-disp="1"] { display: block; text-align: center; margin: 10px 0; }
+.katex-display { margin: 14px 0; overflow-x: auto; overflow-y: hidden; }
+.katex { font-size: 1.05em; }
+
+/* 学习路线卡片 hover */
+.lp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--brand-soft) !important;
+}
+@media (max-width: 640px) {
+  .lp-cards { grid-template-columns: 1fr 1fr !important; }
+}

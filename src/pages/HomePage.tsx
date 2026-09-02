@@ -5,6 +5,9 @@ import { getRawContent } from '../lib/content'
 import { estimateReadingTime, formatDateCN, getSummary, getTagCounts, getTagColors, getPrimaryTag } from '../lib/blog'
 import { ThemeToggleButton } from '../components/widgets'
 import { setPageMeta } from '../lib/seo'
+import { searchSlugs } from '../lib/search'
+import { getHotArticles, getArticleViews } from '../lib/stats'
+import { UNITY_LEARNING_PATH } from '../data/learningPath'
 
 const QUOTES = [
   { text: '游戏是让人快乐的，做游戏也是。', author: '萌神小天' },
@@ -53,6 +56,7 @@ export default function HomePage() {
 
   const filtered = useMemo(() => filterArticles(query, tag), [query, tag])
   const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
+  const hotArticles = useMemo(() => getHotArticles(ARTICLES_SORTED, 5), [])
 
   const stats = useMemo(() => {
     let visits = 0
@@ -204,6 +208,30 @@ export default function HomePage() {
             ))}
           </div>
 
+          {hotArticles.length > 0 && (
+            <div className="hot-articles" style={{ marginBottom: 6 }}>
+              <div className="article-list-title" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                🔥 热门文章
+              </div>
+              {hotArticles.map((a, idx) => (
+                <Link key={a.path} to={postUrl(a)} className="article-item">
+                  <div className="item-body">
+                    <div className="item-title">
+                      <span className="hot-rank" style={{ display: 'inline-block', minWidth: 20, color: 'var(--brand)', fontWeight: 700 }}>
+                        {idx + 1}.
+                      </span>{' '}
+                      {a.title}
+                    </div>
+                    <div className="item-meta">
+                      <span>{a.date}</span>
+                      <span className="reading-time">{getArticleViews(a.slug)} 次阅读</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+
           <div className="article-list">
             <div className="article-list-title">文章列表</div>
             <div id="sidebarArticles">{renderSidebarItems(filtered)}</div>
@@ -224,6 +252,12 @@ export default function HomePage() {
               </a>
               <a href="https://www.taptap.cn/app/779424" target="_blank" rel="noopener noreferrer">
                 TapTap
+              </a>
+              <a href="https://msxiaotian.itch.io/tiny-pet-sand-wars" target="_blank" rel="noopener noreferrer">
+                itch.io
+              </a>
+              <a href="https://github.com/MsXiaoTian-Gamer/mengshenxiaotian/discussions" target="_blank" rel="noopener noreferrer">
+                讨论区
               </a>
             </div>
             <div
@@ -264,6 +298,95 @@ export default function HomePage() {
                   🏷️ {tagCounts.length} 个标签
                 </span>
               </div>
+              <div className="hero-actions" style={{ marginTop: 18, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                <a
+                  className="hero-btn"
+                  href="https://msxiaotian.itch.io/tiny-pet-sand-wars"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    padding: '9px 20px',
+                    borderRadius: 999,
+                    background: 'var(--brand)',
+                    color: '#fff',
+                    fontSize: '0.85rem',
+                    textDecoration: 'none',
+                  }}
+                >
+                  🎮 试玩《Tiny Pet Sand Wars》
+                </a>
+                <a
+                  className="hero-btn"
+                  href="https://www.taptap.cn/app/779424"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    padding: '9px 20px',
+                    borderRadius: 999,
+                    background: 'var(--card-bg)',
+                    color: 'var(--text)',
+                    fontSize: '0.85rem',
+                    textDecoration: 'none',
+                    border: '1px solid var(--border)',
+                  }}
+                >
+                  💛 TapTap 支持我
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section className="learning-path" style={{ marginTop: 18 }}>
+            <div className="lp-head" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+              <span className="lp-title" style={{ fontWeight: 700, fontSize: '0.95rem' }}>
+                🎮 Unity 学习路线
+              </span>
+              <Link to="/archive" className="lp-more" style={{ fontSize: '0.75rem', color: 'var(--brand)', textDecoration: 'none' }}>
+                全部文章 →
+              </Link>
+            </div>
+            <div
+              className="lp-cards"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+                gap: 10,
+                marginTop: 10,
+              }}
+            >
+              {UNITY_LEARNING_PATH.map(s => (
+                <Link
+                  key={s.slug}
+                  to={'/post/' + s.slug}
+                  className="lp-card"
+                  style={{
+                    display: 'block',
+                    padding: '12px 14px',
+                    borderRadius: 10,
+                    background: 'var(--card-bg)',
+                    border: '1px solid var(--border)',
+                    textDecoration: 'none',
+                    color: 'var(--text)',
+                    transition: 'transform .15s ease, box-shadow .15s ease',
+                  }}
+                >
+                  <div className="lp-step" style={{ fontSize: '0.7rem', color: 'var(--brand)', fontWeight: 700, marginBottom: 6 }}>
+                    {s.step}
+                  </div>
+                  <div className="lp-card-title" style={{ fontSize: '0.85rem', fontWeight: 600, lineHeight: 1.45 }}>
+                    {s.title}
+                  </div>
+                  <div className="lp-card-desc" style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.5 }}>
+                    {s.desc}
+                  </div>
+                </Link>
+              ))}
             </div>
           </section>
 

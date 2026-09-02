@@ -6,6 +6,7 @@ import { estimateReadingTime, formatDateCN, getTagColors, getPrimaryTag, pickRel
 import { enhanceMarkdownDom, renderMarkdownHtml, copyText, buildDescription } from '../lib/render'
 import { setPageMeta } from '../lib/seo'
 import { ThemeToggleButton } from '../components/widgets'
+import { trackArticleView } from '../lib/stats'
 
 interface TocItem {
   id: string
@@ -140,6 +141,7 @@ export default function PostPage() {
   const html = useMemo(() => (article ? renderMarkdownHtml(md) : ''), [article, md])
   const bodyRef = useRef<HTMLDivElement>(null)
   const [toc, setToc] = useState<TocItem[]>([])
+  const [views, setViews] = useState(0)
   const [copied, setCopied] = useState(false)
   const active = useScrollSpy(toc.map(t => t.id))
   const related = useMemo(() => (article ? pickRelated(article, ARTICLES_SORTED) : []), [article])
@@ -153,8 +155,14 @@ export default function PostPage() {
       setPageMeta('文章未找到 - 萌神小天')
       return
     }
-    setPageMeta(article.title + ' - 萌神小天', buildDescription(md))
+    setPageMeta(article.title + ' - 萌神小天', buildDescription(md), { path: '/post/' + article.slug })
   }, [article, md])
+
+  // 阅读量：同一浏览器同一天只计一次
+  useEffect(() => {
+    if (!article) return
+    setViews(trackArticleView(article.slug))
+  }, [article])
 
   useEffect(() => {
     if (!article || !bodyRef.current) return
@@ -251,6 +259,8 @@ export default function PostPage() {
             <span>{formatDateCN(article.date)}</span>
             <span> · </span>
             <span>约 {time} 分钟</span>
+            <span> · </span>
+            <span>{views} 次阅读</span>
           </div>
           <div className="art-tags" style={{ marginTop: 12 }}>
             {(article.tags || []).map(t => {
@@ -318,6 +328,60 @@ export default function PostPage() {
           </div>
         </div>
 
+        {article.downloads && article.downloads.length > 0 && (
+          <div className="art-downloads" style={{ marginTop: 30 }}>
+            <h3 className="downloads-title" style={{ fontSize: '1.05rem', marginBottom: 12 }}>
+              📦 附件下载
+            </h3>
+            <div className="downloads-list" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {article.downloads.map((d, i) => (
+                <div
+                  className="download-item"
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 12,
+                    padding: '12px 16px',
+                    border: '1px solid var(--border)',
+                    borderRadius: 10,
+                    background: 'var(--card-bg)',
+                  }}
+                >
+                  <div>
+                    <div className="download-name" style={{ fontWeight: 600, fontSize: '0.9rem' }}>
+                      {d.name}
+                    </div>
+                    {d.desc && (
+                      <div className="download-desc" style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 4 }}>
+                        {d.desc}
+                      </div>
+                    )}
+                  </div>
+                  <a
+                    className="download-btn"
+                    href={d.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      flexShrink: 0,
+                      padding: '7px 18px',
+                      borderRadius: 999,
+                      background: 'var(--brand)',
+                      color: '#fff',
+                      fontSize: '0.82rem',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    下载 ↗
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {renderRelated(related)}
 
         <div className="art-pagination" style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginTop: 28 }}>
@@ -338,6 +402,26 @@ export default function PostPage() {
         </div>
 
         <div className="giscus-comments" style={{ marginTop: 40 }}>
+          <div
+            className="discuss-note"
+            style={{
+              marginBottom: 10,
+              fontSize: '0.78rem',
+              color: 'var(--text-muted)',
+              lineHeight: 1.7,
+            }}
+          >
+            评论由 GitHub Discussions 驱动，也可以直接到{' '}
+            <a
+              href="https://github.com/MsXiaoTian-Gamer/mengshenxiaotian/discussions"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--brand)', textDecoration: 'none' }}
+            >
+              GitHub 讨论区
+            </a>{' '}
+            参与交流，有回复会第一时间同步。
+          </div>
           <GiscusComments />
         </div>
       </main>

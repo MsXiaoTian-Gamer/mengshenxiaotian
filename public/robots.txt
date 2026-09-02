@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://msxiaotian.top/sitemap.xml

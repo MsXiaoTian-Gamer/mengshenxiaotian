@@ -3,10 +3,41 @@ import { marked } from 'marked'
 import hljs from 'highlight.js/lib/common'
 import { stripFrontMatter } from './blog'
 
+interface ProtectedMath {
+  text: string
+  spans: string[]
+}
+
+/**
+ * 渲染前保护数学公式：先把 ``` 代码块整体抽出占位，再匹配 $$...$$（块级）与
+ * $...$（行内，不跨行），替换为占位符，避免 marked 破坏 ^ _ 等语法。
+ */
+export function protectMath(md: string): ProtectedMath {
+  const fenced: string[] = []
+  let text = md.replace(/```[\s\S]*?```/g, m => {
+    fenced.push(m)
+    return '\u0000F' + (fenced.length - 1) + '\u0000'
+  })
+  const spans: string[] = []
+  text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_m, expr: string) => {
+    spans.push('<span class="math-marker" data-disp="1" data-k="' + encodeURIComponent(expr.trim()) + '"></span>')
+    return '\u0000M' + (spans.length - 1) + '\u0000'
+  })
+  text = text.replace(/(^|[^\\$])\$([^$\n]+?)\$/g, (_m, pre: string, expr: string) => {
+    spans.push('<span class="math-marker" data-disp="0" data-k="' + encodeURIComponent(expr) + '"></span>')
+    return pre + '\u0000M' + (spans.length - 1) + '\u0000'
+  })
+  text = text.replace(/\u0000F(\d+)\u0000/g, (_m, i: string) => fenced[Number(i)] ?? '')
+  return { text, spans }
+}
+
 /** 渲染 markdown 为 HTML（standard marked 输出，后处理在 DOM 阶段完成） */
 export function renderMarkdownHtml(md: string): string {
   const cleaned = stripFrontMatter(md)
-  return marked.parse(cleaned, { gfm: true, breaks: true }) as string
+  const p = protectMath(cleaned)
+  let html = marked.parse(p.text, { gfm: true, breaks: true }) as string
+  html = html.replace(/\u0000M(\d+)\u0000/g, (_m, i: string) => p.spans[Number(i)] ?? '')
+  return html
 }
 
 function escapeHtml(s: string): string {
@@ -104,6 +135,7 @@ export function decorateCodeBlocks(root: HTMLElement): void {
     const code = pre.querySelector('code') as HTMLElement | null
     if (!code) return
     const lang = langOf(code)
+    if (lang.toLowerCase() === 'mermaid') return // mermaid 图不套代码块外壳，交给图表渲染
 
     const wrapper = document.createElement('div')
     wrapper.className = 'code-block-wrapper'
@@ -271,3 +303,118 @@ export function buildDescription(md: string, max = 160): string {
 
 /** 安全转义（用于拼接 attr） */
 export { escapeHtml }
+
+/* ============ 异步增强：KaTeX 数学公式 & Mermaid 图表（CDN 按需加载） ============ */
+
+const CDN_KATEX = 'https://cdnjs.cloudflare.com/ajax/libs/katex/0.16.11'
+const CDN_MERMAID = 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js'
+
+function loadScript(src: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector('script[src="' + src + '"]')) {
+      resolve()
+      return
+    }
+    const s = document.createElement('script')
+    s.src = src
+    s.async = true
+    s.onload = () => resolve()
+    s.onerror = () => reject(new Error('加载失败: ' + src))
+    document.head.appendChild(s)
+  })
+}
+
+function loadCss(href: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector('link[href="' + href + '"]')) {
+      resolve()
+      return
+    }
+    const l = document.createElement('link')
+    l.rel = 'stylesheet'
+    l.href = href
+    l.onload = () => resolve()
+    l.onerror = () => reject(new Error('加载失败: ' + href))
+    document.head.appendChild(l)
+  })
+}
+
+let katexPromise: Promise<void> | null = null
+function loadKatex(): Promise<void> {
+  if (katexPromise) return katexPromise
+  katexPromise = Promise.all([
+    loadCss(CDN_KATEX + '/katex.min.css'),
+    loadScript(CDN_KATEX + '/katex.min.js'),
+  ]).then(() => {
+    if (!(window as unknown as Record<string, unknown>).katex) throw new Error('katex 未就绪')
+  })
+  return katexPromise
+}
+
+/** 渲染 .math-marker 占位符为 KaTeX 公式（内联/块级） */
+export function renderMathMarkers(root: HTMLElement): void {
+  const markers = root.querySelectorAll<HTMLElement>('.math-marker')
+  if (markers.length === 0) return
+  loadKatex()
+    .then(() => {
+      const katex = (window as unknown as { katex: { render: (expr: string, el: HTMLElement, opts?: unknown) => void } }).katex
+      markers.forEach(el => {
+        const expr = decodeURIComponent(el.getAttribute('data-k') || '')
+        const displayMode = el.getAttribute('data-disp') === '1'
+        try {
+          katex.render(expr, el, { displayMode, throwOnError: false })
+        } catch (e) {
+          el.textContent = expr
+        }
+      })
+    })
+    .catch(() => {
+      markers.forEach(el => {
+        el.textContent = decodeURIComponent(el.getAttribute('data-k') || '')
+      })
+    })
+}
+
+let mermaidPromise: Promise<unknown> | null = null
+function loadMermaid(): Promise<unknown> {
+  if (mermaidPromise) return mermaidPromise
+  mermaidPromise = loadScript(CDN_MERMAID).then(() => (window as unknown as Record<string, unknown>).mermaid)
+  return mermaidPromise
+}
+
+function prefersDark(): boolean {
+  return (
+    document.documentElement.getAttribute('data-theme') === 'dark' ||
+    (typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  )
+}
+
+/** 将 ```mermaid 代码块渲染为 SVG 图 */
+export async function renderMermaidBlocks(root: HTMLElement): Promise<void> {
+  const codeBlocks = root.querySelectorAll<HTMLElement>('pre > code.language-mermaid')
+  if (codeBlocks.length === 0) return
+  try {
+    const mermaid = (await loadMermaid()) as {
+      initialize: (opts: Record<string, unknown>) => void
+      render: (id: string, text: string) => Promise<{ svg: string }>
+    }
+    mermaid.initialize({ startOnLoad: false, theme: prefersDark() ? 'dark' : 'default', securityLevel: 'loose' })
+    let i = 0
+    for (const code of Array.from(codeBlocks)) {
+      const pre = code.parentElement as HTMLPreElement | null
+      const text = code.textContent || ''
+      const holder = document.createElement('div')
+      holder.className = 'mermaid-box'
+      try {
+        const { svg } = await mermaid.render('mmd-' + Date.now() + '-' + i++, text)
+        holder.innerHTML = svg
+      } catch (e) {
+        holder.className = 'mermaid-box mermaid-error'
+        holder.textContent = '图表渲染失败，请检查 Mermaid 语法'
+      }
+      if (pre) pre.parentNode?.replaceChild(holder, pre)
+    }
+  } catch (e) {
+    /* CDN 不可用时保持原代码块 */
+  }
+}
