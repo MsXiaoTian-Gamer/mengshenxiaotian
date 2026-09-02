@@ -219,10 +219,10 @@ export default function HomePage() {
               </div>
             </div>
             <div className="social-links" id="socialLinks" style={{ marginTop: 10 }}>
-              <a href="https://github.com/MsXiaoT-Gamer" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
-              <a href="https://www.taptap.cn/user/39915837" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.taptap.cn/app/779424" target="_blank" rel="noopener noreferrer">
                 TapTap
               </a>
             </div>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const FLINKS = [
-  { name: '萌神小天 GitHub', url: 'https://github.com/MsXiaoT-Gamer', desc: '代码仓库' },
+  { name: '萌神小天 GitHub', url: 'https://github.com/MsXiaoTian-Gamer', desc: '代码仓库' },
   { name: '小绿虫的冒险蹦践', url: 'https://www.taptap.cn/app/779424', desc: 'TapTap 游戏页' },
 ]
 
