@@ -33,6 +33,9 @@ export default function PlayPage() {
             <a className="tsw-ext" href="https://www.taptap.cn/app/779424" target="_blank" rel="noreferrer">
               TapTap ↗
             </a>
+            <a className="tsw-ext" href="https://msxiaotian.itch.io/tiny-pet-sand-wars" target="_blank" rel="noreferrer">
+              itch.io ↗
+            </a>
             <Link className="tsw-ext" to="/play/pong" title="终端彩蛋小游戏">
               PHOSPHOR PONG ▸
             </Link>

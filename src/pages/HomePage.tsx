@@ -308,14 +308,9 @@ export default function HomePage() {
                 </span>
               </div>
               <div className="hero-actions">
-                <a
-                  className="hero-btn hero-btn-primary"
-                  href="https://msxiaotian.itch.io/tiny-pet-sand-wars"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🎮 试玩《Tiny Pet Sand Wars》
-                </a>
+                <Link className="hero-btn hero-btn-primary" to="/play">
+                  🎮 站内试玩《Tiny Pet Sand Wars》WebGL
+                </Link>
                 <a
                   className="hero-btn hero-btn-secondary"
                   href="https://www.taptap.cn/app/779424"
