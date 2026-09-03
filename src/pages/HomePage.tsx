@@ -6,7 +6,7 @@ import { estimateReadingTime, formatDateCN, getSummary, getTagCounts, getTagColo
 import { ThemeToggleButton } from '../components/widgets'
 import { setPageMeta } from '../lib/seo'
 import { searchSlugs } from '../lib/search'
-import { getHotArticles, getArticleViews } from '../lib/stats'
+import { reportSiteVisit, fetchRemoteStats, type RemoteStats } from '../lib/stats'
 import { UNITY_LEARNING_PATH } from '../data/learningPath'
 
 const QUOTES = [
@@ -57,18 +57,36 @@ export default function HomePage() {
 
   const filtered = useMemo(() => filterArticles(query, tag), [query, tag])
   const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
-  const hotArticles = useMemo(() => getHotArticles(ARTICLES_SORTED, 5), [])
+  const [remote, setRemote] = useState<RemoteStats | null>(null)
+  const [siteVisits, setSiteVisits] = useState(0)
+
+  useEffect(() => {
+    let alive = true
+    reportSiteVisit()
+    fetchRemoteStats().then(s => {
+      if (alive) {
+        setRemote(s)
+        if (s) setSiteVisits(s.site)
+      }
+    })
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  const hotArticles = useMemo(() => {
+    if (!remote) return []
+    const scored = ARTICLES_SORTED.map(a => ({ a, v: remote.articles[a.slug] || 0 }))
+      .filter(x => x.v > 0)
+      .sort((x, y) => y.v - x.v || y.a.date.localeCompare(x.a.date))
+    return scored.slice(0, 5).map(x => x.a)
+  }, [remote])
+
+  const viewOf = (slug: string) => remote?.articles[slug] || 0
 
   const stats = useMemo(() => {
-    let visits = 0
-    try {
-      visits = parseInt(localStorage.getItem('blog_visits') || '0', 10) + 1
-      localStorage.setItem('blog_visits', String(visits))
-    } catch (e) {
-      /* ignore */
-    }
-    return visits
-  }, [])
+    return siteVisits
+  }, [siteVisits])
 
   const daysOnline = useMemo(() => {
     const start = new Date('2025-10-11T00:00:00')
@@ -244,7 +262,7 @@ export default function HomePage() {
                     </div>
                     <div className="item-meta">
                       <span>{a.date}</span>
-                      <span className="reading-time">{getArticleViews(a.slug)} 次阅读</span>
+                      <span className="reading-time">{viewOf(a.slug)} 次阅读</span>
                     </div>
                   </div>
                 </Link>

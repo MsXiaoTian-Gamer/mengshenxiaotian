@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/((?!assets/|js/|css/|articles/|feed.xml|favicon).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|assets/|js/|css/|articles/|feed.xml|favicon).*)", "destination": "/index.html" }
   ],
   "redirects": [
     { "source": "/articles/:slug.html", "destination": "/post/:slug", "permanent": true },

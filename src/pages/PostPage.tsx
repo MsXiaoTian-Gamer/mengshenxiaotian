@@ -6,7 +6,7 @@ import { estimateReadingTime, formatDateCN, getTagColors, getPrimaryTag, pickRel
 import { enhanceMarkdownDom, renderMarkdownHtml, copyText, buildDescription } from '../lib/render'
 import { setPageMeta } from '../lib/seo'
 import { ThemeToggleButton } from '../components/widgets'
-import { trackArticleView } from '../lib/stats'
+import { reportArticleView, fetchRemoteStats } from '../lib/stats'
 
 interface TocItem {
   id: string
@@ -158,10 +158,21 @@ export default function PostPage() {
     setPageMeta(article.title + ' - 萌神小天', buildDescription(md), { path: '/post/' + article.slug })
   }, [article, md])
 
-  // 阅读量：同一浏览器同一天只计一次
+  // 阅读量：上报（同浏览器同一天一次），再拉取远端计数展示
   useEffect(() => {
     if (!article) return
-    setViews(trackArticleView(article.slug))
+    let alive = true
+    reportArticleView(article.slug)
+      .then(() => fetchRemoteStats())
+      .then(s => {
+        if (alive && s) setViews(s.articles[article.slug] || 0)
+      })
+      .catch(() => {
+        /* ignore */
+      })
+    return () => {
+      alive = false
+    }
   }, [article])
 
   useEffect(() => {
