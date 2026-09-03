@@ -262,11 +262,11 @@ export default function PostPage() {
             <span> · </span>
             <span>{views} 次阅读</span>
           </div>
-          <div className="art-tags" style={{ marginTop: 12 }}>
+          <div className="art-tags">
             {(article.tags || []).map(t => {
               const tc = getTagColors(t)
               return (
-                <span key={t} style={{ background: tc.bg, color: tc.color, padding: '2px 10px', borderRadius: 999, fontSize: '0.75rem' }}>
+                <span key={t} className="post-tag" style={{ background: tc.bg, color: tc.color }}>
                   #{t}
                 </span>
               )
@@ -329,34 +329,15 @@ export default function PostPage() {
         </div>
 
         {article.downloads && article.downloads.length > 0 && (
-          <div className="art-downloads" style={{ marginTop: 30 }}>
-            <h3 className="downloads-title" style={{ fontSize: '1.05rem', marginBottom: 12 }}>
-              📦 附件下载
-            </h3>
-            <div className="downloads-list" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div className="art-downloads">
+            <h3 className="downloads-title">📦 附件下载</h3>
+            <div className="downloads-list">
               {article.downloads.map((d, i) => (
-                <div
-                  className="download-item"
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: 12,
-                    padding: '12px 16px',
-                    border: '1px solid var(--border)',
-                    borderRadius: 10,
-                    background: 'var(--card-bg)',
-                  }}
-                >
+                <div className="download-item" key={i}>
                   <div>
-                    <div className="download-name" style={{ fontWeight: 600, fontSize: '0.9rem' }}>
-                      {d.name}
-                    </div>
+                    <div className="download-name">{d.name}</div>
                     {d.desc && (
-                      <div className="download-desc" style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 4 }}>
-                        {d.desc}
-                      </div>
+                      <div className="download-desc">{d.desc}</div>
                     )}
                   </div>
                   <a
@@ -364,15 +345,6 @@ export default function PostPage() {
                     href={d.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{
-                      flexShrink: 0,
-                      padding: '7px 18px',
-                      borderRadius: 999,
-                      background: 'var(--brand)',
-                      color: '#fff',
-                      fontSize: '0.82rem',
-                      textDecoration: 'none',
-                    }}
                   >
                     下载 ↗
                   </a>

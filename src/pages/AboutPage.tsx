@@ -79,31 +79,18 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div
-          className="about-contact-card"
-          style={{
-            marginTop: 28,
-            padding: '18px 24px',
-            background: 'var(--surface)',
-            border: '1px solid var(--border)',
-            borderRadius: 'var(--radius)',
-            textAlign: 'center',
-            fontSize: '0.88rem',
-            color: 'var(--text-muted)',
-            lineHeight: 1.8,
-          }}
-        >
-          <strong style={{ color: 'var(--text-heading)', display: 'block', marginBottom: 6 }}>联系方式</strong>
+        <div className="about-contact-card">
+          <strong className="contact-title">联系方式</strong>
           邮箱：msxiaotian@icloud.com
           <br />
           GitHub：
-          <a href="https://github.com/MsXiaoTian-Gamer" style={{ color: 'var(--brand)', textDecoration: 'none' }}>
+          <a href="https://github.com/MsXiaoTian-Gamer" className="contact-link">
             MsXiaoTian-Gamer
           </a>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 24 }}>
-          <Link to="/archive" style={{ color: 'var(--brand)', fontSize: '0.9rem', textDecoration: 'none' }}>
+        <div className="about-archive-link">
+          <Link to="/archive" className="contact-archive">
             查看文章归档 →
           </Link>
         </div>

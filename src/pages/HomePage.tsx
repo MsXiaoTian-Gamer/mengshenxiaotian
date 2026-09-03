@@ -209,17 +209,15 @@ export default function HomePage() {
           </div>
 
           {hotArticles.length > 0 && (
-            <div className="hot-articles" style={{ marginBottom: 6 }}>
-              <div className="article-list-title" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <div className="hot-articles">
+              <div className="article-list-title hot-title">
                 🔥 热门文章
               </div>
               {hotArticles.map((a, idx) => (
                 <Link key={a.path} to={postUrl(a)} className="article-item">
                   <div className="item-body">
                     <div className="item-title">
-                      <span className="hot-rank" style={{ display: 'inline-block', minWidth: 20, color: 'var(--brand)', fontWeight: 700 }}>
-                        {idx + 1}.
-                      </span>{' '}
+                      <span className="hot-rank">{idx + 1}.</span>{' '}
                       {a.title}
                     </div>
                     <div className="item-meta">
@@ -238,7 +236,7 @@ export default function HomePage() {
           </div>
 
           <div className="sidebar-footer">
-            <div id="siteStats" style={{ fontSize: '0.68rem', color: 'var(--text-faint)', lineHeight: 1.8 }}>
+            <div id="siteStats">
               <div>
                 👀 本站访问 {stats} 次 · 已运行 {daysOnline} 天
               </div>
@@ -246,7 +244,7 @@ export default function HomePage() {
                 ✍️ {ARTICLES.length} 篇文章 · {tagCounts.length} 个标签
               </div>
             </div>
-            <div className="social-links" id="socialLinks" style={{ marginTop: 10 }}>
+            <div className="social-links" id="socialLinks">
               <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
@@ -260,24 +258,10 @@ export default function HomePage() {
                 讨论区
               </a>
             </div>
-            <div
-              style={{
-                marginTop: 12,
-                paddingTop: 10,
-                borderTop: '1px solid var(--border)',
-                display: 'flex',
-                gap: 10,
-                fontSize: '0.68rem',
-                color: 'var(--text-faint)',
-              }}
-            >
-              <Link to="/about" style={{ color: 'var(--text-faint)', textDecoration: 'none' }}>
-                关于
-              </Link>
+            <div className="sidebar-bottom-links">
+              <Link to="/about">关于</Link>
               <span>|</span>
-              <Link to="/archive" style={{ color: 'var(--text-faint)', textDecoration: 'none' }}>
-                归档
-              </Link>
+              <Link to="/archive">归档</Link>
             </div>
           </div>
         </aside>
@@ -286,6 +270,7 @@ export default function HomePage() {
         <main className="main" id="mainContent">
           <section className="hero" id="heroSection">
             <div className="hero-inner">
+              <span className="hero-eyebrow">Independent Game Dev Blog</span>
               <h1>
                 <span>萌神小天</span> 的博客
               </h1>
@@ -298,43 +283,20 @@ export default function HomePage() {
                   🏷️ {tagCounts.length} 个标签
                 </span>
               </div>
-              <div className="hero-actions" style={{ marginTop: 18, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <div className="hero-actions">
                 <a
-                  className="hero-btn"
+                  className="hero-btn hero-btn-primary"
                   href="https://msxiaotian.itch.io/tiny-pet-sand-wars"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    padding: '9px 20px',
-                    borderRadius: 999,
-                    background: 'var(--brand)',
-                    color: '#fff',
-                    fontSize: '0.85rem',
-                    textDecoration: 'none',
-                  }}
                 >
                   🎮 试玩《Tiny Pet Sand Wars》
                 </a>
                 <a
-                  className="hero-btn"
+                  className="hero-btn hero-btn-secondary"
                   href="https://www.taptap.cn/app/779424"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    padding: '9px 20px',
-                    borderRadius: 999,
-                    background: 'var(--card-bg)',
-                    color: 'var(--text)',
-                    fontSize: '0.85rem',
-                    textDecoration: 'none',
-                    border: '1px solid var(--border)',
-                  }}
                 >
                   💛 TapTap 支持我
                 </a>
@@ -342,49 +304,23 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="learning-path" style={{ marginTop: 18 }}>
-            <div className="lp-head" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
-              <span className="lp-title" style={{ fontWeight: 700, fontSize: '0.95rem' }}>
-                🎮 Unity 学习路线
-              </span>
-              <Link to="/archive" className="lp-more" style={{ fontSize: '0.75rem', color: 'var(--brand)', textDecoration: 'none' }}>
+          <section className="learning-path">
+            <div className="lp-head">
+              <span className="lp-title">🎮 Unity 学习路线</span>
+              <Link to="/archive" className="lp-more">
                 全部文章 →
               </Link>
             </div>
-            <div
-              className="lp-cards"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-                gap: 10,
-                marginTop: 10,
-              }}
-            >
+            <div className="lp-cards">
               {UNITY_LEARNING_PATH.map(s => (
                 <Link
                   key={s.slug}
                   to={'/post/' + s.slug}
                   className="lp-card"
-                  style={{
-                    display: 'block',
-                    padding: '12px 14px',
-                    borderRadius: 10,
-                    background: 'var(--card-bg)',
-                    border: '1px solid var(--border)',
-                    textDecoration: 'none',
-                    color: 'var(--text)',
-                    transition: 'transform .15s ease, box-shadow .15s ease',
-                  }}
                 >
-                  <div className="lp-step" style={{ fontSize: '0.7rem', color: 'var(--brand)', fontWeight: 700, marginBottom: 6 }}>
-                    {s.step}
-                  </div>
-                  <div className="lp-card-title" style={{ fontSize: '0.85rem', fontWeight: 600, lineHeight: 1.45 }}>
-                    {s.title}
-                  </div>
-                  <div className="lp-card-desc" style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.5 }}>
-                    {s.desc}
-                  </div>
+                  <div className="lp-step">{s.step}</div>
+                  <div className="lp-card-title">{s.title}</div>
+                  <div className="lp-card-desc">{s.desc}</div>
                 </Link>
               ))}
             </div>
