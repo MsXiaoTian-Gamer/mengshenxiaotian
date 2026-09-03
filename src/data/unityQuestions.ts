@@ -4,6 +4,7 @@
 export type QuestionCategory =
   | 'C#基础'
   | 'Unity核心'
+  | 'UGUI'
   | '协程与异步'
   | '渲染与图形学'
   | '资源与内存'
@@ -723,6 +724,66 @@ export const UNITY_QUESTIONS: UnityQuestion[] = [
     '内置管线自定义 Shader 迁移需改：改用 SRP 宏与 CBUFFER、Multi_compile 变体减少、光照模式选择',
     '支持 Render Feature 做后处理/描边/URP 全屏；做性能分析时要看 Draw Call、SetPass Call 与带宽',
   ] },
+  { id: 135, category: 'UGUI', difficulty: 1, question: 'RectTransform 和 Transform 有什么区别？锚点/轴心如何影响 UI 布局？', points: [
+    'RectTransform 继承 Transform，额外含 anchorMin/anchorMax/pivot/sizeDelta/anchoredPosition，用于相对父节点做自适应布局',
+    '锚点决定子物体相对父物体的对齐基准（四角/拉伸），pivot 是自身旋转缩放与定位的原点，sizeDelta 在锚点收缩时是尺寸、拉伸时是偏移量',
+    'UI 适配关键：锚点设对，不同分辨率下子物体自动跟随/拉伸，避免写死绝对坐标',
+  ] },
+  { id: 136, category: 'UGUI', difficulty: 1, question: 'UGUI 点击事件是怎么命中到 UI 的？EventSystem 和 Raycaster 起什么作用？', points: [
+    'EventSystem 每帧轮询当前 Input 模块，把点击/拖拽派发给 Input System；GraphicRaycaster 把屏幕坐标转成射线对 Canvas 下 Graphic 做命中测试',
+    '命中条件：Graphic 的 raycastTarget 开启、在有颜色的像素范围且 Canvas 上未被遮挡；先命中者收到事件，可用 EventSystem.current.RaycastAll 取完整命中链',
+    'UI 挡住 3D 时：3D 用 PhysicsRaycaster，二者优先级由 EventSystem 内 Raycaster 顺序决定，可通过 Ignore Raycast 层级或两个独立 EventSystem 隔离',
+  ] },
+  { id: 137, category: 'UGUI', difficulty: 1, question: 'Canvas 的三种渲染模式（Screen Space Overlay / Camera / World Space）怎么选？', points: [
+    'Overlay：永远绘制在最上层、无需相机，实现最简但无法与 3D 穿插、后处理难以作用于 UI',
+    'Screen Space Camera：UI 挂在指定相机（常用主相机）的平面上，可与 3D 混合、支持后处理与模糊，性能略低',
+    'World Space：UI 作为世界物体存在（血条、小地图、VR），受光照/深度影响；选错模式会导致层级错乱或无法被裁剪',
+  ] },
+  { id: 138, category: 'UGUI', difficulty: 2, question: 'CanvasScaler 做多分辨率适配的原理？刘海屏安全区怎么处理？', points: [
+    'ScaleWithScreenSize 按参考分辨率缩放 UI，matchWidthOrHeight 在宽高比间插值；ConstantPixelSize 适合像素精确的 HUD',
+    '同一 CanvasScaler 下所有子 Canvas 会叠加缩放，嵌套时需统一 Scale Factor 避免字体/尺寸失控',
+    '安全区：用 Screen.safeArea 计算偏移给根节点加 SafeArea 组件或手动 set offset，避开刘海/圆角，横竖屏切换需重新计算',
+  ] },
+  { id: 139, category: 'UGUI', difficulty: 2, question: 'UGUI 的图集与合批规则？什么情况会断批？', points: [
+    'UGUI 按 Canvas 下的深度顺序动态合批：相邻且使用同一图集/字体的元素合成一个批次，共用材质与纹理',
+    '断批原因：跨图集、中间插入不同材质/文本、顶点数过多、raycastTarget 不影响合批但层级穿插会造成批次切换',
+    '优化：把界面按图集分块组织层级，避免两张图集交错排列；动态文字/单独材质放到独立 Canvas 减少整体重建',
+  ] },
+  { id: 140, category: 'UGUI', difficulty: 2, question: 'Canvas 重建（Rebuild）发生在什么时候？为什么每帧改 UI 会卡？', points: [
+    'Graphic 的 layout/顶点数据变更会标记脏，在 Canvas.willRenderCanvases 阶段执行 LayoutRebuild 与 GraphicRebuild（重新生成网格、提交合批）',
+    '改文本内容/颜色/尺寸会触发整条层级链重建；元素越多、层级越深，Rebuild 越贵，且动态元素会把静态部分一起拖下水',
+    '优化：动静分离（静态独立 Canvas 不每帧重建）、减少 SetDirty 调用、复用布局组件、用自定义网格或 TMP 预排版降低更新频率',
+  ] },
+  { id: 141, category: 'UGUI', difficulty: 2, question: 'LayoutGroup（水平/垂直/网格布局）的原理和性能坑？大量动态列表怎么优化？', points: [
+    'LayoutGroup 在布局阶段根据子物体尺寸/间距计算位置与尺寸，任何子项变化都会触发整套布局重算',
+    '坑：动态增删子物体反复触发布局、嵌套多层 LayoutGroup 指数级重算、ContentSizeFitter 参与循环约束会反复驱动重建',
+    '大量列表优化：对象池复用 Item、开启池后手动调 LayoutRebuilder.MarkLayoutForRebuild 而非每帧增删、虚拟列表只实例化可视区 Item 并复用滑动偏移',
+  ] },
+  { id: 142, category: 'UGUI', difficulty: 2, question: 'Mask 和 RectMask2D 的区别？为什么 RectMask2D 性能更好？', points: [
+    'Mask 依赖模板缓冲（Stencil）：为子物体生成额外模板层与绘制批次，UI 层级越深模板开销越大；RectMask2D 用矩形范围做剔除，不写模板',
+    'RectMask2D 只能矩形裁剪，Mask 支持任意形状（配合 Image 图形），但 Mask 会产生额外 Draw Call 且不能合批',
+    '取舍：常规矩形列表/滚动裁剪用 RectMask2D，异形遮罩才用 Mask，并在遮罩内减少 UI 数量',
+  ] },
+  { id: 143, category: 'UGUI', difficulty: 3, question: '超长滚动列表（好友/背包/聊天）性能怎么优化？', points: [
+    '不能实例化全部 Item：用对象池 + 视口内按需填充，Item 移出可视区即回收复用，只保活屏幕高度/Item 高度的少量实例',
+    '配合 RectMask2D 裁剪 + 关闭离屏元素 raycastTarget，滑动时只更新位置与内容（文本/图标）避免整表重建',
+    '虚拟列表需维护数据索引进退：滚动事件里重算首尾索引、复用 Item 的 SetData，避免频繁 Instantiate/Destroy 与 GC 抖动',
+  ] },
+  { id: 144, category: 'UGUI', difficulty: 2, question: 'TextMeshPro 相比老版 Text 好在哪里？为什么项目普遍要换 TMP？', points: [
+    'TMP 用 SDF（有向距离场）字体渲染，缩放/旋转不模糊，支持描边、阴影、渐变色、富文本标签，效果远超位图字体',
+    '性能：TMP 字体图集内字符自动打包、同类字重可合批；老版 Text 每帧按需重建字符网格且动态字体改字会重建整块 Canvas',
+    '注意：TMP 图集溢出需扩容或分包、需要打图集动态字体供运行时文本（昵称/输入）使用，材质实例别滥用避免断批',
+  ] },
+  { id: 145, category: 'C#基础', difficulty: 2, question: 'abstract 方法、virtual 方法、重写 override 的机制区别？', points: [
+    'abstract 方法无实现，必须在非抽象子类 override；virtual 方法带默认实现，子类可选择 override；override 重写父类实现并参与多态分发',
+    'abstract 成员只能存在于 abstract 类；类一旦有 abstract 方法就必须标 abstract，不能实例化；sealed 可封死重写链',
+    '与接口默认方法对比：abstract 类能保存状态（字段）并提供模板方法骨架，适合“统一流程+子类填充细节”的模板模式',
+  ] },
+  { id: 146, category: 'C#基础', difficulty: 3, question: 'Unity 项目里抽象类和接口分别适合什么设计场景？举个实战例子', points: [
+    '抽象类：技能基类/角色基类——有公共字段（伤害、CD）与模板方法（施法流程固定、伤害计算可重写），把变化点留给子类',
+    '接口：可交互（IInteractable）、伤害来源（IDamageSource）、事件监听——能力组合、跨继承树复用、便于测试 Mock 与解耦',
+    '选型口诀：共享实现+状态用抽象类，契约+多实现组合用接口；结合对象池/工厂/状态机让派生类只写差异部分',
+  ] },
 ]
 
 /** 稳定锚点：2026-09-01 起算天数，用于按日期轮询 */
@@ -747,6 +808,7 @@ export function getDailyQuestion(date: Date = new Date()): UnityQuestion {
 export const QUESTION_CATEGORIES: QuestionCategory[] = [
   'C#基础',
   'Unity核心',
+  'UGUI',
   '协程与异步',
   '渲染与图形学',
   '资源与内存',
