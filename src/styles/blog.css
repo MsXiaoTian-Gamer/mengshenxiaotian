@@ -5246,3 +5246,386 @@ body::after {
 [data-theme="dark"] .giscus-comments {
   border-top-color: var(--border);
 }
+
+/* ============================================================
+   Unity 八股每日一题（quiz）——复古终端风扩展
+   ============================================================ */
+
+/* ---- 首页每日八股板块 ---- */
+.quiz-home {
+  margin: 0 0 34px;
+}
+.quiz-home-window {
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  overflow: hidden;
+  box-shadow: var(--card-shadow, 0 4px 14px rgba(0, 0, 0, 0.18));
+}
+[data-theme='dark'] .quiz-home-window {
+  box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.08), 0 0 18px rgba(74, 222, 128, 0.05);
+}
+.quiz-home-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  background: linear-gradient(180deg, rgba(74, 222, 128, 0.16), rgba(74, 222, 128, 0.05));
+  border-bottom: 1px solid var(--border);
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+[data-theme='dark'] .quiz-home-bar {
+  background: linear-gradient(180deg, rgba(74, 222, 128, 0.14), rgba(74, 222, 128, 0.03));
+}
+.quiz-home-bar-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.quiz-home-bar-link:hover {
+  text-shadow: 0 0 8px var(--accent);
+}
+.quiz-home-body {
+  padding: 18px 18px 20px;
+}
+.quiz-home-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.quiz-home-day {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  padding: 5px 8px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+.quiz-home-cat {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.quiz-home-question {
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.quiz-home-btn {
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.quiz-home-btn:hover {
+  background: var(--accent);
+  color: var(--card-bg);
+}
+.quiz-home-points {
+  margin: 14px 0 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 8px;
+}
+.quiz-home-points li {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.quiz-home-points li::marker {
+  color: var(--accent);
+}
+
+/* ---- 题库页通用 ---- */
+.quiz-container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 18px 60px;
+}
+.quiz-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+[data-theme='dark'] .quiz-window-bar {
+  background: rgba(74, 222, 128, 0.08);
+}
+.quiz-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+.quiz-dots i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: block;
+  background: #f87171;
+}
+.quiz-dots i:nth-child(2) {
+  background: #fbbf24;
+}
+.quiz-dots i:nth-child(3) {
+  background: #34d399;
+}
+.quiz-window-title {
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.4px;
+}
+
+/* ---- 今日一题卡 ---- */
+.quiz-today {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-bg);
+  overflow: hidden;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+  margin-bottom: 44px;
+}
+.quiz-today-body {
+  padding: 22px 22px 24px;
+}
+.quiz-today-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.quiz-day-no {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.82rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+.quiz-tag {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+.quiz-diff {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.quiz-today-question {
+  font-size: 1.45rem;
+  line-height: 1.5;
+  margin: 0 0 18px;
+  color: var(--text-primary);
+}
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.quiz-btn {
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.quiz-btn:hover {
+  background: var(--accent);
+  color: var(--card-bg);
+}
+.quiz-link {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--text-muted);
+  padding-bottom: 2px;
+}
+.quiz-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.quiz-answer {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  animation: quiz-fade 0.25s ease;
+}
+@keyframes quiz-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.quiz-points {
+  margin: 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 10px;
+}
+.quiz-points li {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.quiz-points li::marker {
+  color: var(--accent);
+}
+
+/* ---- 全部题库 ---- */
+.quiz-bank-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.quiz-bank-title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+.quiz-bank-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.quiz-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.quiz-cat {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  border-radius: 20px;
+  padding: 6px 13px;
+  transition: all 0.18s ease;
+}
+.quiz-cat:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.quiz-cat.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--card-bg);
+  font-weight: 700;
+}
+.quiz-list {
+  display: grid;
+  gap: 10px;
+}
+.quiz-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  overflow: hidden;
+  transition: border-color 0.18s ease;
+}
+.quiz-item.open {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+.quiz-item-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  padding: 13px 15px;
+  font-size: 0.97rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.quiz-item-head:hover .quiz-item-q {
+  color: var(--accent);
+}
+.quiz-item-no {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.62rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+.quiz-item-q {
+  flex: 1;
+  min-width: 0;
+  transition: color 0.15s ease;
+}
+.quiz-item-diff {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.quiz-item-arrow {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+}
+.quiz-item-body {
+  padding: 0 15px 16px 43px;
+  border-top: 1px dashed var(--border);
+  animation: quiz-fade 0.22s ease;
+}
+.quiz-item-body .quiz-points {
+  padding-top: 12px;
+}
+
+@media (max-width: 720px) {
+  .quiz-today-body {
+    padding: 16px 14px 18px;
+  }
+  .quiz-today-question {
+    font-size: 1.2rem;
+  }
+  .quiz-item-head {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    padding: 12px 13px;
+  }
+  .quiz-item-body {
+    padding: 0 13px 14px 13px;
+  }
+}

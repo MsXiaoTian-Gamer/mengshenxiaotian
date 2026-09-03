@@ -35,6 +35,7 @@ export default function App() {
         <Route path="/post/:slug" element={<PostPage />} />
         <Route path="/archive" element={<ArchivePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/quiz" element={<QuizPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
