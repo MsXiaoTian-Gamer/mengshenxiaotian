@@ -3,6 +3,7 @@ import { useState } from 'react'
 const FLINKS = [
   { name: '萌神小天 GitHub', url: 'https://github.com/MsXiaoTian-Gamer', desc: '代码仓库' },
   { name: '小绿虫的冒险蹦践', url: 'https://www.taptap.cn/app/779424', desc: 'TapTap 游戏页' },
+  { name: 'zzuli开发者社区', url: 'https://zzuli.dev', desc: '开发者社区' },
 ]
 
 /** 友链悬浮按钮 + 面板 */
