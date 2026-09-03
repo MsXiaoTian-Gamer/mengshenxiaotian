@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage'
 import PostPage from './pages/PostPage'
 import ArchivePage from './pages/ArchivePage'
 import AboutPage from './pages/AboutPage'
+import QuizPage from './pages/QuizPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function ScrollToTop() {
