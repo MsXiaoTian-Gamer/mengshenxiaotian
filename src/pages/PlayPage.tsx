@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import { setPageMeta } from '../lib/seo'
 import { ThemeToggleButton } from '../components/widgets'
 
-// Tiny Pet Sand Wars —— Unity WebGL 导出版（独立 Vercel 项目部署，体积大不随博客仓库构建）
-// TODO(部署后替换)：把下面的地址换成真实线上地址
+// Tiny Pet Sand Wars —— Unity WebGL 导出版（独立 Vercel 项目 tiny-sand-war，Git 集成 main 分支自动部署）
 const GAME_URL = 'https://tiny-sand-war.vercel.app/'
 
 export default function PlayPage() {
