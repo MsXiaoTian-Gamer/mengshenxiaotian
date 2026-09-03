@@ -1,7 +1,8 @@
 // 萌神小天 PWA Service Worker
 // 策略：导航请求 network-first（离线回退缓存首页）；静态资源 cache-first
-const CACHE = 'msxt-blog-v1'
-const PRECACHE = ['/', '/manifest.webmanifest', '/icon.svg']
+// 预缓存清单与缓存版本由 scripts/gen-sw.mjs 在构建后注入（占位符不可手工改动）
+const CACHE = '__CACHE_NAME__'
+const PRECACHE = __PRECACHE_LIST__
 
 self.addEventListener('install', event => {
   event.waitUntil(

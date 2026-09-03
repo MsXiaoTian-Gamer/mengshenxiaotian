@@ -1,15 +1,30 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { initTheme } from './lib/theme'
 import { Mascot } from './components/Mascot'
 import { FriendlyLinks } from './components/FriendlyLinks'
 import { ProgressAndBackTop, Hearts } from './components/widgets'
+import CommandPalette from './components/CommandPalette'
+import CrtColorStrip from './components/CrtColorStrip'
+import CrBoot from './components/CrBoot'
 import HomePage from './pages/HomePage'
-import PostPage from './pages/PostPage'
-import ArchivePage from './pages/ArchivePage'
-import AboutPage from './pages/AboutPage'
-import QuizPage from './pages/QuizPage'
-import NotFoundPage from './pages/NotFoundPage'
+
+// 路由级代码分割：非首页页面按需加载（marked/highlight/fuse/题库数据均随之拆包）
+const PostPage = lazy(() => import('./pages/PostPage'))
+const ArchivePage = lazy(() => import('./pages/ArchivePage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const QuizPage = lazy(() => import('./pages/QuizPage'))
+const PlayPage = lazy(() => import('./pages/PlayPage'))
+const StatsPage = lazy(() => import('./pages/StatsPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+
+function RouteFallback() {
+  return (
+    <div className="route-fallback" role="status">
+      <span className="route-fallback-cursor">█</span> LOADING...
+    </div>
+  )
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -31,14 +46,21 @@ export default function App() {
       <ProgressAndBackTop />
       <Mascot />
       <FriendlyLinks />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/post/:slug" element={<PostPage />} />
-        <Route path="/archive" element={<ArchivePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/quiz" element={<QuizPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <CommandPalette />
+      <CrtColorStrip />
+      <CrBoot />
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/post/:slug" element={<PostPage />} />
+          <Route path="/archive" element={<ArchivePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/play" element={<PlayPage />} />
+          <Route path="/stats" element={<StatsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </>
   )
 }

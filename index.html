@@ -16,9 +16,6 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="/icon.svg">
   <link rel="apple-touch-icon" href="/icon-192.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="萌神小天 - 独立游戏开发博客">
   <meta name="twitter:description" content="萌神小天的独立游戏开发博客，分享Unity学习、游戏开发和独立游戏心得">
@@ -35,6 +32,9 @@
         var dark = saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
         if (dark) document.documentElement.setAttribute('data-theme', 'dark');
         else document.documentElement.removeAttribute('data-theme');
+        var crt = localStorage.getItem('blog_crt');
+        if (crt === 'amber' || crt === 'blue') document.documentElement.setAttribute('data-crt', crt);
+        else document.documentElement.removeAttribute('data-crt');
       } catch (e) {}
     })();
   </script>

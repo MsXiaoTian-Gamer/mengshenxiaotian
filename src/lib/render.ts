@@ -159,6 +159,21 @@ export function decorateCodeBlocks(root: HTMLElement): void {
     })
     wrapper.appendChild(copyBtn)
 
+    // 长代码自动折叠：超过 44 行默认收起，点击展开
+    const lineCount = (code.textContent || '').split('\n').length
+    if (lineCount > 44) {
+      wrapper.classList.add('cf-folded')
+      const foldBtn = document.createElement('button')
+      foldBtn.type = 'button'
+      foldBtn.className = 'code-fold-btn'
+      foldBtn.textContent = `展开 ${lineCount} 行代码`
+      foldBtn.addEventListener('click', () => {
+        const folded = wrapper.classList.toggle('cf-folded')
+        foldBtn.textContent = folded ? `展开 ${lineCount} 行代码` : '收起 ▲'
+      })
+      wrapper.appendChild(foldBtn)
+    }
+
     const lower = lang.toLowerCase()
     if (WEB_LANGS.includes(lower)) {
       const runBtn = document.createElement('button')

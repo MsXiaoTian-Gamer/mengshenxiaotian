@@ -8,7 +8,6 @@ import { setPageMeta } from '../lib/seo'
 import { searchSlugs } from '../lib/search'
 import { getHotArticles, getArticleViews } from '../lib/stats'
 import { UNITY_LEARNING_PATH } from '../data/learningPath'
-import { getDailyQuestion, dayIndex } from '../data/unityQuestions'
 
 const QUOTES = [
   { text: '游戏是让人快乐的，做游戏也是。', author: '萌神小天' },
@@ -80,9 +79,28 @@ export default function HomePage() {
     const d = new Date()
     return QUOTES[(d.getFullYear() + d.getMonth() + d.getDate()) % QUOTES.length]
   }, [])
-  const quizToday = useMemo(() => getDailyQuestion(), [])
-  const quizDayNo = Math.max(1, dayIndex() + 1)
+  const [daily, setDaily] = useState<{
+    q: { category: string; question: string; points: string[] }
+    dayNo: number
+  } | null>(null)
 
+  useEffect(() => {
+    let alive = true
+    import('../data/unityQuestions')
+      .then(m => {
+        if (!alive) return
+        setDaily({ q: m.getDailyQuestion(), dayNo: Math.max(1, m.dayIndex() + 1) })
+      })
+      .catch(() => {
+        /* ignore */
+      })
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  const quizToday = daily?.q
+  const quizDayNo = daily ? daily.dayNo : 0
   const onHamburger = () => {
     setNavOpen(v => !v)
     const layout = document.getElementById('layout')
@@ -341,20 +359,26 @@ export default function HomePage() {
                 </Link>
               </div>
               <div className="quiz-home-body">
-                <div className="quiz-home-meta">
-                  <span className="quiz-home-day">DAY {String(quizDayNo).padStart(3, '0')}</span>
-                  <span className="quiz-home-cat">{quizToday.category}</span>
-                </div>
-                <div className="quiz-home-question">{quizToday.question}</div>
-                <button className="quiz-home-btn" onClick={() => setQuizOpen(v => !v)}>
-                  {quizOpen ? '收起要点 ▲' : '查看要点 ▼'}
-                </button>
-                {quizOpen && (
-                  <ul className="quiz-home-points">
-                    {quizToday.points.map((p, i) => (
-                      <li key={i}>{p}</li>
-                    ))}
-                  </ul>
+                {!quizToday ? (
+                  <div className="quiz-home-loading">LOADING_QUESTION█</div>
+                ) : (
+                  <>
+                    <div className="quiz-home-meta">
+                      <span className="quiz-home-day">DAY {String(quizDayNo).padStart(3, '0')}</span>
+                      <span className="quiz-home-cat">{quizToday.category}</span>
+                    </div>
+                    <div className="quiz-home-question">{quizToday.question}</div>
+                    <button className="quiz-home-btn" onClick={() => setQuizOpen(v => !v)}>
+                      {quizOpen ? '收起要点 ▲' : '查看要点 ▼'}
+                    </button>
+                    {quizOpen && (
+                      <ul className="quiz-home-points">
+                        {quizToday.points.map((p, i) => (
+                          <li key={i}>{p}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
                 )}
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { setPageMeta } from '../lib/seo'
 import { ThemeToggleButton } from '../components/widgets'
@@ -11,14 +11,26 @@ import {
 } from '../data/unityQuestions'
 
 const DIFF_TEXT = ['', '简单', '中等', '较难']
+const BATCH = 28
 
 export default function QuizPage() {
   const [cat, setCat] = useState<'全部' | QuestionCategory>('全部')
   const [expanded, setExpanded] = useState<number | null>(null)
   const [todayOpen, setTodayOpen] = useState(false)
+  const [visible, setVisible] = useState(BATCH)
+  const [offline, setOffline] = useState(false)
+  const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setPageMeta('Unity 八股每日一题 - 萌神小天', 'Unity 客户端面试八股题库：每日一题 + 全题库刷题复习')
+    const on = () => setOffline(!navigator.onLine)
+    setOffline(!navigator.onLine)
+    window.addEventListener('online', on)
+    window.addEventListener('offline', on)
+    return () => {
+      window.removeEventListener('online', on)
+      window.removeEventListener('offline', on)
+    }
   }, [])
 
   const today = useMemo(() => getDailyQuestion(), [])
@@ -29,6 +41,30 @@ export default function QuizPage() {
     return UNITY_QUESTIONS.filter(q => q.category === cat)
   }, [cat])
 
+  // 分批渲染：接近底部时自动追加一批（虚拟滚动的轻量替代，兼容所有既有交互）
+  useEffect(() => {
+    setVisible(BATCH)
+  }, [cat])
+
+  useEffect(() => {
+    const el = sentinelRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting) {
+          setVisible(v => (v >= list.length ? v : Math.min(list.length, v + BATCH)))
+        }
+      },
+      { rootMargin: '400px 0px' }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [list.length, cat])
+
+  const showMore = useCallback(() => {
+    setVisible(v => Math.min(list.length, v + BATCH * 2))
+  }, [list.length])
+
   const renderPoints = (q: { points: string[] }) => (
     <ul className="quiz-points">
       {q.points.map((p, i) => (
@@ -36,6 +72,9 @@ export default function QuizPage() {
       ))}
     </ul>
   )
+
+  const shown = list.slice(0, visible)
+  const rest = list.length - shown.length
 
   return (
     <>
@@ -47,6 +86,12 @@ export default function QuizPage() {
         <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Unity 八股题库</span>
         <ThemeToggleButton className="theme-btn" />
       </nav>
+
+      {offline && (
+        <div className="quiz-offline-banner">
+          📡 离线模式：题库已随站点缓存，可继续刷题（PWA Service Worker）
+        </div>
+      )}
 
       <div className="quiz-container">
         {/* ===== 今日题 ===== */}
@@ -108,7 +153,7 @@ export default function QuizPage() {
             })}
           </div>
           <div className="quiz-list">
-            {list.map((q, i) => {
+            {shown.map((q, i) => {
               const open = expanded === q.id
               return (
                 <div className={'quiz-item' + (open ? ' open' : '')} key={q.id}>
@@ -123,6 +168,15 @@ export default function QuizPage() {
               )
             })}
           </div>
+          {rest > 0 && (
+            <div className="quiz-more-hint">
+              已加载 {shown.length} / {list.length} 题
+              <button className="quiz-more-btn" onClick={showMore}>
+                展开剩余 {rest} 题 ↓
+              </button>
+            </div>
+          )}
+          <div ref={sentinelRef} className="quiz-sentinel" aria-hidden="true"></div>
         </section>
       </div>
     </>
