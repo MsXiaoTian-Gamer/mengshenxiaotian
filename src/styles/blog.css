@@ -6517,3 +6517,28 @@ body::after {
 
 /* 长代码折叠展开后的 sentinel 占位 */
 .quiz-sentinel { height: 1px; }
+
+/* ===== Tiny Pet Sand Wars WebGL 试玩页 ===== */
+.tsw-page { max-width: 1080px; margin: 24px auto 48px; padding: 0 18px; }
+.tsw-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.tsw-brand { font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; color: var(--brand); text-shadow: 0 0 8px rgba(74, 222, 128, 0.45); }
+.tsw-links { display: flex; gap: 10px; }
+.tsw-ext { font: 0.78rem var(--font-mono); color: var(--text-secondary); border: 1px solid var(--border-color, #24433a); padding: 4px 10px; text-decoration: none; transition: all .15s; }
+.tsw-ext:hover { color: var(--bg); background: var(--brand); border-color: var(--brand); }
+.tsw-frame-wrap { position: relative; border: 1px solid var(--border-color, #24433a); background: #05080a; box-shadow: inset 0 0 30px rgba(74, 222, 128, 0.05), 0 0 18px rgba(0, 0, 0, 0.4); }
+.tsw-frame-wrap::before { content: ''; display: block; height: 26px; background: linear-gradient(90deg, #16211d, #1c2b25 60%, #16211d); border-bottom: 1px solid var(--border-color, #24433a); }
+.tsw-frame-wrap::after { content: '● ● ●  sand-war@localhost'; display: block; position: absolute; top: 0; left: 0; right: 0; height: 26px; line-height: 26px; padding: 0 12px; font: 0.7rem var(--font-mono); color: var(--text-secondary); letter-spacing: 1px; }
+.tsw-frame { display: block; width: 100%; height: 640px; border: 0; background: transparent; }
+.tsw-frame-wrap.loaded .tsw-frame { background: #000; }
+.tsw-loading, .tsw-failed { position: absolute; inset: 26px 0 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 24px; text-align: center; background: #0a1510; z-index: 2; }
+.tsw-loading-text { font: 0.85rem var(--font-mono); color: var(--brand); animation: crt-blink 0.9s steps(1) infinite; }
+.tsw-loading-bar { width: min(340px, 70%); height: 10px; border: 1px solid var(--border-color, #24433a); overflow: hidden; }
+.tsw-loading-bar i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, transparent, var(--brand), transparent); background-size: 60px 100%; animation: tsw-scan 1.4s linear infinite; }
+@keyframes tsw-scan { from { transform: translateX(-60px); } to { transform: translateX(calc(100% + 60px)); } }
+.tsw-loading p, .tsw-failed { font: 0.78rem var(--font-mono); color: var(--text-secondary); }
+.tsw-failed { color: #f87171; }
+.tsw-foot { margin-top: 14px; font: 0.75rem var(--font-mono); color: var(--text-secondary); text-align: center; letter-spacing: 0.4px; }
+@media (max-width: 720px) {
+  .tsw-frame { height: 380px; }
+  .tsw-head { flex-direction: column; align-items: flex-start; }
+}

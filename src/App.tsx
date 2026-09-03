@@ -15,6 +15,7 @@ const ArchivePage = lazy(() => import('./pages/ArchivePage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const QuizPage = lazy(() => import('./pages/QuizPage'))
 const PlayPage = lazy(() => import('./pages/PlayPage'))
+const PongPage = lazy(() => import('./pages/PongPage'))
 const StatsPage = lazy(() => import('./pages/StatsPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/play" element={<PlayPage />} />
+          <Route path="/play/pong" element={<PongPage />} />
           <Route path="/stats" element={<StatsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
