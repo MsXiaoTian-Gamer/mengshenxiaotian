@@ -98,7 +98,7 @@ export default function HomePage() {
     return QUOTES[(d.getFullYear() + d.getMonth() + d.getDate()) % QUOTES.length]
   }, [])
   const [daily, setDaily] = useState<{
-    q: { category: string; question: string; points: string[] }
+    q: { category: string; question: string; points: string[]; talk: string }
     dayNo: number
   } | null>(null)
 
@@ -382,14 +382,20 @@ export default function HomePage() {
                     </div>
                     <div className="quiz-home-question">{quizToday.question}</div>
                     <button className="quiz-home-btn" onClick={() => setQuizOpen(v => !v)}>
-                      {quizOpen ? '收起要点 ▲' : '查看要点 ▼'}
+                      {quizOpen ? '收起答案 ▲' : '查看答案 / 面试话术 ▼'}
                     </button>
                     {quizOpen && (
-                      <ul className="quiz-home-points">
-                        {quizToday.points.map((p, i) => (
-                          <li key={i}>{p}</li>
-                        ))}
-                      </ul>
+                      <>
+                        <ul className="quiz-home-points">
+                          {quizToday.points.map((p, i) => (
+                            <li key={i}>{p}</li>
+                          ))}
+                        </ul>
+                        <div className="quiz-home-talk">
+                          <span className="quiz-home-talk-label">面试话术</span>
+                          <p>{quizToday.talk}</p>
+                        </div>
+                      </>
                     )}
                   </>
                 )}

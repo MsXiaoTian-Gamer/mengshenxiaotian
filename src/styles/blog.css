@@ -5504,6 +5504,50 @@ body::after {
   color: var(--accent);
 }
 
+/* ---- 面试话术 ---- */
+.quiz-talk {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-soft, rgba(127, 127, 127, 0.06));
+  border-radius: 6px;
+}
+.quiz-talk-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.quiz-talk-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.quiz-home-talk {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-soft, rgba(127, 127, 127, 0.06));
+  border-radius: 6px;
+}
+.quiz-home-talk-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.quiz-home-talk p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
 /* ---- 全部题库 ---- */
 .quiz-bank-head {
   display: flex;

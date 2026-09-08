@@ -73,6 +73,13 @@ export default function QuizPage() {
     </ul>
   )
 
+  const renderTalk = (q: { talk: string }) => (
+    <div className="quiz-talk">
+      <span className="quiz-talk-label">面试话术</span>
+      <p className="quiz-talk-text">{q.talk}</p>
+    </div>
+  )
+
   const shown = list.slice(0, visible)
   const rest = list.length - shown.length
 
@@ -119,7 +126,12 @@ export default function QuizPage() {
                 文章归档 →
               </Link>
             </div>
-            {todayOpen && <div className="quiz-answer">{renderPoints(today)}</div>}
+            {todayOpen && (
+              <div className="quiz-answer">
+                {renderPoints(today)}
+                {renderTalk(today)}
+              </div>
+            )}
           </div>
         </section>
 
@@ -163,7 +175,12 @@ export default function QuizPage() {
                     <span className="quiz-item-diff">{DIFF_TEXT[q.difficulty]}</span>
                     <span className="quiz-item-arrow">{open ? '−' : '+'}</span>
                   </button>
-                  {open && <div className="quiz-item-body">{renderPoints(q)}</div>}
+                  {open && (
+                    <div className="quiz-item-body">
+                      {renderPoints(q)}
+                      {renderTalk(q)}
+                    </div>
+                  )}
                 </div>
               )
             })}
