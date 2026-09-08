@@ -7,6 +7,13 @@
 <language>zh-CN</language>
 <atom:link href="https://msxiaotian.top/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>C++ 八股与计算机组成原理八股</title>
+    <link>https://msxiaotian.top/post/2026-09-08-cpp-and-co-baguwen</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-09-08-cpp-and-co-baguwen</guid>
+    <pubDate>Mon, 07 Sep 2026 16:00:00 GMT</pubDate>
+    <description>C++ 八股与计算机组成原理八股 面试冲刺自用整理：C++ 高频八股（指针/引用、对象模型、内存管理、STL、移动语义等，与 C 对照方便迁移）与计算机组成原理高频八股（Cache、虚拟内存、补码与浮点、流水线、字节序等）。适合游戏客户端方向笔试面试复习，文末附两套自测表。 一、C++ 八股 1.1 指针与引用 对比项 指针 引用 本质 保存地址的变量，本身占内存 变量的别名，不占独立内存（编译后等同原变量） 是否可空 可为 nullptr 必须初始化且不可为空 是否可改绑 可以指向别的对象 一旦绑定不可改绑 是否可重新赋值语义 赋值改变指向 赋值改变所指对象的值 运算 支持指针算术（++/ …</description>
+  </item>
+  <item>
     <title>吉比特 Unity 客户端面试经历</title>
     <link>https://msxiaotian.top/post/2026-08-19-gbits-unity-client-interview</link>
     <guid isPermaLink="true">https://msxiaotian.top/post/2026-08-19-gbits-unity-client-interview</guid>

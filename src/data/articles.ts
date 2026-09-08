@@ -15,6 +15,7 @@ export interface ArticleMeta {
 }
 
 export const ARTICLES: ArticleMeta[] = [
+  { title: "C++ 八股与计算机组成原理八股", date: "2026-09-08", tags: ["C++", "面试", "计算机组成原理"], path: "2026-09-08-cpp-and-co-baguwen.md", slug: "2026-09-08-cpp-and-co-baguwen" },
   { title: "吉比特 Unity 客户端面试经历", date: "2026-08-19", tags: ["面试", "吉比特", "Unity"], path: "2026-08-19-gbits-unity-client-interview.md", slug: "2026-08-19-gbits-unity-client-interview" },
   { title: "米哈游游戏客户端笔经", date: "2026-08-17", tags: ["笔试", "米哈游", "客户端"], path: "2026-08-17-mihoyo-game-client-interview.md", slug: "2026-08-17-mihoyo-game-client-interview" },
   { title: "Unity 第一阶段：基础入门与核心概念学习笔记", date: "2026-08-11", tags: ["Unity", "学习"], path: "2026-08-11-Unity-基础入门与核心概念.md", slug: "2026-08-11-Unity-基础入门与核心概念" },
