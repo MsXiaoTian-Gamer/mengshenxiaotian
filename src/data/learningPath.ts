@@ -22,7 +22,7 @@ export const UNITY_LEARNING_PATH: LearningStep[] = [
   {
     step: '第 3 步',
     title: 'Unity 第二阶段：设计模式与代码结构',
-    slug: '2026-09-08-Unity-第二阶段-设计模式与代码结构',
+    slug: '2026-08-28-Unity-第二阶段-设计模式与代码结构',
     desc: '观察者/事件、状态机、对象池、工厂等常用结构与解耦',
   },
   {

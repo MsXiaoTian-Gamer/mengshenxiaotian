@@ -15,7 +15,7 @@ export interface ArticleMeta {
 }
 
 export const ARTICLES: ArticleMeta[] = [
-  { title: "Unity 第二阶段：设计模式与代码结构学习笔记", date: "2026-09-08", tags: ["Unity", "学习"], path: "2026-09-08-Unity-第二阶段-设计模式与代码结构.md", slug: "2026-09-08-Unity-第二阶段-设计模式与代码结构" },
+  { title: "Unity 第二阶段：设计模式与代码结构学习笔记", date: "2026-08-28", tags: ["Unity", "学习"], path: "2026-08-28-Unity-第二阶段-设计模式与代码结构.md", slug: "2026-08-28-Unity-第二阶段-设计模式与代码结构" },
   { title: "Unity 第三阶段：项目架构与工程化实践学习笔记", date: "2026-09-08", tags: ["Unity", "学习"], path: "2026-09-08-Unity-第三阶段-项目架构与工程化实践.md", slug: "2026-09-08-Unity-第三阶段-项目架构与工程化实践" },
   { title: "C++ 八股与计算机组成原理八股", date: "2026-09-08", tags: ["C++", "面试", "计算机组成原理"], path: "2026-09-08-cpp-and-co-baguwen.md", slug: "2026-09-08-cpp-and-co-baguwen" },
   { title: "吉比特 Unity 客户端面试经历", date: "2026-08-19", tags: ["面试", "吉比特", "Unity"], path: "2026-08-19-gbits-unity-client-interview.md", slug: "2026-08-19-gbits-unity-client-interview" },
