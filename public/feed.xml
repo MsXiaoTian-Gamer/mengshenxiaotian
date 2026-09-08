@@ -7,6 +7,13 @@
 <language>zh-CN</language>
 <atom:link href="https://msxiaotian.top/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>Unity 第二阶段：设计模式与代码结构学习笔记</title>
+    <link>https://msxiaotian.top/post/2026-09-08-Unity-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-09-08-Unity-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84</guid>
+    <pubDate>Mon, 07 Sep 2026 16:00:00 GMT</pubDate>
+    <description>Unity 第二阶段：设计模式与代码结构学习笔记 这份笔记适合已经会写一些 Unity 功能，但开始感觉代码变乱、功能不好扩展、脚本之间互相依赖太多的阶段。 第二阶段的重点不是背设计模式名字，而是学会： 怎么拆类 怎么降低耦合 怎么让功能更好扩展 怎么让 UI、数据、逻辑分开 怎么把常见游戏系统写得更清楚 核心目标： 从“把功能写出来”，进步到“把系统设计清楚”。 一、第二阶段应该优先学什么 建议优先掌握这几个最常用的 Unity 编程模式： 1. 观察者模式 / C 事件 2. 状态机 / 状态模式 3. 对象池 4. 工厂模式 5. 策略模式 6. 单例模式 不建议一开始就学太重的东西，比…</description>
+  </item>
+  <item>
     <title>Unity 第三阶段：项目架构与工程化实践学习笔记</title>
     <link>https://msxiaotian.top/post/2026-09-08-Unity-%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5-%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%AE%9E%E8%B7%B5</link>
     <guid isPermaLink="true">https://msxiaotian.top/post/2026-09-08-Unity-%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5-%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%AE%9E%E8%B7%B5</guid>
