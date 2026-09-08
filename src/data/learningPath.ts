@@ -8,15 +8,21 @@ export interface LearningStep {
 
 export const UNITY_LEARNING_PATH: LearningStep[] = [
   {
-    step: '第 2 步',
+    step: '第 1 步',
     title: 'Unity 零基础入门指南',
     slug: '2026-07-31-Unity-零基础入门指南',
     desc: '从装好 Unity 到跑通第一个场景',
   },
   {
-    step: '第 3 步',
+    step: '第 2 步',
     title: 'Unity 第一阶段：基础入门与核心概念',
     slug: '2026-08-11-Unity-基础入门与核心概念',
     desc: '场景、组件、脚本、生命周期等核心概念',
+  },
+  {
+    step: '第 3 步',
+    title: 'Unity 第三阶段：项目架构与工程化实践',
+    slug: '2026-09-08-Unity-第三阶段-项目架构与工程化实践',
+    desc: '进阶：独立写出单个系统后，学习架构分层、数据驱动、场景流、存档与工程化',
   },
 ]
