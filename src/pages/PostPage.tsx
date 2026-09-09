@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ARTICLES, ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
+import { POST_MINUTES, POST_SUMMARY } from '../data/generated-meta'
 import { getRawContent } from '../lib/content'
-import { estimateReadingTime, formatDateCN, getTagColors, getPrimaryTag, pickRelated } from '../lib/blog'
+import { formatDateCN, getTagColors, getPrimaryTag, pickRelated } from '../lib/blog'
 import { enhanceMarkdownDom, renderMarkdownHtml, copyText, buildDescription } from '../lib/render'
 import { setPageMeta } from '../lib/seo'
 import { ThemeToggleButton } from '../components/widgets'
@@ -137,7 +138,19 @@ function LikeButton({ article }: { article: ArticleMeta }) {
 export default function PostPage() {
   const { slug } = useParams<{ slug: string }>()
   const article = useMemo(() => ARTICLES.find(a => a.slug === slug) || null, [slug])
-  const md = useMemo(() => (article ? getRawContent(article.path) : ''), [article])
+  const [md, setMd] = useState('')
+  useEffect(() => {
+    let alive = true
+    setMd('')
+    if (article) {
+      getRawContent(article.path).then(m => {
+        if (alive) setMd(m)
+      })
+    }
+    return () => {
+      alive = false
+    }
+  }, [article])
   const html = useMemo(() => (article ? renderMarkdownHtml(md) : ''), [article, md])
   const bodyRef = useRef<HTMLDivElement>(null)
   const [toc, setToc] = useState<TocItem[]>([])
@@ -155,8 +168,10 @@ export default function PostPage() {
       setPageMeta('文章未找到 - 萌神小天')
       return
     }
-    setPageMeta(article.title + ' - 萌神小天', buildDescription(md), { path: '/post/' + article.slug })
-  }, [article, md])
+    setPageMeta(article.title + ' - 萌神小天', buildDescription(POST_SUMMARY[article.slug] || ''), {
+      path: '/post/' + article.slug,
+    })
+  }, [article])
 
   // 阅读量：上报（同浏览器同一天一次），再拉取远端计数展示
   useEffect(() => {
@@ -208,7 +223,7 @@ export default function PostPage() {
     )
   }
 
-  const time = estimateReadingTime(md)
+  const time = POST_MINUTES[article.slug] || 1
   const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://msxiaotian.top'
   const shareTitle = encodeURIComponent(article.title + ' - 萌神小天')
 
@@ -231,7 +246,6 @@ export default function PostPage() {
         <div className="related-cards" ref={relatedRef}>
           {list.map(r => {
             const tc = getTagColors(getPrimaryTag(r) || '')
-            const rmd = getRawContent(r.path)
             return (
               <Link key={r.path} to={'/post/' + r.slug} className="related-card">
                 <div className="related-card-meta">{r.date}</div>
@@ -243,7 +257,7 @@ export default function PostPage() {
                     </span>
                   ))}
                 </div>
-                <div className="related-card-desc">{estimateReadingTime(rmd)} min read</div>
+                <div className="related-card-desc">{POST_MINUTES[r.slug] || 1} min read</div>
               </Link>
             )
           })}
@@ -308,6 +322,9 @@ export default function PostPage() {
         )}
 
         <div className="art-content">
+          {!html && (
+            <div style={{ padding: '40px 0', color: 'var(--text-muted)' }}>正在加载正文…</div>
+          )}
           <div className="art-body" ref={bodyRef}></div>
         </div>
 

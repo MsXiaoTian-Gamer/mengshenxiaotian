@@ -1,19 +1,6 @@
 // 全文搜索：Fuse.js 索引（标题/标签/正文/路径）
+// 2A：正文不再 eager 内联；索引改为 build 期生成的 public/search-index.json，运行时按需 fetch 后建 Fuse
 import Fuse from 'fuse.js'
-import type { ArticleMeta } from '../data/articles'
-import { getRawContent } from './content'
-import { stripFrontMatter } from './blog'
-
-/** 正文转纯文本（去 markdown 符号），作为搜索正文 */
-function toPlainText(md: string): string {
-  return stripFrontMatter(md)
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/[#*`>_~\-]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
 
 export interface SearchDoc {
   slug: string
@@ -22,16 +9,31 @@ export interface SearchDoc {
   body: string
 }
 
+let indexCache: SearchDoc[] | null = null
 let fuseCache: Fuse<SearchDoc> | null = null
+let loading: Promise<SearchDoc[]> | null = null
 
-function buildIndex(): Fuse<SearchDoc> {
+async function loadIndex(): Promise<SearchDoc[]> {
+  if (indexCache) return indexCache
+  if (loading) return loading
+  loading = fetch('/search-index.json')
+    .then(r => {
+      if (!r.ok) throw new Error('search index fetch failed: ' + r.status)
+      return r.json() as Promise<SearchDoc[]>
+    })
+    .then(docs => {
+      indexCache = docs
+      return docs
+    })
+    .finally(() => {
+      loading = null
+    })
+  return loading
+}
+
+async function buildIndex(): Promise<Fuse<SearchDoc>> {
   if (fuseCache) return fuseCache
-  const docs = [...ARTICLES_ALL].map(a => ({
-    slug: a.slug,
-    title: a.title,
-    tags: a.tags || [],
-    body: toPlainText(getRawContent(a.path)),
-  }))
+  const docs = await loadIndex()
   fuseCache = new Fuse(docs, {
     keys: [
       { name: 'title', weight: 3 },
@@ -47,18 +49,14 @@ function buildIndex(): Fuse<SearchDoc> {
   return fuseCache
 }
 
-/** 按 query 搜索，返回按相关度排序的文章 slug 列表 */
-export function searchSlugs(query: string): string[] {
+/** 按 query 搜索，返回按相关度排序的文章 slug 列表（异步：首次会拉取 search-index.json） */
+export async function searchSlugs(query: string): Promise<string[]> {
   const q = query.trim()
   if (!q) return []
   try {
-    return buildIndex()
-      .search(q)
-      .map(r => r.item.slug)
+    const fuse = await buildIndex()
+    return fuse.search(q).map(r => r.item.slug)
   } catch (e) {
     return []
   }
 }
-
-// 延迟 import 数据避免循环依赖（search.ts 被 HomePage 引用即可）
-import { ARTICLES as ARTICLES_ALL } from '../data/articles'

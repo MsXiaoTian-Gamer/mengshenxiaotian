@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
-import { getRawContent } from '../lib/content'
-import { estimateReadingTime, getTagCounts } from '../lib/blog'
+import { POST_MINUTES } from '../data/generated-meta'
+import { getTagCounts } from '../lib/blog'
 import { setPageMeta } from '../lib/seo'
 import { ThemeToggleButton } from '../components/widgets'
 
@@ -83,7 +83,7 @@ export default function ArchivePage() {
               </h2>
               <div className="archive-year-body" style={collapsed[g.year] ? { display: 'none' } : undefined}>
                 {g.items.map(a => {
-                  const mins = estimateReadingTime(getRawContent(a.path) || '')
+                  const mins = POST_MINUTES[a.slug] || 1
                   return (
                     <div className="archive-item" key={a.path}>
                       <span className="archive-date">{a.date}</span>

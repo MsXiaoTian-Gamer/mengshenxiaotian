@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTICLES, ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
-import { getRawContent } from '../lib/content'
-import { estimateReadingTime, formatDateCN, getSummary, getTagCounts, getTagColors, getPrimaryTag } from '../lib/blog'
+import { POST_MINUTES, POST_SUMMARY } from '../data/generated-meta'
+import { getTagCounts, getTagColors, getPrimaryTag } from '../lib/blog'
 import { ThemeToggleButton } from '../components/widgets'
 import { setPageMeta } from '../lib/seo'
-import { searchSlugs } from '../lib/search'
 import { reportSiteVisit, fetchRemoteStats, type RemoteStats } from '../lib/stats'
 import { UNITY_LEARNING_PATH } from '../data/learningPath'
 
@@ -24,10 +23,7 @@ function postUrl(a: ArticleMeta): string {
 }
 
 function readingMinutes(a: ArticleMeta): number {
-  const md = getRawContent(a.path)
-  if (!md) return 1
-  const raw = md.length
-  return Math.max(1, Math.round(raw / 450))
+  return POST_MINUTES[a.slug] || 1
 }
 
 function filterArticles(query: string, tag: string): ArticleMeta[] {
@@ -172,8 +168,7 @@ export default function HomePage() {
     return (
       <>
         {list.map(a => {
-          const md = getRawContent(a.path)
-          const summary = getSummary(md)
+          const summary = POST_SUMMARY[a.slug] || ''
           return (
             <Link key={a.path} to={postUrl(a)} className="article-card">
               <div className="card-date">{a.date}</div>
