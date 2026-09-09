@@ -304,6 +304,16 @@ export function enhanceMarkdownDom(root: HTMLElement): void {
   convertCodeTabs(root)
   decorateCodeBlocks(root)
   highlightCode(root)
+  // 正文图片懒加载（视口外图片延后请求），再绑定点击放大
+  root.querySelectorAll('img').forEach(imgRaw => {
+    const img = imgRaw as HTMLImageElement
+    if (img.closest('.code-block-wrapper, .lc-panel, .lightbox-overlay')) return
+    if (!img.dataset.lazyDone) {
+      img.dataset.lazyDone = '1'
+      img.loading = 'lazy'
+      img.decoding = 'async'
+    }
+  })
   bindLightbox(root)
 }
 
@@ -321,8 +331,8 @@ export { escapeHtml }
 
 /* ============ 异步增强：KaTeX 数学公式 & Mermaid 图表（CDN 按需加载） ============ */
 
-const CDN_KATEX = 'https://cdnjs.cloudflare.com/ajax/libs/katex/0.16.11'
-const CDN_MERMAID = 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js'
+const CDN_KATEX = '/vendor/katex'
+const CDN_MERMAID = '/vendor/mermaid/mermaid.min.js'
 
 function loadScript(src: string): Promise<void> {
   return new Promise((resolve, reject) => {

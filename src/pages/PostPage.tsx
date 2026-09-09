@@ -6,6 +6,7 @@ import { getRawContent } from '../lib/content'
 import { formatDateCN, getTagColors, getPrimaryTag, pickRelated } from '../lib/blog'
 import { enhanceMarkdownDom, renderMarkdownHtml, copyText, buildDescription } from '../lib/render'
 import { setPageMeta } from '../lib/seo'
+import { getTheme, ensureHljsCss } from '../lib/theme'
 import { ThemeToggleButton } from '../components/widgets'
 import { reportArticleView, fetchRemoteStats } from '../lib/stats'
 
@@ -194,6 +195,8 @@ export default function PostPage() {
     if (!article || !bodyRef.current) return
     const root = bodyRef.current
     root.innerHTML = html
+    // 正文含代码块才注入 hljs 主题 CSS；切主题后进入文章页以当前主题加载（幂等）
+    void ensureHljsCss(getTheme())
     enhanceMarkdownDom(root)
     setToc(collectToc(root))
     setCopied(false)
