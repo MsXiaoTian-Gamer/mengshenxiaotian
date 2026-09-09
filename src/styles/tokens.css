@@ -1,0 +1,115 @@
+/* tokens.css — :root / [data-theme=dark] CSS 变量与调色板（PHOSPHOR.SYS 主题令牌） */
+  /* ====== CSS Variables (Light = 清晨打印稿) ====== */
+  :root {
+    --bg: #f4f0e6;
+    --bg-hero: #f4f0e6;
+    --surface: #fbf8f0;
+    --surface-hover: #efe9db;
+    --surface-alt: #f0ebdd;
+    --text: #22311f;
+    --text-heading: #15250f;
+    --text-muted: #4d5c48;
+    --text-secondary: #5f6f57;
+    --text-faint: #7a8a72;
+    --brand: #2e7d4f;
+    --brand-light: #4c9a68;
+    --brand-soft: #dcedd9;
+    --brand-ghost: #f0f7ee;
+    --accent: #b45309;
+    --accent-light: #d97706;
+    --accent-soft: #f6e8d5;
+    --accent-ghost: #faf2e5;
+    --border: #d8d2c2;
+    --border-light: #e4dfd0;
+    --divider-color: #cfc8b4;
+    --focus-ring: rgba(46,125,79,0.30);
+    --shadow-sm: 0 1px 3px rgba(58,64,46,0.12);
+    --shadow: 0 2px 10px rgba(58,64,46,0.14);
+    --shadow-md: 0 6px 20px rgba(58,64,46,0.16);
+    --shadow-lg: 0 12px 36px rgba(58,64,46,0.18);
+    --radius-sm: 0px;
+    --radius: 2px;
+    --radius-lg: 2px;
+    --transition: 0.15s ease;
+    --transition-slow: 0.25s ease;
+    --content-width: 680px;
+    --code-bg: #ece7da;
+    --code-border: #d8d2c2;
+    --kbd-bg: #ece7da;
+    --kbd-border: #cfc8b4;
+    --card-bg: #fbf8f0;
+    --font-display: 'Press Start 2P', monospace;
+    --font-term: 'VT323', 'JetBrains Mono', monospace;
+    --font-mono: 'JetBrains Mono','VT323','SF Mono','Fira Code',monospace;
+    --tag-bg: #dcedd9;
+    --tag-text: #2e7d4f;
+    --table-stripe: #f0ebdd;
+    --scrollbar-thumb: #b9b29c;
+    --scrollbar-track: #efe9db;
+    --sidebar-width: 300px;
+    --scan-opacity: 0.03;
+    /* ====== Tag Color System (Light — 复古打印稿卡带色) ====== */
+    --c-blue:       #3a6d8c;  --c-blue-bg:    #e3ece9;
+    --c-green:      #4a7c59;  --c-green-bg:   #e4ece0;
+    --c-purple:     #7a6395;  --c-purple-bg:  #ebe5ee;
+    --c-orange:     #a8622a;  --c-orange-bg:  #f2e6d8;
+    --c-red:        #a8503e;  --c-red-bg:     #f2e2dd;
+    --c-teal:       #3e7d6e;  --c-teal-bg:    #e1ece7;
+    --c-cyan:       #3d7482;  --c-cyan-bg:    #e1eae8;
+    --c-amber:      #966a1d;  --c-amber-bg:   #f0e8d2;
+    --c-indigo:     #5d668c;  --c-indigo-bg:  #e6e6ee;
+    --c-rose:       #a45870;  --c-rose-bg:    #f0e2e6;
+    --c-default:    #2e7d4f;  --c-default-bg: #dcedd9;
+  }
+
+  /* ====== Dark Mode (CRT 终端主视觉) ====== */
+  [data-theme="dark"] {
+      --bg: #0a1510;
+      --bg-hero: #0a1510;
+      --surface: #0f1f17;
+      --surface-hover: #142b20;
+      --surface-alt: #0d1c15;
+      --text: #c8e6c9;
+      --text-heading: #eaffe6;
+      --text-muted: #8fbf9a;
+      --text-secondary: #759a80;
+      --text-faint: #5f8f70;
+      --brand: #4ade80;
+      --brand-light: #86efac;
+      --brand-soft: #123524;
+      --brand-ghost: #0e2419;
+      --accent: #fbbf24;
+      --accent-light: #fcd34d;
+      --accent-soft: #3a2e10;
+      --accent-ghost: #2a2210;
+      --border: #1f3a2b;
+      --border-light: #172d21;
+      --divider-color: #274433;
+      --focus-ring: rgba(74,222,128,0.35);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.45);
+      --shadow: 0 2px 10px rgba(0,0,0,0.5);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.55);
+      --shadow-lg: 0 12px 36px rgba(0,0,0,0.6);
+      --code-bg: #0b1a12;
+      --code-border: #1f3a2b;
+      --kbd-bg: #0d1c15;
+      --kbd-border: #274433;
+      --card-bg: #0f1f17;
+      --table-stripe: #0b1a12;
+      --scrollbar-thumb: #2c4a3a;
+      --scrollbar-track: #0a1510;
+      --scan-opacity: 0.05;
+      /* ====== Tag Color System (Dark — 复古卡带色深底浅字) ====== */
+      --c-blue:       #7dd3fc;  --c-blue-bg:    #0d2b3a;
+      --c-green:      #57d9a2;  --c-green-bg:   #0c2a20;
+      --c-purple:     #c4b5fd;  --c-purple-bg:  #221b3a;
+      --c-orange:     #fdba74;  --c-orange-bg:  #33200e;
+      --c-red:        #fda4af;  --c-red-bg:     #33181c;
+      --c-teal:       #5eead4;  --c-teal-bg:    #0c2825;
+      --c-cyan:       #67e8f9;  --c-cyan-bg:    #0c2630;
+      --c-amber:      #fcd34d;  --c-amber-bg:   #2e2408;
+      --c-indigo:     #a5b4fc;  --c-indigo-bg:  #1b2038;
+      --c-rose:       #fda4bb;  --c-rose-bg:    #311a28;
+      --c-default:    #86efac;  --c-default-bg: #0e2c1c;
+    }
+
