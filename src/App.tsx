@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage'
 
 // 路由级代码分割：非首页页面按需加载（marked/highlight/fuse/题库数据均随之拆包）
 const PostPage = lazy(() => import('./pages/PostPage'))
+const LearnPage = lazy(() => import('./pages/LearnPage'))
 const ArchivePage = lazy(() => import('./pages/ArchivePage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const QuizPage = lazy(() => import('./pages/QuizPage'))
@@ -54,6 +55,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/post/:slug" element={<PostPage />} />
+          <Route path="/learn" element={<LearnPage />} />
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/quiz" element={<QuizPage />} />

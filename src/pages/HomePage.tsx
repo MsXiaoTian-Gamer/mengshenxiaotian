@@ -337,6 +337,8 @@ export default function HomePage() {
               <span>|</span>
               <Link to="/archive">归档</Link>
               <span>|</span>
+              <Link to="/learn">路线</Link>
+              <span>|</span>
               <Link to="/quiz">八股</Link>
             </div>
           </div>
@@ -378,8 +380,8 @@ export default function HomePage() {
           <section className="learning-path">
             <div className="lp-head">
               <span className="lp-title">🎮 Unity 学习路线</span>
-              <Link to="/archive" className="lp-more">
-                全部文章 →
+              <Link to="/learn" className="lp-more">
+                完整学习地图 →
               </Link>
             </div>
             <div className="lp-cards">

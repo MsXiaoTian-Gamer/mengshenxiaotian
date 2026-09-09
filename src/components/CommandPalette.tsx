@@ -40,6 +40,7 @@ export default function CommandPalette() {
     const q = query.trim().toLowerCase()
     const nav: Cmd[] = [
       { id: 'nav-home', group: '导航', label: '首页', hint: '/', keywords: 'home 首页', run: () => navigate('/') },
+      { id: 'nav-learn', group: '导航', label: 'Unity 学习路线', hint: '/learn', keywords: 'learn 学习路线 unity 阶段 自检 地图', run: () => navigate('/learn') },
       { id: 'nav-archive', group: '导航', label: '文章归档', hint: '/archive', keywords: 'archive 归档 文章 列表', run: () => navigate('/archive') },
       { id: 'nav-quiz', group: '导航', label: 'Unity 八股题库', hint: '/quiz', keywords: 'quiz 八股 unity 题库 面试', run: () => navigate('/quiz') },
       { id: 'nav-play', group: '导航', label: 'WebGL 试玩', hint: '/play', keywords: 'play webgl 试玩 游戏 pong', run: () => navigate('/play') },

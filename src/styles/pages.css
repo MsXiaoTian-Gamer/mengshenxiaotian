@@ -2712,3 +2712,41 @@ body::after {
   .tsw-frame { height: 380px; }
   .tsw-head { flex-direction: column; align-items: flex-start; }
 }
+
+/* ===== 学习路线独立页 /learn（阶段3B） ===== */
+.learn-container { max-width: 720px; margin: 0 auto; padding: 48px 20px 72px; }
+.learn-title { font-size: 1.6rem; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+.learn-sub { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 18px; font-family: var(--font-mono); }
+.learn-progress { height: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin: 4px 0 28px; background: transparent; }
+.learn-progress-bar { height: 100%; background: var(--brand); transition: width 0.4s ease; }
+.learn-stage { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px 20px; margin-bottom: 20px; background: var(--surface); box-shadow: 3px 3px 0 rgba(0,0,0,0.25); }
+.learn-stage-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.learn-stage-step { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; }
+.learn-stage-step::before { content: '[ '; }
+.learn-stage-step::after { content: ' ]'; }
+.learn-stage-idx { margin-left: auto; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-faint); }
+.learn-article-link { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; text-decoration: none; }
+.learn-article-title { font-size: 1.05rem; font-weight: 600; color: var(--text-heading); transition: color var(--transition); }
+.learn-article-link:hover .learn-article-title { color: var(--brand); }
+.learn-article-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); }
+.learn-stage-desc { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 6px 0 0; }
+.learn-block { border-top: 1px dashed var(--border); padding-top: 12px; margin-top: 14px; }
+.learn-block-label { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+.learn-related { display: flex; flex-direction: column; text-decoration: none; padding: 5px 8px; border-radius: var(--radius-sm); color: var(--text); transition: background var(--transition); }
+.learn-related:hover { background: var(--surface-hover); color: var(--brand); }
+.learn-related-note { font-size: 0.78rem; color: var(--text-faint); margin-top: 2px; }
+.learn-quiz-link { display: inline-block; font-size: 0.88rem; color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--border); padding-bottom: 2px; transition: color var(--transition); }
+.learn-quiz-link:hover { color: var(--brand); }
+.learn-checks { list-style: none; margin: 0; padding: 0; }
+.learn-check { width: 100%; text-align: left; display: flex; align-items: center; gap: 10px; padding: 5px 8px; border: none; background: none; cursor: pointer; color: var(--text); font-size: 0.9rem; line-height: 1.5; border-radius: var(--radius-sm); transition: background var(--transition); }
+.learn-check:hover { background: var(--surface-hover); }
+.learn-check-box { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 1px solid var(--border); font-size: 0.7rem; color: transparent; flex-shrink: 0; background: transparent; transition: all var(--transition); }
+.learn-check.on .learn-check-box { background: var(--c-green); border-color: var(--c-green); color: #02120b; }
+.learn-check.on { color: var(--text-muted); }
+.learn-check.on > span:last-child { text-decoration: line-through; text-decoration-color: var(--text-faint); }
+.learn-foot { margin-top: 30px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); line-height: 1.8; }
+.learn-foot a { color: var(--accent); }
+@media (max-width: 600px) {
+  .learn-stage { padding: 14px; }
+  .learn-article-title { font-size: 0.98rem; }
+}
