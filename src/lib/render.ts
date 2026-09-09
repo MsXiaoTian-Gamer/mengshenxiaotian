@@ -198,28 +198,51 @@ export function highlightCode(root: HTMLElement): void {
   })
 }
 
-/** 图片点击放大 lightbox */
+/** 图片点击放大 lightbox（键盘可达：img 可聚焦，Enter/Space 打开，Esc/点击关闭，关闭后归还焦点） */
 export function bindLightbox(root: HTMLElement): void {
   root.querySelectorAll('img').forEach(imgRaw => {
     const img = imgRaw as HTMLImageElement
     if (img.closest('.code-block-wrapper, .lc-panel, .lightbox-overlay')) return
     img.style.cursor = 'pointer'
-    img.addEventListener('click', () => {
+    img.tabIndex = 0
+    img.setAttribute('role', 'button')
+    img.setAttribute('aria-label', '放大图片（Enter 或点击打开）')
+    const open = () => {
       const overlay = document.createElement('div')
       overlay.className = 'lightbox-overlay'
+      overlay.setAttribute('role', 'dialog')
+      overlay.setAttribute('aria-modal', 'true')
       const lbImg = document.createElement('img')
       lbImg.src = img.src
+      lbImg.alt = img.alt || ''
       lbImg.className = 'lightbox-img'
+      lbImg.tabIndex = -1
       overlay.appendChild(lbImg)
-      overlay.addEventListener('click', () => overlay.remove())
+      const close = () => {
+        overlay.remove()
+        document.removeEventListener('keydown', onKey)
+        img.focus()
+      }
+      overlay.addEventListener('click', close)
       const onKey = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
-          overlay.remove()
-          document.removeEventListener('keydown', onKey)
+          e.preventDefault()
+          close()
+        } else if (e.key === 'Tab') {
+          e.preventDefault()
+          lbImg.focus()
         }
       }
       document.addEventListener('keydown', onKey)
       document.body.appendChild(overlay)
+      lbImg.focus()
+    }
+    img.addEventListener('click', open)
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        open()
+      }
     })
   })
 }
@@ -247,10 +270,13 @@ function fallbackCopy(text: string): void {
   document.body.removeChild(ta)
 }
 
-/** 代码运行预览（HTML/CSS/JS 通过 sandbox iframe 执行） */
+/** 代码运行预览（HTML/CSS/JS 通过 sandbox iframe 执行，打开时聚焦关闭按钮并支持 Esc 关闭后归还焦点） */
 export function runCodePreview(code: string, lang: string): void {
+  const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null
   const modal = document.createElement('div')
   modal.className = 'code-preview-modal'
+  modal.setAttribute('role', 'dialog')
+  modal.setAttribute('aria-modal', 'true')
   const container = document.createElement('div')
   container.className = 'code-preview-container'
   const header = document.createElement('div')
@@ -259,7 +285,13 @@ export function runCodePreview(code: string, lang: string): void {
   title.textContent = '代码预览 (' + lang.toUpperCase() + ')'
   const closeBtn = document.createElement('button')
   closeBtn.textContent = '×'
-  closeBtn.addEventListener('click', () => modal.remove())
+  closeBtn.setAttribute('aria-label', '关闭预览')
+  const close = () => {
+    modal.remove()
+    document.removeEventListener('keydown', onKey)
+    trigger?.focus?.()
+  }
+  closeBtn.addEventListener('click', close)
   header.appendChild(title)
   header.appendChild(closeBtn)
 
@@ -287,16 +319,17 @@ export function runCodePreview(code: string, lang: string): void {
   container.appendChild(iframe)
   modal.appendChild(container)
   modal.addEventListener('click', e => {
-    if (e.target === modal) modal.remove()
+    if (e.target === modal) close()
   })
   const onKey = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-      modal.remove()
-      document.removeEventListener('keydown', onKey)
+      e.preventDefault()
+      close()
     }
   }
   document.addEventListener('keydown', onKey)
   document.body.appendChild(modal)
+  closeBtn.focus()
 }
 
 /** 在 markdown 渲染后的容器内执行完整增强管线 */

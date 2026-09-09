@@ -27,6 +27,8 @@ export default function CommandPalette() {
   const [query, setQuery] = useState('')
   const [idx, setIdx] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const restoreRef = useRef<HTMLElement | null>(null)
   const navigate = useNavigate()
 
   const run = (fn: () => void) => {
@@ -121,6 +123,28 @@ export default function CommandPalette() {
       } else if (k === 'arrowup') {
         e.preventDefault()
         setIdx(i => Math.max(0, i - 1))
+      } else if (k === 'tab') {
+        // 焦点陷阱：Tab 在面板内循环，防止焦点逃逸到背景页面
+        const panel = panelRef.current
+        if (panel && document.activeElement && panel.contains(document.activeElement)) {
+          const focusables = Array.from(
+            panel.querySelectorAll<HTMLElement>('button, input, [tabindex]:not([tabindex="-1"])'),
+          )
+          if (!focusables.length) return
+          const first = focusables[0]
+          const last = focusables[focusables.length - 1]
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault()
+            last.focus()
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault()
+            first.focus()
+          }
+        } else if (panel) {
+          e.preventDefault()
+          const target = panel.querySelector<HTMLElement>('button, input')
+          target?.focus()
+        }
       } else if (k === 'enter') {
         e.preventDefault()
         const target = items[idx]
@@ -133,10 +157,15 @@ export default function CommandPalette() {
 
   useEffect(() => {
     if (open) {
+      // 记录触发元素，供关闭时归还焦点
+      restoreRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
       setIdx(0)
       requestAnimationFrame(() => inputRef.current?.focus())
+    } else if (restoreRef.current) {
+      restoreRef.current.focus?.()
+      restoreRef.current = null
     }
-  }, [open, query])
+  }, [open])
 
   if (!open) return null
 
@@ -151,7 +180,7 @@ export default function CommandPalette() {
         }
       }}
     >
-      <div className="cmd-panel" role="dialog" aria-label="命令面板">
+      <div ref={panelRef} className="cmd-panel" role="dialog" aria-label="命令面板">
         <div className="cmd-input-row">
           <span className="cmd-prompt">❯</span>
           <input

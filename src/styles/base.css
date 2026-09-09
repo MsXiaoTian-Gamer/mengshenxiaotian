@@ -8,16 +8,62 @@
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
 
-  textarea:focus-visible,
-  [tabindex]:focus-visible {
-    outline: 2px solid var(--focus-ring);
+  :where(a, button, input, select, textarea, summary, [tabindex], [role="button"]):focus-visible {
+    outline: 2px solid var(--brand);
     outline-offset: 2px;
-    border-radius: 3px;
   }
 
   /* Suppress focus ring for mouse clicks */
   :focus:not(:focus-visible) {
     outline: none;
+  }
+
+  /* ====== Interaction states (a11y): disabled / active 按压 ====== */
+  button:disabled,
+  input:disabled,
+  select:disabled,
+  textarea:disabled,
+  [aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  button:disabled { filter: saturate(0.55); }
+
+  .intro-social-btn,
+  .tag-filter,
+  .archive-tag-btn,
+  .kind-filter,
+  .archive-kind-tab,
+  .theme-btn,
+  .quiz-btn,
+  .quiz-more-btn,
+  .share-btn,
+  .like-btn,
+  .cmd-item,
+  .fl-trigger,
+  .fl-panel-close,
+  .crt-power,
+  .copy-btn,
+  .code-run-btn {
+    transition: transform 0.06s ease, filter 0.12s ease;
+  }
+  .intro-social-btn:active:not(:disabled),
+  .tag-filter:active,
+  .archive-tag-btn:active,
+  .kind-filter:active,
+  .archive-kind-tab:active,
+  .theme-btn:active,
+  .quiz-btn:active,
+  .quiz-more-btn:active,
+  .share-btn:active,
+  .like-btn:active,
+  .cmd-item:active,
+  .fl-trigger:active,
+  .fl-panel-close:active,
+  .crt-power:active,
+  .copy-btn:active,
+  .code-run-btn:active {
+    transform: translateY(1px);
   }
 
   /* ====== Reading Progress Bar ====== */
