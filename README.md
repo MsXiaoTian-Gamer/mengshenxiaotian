@@ -1,3 +1,14 @@
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191440300708461136T1XGW3
+    ProduceID: 52ccc64068be0e7a58ed8e5cc027dde0_d467b719ac1311f188ac525400dcc5b3
+    ReservedCode1: lSE5K/ZhCnzoItNhnJTM7mPTCWAspE2ZBE03ftE3PTpPUGEQfyUQYC7wiuUOEHhmji8RBtS6OWjey7JdkZqGSR5VEcvzN30lKlCeJrQzXdRP73ofkEUM6mnmSPGibAnGuF/uPd44tU4e2cPtl+vYp/sOli+nWwGIL1b97RjGj9CybJ1pi+yo+Pk9wEs=
+    ContentPropagator: 001191440300708461136T1XGW3
+    PropagateID: 52ccc64068be0e7a58ed8e5cc027dde0_d467b719ac1311f188ac525400dcc5b3
+    ReservedCode2: lSE5K/ZhCnzoItNhnJTM7mPTCWAspE2ZBE03ftE3PTpPUGEQfyUQYC7wiuUOEHhmji8RBtS6OWjey7JdkZqGSR5VEcvzN30lKlCeJrQzXdRP73ofkEUM6mnmSPGibAnGuF/uPd44tU4e2cPtl+vYp/sOli+nWwGIL1b97RjGj9CybJ1pi+yo+Pk9wEs=
+---
+
 # 萌神小天博客 · msxiaotian.top
 
 个人技术博客前端源码。复古终端 CRT 风格（PHOSPHOR.SYS），技术内容以 Unity 客户端 / 游戏开发 / 面试笔试记录为主。
@@ -124,3 +135,4 @@ cp .env.example .env   # 填入 Upstash REST URL / Token
 
 - Unity 游戏《Tiny Pet Sand Wars》：TapTap / itch.io
 - 八股内容定位：Unity 客户端岗位面试（引擎 / 性能 / 原生层实战语境）
+*（内容由AI生成，仅供参考）*
