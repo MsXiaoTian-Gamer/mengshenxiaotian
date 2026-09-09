@@ -35,6 +35,7 @@ function toPlainText(md) {
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
     .replace(/[#*`>_~\-\[\]()!|]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()

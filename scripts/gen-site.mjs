@@ -26,6 +26,7 @@ function xmlEscape(s) {
 }
 function stripMd(raw) {
   let t = raw.replace(/^---[\s\S]*?---/, '').replace(/```[\s\S]*?```/g, ' ')
+  // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
   return t.replace(/[#*`>_~\-\[\]()!|]/g, ' ').replace(/\s+/g, ' ').trim()
 }
 

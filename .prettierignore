@@ -1,0 +1,7 @@
+dist
+public
+node_modules
+css
+feed.xml
+package-lock.json
+*.md

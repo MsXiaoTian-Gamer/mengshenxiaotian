@@ -23,6 +23,7 @@ export function getDateBadge(dateStr: string): { month: string; day: string } {
 
 /** 去掉 markdown 语法字符后估算阅读分钟数 */
 export function estimateReadingTime(content: string): number {
+  // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
   const text = content.replace(/[#*`\-_>\[\]()!|~]/g, ' ').replace(/\s+/g, ' ').trim()
   const chineseChars = (text.match(/[\u4e00-\u9fff]/g) || []).length
   const englishWords = text.replace(/[\u4e00-\u9fff]/g, '').split(/\s+/).filter(Boolean).length
@@ -31,6 +32,7 @@ export function estimateReadingTime(content: string): number {
 
 /** 中文字符 + 英文单词计数 */
 export function countWords(content: string): number {
+  // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
   const text = content.replace(/[#*`\-_>\[\]()!|~]/g, ' ').replace(/\s+/g, ' ').trim()
   const chineseChars = (text.match(/[\u4e00-\u9fff]/g) || []).length
   const englishWords = text.replace(/[\u4e00-\u9fff]/g, '').split(/\s+/).filter(Boolean).length
@@ -41,6 +43,7 @@ export function countWords(content: string): number {
 export function getSummary(content: string): string {
   if (!content) return ''
   const text = stripFrontMatter(content)
+    // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
     .replace(/[#*`\-_>\[\]()!|~]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()

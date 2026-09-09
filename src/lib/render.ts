@@ -302,7 +302,7 @@ export function runCodePreview(code: string, lang: string): void {
   let htmlContent = code
   if (lang === 'js' || lang === 'javascript') {
     htmlContent =
-      '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body><script>' + code + '<\/script></body></html>'
+      '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body><script>' + code + '</script></body></html>'
   } else if (lang === 'html') {
     if (!/<html/i.test(code) && !/<body/i.test(code) && !/<head/i.test(code)) {
       htmlContent = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>' + code + '</body></html>'
@@ -353,6 +353,7 @@ export function enhanceMarkdownDom(root: HTMLElement): void {
 /** 从正文提取前 N 行生成 meta description（供 SEO） */
 export function buildDescription(md: string, max = 160): string {
   const text = stripFrontMatter(md)
+    // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
     .replace(/[#*`\-_>\[\]()!|~]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()

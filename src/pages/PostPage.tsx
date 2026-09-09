@@ -32,7 +32,7 @@ function collectToc(root: HTMLElement): TocItem[] {
   const seen: Record<string, number> = {}
   root.querySelectorAll('h2, h3').forEach(hRaw => {
     const h = hRaw as HTMLElement
-    let base = slugifyHeading(h.textContent || '')
+    const base = slugifyHeading(h.textContent || '')
     seen[base] = (seen[base] || 0) + 1
     const id = seen[base] > 1 ? base + '-' + seen[base] : base
     h.id = id
