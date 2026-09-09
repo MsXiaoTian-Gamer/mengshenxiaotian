@@ -776,6 +776,11 @@ body::after {
   background: var(--surface);
 }
 
+/* ---------- 类型筛选行（3A：kind 按钮组） ---------- */
+.kind-filters, .archive-kind-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.kind-filters { margin-bottom: 14px; }
+.archive-kind-tabs { margin-bottom: 14px; }
+
 /* ---------- 标签按钮行（直角 + 选中绿） ---------- */
 .tag-filters, .archive-tag-filters { gap: 6px; }
 .tag-filter, .archive-tag-btn {
@@ -1013,16 +1018,31 @@ body::after {
   box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
   border-color: var(--brand);
 }
+.lp-step-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
 .lp-step {
   font-size: 0.66rem;
   color: var(--accent);
   font-weight: 700;
-  margin-bottom: 8px;
   font-family: var(--font-display);
   letter-spacing: 0.03em;
 }
 .lp-step::before { content: '[ '; }
 .lp-step::after { content: ' ]'; }
+.lp-status {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: transparent;
+}
+.lp-status.is-done { border-color: var(--c-green); color: var(--c-green); background: var(--c-green-bg); }
+.lp-status.is-wip { border-color: var(--c-amber); color: var(--c-amber); background: var(--c-amber-bg); }
 .lp-card-title {
   font-size: 0.86rem;
   font-weight: 600;

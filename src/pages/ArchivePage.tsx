@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
 import { POST_MINUTES } from '../data/generated-meta'
-import { getTagCounts } from '../lib/blog'
+import { getTagCounts, KIND_LABELS, KIND_ORDER } from '../lib/blog'
 import { setPageMeta } from '../lib/seo'
 import { ThemeToggleButton } from '../components/widgets'
 
@@ -24,18 +24,26 @@ function groupByYear(articles: ArticleMeta[]): YearGroup[] {
 }
 
 export default function ArchivePage() {
+  const [kind, setKind] = useState('all')
   const [tag, setTag] = useState('all')
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
   const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
+  const kindCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: ARTICLES_SORTED.length }
+    ARTICLES_SORTED.forEach(a => { counts[a.kind] = (counts[a.kind] || 0) + 1 })
+    return counts
+  }, [])
 
   useEffect(() => {
     setPageMeta('文章归档 - 萌神小天')
   }, [])
 
   const filtered = useMemo(() => {
-    if (tag === 'all') return ARTICLES_SORTED
-    return ARTICLES_SORTED.filter(a => a.tags && a.tags.includes(tag))
-  }, [tag])
+    let list = ARTICLES_SORTED
+    if (kind !== 'all') list = list.filter(a => a.kind === kind)
+    if (tag !== 'all') list = list.filter(a => a.tags && a.tags.includes(tag))
+    return list
+  }, [kind, tag])
 
   const groups = useMemo(() => groupByYear(filtered), [filtered])
 
@@ -56,6 +64,25 @@ export default function ArchivePage() {
 
       <div className="archive-container">
         <h1 className="archive-title">文章归档</h1>
+
+        <div className="archive-kind-tabs">
+          <button className={'archive-tag-btn' + (kind === 'all' ? ' active' : '')} onClick={() => setKind('all')}>
+            全部 ({kindCounts.all || 0})
+          </button>
+          {KIND_ORDER.map(k => {
+            const c = kindCounts[k] || 0
+            if (c === 0) return null
+            return (
+              <button
+                key={k}
+                className={'archive-tag-btn' + (kind === k ? ' active' : '')}
+                onClick={() => setKind(k)}
+              >
+                {KIND_LABELS[k]} ({c})
+              </button>
+            )
+          })}
+        </div>
 
         <div className="archive-tag-filters">
           <button className={'archive-tag-btn' + (tag === 'all' ? ' active' : '')} onClick={() => setTag('all')}>

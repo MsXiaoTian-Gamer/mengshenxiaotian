@@ -1,5 +1,5 @@
 // 萌神小天博客 - 共享工具函数（源自旧 app.js，TS 化）
-import type { ArticleMeta } from '../data/articles'
+import type { ArticleKind, ArticleMeta } from '../data/articles'
 
 export const MONTHS_CN = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
 export const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -79,6 +79,17 @@ const TAG_COLORS: Record<string, TagColors> = {
 
 export function getTagColors(tag: string): TagColors {
   return TAG_COLORS[tag] || { color: 'var(--c-default)', bg: 'var(--c-default-bg)' }
+}
+
+/** 内容类型顺序与中文标签（3A：类型筛选按钮组） */
+export const KIND_ORDER: ArticleKind[] = ['learn', 'interview', 'release', 'devlog', 'post']
+
+export const KIND_LABELS: Record<ArticleKind, string> = {
+  learn: '学习',
+  interview: '面试',
+  release: '更新',
+  devlog: '开发日志',
+  post: '文章',
 }
 
 /** 文章"主标签"：优先取有预设配色者 */
