@@ -972,3 +972,18 @@
     }
   }
 
+/* ---------- 减弱动态效果：全局权威层（阶段4.4） ----------
+ * 单点兜底全部样式动画/过渡；CRT 步骤闪烁/扫动等在高强度动画下
+ * 由 JS 层跳过（见 CrBoot），此处统一压缩剩余过渡避免跳变残留。 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+
+  /* 浏览器视图过渡同步关闭 */
+  @view-transition { navigation: none; }
+}
+

@@ -1348,14 +1348,6 @@ body::after {
   .lp-cards { grid-template-columns: 1fr 1fr !important; }
   #back-to-top { bottom: 20px; right: 14px; width: 40px; height: 40px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  html { scroll-behavior: auto; }
-}
 
 
 /* ---------- 点赞按钮：直角绿系终端样式 ---------- */

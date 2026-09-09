@@ -8,6 +8,8 @@ import { useEffect } from 'react'
 export default function CrBoot() {
   useEffect(() => {
     let overlay: HTMLDivElement | null = null
+    // 用户开启"减弱动态效果"时跳过整段 CRT 开机/关机动画（阶段4.4）
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const cleanup = () => {
       if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay)
@@ -15,6 +17,7 @@ export default function CrBoot() {
     }
 
     const playBoot = () => {
+      if (prefersReducedMotion) return
       if (overlay) cleanup()
       overlay = document.createElement('div')
       overlay.className = 'crt-boot-overlay'

@@ -1496,19 +1496,7 @@ pre {
 /* Smooth page transitions via browser navigation */
 @view-transition { navigation: auto; }
 
-/* Reduce motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .archive-container,
-  .about-container,
-  .article-content-wrapper,
-  .hero,
-  .article-card,
-  .archive-item,
-  .archive-year {
-    animation: none !important;
-    opacity: 1 !important;
-  }
-}
+/* 减弱动态效果由 base.css 权威层统一处理（阶段4.4），此处不再重复 */
     /* Desktop article cards grid */
     .article-cards-grid {
       display: grid;
