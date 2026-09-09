@@ -2507,13 +2507,16 @@ body::after {
   font: 0.76rem var(--font-mono);
 }
 .quiz-more-btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
   margin: 4px auto 0;
   font: 0.78rem var(--font-mono);
   color: var(--brand);
   background: transparent;
   border: 1px dashed var(--border);
-  padding: 6px 18px;
+  padding: 0 18px;
   border-radius: var(--radius);
   cursor: pointer;
 }
