@@ -11,7 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.resolve(__dirname, '..')
 
 const src = fs.readFileSync(path.join(root, 'src/data/articles.ts'), 'utf8')
-const re = /\{\s*title:\s*"([^"]*)",\s*date:\s*"([^"]*)",\s*tags:\s*\[([^\]]*)\],\s*path:\s*"([^"]*)",\s*slug:\s*"([^"]*)"/g
+const re = /\{\s*title:\s*"([^"]*)",\s*date:\s*"([^"]*)",\s*tags:\s*\[([^\]]*)\],\s*(?:kind:\s*"[^"]*",\s*)?path:\s*"([^"]*)",\s*slug:\s*"([^"]*)"/g
 
 const posts = []
 let m
