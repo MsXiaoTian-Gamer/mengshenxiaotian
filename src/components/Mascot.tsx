@@ -127,47 +127,7 @@ export function Mascot() {
   return (
     <div className="kawaii-mascot" id="mascot" ref={containerRef} aria-hidden="true">
       <div className="mascot-body" id="mascotBody" ref={bodyRef} title="点我试试~" aria-label="看板娘">
-        <div className="mascot-tail left">
-          <div className="mascot-tail-ribbon"></div>
-        </div>
-        <div className="mascot-tail right">
-          <div className="mascot-tail-ribbon"></div>
-        </div>
-        <div className="mascot-head">
-          <div className="mascot-bangs">
-            <div className="mascot-bangs-notch"></div>
-          </div>
-          <div className="mascot-brow left"></div>
-          <div className="mascot-brow right"></div>
-          <div className="mascot-eye left">
-            <div className="mascot-eye-hl"></div>
-            <div className="mascot-eye-star"></div>
-            <div className="mascot-eye-sparkle"></div>
-            <div className="mascot-eye-sparkle2"></div>
-          </div>
-          <div className="mascot-eye right">
-            <div className="mascot-eye-hl"></div>
-            <div className="mascot-eye-star"></div>
-            <div className="mascot-eye-sparkle"></div>
-            <div className="mascot-eye-sparkle2"></div>
-          </div>
-          <div className="mascot-blush left"></div>
-          <div className="mascot-blush right"></div>
-          <div className="mascot-mouth"></div>
-        </div>
-        <div className="mascot-torso">
-          <div className="mascot-top">
-            <div className="mascot-collar"></div>
-            <div className="mascot-tie"></div>
-          </div>
-          <div className="mascot-skirt"></div>
-          <div className="mascot-arm left"></div>
-          <div className="mascot-arm right"></div>
-        </div>
-        <div className="mascot-legs">
-          <div className="mascot-leg"></div>
-          <div className="mascot-leg"></div>
-        </div>
+        <img className="mascot-skin" src="/mascot-skin.png" alt="" draggable={false} />
       </div>
       <div className="mascot-bubble" id="mascotBubble" ref={bubbleRef} aria-live="polite">
         你好呀~
