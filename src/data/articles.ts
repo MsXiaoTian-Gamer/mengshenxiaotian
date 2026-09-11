@@ -19,6 +19,7 @@ export interface ArticleMeta {
 }
 
 export const ARTICLES: ArticleMeta[] = [
+  { title: "PathFinding：Unity 网格寻路算法可视化 Demo", date: "2026-09-11", tags: ["Unity", "算法", "GameDev"], kind: "post", path: "2026-09-11-PathFinding-Unity-网格寻路算法可视化.md", slug: "2026-09-11-PathFinding-Unity-网格寻路算法可视化", downloads: [{ name: "PathFinding 仓库源码", url: "https://github.com/MsXiaoTian-Gamer/PathFinding-A-Unity-Grid-Pathfinding-Algorithm-Visualizer", desc: "Unity 网格寻路 / 迷宫生成算法可视化 Demo（Unity 6 + URP，纯 C#）" }] },
   { title: "Unity 第二阶段：设计模式与代码结构学习笔记", date: "2026-08-28", tags: ["Unity", "学习"], kind: "learn", path: "2026-08-28-Unity-第二阶段-设计模式与代码结构.md", slug: "2026-08-28-Unity-第二阶段-设计模式与代码结构" },
   { title: "Unity 第三阶段：项目架构与工程化实践学习笔记", date: "2026-09-08", tags: ["Unity", "学习"], kind: "learn", path: "2026-09-08-Unity-第三阶段-项目架构与工程化实践.md", slug: "2026-09-08-Unity-第三阶段-项目架构与工程化实践" },
   { title: "C++ 八股与计算机组成原理八股", date: "2026-09-08", tags: ["C++", "面试", "计算机组成原理"], kind: "interview", path: "2026-09-08-cpp-and-co-baguwen.md", slug: "2026-09-08-cpp-and-co-baguwen" },
