@@ -331,6 +331,9 @@ export default function HomePage() {
               <a href="https://github.com/MsXiaoTian-Gamer/mengshenxiaotian/discussions" target="_blank" rel="noopener noreferrer">
                 讨论区
               </a>
+              <a href="/feed.xml" target="_blank" rel="noopener noreferrer" title="RSS 订阅">
+                RSS
+              </a>
             </div>
             <div className="sidebar-bottom-links">
               <Link to="/about">关于</Link>
