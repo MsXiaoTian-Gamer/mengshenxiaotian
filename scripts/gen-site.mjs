@@ -10,7 +10,7 @@ const SITE = 'https://msxiaotian.top'
 const SITE_NAME = '萌神小天'
 
 const src = fs.readFileSync(path.join(root, 'src/data/articles.ts'), 'utf8')
-const re = /\{\s*title:\s*"([^"]*)",\s*date:\s*"([^"]*)",\s*tags:\s*\[([^\]]*)\],\s*path:\s*"([^"]*)",\s*slug:\s*"([^"]*)"/g
+const re = /\{\s*title:\s*"([^"]*)",\s*date:\s*"([^"]*)",\s*tags:\s*\[([^\]]*)\],\s*(?:kind:\s*"[^"]*",\s*)?path:\s*"([^"]*)",\s*slug:\s*"([^"]*)"/g
 
 const posts = []
 let m
@@ -24,8 +24,15 @@ posts.sort((a, b) => b.date.localeCompare(a.date))
 function xmlEscape(s) {
   return String(s).replace(/[<>&'"]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[c]))
 }
+/** 剥离原始 HTML（标签、注释、script/style 整块），避免标签及其属性进入纯文本 */
+function stripHtml(html) {
+  return html
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<[^>]*>/g, ' ')
+}
 function stripMd(raw) {
-  let t = raw.replace(/^---[\s\S]*?---/, '').replace(/```[\s\S]*?```/g, ' ')
+  let t = stripHtml(raw.replace(/^---[\s\S]*?---/, '')).replace(/```[\s\S]*?```/g, ' ')
   // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
   return t.replace(/[#*`>_~\-\[\]()!|]/g, ' ').replace(/\s+/g, ' ').trim()
 }

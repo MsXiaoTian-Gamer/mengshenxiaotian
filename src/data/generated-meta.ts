@@ -26,14 +26,14 @@ export const POST_SUMMARY: Record<string, string> = {
 }
 
 export const POST_MINUTES: Record<string, number> = {
-  "2026-09-11-PathFinding-Unity-网格寻路算法可视化": 9,
-  "2026-08-28-Unity-第二阶段-设计模式与代码结构": 8,
-  "2026-09-08-Unity-第三阶段-项目架构与工程化实践": 13,
-  "2026-09-08-cpp-and-co-baguwen": 20,
+  "2026-09-11-PathFinding-Unity-网格寻路算法可视化": 10,
+  "2026-08-28-Unity-第二阶段-设计模式与代码结构": 6,
+  "2026-09-08-Unity-第三阶段-项目架构与工程化实践": 11,
+  "2026-09-08-cpp-and-co-baguwen": 16,
   "2026-08-19-gbits-unity-client-interview": 7,
-  "2026-08-17-mihoyo-game-client-interview": 6,
+  "2026-08-17-mihoyo-game-client-interview": 5,
   "2026-08-11-Unity-基础入门与核心概念": 14,
-  "2026-07-31-Unity-零基础入门指南": 11,
+  "2026-07-31-Unity-零基础入门指南": 8,
   "2026-07-14-Tiny-Pet-Sand-Wars-更新": 4,
   "2026-06-15-Tiny-Pet-Sand-Wars-更": 3,
   "2026-05-31-小宠沙暴大战12-游戏更新啦": 3,

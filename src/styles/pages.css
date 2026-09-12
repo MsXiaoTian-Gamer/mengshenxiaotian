@@ -586,6 +586,12 @@
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-light);
 }
+.art-body video {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 16px 0;
+}
 .art-body hr {
   border: none;
   height: 1px;

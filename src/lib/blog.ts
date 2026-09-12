@@ -21,10 +21,18 @@ export function getDateBadge(dateStr: string): { month: string; day: string } {
   return { month: MONTHS_EN[m - 1] || '', day: String(d) }
 }
 
+/** 剥离原始 HTML（标签、注释、script/style 整块），避免标签及其属性进入纯文本 */
+export function stripHtml(html: string): string {
+  return html
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<[^>]*>/g, ' ')
+}
+
 /** 去掉 markdown 语法字符后估算阅读分钟数 */
 export function estimateReadingTime(content: string): number {
   // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
-  const text = content.replace(/[#*`\-_>\[\]()!|~]/g, ' ').replace(/\s+/g, ' ').trim()
+  const text = stripHtml(content).replace(/[#*`\-_>\[\]()!|~]/g, ' ').replace(/\s+/g, ' ').trim()
   const chineseChars = (text.match(/[\u4e00-\u9fff]/g) || []).length
   const englishWords = text.replace(/[\u4e00-\u9fff]/g, '').split(/\s+/).filter(Boolean).length
   return Math.max(1, Math.ceil(chineseChars / 300 + englishWords / 200))
@@ -33,7 +41,7 @@ export function estimateReadingTime(content: string): number {
 /** 中文字符 + 英文单词计数 */
 export function countWords(content: string): number {
   // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
-  const text = content.replace(/[#*`\-_>\[\]()!|~]/g, ' ').replace(/\s+/g, ' ').trim()
+  const text = stripHtml(content).replace(/[#*`\-_>\[\]()!|~]/g, ' ').replace(/\s+/g, ' ').trim()
   const chineseChars = (text.match(/[\u4e00-\u9fff]/g) || []).length
   const englishWords = text.replace(/[\u4e00-\u9fff]/g, '').split(/\s+/).filter(Boolean).length
   return chineseChars + englishWords
@@ -42,7 +50,7 @@ export function countWords(content: string): number {
 /** 摘要：去掉 front matter 与 markdown 符号，截取前 100 字 */
 export function getSummary(content: string): string {
   if (!content) return ''
-  const text = stripFrontMatter(content)
+  const text = stripHtml(stripFrontMatter(content))
     // eslint-disable-next-line no-useless-escape -- 字符类内含字面 [ ，保留转义写法避免歧义
     .replace(/[#*`\-_>\[\]()!|~]/g, ' ')
     .replace(/\s+/g, ' ')

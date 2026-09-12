@@ -29,9 +29,17 @@ function stripFrontMatter(md) {
   return md
 }
 
+/** 剥离原始 HTML（标签、注释、script/style 整块），避免标签及其属性污染纯文本 */
+function stripHtml(html) {
+  return html
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<[^>]*>/g, ' ')
+}
+
 /** 正文去符号纯文本（用于摘要 / 阅读时长 / 搜索索引，与 src/lib/blog.ts 语义一致） */
 function toPlainText(md) {
-  return stripFrontMatter(md)
+  return stripHtml(stripFrontMatter(md))
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')

@@ -1,3 +1,14 @@
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191440300708461136T1XGW3
+    ProduceID: 52ccc64068be0e7a58ed8e5cc027dde0_d76def87ad8011f1af37525400826444
+    ReservedCode1: gLIGvfpLG2OJf+cUSbDeBgjTs02hLTR2XiJ7mk7JEWzwAFMS3FJsSQFKjzmPm10O7OwGcyL1cVV3coCFwQiaOwbctMpOmOGb3DwlhlpLrHXFN1vZzi1juV/2d0r7zyxJXjBuKP3LNbZdI7bsRutbzOaBVVsDl/PoggOfnrMbl63j32B22gVYRPQc4uE=
+    ContentPropagator: 001191440300708461136T1XGW3
+    PropagateID: 52ccc64068be0e7a58ed8e5cc027dde0_d76def87ad8011f1af37525400826444
+    ReservedCode2: gLIGvfpLG2OJf+cUSbDeBgjTs02hLTR2XiJ7mk7JEWzwAFMS3FJsSQFKjzmPm10O7OwGcyL1cVV3coCFwQiaOwbctMpOmOGb3DwlhlpLrHXFN1vZzi1juV/2d0r7zyxJXjBuKP3LNbZdI7bsRutbzOaBVVsDl/PoggOfnrMbl63j32B22gVYRPQc4uE=
+---
+
 # PathFinding：Unity 网格寻路算法可视化 Demo
 
 > 开源项目介绍：把 DFS、BFS、最短路径回溯和两种迷宫生成算法（随机化 DFS 回溯法、随机化 Prim）全部跑在一张运行时生成的网格上，按 `stepDelay` 一步步推进，在 Game 视图里直接看搜索的扩散过程，而不是只看到最终结果。Unity 6000.4.10f1 + URP 17.4.0，纯 C#，核心只有两个脚本。
@@ -27,6 +38,22 @@
 | 鼠标左键点击节点 | 切换障碍 | 点击任意网格节点，在「障碍 / 非障碍」之间切换，可以先手动摆出任意地图再跑算法 |
 
 一个小细节：一段搜索没跑完时，新的按键会被忽略，避免多段搜索叠加显示。想打断就先按 `0`，它内部走的是 `StopAllCoroutines()`。
+
+### 功能演示
+
+下面两段录屏是 Demo 的实际运行效果（为便于观看，录制时把 `stepDelay` 调小了）。
+
+**按键 `1` / `2`：DFS 与 BFS 的扩散对比**
+
+<video controls playsinline preload="metadata" class="art-video" src="/videos/pathfinding-demo-1-2.mp4"></video>
+
+按 `1` 触发深度优先搜索，可以看到它「沿一条路一直深入、走不通再回溯」的推进方式；按 `2` 触发广度优先搜索，则是按层均匀地向外扩散。两种算法在同一张网格上的扩散形状差异，一眼就能看出来。
+
+**按键 `3` / `5`：最短路径与随机化 Prim 迷宫**
+
+<video controls playsinline preload="metadata" class="art-video" src="/videos/pathfinding-demo-3-5.mp4"></video>
+
+按 `3` 先用 BFS 扩散到终点，再沿 `parent` 从终点回溯点亮整条最短路；按 `5` 触发随机化 Prim 迷宫生成，青色前沿格被逐个选中、品红色依次凿开墙面，能直接看到「边界一点点长出来」的过程。
 
 ### 节点颜色图例
 
@@ -144,3 +171,4 @@ Assets/
 https://github.com/MsXiaoTian-Gamer/PathFinding-A-Unity-Grid-Pathfinding-Algorithm-Visualizer
 
 *（本文由 AI 辅助整理，内容基于项目 README 与源码）*
+*（内容由AI生成，仅供参考）*
