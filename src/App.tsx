@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { initTheme } from './lib/theme'
 import { Mascot } from './components/Mascot'
 import { FriendlyLinks } from './components/FriendlyLinks'
+import { CmdHint } from './components/CmdHint'
 import { ProgressAndBackTop, Hearts } from './components/widgets'
 import CommandPalette from './components/CommandPalette'
 import CrtColorStrip from './components/CrtColorStrip'
@@ -48,6 +49,7 @@ export default function App() {
       <ProgressAndBackTop />
       <Mascot />
       <FriendlyLinks />
+      <CmdHint />
       <CommandPalette />
       <CrtColorStrip />
       <CrBoot />

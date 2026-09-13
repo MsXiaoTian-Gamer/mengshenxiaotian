@@ -4,6 +4,7 @@ import { ARTICLES, ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
 import { POST_MINUTES, POST_SUMMARY } from '../data/generated-meta'
 import { getTagCounts, getTagColors, getPrimaryTag, KIND_LABELS, KIND_ORDER } from '../lib/blog'
 import { ThemeToggleButton } from '../components/widgets'
+import { CmdKbdBadge } from '../components/CmdHint'
 import { setPageMeta } from '../lib/seo'
 import { reportSiteVisit, fetchRemoteStats, type RemoteStats } from '../lib/stats'
 import { UNITY_LEARNING_PATH } from '../data/learningPath'
@@ -233,13 +234,14 @@ export default function HomePage() {
             <span className="search-icon">🔍</span>
             <input
               type="text"
-              className="search-input"
+              className="search-input has-badge"
               id="searchInput"
               placeholder="搜索文章..."
               autoComplete="off"
               value={query}
               onChange={e => setQuery(e.target.value)}
             />
+            <CmdKbdBadge />
           </div>
 
           <div className="kind-filters" id="kindFilters">

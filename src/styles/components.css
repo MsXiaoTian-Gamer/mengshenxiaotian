@@ -1094,3 +1094,130 @@ pre {
       font-size: 0.95rem;
     }
 
+/* ====== Command Palette Discovery（命令面板提示入口）====== */
+.cmd-badge {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 2px 6px;
+  font: 0.68rem/1.3 var(--font-mono);
+  color: var(--text-faint);
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition);
+}
+.cmd-badge:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+}
+.cmd-badge:active {
+  transform: translateY(calc(-50% + 1px));
+}
+.cmd-badge:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+.search-input.has-badge {
+  padding-right: 64px;
+}
+
+.cmd-hint {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  width: 248px;
+  padding: 12px 14px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  animation: cmd-hint-in 0.35s ease both;
+}
+.cmd-hint-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.cmd-hint-title {
+  font: 0.66rem/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+.cmd-hint-close {
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  cursor: pointer;
+}
+.cmd-hint-close:hover {
+  color: var(--text-heading);
+}
+.cmd-hint-text {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.cmd-hint-kbd {
+  padding: 1px 5px;
+  font: 0.72rem var(--font-mono);
+  color: var(--brand);
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+}
+.cmd-hint-sub {
+  margin: 0 0 10px;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: var(--text-faint);
+}
+.cmd-hint-btn {
+  width: 100%;
+  padding: 6px 10px;
+  font: 0.74rem var(--font-mono);
+  color: #fff;
+  background: var(--brand);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.cmd-hint-btn:hover {
+  background: var(--brand-light);
+}
+.cmd-hint-btn:active {
+  transform: translateY(1px);
+}
+@keyframes cmd-hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 767px) {
+  .cmd-badge,
+  .cmd-hint {
+    display: none;
+  }
+  .search-input.has-badge {
+    padding-right: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmd-hint {
+    animation: none;
+  }
+}
+
