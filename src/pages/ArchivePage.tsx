@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
 import { POST_MINUTES } from '../data/generated-meta'
 import { getTagCounts, KIND_LABELS, KIND_ORDER } from '../lib/blog'
@@ -24,9 +24,16 @@ function groupByYear(articles: ArticleMeta[]): YearGroup[] {
 }
 
 export default function ArchivePage() {
-  const [kind, setKind] = useState('all')
-  const [tag, setTag] = useState('all')
-  const [query, setQuery] = useState('')
+  const [params, setParams] = useSearchParams()
+  const kind = params.get('kind') || 'all'
+  const tag = params.get('tag') || 'all'
+  const query = params.get('q') || ''
+  const updateFilter = (key: string, value: string) => {
+    const next = new URLSearchParams(params)
+    if (value === 'all' || value === '') next.delete(key)
+    else next.set(key, value)
+    setParams(next)
+  }
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
   const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
   const kindCounts = useMemo(() => {
@@ -69,11 +76,11 @@ export default function ArchivePage() {
         <h1 className="archive-title">文章归档</h1>
         <label className="archive-search">
           <span>搜索归档</span>
-          <input value={query} onChange={e => setQuery(e.target.value)} placeholder="按标题、标签搜索…" type="search" />
+          <input value={query} onChange={e => updateFilter('q', e.target.value)} placeholder="按标题、标签搜索…" type="search" />
         </label>
 
         <div className="archive-kind-tabs">
-          <button className={'archive-tag-btn' + (kind === 'all' ? ' active' : '')} onClick={() => setKind('all')}>
+          <button className={'archive-tag-btn' + (kind === 'all' ? ' active' : '')} onClick={() => updateFilter('kind', 'all')}>
             全部 ({kindCounts.all || 0})
           </button>
           {KIND_ORDER.map(k => {
@@ -83,7 +90,7 @@ export default function ArchivePage() {
               <button
                 key={k}
                 className={'archive-tag-btn' + (kind === k ? ' active' : '')}
-                onClick={() => setKind(k)}
+                onClick={() => updateFilter('kind', k)}
               >
                 {KIND_LABELS[k]} ({c})
               </button>
@@ -92,14 +99,14 @@ export default function ArchivePage() {
         </div>
 
         <div className="archive-tag-filters">
-          <button className={'archive-tag-btn' + (tag === 'all' ? ' active' : '')} onClick={() => setTag('all')}>
+          <button className={'archive-tag-btn' + (tag === 'all' ? ' active' : '')} onClick={() => updateFilter('tag', 'all')}>
             全部 ({ARTICLES_SORTED.length})
           </button>
           {tagCounts.map(tc => (
             <button
               key={tc.tag}
               className={'archive-tag-btn' + (tag === tc.tag ? ' active' : '')}
-              onClick={() => setTag(tc.tag)}
+              onClick={() => updateFilter('tag', tc.tag)}
             >
               {tc.tag} ({tc.count})
             </button>

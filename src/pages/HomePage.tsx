@@ -340,8 +340,8 @@ export default function HomePage() {
             <div className="content-lane-grid">
               {[
                 { kind: 'learn', icon: '🧭', title: '学 Unity', desc: '从零基础到项目工程化', link: '/learn' },
-                { kind: 'interview', icon: '💬', title: '看面试复盘', desc: '客户端岗位题目与答题思路', link: '/archive' },
-                { kind: 'release', icon: '🛠️', title: '看项目进展', desc: 'Tiny Pet Sand Wars 的开发记录', link: '/archive' },
+                { kind: 'interview', icon: '💬', title: '看面试复盘', desc: '客户端岗位题目与答题思路', link: '/archive?kind=interview' },
+                { kind: 'release', icon: '🛠️', title: '看项目进展', desc: 'Tiny Pet Sand Wars 的开发记录', link: '/archive?kind=release' },
               ].map(lane => {
                 const count = ARTICLES_SORTED.filter(a => a.kind === lane.kind).length
                 return <Link className="content-lane" to={lane.link} key={lane.kind}>
