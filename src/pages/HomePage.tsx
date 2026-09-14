@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTICLES, ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
 import { POST_MINUTES, POST_SUMMARY } from '../data/generated-meta'
-import { getTagCounts, getTagColors, getPrimaryTag, KIND_LABELS, KIND_ORDER } from '../lib/blog'
+import { getTagCounts, getTagColors, getPrimaryTag } from '../lib/blog'
 import { ThemeToggleButton } from '../components/widgets'
 import { CmdKbdBadge } from '../components/CmdHint'
 import { setPageMeta } from '../lib/seo'
@@ -26,11 +26,8 @@ function readingMinutes(a: ArticleMeta): number {
   return POST_MINUTES[a.slug] || 1
 }
 
-function filterArticles(query: string, tag: string, kind: string): ArticleMeta[] {
+function filterArticles(query: string, tag: string): ArticleMeta[] {
   let list = ARTICLES_SORTED
-  if (kind !== 'all') {
-    list = list.filter(a => a.kind === kind)
-  }
   if (tag !== 'all') {
     list = list.filter(a => a.tags && a.tags.includes(tag))
   }
@@ -47,7 +44,6 @@ function filterArticles(query: string, tag: string, kind: string): ArticleMeta[]
 export default function HomePage() {
   const [query, setQuery] = useState('')
   const [tag, setTag] = useState('all')
-  const [kind, setKind] = useState('all')
   const [navOpen, setNavOpen] = useState(false)
   const [quizOpen, setQuizOpen] = useState(false)
 
@@ -55,13 +51,8 @@ export default function HomePage() {
     setPageMeta('萌神小天 - 独立游戏开发博客', '萌神小天的独立游戏开发博客，分享Unity学习、游戏开发和独立游戏心得')
   }, [])
 
-  const filtered = useMemo(() => filterArticles(query, tag, kind), [query, tag, kind])
+  const filtered = useMemo(() => filterArticles(query, tag), [query, tag])
   const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
-  const kindCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: ARTICLES_SORTED.length }
-    ARTICLES_SORTED.forEach(a => { counts[a.kind] = (counts[a.kind] || 0) + 1 })
-    return counts
-  }, [])
   const [remote, setRemote] = useState<RemoteStats | null>(null)
   const [siteVisits, setSiteVisits] = useState(0)
 
@@ -138,13 +129,6 @@ export default function HomePage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const setKindAndRefresh = (k: string) => {
-    setKind(k)
-    setNavOpen(false)
-    const layout = document.getElementById('layout')
-    if (layout) layout.classList.remove('nav-open')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
 
   const renderSidebarItems = (list: ArticleMeta[]) => {
     if (list.length === 0) return <div className="empty-state">暂无文章</div>
@@ -241,28 +225,6 @@ export default function HomePage() {
               onChange={e => setQuery(e.target.value)}
             />
             <CmdKbdBadge />
-          </div>
-
-          <div className="kind-filters" id="kindFilters">
-            <button
-              className={'tag-filter' + (kind === 'all' ? ' active' : '')}
-              onClick={() => setKindAndRefresh('all')}
-            >
-              全部类型
-            </button>
-            {KIND_ORDER.map(k => {
-              const c = kindCounts[k] || 0
-              if (c === 0) return null
-              return (
-                <button
-                  key={k}
-                  className={'tag-filter' + (kind === k ? ' active' : '')}
-                  onClick={() => setKindAndRefresh(k)}
-                >
-                  {KIND_LABELS[k]} ({c})
-                </button>
-              )
-            })}
           </div>
 
           <div className="tag-filters" id="tagFilters">
