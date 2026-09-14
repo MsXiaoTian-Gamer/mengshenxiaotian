@@ -6,6 +6,7 @@ export interface LearningStep {
   desc: string
   status?: 'done' | 'wip' // 该步对应学习内容：已完成 / 仍在连载推进
   related?: { title: string; slug: string; note?: string }[] // 同阶段配套文章
+  external?: { title: string; url: string; note?: string }[] // 外部学习资源
   quizCat?: string // 可用题库分类名（/learn 练习入口）
   checks?: string[] // 能力自检清单（可在 /learn 页勾选，localStorage 持久化）
 }
@@ -68,6 +69,24 @@ export const UNITY_LEARNING_PATH: LearningStep[] = [
       '理解数据驱动配置与序列化的应用',
       '知道 Addressables 与资源加载策略的取舍',
       '能组织场景流、存档与 UI 管理',
+    ],
+  },
+  {
+    step: '专项方向',
+    title: 'Shader Graph 学习路线',
+    slug: 'shader-graph-learning',
+    desc: '从节点基础、PBR 材质到溶解、扫描线和后处理效果',
+    status: 'wip',
+    external: [
+      { title: 'B 站：Shader Graph 入门', url: 'https://search.bilibili.com/all?keyword=Unity%20Shader%20Graph%20入门', note: '先熟悉节点、属性和主 Stack' },
+      { title: 'B 站：Shader Graph 实战', url: 'https://search.bilibili.com/all?keyword=Unity%20Shader%20Graph%20实战', note: '跟做溶解、流光、扫描线效果' },
+      { title: 'B 站：URP Shader Graph', url: 'https://search.bilibili.com/all?keyword=URP%20Shader%20Graph%20教程', note: '理解 URP 下的材质与光照' },
+    ],
+    checks: [
+      '能解释 Blackboard、节点连线和 Master Stack 的作用',
+      '能独立完成溶解、渐变和 UV 滚动材质',
+      '理解透明、深度、法线和噪声节点的常见用途',
+      '能把 Shader Graph 效果接入实际 Unity 项目',
     ],
   },
 ]

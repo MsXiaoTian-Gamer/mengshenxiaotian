@@ -87,12 +87,15 @@ export default function LearnPage() {
             </div>
 
             <div className="learn-stage-main">
-              <Link to={'/post/' + s.slug} className="learn-article-link">
+              {s.slug.startsWith('20') ? <Link to={'/post/' + s.slug} className="learn-article-link">
                 <span className="learn-article-title">{s.title}</span>
                 <span className="learn-article-meta">
                   📄 阅读约 {POST_MINUTES[s.slug] || 1} 分钟
                 </span>
-              </Link>
+              </Link> : <div className="learn-article-link">
+                <span className="learn-article-title">{s.title}</span>
+                <span className="learn-article-meta">🎬 视频专项</span>
+              </div>}
               <p className="learn-stage-desc">{s.desc}</p>
 
               {s.related && s.related.length > 0 && (
@@ -103,6 +106,18 @@ export default function LearnPage() {
                       <span>{r.title}</span>
                       {r.note && <span className="learn-related-note">{r.note}</span>}
                     </Link>
+                  ))}
+                </div>
+              )}
+
+              {s.external && s.external.length > 0 && (
+                <div className="learn-block">
+                  <span className="learn-block-label">推荐视频</span>
+                  {s.external.map(r => (
+                    <a key={r.url} href={r.url} className="learn-related" target="_blank" rel="noopener noreferrer">
+                      <span>{r.title} ↗</span>
+                      {r.note && <span className="learn-related-note">{r.note}</span>}
+                    </a>
                   ))}
                 </div>
               )}
