@@ -1424,14 +1424,6 @@ body::after {
   color: #07130d;
 }
 
-/* ---------- Giscus 容器边框统一 ---------- */
-.giscus-comments {
-  border-top: 2px solid var(--border);
-}
-[data-theme="dark"] .giscus-comments {
-  border-top-color: var(--border);
-}
-
 /* ---- 首页每日八股板块 ---- */
 .quiz-home {
   margin: 0 0 34px;

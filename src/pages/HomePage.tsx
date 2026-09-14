@@ -298,15 +298,6 @@ export default function HomePage() {
                 RSS
               </a>
             </div>
-            <div className="sidebar-bottom-links">
-              <Link to="/about">关于</Link>
-              <span>|</span>
-              <Link to="/archive">归档</Link>
-              <span>|</span>
-              <Link to="/learn">路线</Link>
-              <span>|</span>
-              <Link to="/quiz">八股</Link>
-            </div>
           </div>
         </aside>
 
