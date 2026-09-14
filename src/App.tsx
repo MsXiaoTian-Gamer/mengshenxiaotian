@@ -9,6 +9,7 @@ import CommandPalette from './components/CommandPalette'
 import CrtColorStrip from './components/CrtColorStrip'
 import CrBoot from './components/CrBoot'
 import HomePage from './pages/HomePage'
+import SiteNav from './components/SiteNav'
 
 // 路由级代码分割：非首页页面按需加载（marked/highlight/fuse/题库数据均随之拆包）
 const PostPage = lazy(() => import('./pages/PostPage'))
@@ -20,6 +21,7 @@ const PlayPage = lazy(() => import('./pages/PlayPage'))
 const PongPage = lazy(() => import('./pages/PongPage'))
 const StatsPage = lazy(() => import('./pages/StatsPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
 
 function RouteFallback() {
   return (
@@ -56,6 +58,7 @@ export default function App() {
     <>
       <a className="skip-link" href="#mainContent">跳到主要内容</a>
       <ScrollToTop />
+      <SiteNav />
       <Hearts />
       <ProgressAndBackTop />
       <Mascot />
@@ -71,6 +74,7 @@ export default function App() {
           <Route path="/learn" element={<LearnPage />} />
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/play" element={<PlayPage />} />
           <Route path="/play/pong" element={<PongPage />} />
