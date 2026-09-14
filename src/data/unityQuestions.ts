@@ -1484,6 +1484,46 @@ export const UNITY_QUESTIONS: UnityQuestion[] = [
   /** 面试话术：追问方向 / 组织答案 / 加分落点 */
   talk: '对比两派设计哲学后给关键洞察：现代 x86 也是 RISC 微操作内核。落点是移动端：Unity 手游跑在 ARM 上，IL2CPP 产原生码、Burst 可用 NEON/SIMD；面试官问架构是想看你对目标平台有认知。加分点是能说出 iOS 模拟器/真机架构差异、Android 各 SoC 指令集差异对性能分析的影响，体现真机调优经验。',
   },
+  { id: 179, category: '协程与异步', difficulty: 2, question: 'Unity 6 Awaitable 与 Task 有什么区别？', points: [
+    'Awaitable 是 Unity 针对 PlayerLoop 和引擎生命周期设计的 await 类型，减少 Task 分配并支持返回主线程',
+    'Task 适合通用 .NET 异步与 IO；Unity API 大多仍要求主线程，切线程后要显式切回主线程',
+    '注意 Awaitable 通常只允许消费一次，异常和对象销毁也要在调用方处理',
+  ], talk: '先按使用边界回答：Task 是通用 .NET 抽象，Awaitable 更贴合 Unity PlayerLoop、生命周期和主线程。再补性能取舍：避免热路径大量 Task 分配，但不能把后台线程结果直接写 UnityEngine 对象。', },
+  { id: 180, category: '资源与内存', difficulty: 2, question: 'Addressables 句柄为什么必须成对释放？', points: [
+    '加载接口返回 AsyncOperationHandle，内部维护资源和依赖的引用计数',
+    '不 Release 会让依赖持续驻留；过早 Release 则可能导致仍在使用的资源失效',
+    '实例化对象应使用对应的 ReleaseInstance，场景卸载和异常路径也要释放句柄',
+  ], talk: '把它当引用计数问题回答：加载一次不代表只占一个资源，依赖树也被句柄持有。代码上要让加载和释放成对出现，尤其检查场景切换、取消加载和异常分支。', },
+  { id: 181, category: '渲染与图形学', difficulty: 2, question: '如何判断 Unity 一帧是 CPU bound 还是 GPU bound？', points: [
+    'Profiler 看 CPU Usage 与 GPU Usage，Frame Debugger 用来定位渲染命令和批次',
+    'GPU bound 常见于过度绘制、阴影、后处理、分辨率或复杂 shader；CPU bound 常见于脚本、物理、提交批次和 UI 重建',
+    '不能只看 FPS，要结合真机采样、Timeline 和耗时尖峰定位瓶颈',
+  ], talk: '不要直接列优化手段，先说测量方法：Profiler 判断主线程、Render Thread、GPU 的耗时关系，再用 Frame Debugger 找具体 draw。最后强调真机和编辑器结果可能不同。', },
+  { id: 182, category: '热更与工程', difficulty: 2, question: 'Unity 工程如何设计可回滚的资源更新？', points: [
+    '远端清单包含版本、哈希、大小和依赖，下载到临时目录并校验后再切换活动版本',
+    '保留上一份可用清单，启动时发现校验失败或下载中断就回滚',
+    '更新流程要区分强制更新、增量更新和后台预下载，并处理磁盘空间不足',
+  ], talk: '面试回答要体现线上意识：更新不是下载完就算成功，而是清单校验、原子切换、失败回滚。补充版本兼容、磁盘空间和断点续传，答案就从 API 细节提升到发布系统设计。', },
+  { id: 183, category: 'Unity核心', difficulty: 2, question: '为什么要避免在 Update 中反复访问 Camera.main？', points: [
+    'Camera.main 需要按 MainCamera 标签查找，频繁访问会产生不必要的查找开销',
+    '在 Awake 或初始化阶段缓存 Camera 引用，切换相机时通过明确接口更新缓存',
+    '不要只为优化而做全局单例，优先通过 SerializeField 或依赖注入传入引用',
+  ], talk: '这题重点不是记住 Camera.main 慢，而是说明依赖管理：初始化时缓存，切换时显式更新，避免 Update 隐式查找。顺便说明不要用另一个全局单例替换所有依赖。', },
+  { id: 184, category: 'UGUI', difficulty: 2, question: 'UGUI 动态列表为什么要做虚拟化？', points: [
+    '一次性创建数百或数千个 Cell 会增加 Canvas 重建、布局计算和 GameObject 管理成本',
+    '虚拟化只创建可视区域附近的少量 Cell，滚动时复用并更新数据',
+    '配合对象池、避免每帧修改 LayoutGroup，能显著降低滚动卡顿和 GC',
+  ], talk: '先指出瓶颈不只是 GameObject 数量，还包括 Canvas rebuild 和布局系统。再给方案：可视区复用、对象池、手动定位。最好结合背包或好友列表这种实际场景回答。', },
+  { id: 185, category: '网络与同步', difficulty: 2, question: '客户端如何防止重复提交购买或领奖请求？', points: [
+    '请求携带幂等业务 ID，服务端记录已处理结果，重复请求返回同一结果',
+    '客户端按钮需要处理中状态和超时重试策略，但不能只依赖客户端去重',
+    '网络重试必须区分可安全重试的查询和可能产生副作用的写请求',
+  ], talk: '关键答案是幂等性在服务端，而不是把按钮禁用当成安全措施。补充请求 ID、结果缓存和重试分类，能体现你理解真实线上网络问题。', },
+  { id: 186, category: '架构与设计模式', difficulty: 2, question: '如何给 Unity 系统设计可测试的边界？', points: [
+    '把纯规则、数据转换和状态计算放到普通 C# 类，减少对 MonoBehaviour 和静态 API 的直接依赖',
+    '通过接口注入时间、随机数、网络和存储等外部依赖，运行时再提供 Unity 实现',
+    '测试关注输入、状态变化和输出，不依赖必须启动完整场景才能验证',
+  ], talk: '从边界拆分回答：Unity 负责生命周期和表现，纯 C# 层负责规则；时间、随机和存储用接口隔离。这样既能做 EditMode 测试，也能减少场景初始化导致的脆弱测试。', },
 ]
 
 /** 稳定锚点：2026-09-01 起算天数，用于按日期轮询 */
