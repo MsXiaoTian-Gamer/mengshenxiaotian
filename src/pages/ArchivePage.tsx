@@ -26,6 +26,7 @@ function groupByYear(articles: ArticleMeta[]): YearGroup[] {
 export default function ArchivePage() {
   const [kind, setKind] = useState('all')
   const [tag, setTag] = useState('all')
+  const [query, setQuery] = useState('')
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
   const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
   const kindCounts = useMemo(() => {
@@ -42,8 +43,10 @@ export default function ArchivePage() {
     let list = ARTICLES_SORTED
     if (kind !== 'all') list = list.filter(a => a.kind === kind)
     if (tag !== 'all') list = list.filter(a => a.tags && a.tags.includes(tag))
+    const q = query.trim().toLowerCase()
+    if (q) list = list.filter(a => (a.title + ' ' + a.tags.join(' ') + ' ' + a.slug).toLowerCase().includes(q))
     return list
-  }, [kind, tag])
+  }, [kind, tag, query])
 
   const groups = useMemo(() => groupByYear(filtered), [filtered])
 
@@ -64,6 +67,10 @@ export default function ArchivePage() {
 
       <div className="archive-container">
         <h1 className="archive-title">文章归档</h1>
+        <label className="archive-search">
+          <span>搜索归档</span>
+          <input value={query} onChange={e => setQuery(e.target.value)} placeholder="按标题、标签搜索…" type="search" />
+        </label>
 
         <div className="archive-kind-tabs">
           <button className={'archive-tag-btn' + (kind === 'all' ? ' active' : '')} onClick={() => setKind('all')}>
@@ -100,6 +107,7 @@ export default function ArchivePage() {
         </div>
 
         <div className="archive-content">
+          <p className="archive-result-count">找到 {filtered.length} 篇文章{query.trim() ? ` · 关键词“${query.trim()}”` : ''}</p>
           {groups.length === 0 && <p style={{ color: 'var(--text-muted)' }}>该分类下暂无文章</p>}
           {groups.map(g => (
             <div className="archive-year" key={g.year} data-year={g.year}>

@@ -2586,6 +2586,10 @@ body::after {
 .content-lane strong, .content-lane small { display: block; }
 .content-lane small { margin-top: 4px; color: var(--text-muted); font-size: .75rem; }
 .content-lane em { color: var(--brand); font-size: .72rem; font-style: normal; white-space: nowrap; }
+.archive-search { display: flex; align-items: center; gap: 12px; max-width: 680px; margin: 0 0 18px; color: var(--text-secondary); font-size: .82rem; }
+.archive-search input { flex: 1; min-height: 38px; padding: 8px 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text-primary); font: inherit; }
+.archive-search input:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+.archive-result-count { margin: 0 0 12px; color: var(--text-muted); font-size: .78rem; font-family: var(--font-mono); }
 @media (max-width: 720px) { .content-lane-grid { grid-template-columns: 1fr; } }
 .learn-progress { height: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin: 4px 0 28px; background: transparent; }
 .learn-progress-bar { height: 100%; background: var(--brand); transition: width 0.4s ease; }
