@@ -2637,6 +2637,9 @@ body::after {
 .project-card { padding: 22px; border: 1px solid var(--border); background: var(--surface); }
 .project-card h2 { margin: 10px 0; color: var(--text-heading); }
 .project-card p { min-height: 54px; color: var(--text-secondary); line-height: 1.7; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+.project-tags span { padding: 3px 7px; border: 1px solid var(--border); color: var(--text-muted); font-size: .7rem; font-family: var(--font-mono); }
+.project-timeline { margin: 14px 0 20px; padding-left: 20px; color: var(--text-secondary); font-size: .8rem; line-height: 1.9; }
 .project-card a { margin-right: 14px; color: var(--brand); font-size: .82rem; text-decoration: none; }
 .project-status { color: var(--text-muted); font-size: .75rem; font-family: var(--font-mono); }
 @media (max-width: 700px) { .site-nav-links a { padding: 8px 6px; font-size: .74rem; } .project-grid { grid-template-columns: 1fr; } }
