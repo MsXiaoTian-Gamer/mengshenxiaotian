@@ -40,13 +40,32 @@ export function setPageMeta(title: string, description?: string, opts?: PageMeta
   ensureMeta('property', 'og:type').setAttribute('content', opts?.path ? 'article' : 'website')
   ensureMeta('property', 'og:image').setAttribute('content', opts?.image || OG_IMAGE)
   ensureMeta('property', 'og:locale').setAttribute('content', 'zh_CN')
+  ensureMeta('name', 'twitter:card').setAttribute('content', 'summary_large_image')
 
   if (description) {
     ensureMeta('name', 'description').setAttribute('content', description)
     ensureMeta('property', 'og:description').setAttribute('content', description)
-    ensureMeta('name', 'twitter:card').setAttribute('content', 'summary')
     ensureMeta('name', 'twitter:title').setAttribute('content', title)
     ensureMeta('name', 'twitter:description').setAttribute('content', description)
     ensureMeta('name', 'twitter:image').setAttribute('content', opts?.image || OG_IMAGE)
   }
+
+  let schema = document.querySelector<HTMLScriptElement>('script[data-page-schema="article"]')
+  if (!schema) {
+    schema = document.createElement('script')
+    schema.type = 'application/ld+json'
+    schema.dataset.pageSchema = 'article'
+    document.head.appendChild(schema)
+  }
+  schema.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': opts?.path ? 'TechArticle' : 'WebSite',
+    headline: title,
+    description: description || '',
+    url,
+    image: opts?.image || OG_IMAGE,
+    inLanguage: 'zh-CN',
+    author: { '@type': 'Person', name: SITE_NAME, url: SITE_URL + '/about' },
+    publisher: { '@type': 'Person', name: SITE_NAME },
+  })
 }

@@ -63,6 +63,9 @@ export default function LearnPage() {
         <p className="learn-sub">
           文章阶段 {doneStages}/{total} 完成 · 能力自检 {doneChecks}/{totalChecks} 已勾选
         </p>
+        <p className="learn-intro">
+          这是一条面向 Unity 游戏客户端学习者的实践路线：先跑通场景和脚本，再学习代码结构，最后进入项目架构与工程化。每一步都配有文章、练习和能力自检，建议按顺序完成。
+        </p>
 
         <div className="learn-progress" aria-label="学习路线总进度">
           <div

@@ -13,6 +13,31 @@ const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || ''
 const KEY_SITE = 'pv:site'
 const KEY_ARTICLES = 'pv:articles'
 
+const KNOWN_SLUGS = new Set([
+  '2026-09-11-PathFinding-Unity-网格寻路算法可视化',
+  '2026-08-28-Unity-第二阶段-设计模式与代码结构',
+  '2026-09-08-Unity-第三阶段-项目架构与工程化实践',
+  '2026-09-08-cpp-and-co-baguwen',
+  '2026-08-19-gbits-unity-client-interview',
+  '2026-08-17-mihoyo-game-client-interview',
+  '2026-08-11-Unity-基础入门与核心概念',
+  '2026-07-31-Unity-零基础入门指南',
+  '2026-07-14-Tiny-Pet-Sand-Wars-更新',
+  '2026-06-15-Tiny-Pet-Sand-Wars-更',
+  '2026-05-31-小宠沙暴大战12-游戏更新啦',
+  '2026-05-10-游戏发布itch啦',
+  '2025-11-15-腾讯游戏客户端一面凉经',
+  '2025-10-30-TapTap聚光灯开发日志Day7',
+  '2025-10-27-TapTap聚光灯开发日志Day6',
+  '2025-10-24-TapTap聚光灯开发日志Day5',
+  '2025-10-20-Unity新手学习推荐',
+  '2025-10-19-TapTap聚光灯开发日志Day4',
+  '2025-10-19-Unity资源分享',
+  '2025-10-17-TapTap聚光灯开发日志Day3',
+  '2025-10-14-TapTap聚光灯开发日志Day2',
+  '2025-10-11-TapTap聚光灯开发日志Day1',
+])
+
 function configured(): boolean {
   return Boolean(UPSTASH_URL && UPSTASH_TOKEN)
 }
@@ -68,7 +93,7 @@ export default async function handler(req: any, res: any) {
 
     if (req.method === 'POST') {
       const body = typeof req.body === 'object' && req.body !== null ? req.body : {}
-      if (body.kind === 'article' && typeof body.slug === 'string' && body.slug.length <= 200) {
+      if (body.kind === 'article' && typeof body.slug === 'string' && KNOWN_SLUGS.has(body.slug)) {
         await pipeline([
           ['HINCRBY', KEY_ARTICLES, body.slug, 1],
         ])

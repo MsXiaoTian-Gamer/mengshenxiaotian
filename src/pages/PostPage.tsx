@@ -302,6 +302,13 @@ export default function PostPage() {
           </div>
         </article>
 
+        {article.kind === 'interview' && (
+          <aside className="interview-guide" aria-label="面试复盘阅读提示">
+            <strong>面试复盘阅读提示</strong>
+            <span>建议按“面试背景 → 题目与回答 → 暴露的问题 → 后续复习”阅读，把经历记录转成自己的复习清单。</span>
+          </aside>
+        )}
+
         {toc.length > 0 && (
           <div className="toc" style={{ margin: '16px 0' }}>
             <h3 className="toc-title">📑 目录</h3>
