@@ -382,6 +382,27 @@ export default function HomePage() {
             </div>
           </section>
 
+          <section className="content-lanes" aria-labelledby="content-lanes-title">
+            <div className="lp-head">
+              <span className="lp-title" id="content-lanes-title">从这里开始</span>
+              <Link to="/archive" className="lp-more">查看全部文章 →</Link>
+            </div>
+            <div className="content-lane-grid">
+              {[
+                { kind: 'learn', icon: '🧭', title: '学 Unity', desc: '从零基础到项目工程化', link: '/learn' },
+                { kind: 'interview', icon: '💬', title: '看面试复盘', desc: '客户端岗位题目与答题思路', link: '/archive' },
+                { kind: 'release', icon: '🛠️', title: '看项目进展', desc: 'Tiny Pet Sand Wars 的开发记录', link: '/archive' },
+              ].map(lane => {
+                const count = ARTICLES_SORTED.filter(a => a.kind === lane.kind).length
+                return <Link className="content-lane" to={lane.link} key={lane.kind}>
+                  <span className="content-lane-icon" aria-hidden="true">{lane.icon}</span>
+                  <span><strong>{lane.title}</strong><small>{lane.desc}</small></span>
+                  <em>{count} 篇 →</em>
+                </Link>
+              })}
+            </div>
+          </section>
+
           <section className="learning-path">
             <div className="lp-head">
               <span className="lp-title">🎮 Unity 学习路线</span>

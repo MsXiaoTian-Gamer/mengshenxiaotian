@@ -2578,6 +2578,15 @@ body::after {
 .learn-intro { max-width: 760px; color: var(--text-secondary); line-height: 1.8; margin: 0 0 24px; }
 .interview-guide { display: flex; flex-direction: column; gap: 6px; margin: 16px 0; padding: 14px 16px; border: 1px solid var(--border); border-left: 3px solid var(--c-red); background: var(--surface); color: var(--text-secondary); line-height: 1.7; font-size: 0.86rem; }
 .interview-guide strong { color: var(--text-heading); font-size: 0.9rem; }
+.content-lanes { margin: 28px 0; }
+.content-lane-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.content-lane { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; padding: 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text-primary); text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
+.content-lane:hover, .content-lane:focus-visible { transform: translateY(-2px); border-color: var(--brand); }
+.content-lane-icon { font-size: 1.35rem; }
+.content-lane strong, .content-lane small { display: block; }
+.content-lane small { margin-top: 4px; color: var(--text-muted); font-size: .75rem; }
+.content-lane em { color: var(--brand); font-size: .72rem; font-style: normal; white-space: nowrap; }
+@media (max-width: 720px) { .content-lane-grid { grid-template-columns: 1fr; } }
 .learn-progress { height: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin: 4px 0 28px; background: transparent; }
 .learn-progress-bar { height: 100%; background: var(--brand); transition: width 0.4s ease; }
 .learn-stage { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px 20px; margin-bottom: 20px; background: var(--surface); box-shadow: 3px 3px 0 rgba(0,0,0,0.25); }
