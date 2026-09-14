@@ -7,7 +7,6 @@ import { ThemeToggleButton } from '../components/widgets'
 import { CmdKbdBadge } from '../components/CmdHint'
 import { setPageMeta } from '../lib/seo'
 import { reportSiteVisit, fetchRemoteStats, type RemoteStats } from '../lib/stats'
-import { UNITY_LEARNING_PATH } from '../data/learningPath'
 
 const QUOTES = [
   { text: '游戏是让人快乐的，做游戏也是。', author: '萌神小天' },
@@ -400,35 +399,6 @@ export default function HomePage() {
                   <em>{count} 篇 →</em>
                 </Link>
               })}
-            </div>
-          </section>
-
-          <section className="learning-path">
-            <div className="lp-head">
-              <span className="lp-title">🎮 Unity 学习路线</span>
-              <Link to="/learn" className="lp-more">
-                完整学习地图 →
-              </Link>
-            </div>
-            <div className="lp-cards">
-              {UNITY_LEARNING_PATH.map(s => (
-                <Link
-                  key={s.slug}
-                  to={'/post/' + s.slug}
-                  className="lp-card"
-                >
-                  <div className="lp-step-row">
-                    <span className="lp-step">{s.step}</span>
-                    {s.status && (
-                      <span className={'lp-status is-' + s.status}>
-                        {s.status === 'done' ? '已完成' : '更新中'}
-                      </span>
-                    )}
-                  </div>
-                  <div className="lp-card-title">{s.title}</div>
-                  <div className="lp-card-desc">{s.desc}</div>
-                </Link>
-              ))}
             </div>
           </section>
 
