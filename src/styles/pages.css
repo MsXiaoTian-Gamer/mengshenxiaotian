@@ -2622,6 +2622,7 @@ body::after {
 .site-nav-links { display: flex; gap: 4px; }
 .site-nav-links a { padding: 8px 10px; color: var(--text-secondary); text-decoration: none; font-size: .82rem; }
 .site-nav-links a:hover, .site-nav-links a.is-active { color: var(--brand); background: var(--surface); }
+.site-nav, .project-card, .content-lane, .article-card, .quiz-home-window { box-shadow: var(--shadow-sm); }
 .projects-page { max-width: 1000px; margin: 0 auto; padding: 64px 24px 100px; }
 .projects-kicker { color: var(--brand); font-family: var(--font-mono); letter-spacing: .12em; }
 .projects-intro { color: var(--text-secondary); }

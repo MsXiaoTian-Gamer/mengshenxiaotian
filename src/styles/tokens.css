@@ -27,9 +27,9 @@
     --shadow: 0 2px 10px rgba(58,64,46,0.14);
     --shadow-md: 0 6px 20px rgba(58,64,46,0.16);
     --shadow-lg: 0 12px 36px rgba(58,64,46,0.18);
-    --radius-sm: 0px;
-    --radius: 2px;
-    --radius-lg: 2px;
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-lg: 16px;
     --transition: 0.15s ease;
     --transition-slow: 0.25s ease;
     --content-width: 680px;
@@ -47,7 +47,7 @@
     --scrollbar-thumb: #b9b29c;
     --scrollbar-track: #efe9db;
     --sidebar-width: 300px;
-    --scan-opacity: 0.03;
+    --scan-opacity: 0.012;
     /* ====== Tag Color System (Light — 复古打印稿卡带色) ====== */
     --c-blue:       #3a6d8c;  --c-blue-bg:    #e3ece9;
     --c-green:      #4a7c59;  --c-green-bg:   #e4ece0;
@@ -98,7 +98,7 @@
       --table-stripe: #0b1a12;
       --scrollbar-thumb: #2c4a3a;
       --scrollbar-track: #0a1510;
-      --scan-opacity: 0.05;
+      --scan-opacity: 0.02;
       /* ====== Tag Color System (Dark — 复古卡带色深底浅字) ====== */
       --c-blue:       #7dd3fc;  --c-blue-bg:    #0d2b3a;
       --c-green:      #57d9a2;  --c-green-bg:   #0c2a20;
@@ -256,4 +256,3 @@
       --scan-opacity: 0.07;
       --c-default: #8fd0ff;  --c-default-bg: #0d2c45;
     }
-

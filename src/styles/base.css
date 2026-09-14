@@ -8,6 +8,8 @@
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
 
+  body { letter-spacing: 0.005em; }
+
   :where(a, button, input, select, textarea, summary, [tabindex], [role="button"]):focus-visible {
     outline: 2px solid var(--brand);
     outline-offset: 2px;
