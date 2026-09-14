@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTICLES, ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
 import { POST_MINUTES, POST_SUMMARY } from '../data/generated-meta'
@@ -135,8 +135,6 @@ export default function HomePage() {
     return (
       <>
         {list.slice(0, 8).map(a => {
-          const tag0 = getPrimaryTag(a)
-          const tc = getTagColors(tag0 || '')
           const time = readingMinutes(a)
           return (
             <Link key={a.path} to={postUrl(a)} className="article-item">

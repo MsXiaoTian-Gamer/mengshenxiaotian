@@ -130,7 +130,7 @@ function LikeButton({ article }: { article: ArticleMeta }) {
     <div className="like-section">
       <button className={'like-btn' + (liked ? ' liked' : '')} onClick={onClick}>
         <span className="like-icon">{liked ? '❤️' : '🤍'}</span>{' '}
-        <span className="like-count">{count}</span> 次点赞
+        <span className="like-count">{count}</span> 次喜欢
       </button>
     </div>
   )
