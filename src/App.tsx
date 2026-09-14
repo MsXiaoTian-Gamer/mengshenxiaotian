@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { Component, lazy, Suspense, useEffect, type ErrorInfo, type ReactNode } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { initTheme } from './lib/theme'
 import { Mascot } from './components/Mascot'
@@ -29,6 +29,16 @@ function RouteFallback() {
   )
 }
 
+class AppErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  componentDidCatch(error: Error, info: ErrorInfo) { console.error('App render error', error, info) }
+  render() {
+    if (!this.state.failed) return this.props.children
+    return <main className="app-error" role="alert"><p className="app-error-code">SYSTEM ERROR</p><h1>页面暂时无法显示</h1><p>可以刷新页面重试；如果问题持续，请到 GitHub 讨论区反馈。</p><button type="button" onClick={() => window.location.reload()}>重新加载</button></main>
+  }
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
@@ -44,6 +54,7 @@ export default function App() {
 
   return (
     <>
+      <a className="skip-link" href="#mainContent">跳到主要内容</a>
       <ScrollToTop />
       <Hearts />
       <ProgressAndBackTop />
@@ -53,7 +64,7 @@ export default function App() {
       <CommandPalette />
       <CrtColorStrip />
       <CrBoot />
-      <Suspense fallback={<RouteFallback />}>
+      <AppErrorBoundary><Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/post/:slug" element={<PostPage />} />
@@ -66,7 +77,7 @@ export default function App() {
           <Route path="/stats" element={<StatsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </Suspense>
+      </Suspense></AppErrorBoundary>
     </>
   )
 }

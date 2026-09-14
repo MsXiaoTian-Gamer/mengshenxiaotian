@@ -975,6 +975,13 @@
 /* ---------- 减弱动态效果：全局权威层（阶段4.4） ----------
  * 单点兜底全部样式动画/过渡；CRT 步骤闪烁/扫动等在高强度动画下
  * 由 JS 层跳过（见 CrBoot），此处统一压缩剩余过渡避免跳变残留。 */
+.skip-link { position: fixed; left: 12px; top: -60px; z-index: 9999; padding: 10px 14px; background: var(--brand); color: var(--bg); font-weight: 700; text-decoration: none; transition: top .15s ease; }
+.skip-link:focus { top: 12px; }
+.app-error { min-height: 60vh; display: grid; place-content: center; gap: 12px; max-width: 680px; margin: 0 auto; padding: 32px; color: var(--text-secondary); }
+.app-error h1 { color: var(--text-heading); margin: 0; }
+.app-error-code { color: var(--brand); font-family: var(--font-mono); letter-spacing: .08em; }
+.app-error button { justify-self: start; min-height: 40px; padding: 8px 16px; border: 1px solid var(--brand); background: transparent; color: var(--brand); cursor: pointer; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -986,4 +993,3 @@
   /* 浏览器视图过渡同步关闭 */
   @view-transition { navigation: none; }
 }
-
