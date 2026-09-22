@@ -424,7 +424,7 @@
   background: linear-gradient(90deg, var(--brand), var(--brand-light), var(--accent-light));
 }
 .art-header h1 {
-  font-size: clamp(1.85rem, 1.6vw + 1.4rem, 2.6rem);
+  font-size: clamp(1.45rem, 1.1vw + 1.1rem, 2rem);
   font-weight: 800;
   line-height: 1.28;
   letter-spacing: -0.025em;
@@ -514,6 +514,8 @@
   font-weight: 650;
   margin: 1.5rem 0 0.5rem;
 }
+/* 页首已渲染文章标题，正文首个一级标题去重 */
+.art-body > h1:first-child { display: none; }
 .art-body ul,
 .art-body ol { margin: 1rem 0; padding-left: 1.7rem; }
 .art-body li { margin: 0.45rem 0; line-height: 1.82; }
@@ -551,6 +553,42 @@
   padding: 0;
   color: inherit;
 }
+/* ---- 代码块 VS Code Dark+ 风格：黑底白字，token 遵循 VS Code 默认配色 ---- */
+.art-body pre {
+  background: #1e1e1e !important;
+  border-color: #3c3c3c !important;
+  color: #d4d4d4;
+}
+.art-body pre code.hljs { color: #d4d4d4; }
+.art-body pre .hljs-keyword,
+.art-body pre .hljs-doctag,
+.art-body pre .hljs-template-tag,
+.art-body pre .hljs-template-variable,
+.art-body pre .hljs-type,
+.art-body pre .hljs-variable.language_ { color: #569cd6; }
+.art-body pre .hljs-string,
+.art-body pre .hljs-regexp,
+.art-body pre .hljs-meta .hljs-string { color: #ce9178; }
+.art-body pre .hljs-number,
+.art-body pre .hljs-literal,
+.art-body pre .hljs-symbol { color: #b5cea8; }
+.art-body pre .hljs-title,
+.art-body pre .hljs-title.function_,
+.art-body pre .hljs-function { color: #dcdcaa; }
+.art-body pre .hljs-params,
+.art-body pre .hljs-operator { color: #d4d4d4; }
+.art-body pre .hljs-comment,
+.art-body pre .hljs-quote,
+.art-body pre .hljs-formula { color: #6a9955; }
+.art-body pre .hljs-built_in,
+.art-body pre .hljs-selector-tag,
+.art-body pre .hljs-name { color: #4ec9b0; }
+.art-body pre .hljs-attr,
+.art-body pre .hljs-attribute,
+.art-body pre .hljs-property,
+.art-body pre .hljs-variable { color: #9cdcfe; }
+.art-body pre .hljs-emphasis { color: #d4d4d4; font-style: italic; }
+.art-body pre .hljs-strong { color: #d4d4d4; font-weight: 700; }
 .art-body table {
   width: 100%;
   border-collapse: separate;
