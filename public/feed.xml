@@ -7,6 +7,13 @@
 <language>zh-CN</language>
 <atom:link href="https://msxiaotian.top/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>武汉微派一面：从 UGUI 到行为树，一场硬核的客户端技术面</title>
+    <link>https://msxiaotian.top/post/2026-09-22-wuhan-weipai-phone-interview</link>
+    <guid isPermaLink="true">https://msxiaotian.top/post/2026-09-22-wuhan-weipai-phone-interview</guid>
+    <pubDate>Mon, 21 Sep 2026 16:00:00 GMT</pubDate>
+    <description>武汉微派一面：从 UGUI 到行为树，一场硬核的客户端技术面 面试岗位：Unity 游戏客户端 时间：2026 年 9 月 22 日 状态：一面复盘 微派的游戏客户端一面，整体节奏快、密度高，从 UI 原理到架构设计到算法到工程化都有覆盖。趁着记忆还热乎，把整场完整复盘一遍。 面试流程概览 整场一共 54 分钟，结构大致是： 1. 自我介绍（简短） 2. 学习资源渠道（B站 / BOSS 招聘信息 / Unity 官网 / AI） 3. UGUI：无限背包用 Mesh 还是 RectMask2D、弹窗置顶 4. 对象池（含容量追问） 5. 策略模式 6. 观察者模式 7. 行为树（聊得很浅，基…</description>
+  </item>
+  <item>
     <title>PathFinding：Unity 网格寻路算法可视化 Demo</title>
     <link>https://msxiaotian.top/post/2026-09-11-PathFinding-Unity-%E7%BD%91%E6%A0%BC%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E5%8F%AF%E8%A7%86%E5%8C%96</link>
     <guid isPermaLink="true">https://msxiaotian.top/post/2026-09-11-PathFinding-Unity-%E7%BD%91%E6%A0%BC%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E5%8F%AF%E8%A7%86%E5%8C%96</guid>
