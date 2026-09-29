@@ -63,7 +63,7 @@ export const UNITY_LEARNING_PATH: LearningStep[] = [
     slug: '2026-09-08-Unity-第三阶段-项目架构与工程化实践',
     desc: '架构分层、数据驱动、场景流、存档、UI 与工程化',
     status: 'wip',
-    quizCat: '热更与工程',
+    quizCat: '热更新',
     checks: [
       '能说清架构分层各自职责与边界',
       '理解数据驱动配置与序列化的应用',
