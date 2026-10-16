@@ -28,7 +28,7 @@ export const POST_SUMMARY: Record<string, string> = {
 }
 
 export const POST_MINUTES: Record<string, number> = {
-  "2026-10-16-百万粉主播-TapMaker-首作上线": 3,
+  "2026-10-16-百万粉主播-TapMaker-首作上线": 2,
   "2026-09-22-wuhan-weipai-phone-interview": 16,
   "2026-09-11-PathFinding-Unity-网格寻路算法可视化": 10,
   "2026-08-28-Unity-第二阶段-设计模式与代码结构": 6,
