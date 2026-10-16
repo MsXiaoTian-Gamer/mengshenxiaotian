@@ -14,6 +14,7 @@ const KEY_SITE = 'pv:site'
 const KEY_ARTICLES = 'pv:articles'
 
 const KNOWN_SLUGS = new Set([
+  '2026-10-16-百万粉主播-TapMaker-首作上线',
   '2026-09-22-wuhan-weipai-phone-interview',
   '2026-09-11-PathFinding-Unity-网格寻路算法可视化',
   '2026-08-28-Unity-第二阶段-设计模式与代码结构',
