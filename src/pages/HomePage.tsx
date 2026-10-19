@@ -170,8 +170,8 @@ export default function HomePage() {
           const summary = POST_SUMMARY[a.slug] || ''
           return (
             <Link key={a.path} to={postUrl(a)} className="article-card">
-              <div className="card-date">{a.date}</div>
-              <div className="card-title">{a.title}</div>
+              <div className="card-date"><time dateTime={a.date}>{a.date}</time><span>{readingMinutes(a)} min read</span></div>
+              <h3 className="card-title">{a.title}</h3>
               <div className="card-tags">
                 {(a.tags || []).map(t => {
                   const tc = getTagColors(t)
@@ -183,6 +183,7 @@ export default function HomePage() {
                 })}
               </div>
               <div className="card-summary">{summary}</div>
+              <div className="card-bottom"><span>阅读全文</span><span aria-hidden="true">↗</span></div>
             </Link>
           )
         })}
@@ -192,13 +193,13 @@ export default function HomePage() {
 
   return (
     <>
-      <button className="hamburger" id="hamburgerBtn" onClick={onHamburger} aria-label="菜单">
+      <button className="hamburger" id="hamburgerBtn" onClick={onHamburger} aria-label="菜单" aria-expanded={navOpen} aria-controls="sidebar">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <div className="layout" id="layout">
+      <div className="layout home-layout" id="layout">
         {/* ===== Sidebar ===== */}
         <aside className="sidebar" id="sidebar">
           <div className="sidebar-header">
@@ -218,6 +219,7 @@ export default function HomePage() {
               className="search-input has-badge"
               id="searchInput"
               placeholder="搜索文章..."
+              aria-label="搜索文章"
               autoComplete="off"
               value={query}
               onChange={e => setQuery(e.target.value)}
@@ -303,9 +305,10 @@ export default function HomePage() {
         <main className="main" id="mainContent">
           <section className="hero" id="heroSection">
             <div className="hero-inner">
-              <span className="hero-eyebrow">Independent Game Dev Blog</span>
+              <div className="studio-status"><span aria-hidden="true" /> 记录学习，也创造快乐</div>
+              <span className="hero-eyebrow">THE INDEPENDENT DEV JOURNAL</span>
               <h1>
-                <span>萌神小天</span> 的博客
+                <span>把想法写成代码，</span><br />把热爱做成游戏。
               </h1>
               <p>一个独立游戏开发者的学习笔记与创作记录。分享 Unity 开发经验、游戏设计心得和 TapTap 聚光灯参赛历程。</p>
               <div className="hero-meta">
@@ -318,7 +321,7 @@ export default function HomePage() {
               </div>
               <div className="hero-actions">
                 <Link className="hero-btn hero-btn-primary" to="/play">
-                  🎮 站内试玩《Tiny Pet Sand Wars》WebGL
+                  🎮 试玩我的游戏 ↗
                 </Link>
                 <a
                   className="hero-btn hero-btn-secondary"
@@ -326,9 +329,18 @@ export default function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  💛 TapTap 支持我
+                  TapTap 开发者主页 ↗
                 </a>
               </div>
+            </div>
+            <div className="studio-console" aria-label="开发者档案">
+              <div className="console-caption"><span aria-hidden="true">⌘</span> developer.profile</div>
+              <div className="console-prompt"><span>~/xiaotian</span> $ cat about.md</div>
+              <div className="console-avatar" aria-hidden="true">&lt; / &gt;</div>
+              <strong>你好，我是萌神小天。</strong>
+              <p>独立游戏开发者 / Unity 探索者</p>
+              <div className="console-stack"><span>Unity</span><span>C#</span><span>Game Design</span></div>
+              <div className="console-foot"><span>小步迭代，持续创造</span><span aria-hidden="true">█</span></div>
             </div>
           </section>
 
@@ -398,6 +410,10 @@ export default function HomePage() {
             <div className="quote-author">—— {quote.author}</div>
           </div>
 
+          <div className="journal-heading">
+            <div><span className="journal-kicker">THE JOURNAL / 开发手记</span><h2>{query || tag !== 'all' ? '筛选结果' : '最近写下的故事'}</h2></div>
+            <span className="journal-count">{filtered.length} 篇记录</span>
+          </div>
           {filtered.length > 0 ? (
             <>
               <div className="article-cards-grid" id="articleCardsGrid">
