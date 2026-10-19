@@ -154,9 +154,11 @@ export default function PostPage() {
   }, [article])
   const html = useMemo(() => (article ? renderMarkdownHtml(md) : ''), [article, md])
   const bodyRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const [toc, setToc] = useState<TocItem[]>([])
   const [views, setViews] = useState(0)
   const [copied, setCopied] = useState(false)
+  const [fontSize, setFontSize] = useState(16)
   const active = useScrollSpy(toc.map(t => t.id))
   const related = useMemo(() => (article ? pickRelated(article, ARTICLES_SORTED) : []), [article])
   const relatedRef = useRef<HTMLDivElement>(null)
@@ -200,6 +202,8 @@ export default function PostPage() {
     enhanceMarkdownDom(root)
     setToc(collectToc(root))
     setCopied(false)
+    setFontSize(16)
+    contentRef.current?.style.setProperty('--article-font-size', '16px')
     window.scrollTo({ top: 0, behavior: 'auto' })
   }, [article, html])
 
@@ -282,6 +286,7 @@ export default function PostPage() {
 
       <main className="art-container">
         <article className="art-header">
+          <div className="article-kicker"><span className="article-kicker-dot" /> 开发手记 <span>/</span> {formatDateCN(article.date)}</div>
           <h1>{article.title}</h1>
           <div className="art-meta" style={{ marginTop: 10 }}>
             <span>{formatDateCN(article.date)}</span>
@@ -289,6 +294,12 @@ export default function PostPage() {
             <span>约 {time} 分钟</span>
             <span> · </span>
             <span>{views} 次阅读</span>
+          </div>
+          <div className="article-reading-tools" aria-label="阅读设置">
+            <span>字号</span>
+            <button type="button" aria-label="缩小字号" title="缩小字号" disabled={fontSize <= 14} onClick={() => setFontSize(size => { const next = Math.max(14, size - 1); contentRef.current?.style.setProperty('--article-font-size', `${next}px`); return next })}>A−</button>
+            <span className="article-font-value">{fontSize}px</span>
+            <button type="button" aria-label="放大字号" title="放大字号" disabled={fontSize >= 22} onClick={() => setFontSize(size => { const next = Math.min(22, size + 1); contentRef.current?.style.setProperty('--article-font-size', `${next}px`); return next })}>A+</button>
           </div>
           <div className="art-tags">
             {(article.tags || []).map(t => {
@@ -310,13 +321,17 @@ export default function PostPage() {
         )}
 
         {toc.length > 0 && (
-          <div className="toc" style={{ margin: '16px 0' }}>
-            <h3 className="toc-title">📑 目录</h3>
-            <ul className="toc-list" style={{ listStyle: 'none', paddingLeft: 0 }}>
+          <details className="toc" open>
+            <summary className="toc-summary">
+              <span className="toc-title">📑 文章目录</span>
+              <span className="toc-summary-meta">{toc.length} 个章节 <span className="toc-chevron" aria-hidden="true">⌄</span></span>
+            </summary>
+            <ul className="toc-list">
               {toc.map(t => (
                 <li key={t.id} className={'toc-item' + (t.level === 3 ? ' toc-h3' : '')}>
                   <a
                     href={'#' + t.id}
+                    aria-current={active === t.id ? 'location' : undefined}
                     className={active === t.id ? 'active' : ''}
                     onClick={e => {
                       e.preventDefault()
@@ -328,10 +343,10 @@ export default function PostPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </details>
         )}
 
-        <div className="art-content">
+        <div className="art-content" ref={contentRef}>
           {!html && (
             <div style={{ padding: '40px 0', color: 'var(--text-muted)' }}>正在加载正文…</div>
           )}
@@ -394,22 +409,22 @@ export default function PostPage() {
 
         {renderRelated(related)}
 
-        <div className="art-pagination" style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginTop: 28 }}>
+        <nav className="art-pagination" aria-label="相邻文章">
           {prev ? (
-            <Link to={'/post/' + prev.slug} style={{ color: 'var(--brand)', fontSize: '0.85rem', textDecoration: 'none' }}>
-              ← {prev.title}
+            <Link to={'/post/' + prev.slug} className="pagination-card pagination-prev">
+              <span className="pagination-direction">← 上一篇</span>
+              <span className="pagination-title">{prev.title}</span>
+              <span className="pagination-date">{prev.date}</span>
             </Link>
-          ) : (
-            <span></span>
-          )}
+          ) : <span />}
           {next ? (
-            <Link to={'/post/' + next.slug} style={{ color: 'var(--brand)', fontSize: '0.85rem', textDecoration: 'none' }}>
-              {next.title} →
+            <Link to={'/post/' + next.slug} className="pagination-card pagination-next">
+              <span className="pagination-direction">下一篇 →</span>
+              <span className="pagination-title">{next.title}</span>
+              <span className="pagination-date">{next.date}</span>
             </Link>
-          ) : (
-            <span></span>
-          )}
-        </div>
+          ) : <span />}
+        </nav>
 
         <div className="giscus-comments" style={{ marginTop: 40 }}>
           <div
