@@ -7,7 +7,6 @@ import { formatDateCN, getTagColors, getPrimaryTag, pickRelated } from '../lib/b
 import { enhanceMarkdownDom, renderMarkdownHtml, copyText, buildDescription } from '../lib/render'
 import { setPageMeta } from '../lib/seo'
 import { getTheme, ensureHljsCss } from '../lib/theme'
-import { ThemeToggleButton } from '../components/widgets'
 import { reportArticleView, fetchRemoteStats } from '../lib/stats'
 
 interface TocItem {
@@ -246,14 +245,6 @@ export default function PostPage() {
   if (!article) {
     return (
       <>
-        <nav className="art-nav">
-          <Link to="/" className="home-link" title="回到首页">
-            ← 萌神小天
-          </Link>
-          <span className="nav-divider"></span>
-          <span className="nav-title">文章未找到</span>
-          <ThemeToggleButton className="theme-btn" />
-        </nav>
         <main className="art-container">
           <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--text-muted)' }}>
             <h1 style={{ fontSize: '1.5rem', marginBottom: 12 }}>文章不存在或已被移动</h1>
@@ -311,15 +302,6 @@ export default function PostPage() {
 
   return (
     <>
-      <nav className="art-nav">
-        <Link to="/" className="home-link" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span className="nav-title">{article.title}</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
-
       <main className="art-container">
         <article className="art-header">
           <div className="article-kicker"><span className="article-kicker-dot" /> 开发手记 <span>/</span> {formatDateCN(article.date)}</div>

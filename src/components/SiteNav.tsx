@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { ThemeToggleButton } from './widgets'
 
 const links = [
   ['/', '首页'],
@@ -16,6 +17,7 @@ export default function SiteNav() {
       <div className="site-nav-links">
         {links.slice(1).map(([to, label]) => <NavLink key={to} to={to} className={({ isActive }) => isActive ? 'is-active' : ''}>{label}</NavLink>)}
       </div>
+      <ThemeToggleButton className="site-nav-theme" />
     </div>
   </nav>
 }

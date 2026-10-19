@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { setPageMeta } from '../lib/seo'
-import { ThemeToggleButton } from '../components/widgets'
 
 export default function AboutPage() {
   useEffect(() => {
@@ -10,15 +9,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <nav className="about-nav">
-        <Link to="/" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>关于</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
-
       <div className="about-container">
         <div className="intro-card">
           <div className="intro-avatar">萌</div>

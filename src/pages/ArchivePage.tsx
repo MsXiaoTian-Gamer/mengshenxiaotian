@@ -4,7 +4,6 @@ import { ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
 import { POST_MINUTES } from '../data/generated-meta'
 import { getTagCounts, KIND_LABELS, KIND_ORDER } from '../lib/blog'
 import { setPageMeta } from '../lib/seo'
-import { ThemeToggleButton } from '../components/widgets'
 
 interface YearGroup {
   year: string
@@ -56,6 +55,8 @@ export default function ArchivePage() {
   }, [kind, tag, query])
 
   const groups = useMemo(() => groupByYear(filtered), [filtered])
+  const activeFilterCount = Number(kind !== 'all') + Number(tag !== 'all') + Number(Boolean(query.trim()))
+  const archiveYears = useMemo(() => new Set(ARTICLES_SORTED.map(article => article.date.slice(0, 4))).size, [])
 
   const toggleYear = (year: string) => {
     setCollapsed(c => ({ ...c, [year]: !c[year] }))
@@ -63,17 +64,19 @@ export default function ArchivePage() {
 
   return (
     <>
-      <nav className="archive-nav">
-        <Link to="/" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>归档</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
-
       <div className="archive-container">
-        <h1 className="archive-title">文章归档</h1>
+        <div className="archive-heading">
+          <div>
+            <p className="archive-kicker">THE JOURNAL / INDEX</p>
+            <h1 className="archive-title">文章归档</h1>
+            <p className="archive-intro">按主题和年份，找到你想读的开发记录。</p>
+          </div>
+          <div className="archive-stats" aria-label="归档统计">
+            <span><strong>{ARTICLES_SORTED.length}</strong> 篇文章</span>
+            <span><strong>{archiveYears}</strong> 年记录</span>
+            <span><strong>{tagCounts.length}</strong> 个主题</span>
+          </div>
+        </div>
         <label className="archive-search">
           <span>搜索归档</span>
           <input value={query} onChange={e => updateFilter('q', e.target.value)} placeholder="按标题、标签搜索…" type="search" />
@@ -114,16 +117,23 @@ export default function ArchivePage() {
         </div>
 
         <div className="archive-content">
-          <p className="archive-result-count">找到 {filtered.length} 篇文章{query.trim() ? ` · 关键词“${query.trim()}”` : ''}</p>
-          {groups.length === 0 && <p style={{ color: 'var(--text-muted)' }}>该分类下暂无文章</p>}
+          <div className="archive-results-head">
+            <p className="archive-result-count">找到 <strong>{filtered.length}</strong> 篇文章{query.trim() ? ` · 关键词“${query.trim()}”` : ''}</p>
+            {activeFilterCount > 0 && <button type="button" className="archive-clear" onClick={() => setParams(new URLSearchParams())}>清除筛选 <span aria-hidden="true">×</span></button>}
+          </div>
+          {groups.length === 0 && (
+            <div className="archive-empty"><span aria-hidden="true">⌕</span><strong>没有找到匹配的文章</strong><p>试试更短的关键词，或清除部分筛选条件。</p><button type="button" onClick={() => setParams(new URLSearchParams())}>查看全部文章</button></div>
+          )}
           {groups.map(g => (
-            <div className="archive-year" key={g.year} data-year={g.year}>
-              <h2 className="archive-year-title" onClick={() => toggleYear(g.year)} title="点击折叠/展开">
-                {g.year} 年
-                <span className="archive-count">{g.items.length} 篇</span>
-                <span className="archive-toggle">{collapsed[g.year] ? '+' : '−'}</span>
+            <section className="archive-year" key={g.year} data-year={g.year}>
+              <h2 className="archive-year-title">
+                <button type="button" aria-expanded={!collapsed[g.year]} aria-controls={'archive-year-' + g.year} onClick={() => toggleYear(g.year)}>
+                  <span className="archive-year-label">{g.year} 年</span>
+                  <span className="archive-count">{g.items.length} 篇</span>
+                  <span className="archive-toggle" aria-hidden="true">{collapsed[g.year] ? '+' : '−'}</span>
+                </button>
               </h2>
-              <div className="archive-year-body" style={collapsed[g.year] ? { display: 'none' } : undefined}>
+              <div className="archive-year-body" id={'archive-year-' + g.year} hidden={collapsed[g.year]}>
                 {g.items.map(a => {
                   const mins = POST_MINUTES[a.slug] || 1
                   return (
@@ -137,7 +147,7 @@ export default function ArchivePage() {
                   )
                 })}
               </div>
-            </div>
+            </section>
           ))}
         </div>
       </div>
