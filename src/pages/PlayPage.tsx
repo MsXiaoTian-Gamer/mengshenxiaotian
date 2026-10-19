@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { setPageMeta } from '../lib/seo'
 import { ThemeToggleButton } from '../components/widgets'
+import { TAPTAP_PROFILE_URL } from '../data/links'
 
 // Tiny Pet Sand Wars —— Unity WebGL 导出版（独立 Vercel 项目 tiny-sand-war，Git 集成 main 分支自动部署）
 const GAME_URL = 'https://tiny-sand-war.vercel.app/'
@@ -30,8 +31,8 @@ export default function PlayPage() {
         <div className="tsw-head">
           <span className="tsw-brand">TINY PET SAND WARS</span>
           <div className="tsw-links">
-            <a className="tsw-ext" href="https://www.taptap.cn/app/779424" target="_blank" rel="noreferrer">
-              TapTap ↗
+            <a className="tsw-ext" href={TAPTAP_PROFILE_URL} target="_blank" rel="noreferrer">
+              TapTap 作品主页 ↗
             </a>
             <a className="tsw-ext" href="https://msxiaotian.itch.io/tiny-pet-sand-wars" target="_blank" rel="noreferrer">
               itch.io ↗

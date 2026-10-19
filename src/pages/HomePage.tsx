@@ -7,6 +7,7 @@ import { ThemeToggleButton } from '../components/widgets'
 import { CmdKbdBadge } from '../components/CmdHint'
 import { setPageMeta } from '../lib/seo'
 import { reportSiteVisit, fetchRemoteStats, type RemoteStats } from '../lib/stats'
+import { TAPTAP_PROFILE_URL } from '../data/links'
 
 const QUOTES = [
   { text: '游戏是让人快乐的，做游戏也是。', author: '萌神小天' },
@@ -285,8 +286,8 @@ export default function HomePage() {
               <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
-              <a href="https://www.taptap.cn/app/779424" target="_blank" rel="noopener noreferrer">
-                TapTap
+              <a href={TAPTAP_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+                TapTap 主页
               </a>
               <a href="https://msxiaotian.itch.io/tiny-pet-sand-wars" target="_blank" rel="noopener noreferrer">
                 itch.io
@@ -325,11 +326,11 @@ export default function HomePage() {
                 </Link>
                 <a
                   className="hero-btn hero-btn-secondary"
-                  href="https://www.taptap.cn/app/779424"
+                  href={TAPTAP_PROFILE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  TapTap 开发者主页 ↗
+                  TapTap 作品主页 ↗
                 </a>
               </div>
             </div>
