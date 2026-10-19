@@ -160,6 +160,7 @@ export default function PostPage() {
   const [copied, setCopied] = useState(false)
   const [fontSize, setFontSize] = useState(16)
   const [focusMode, setFocusMode] = useState(false)
+  const [readingProgress, setReadingProgress] = useState(0)
   const active = useScrollSpy(toc.map(t => t.id))
 
   useEffect(() => {
@@ -178,6 +179,28 @@ export default function PostPage() {
   const index = article ? ARTICLES_SORTED.findIndex(a => a.slug === article.slug) : -1
   const prev = index > 0 ? ARTICLES_SORTED[index - 1] : null
   const next = index >= 0 && index < ARTICLES_SORTED.length - 1 ? ARTICLES_SORTED[index + 1] : null
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const body = bodyRef.current
+      if (!body || !html) {
+        setReadingProgress(0)
+        return
+      }
+      const start = body.getBoundingClientRect().top + window.scrollY
+      const end = start + body.offsetHeight - window.innerHeight
+      const span = Math.max(1, end - start)
+      const progress = Math.round(Math.min(100, Math.max(0, ((window.scrollY - start) / span) * 100)))
+      setReadingProgress(progress)
+    }
+    updateProgress()
+    window.addEventListener('scroll', updateProgress, { passive: true })
+    window.addEventListener('resize', updateProgress)
+    return () => {
+      window.removeEventListener('scroll', updateProgress)
+      window.removeEventListener('resize', updateProgress)
+    }
+  }, [html])
 
   useEffect(() => {
     if (!article) {
@@ -335,6 +358,8 @@ export default function PostPage() {
           </aside>
         )}
 
+        <div className="article-reading-layout">
+          <div className="article-main-column">
         {toc.length > 0 && (
           <details className="toc" open>
             <summary className="toc-summary">
@@ -366,6 +391,27 @@ export default function PostPage() {
             <div style={{ padding: '40px 0', color: 'var(--text-muted)' }}>正在加载正文…</div>
           )}
           <div className="art-body" ref={bodyRef}></div>
+        </div>
+          </div>
+          {toc.length > 0 && (
+            <aside className="article-reading-rail" aria-label="阅读进度与章节导航">
+              <div className="reading-rail-heading"><span className="article-kicker-dot" /> 正在阅读</div>
+              <div className="reading-rail-progress-label"><span>阅读进度</span><strong>{readingProgress}%</strong></div>
+              <div className="reading-rail-track" role="progressbar" aria-label="正文阅读进度" aria-valuemin={0} aria-valuemax={100} aria-valuenow={readingProgress}>
+                <span style={{ width: `${readingProgress}%` }} />
+              </div>
+              <div className="reading-rail-time">约剩 {Math.max(0, Math.ceil(time * (1 - readingProgress / 100)))} 分钟</div>
+              <div className="reading-rail-divider" />
+              <div className="reading-rail-caption">文章章节</div>
+              <nav className="reading-rail-chapters" aria-label="文章章节导航">
+                {toc.map((item, itemIndex) => (
+                  <a key={item.id} href={'#' + item.id} className={(active === item.id ? 'active ' : '') + (item.level === 3 ? 'subchapter' : '')} aria-current={active === item.id ? 'location' : undefined} onClick={event => { event.preventDefault(); onTocClick(item.id) }}>
+                    <span>{String(itemIndex + 1).padStart(2, '0')}</span>{item.text}
+                  </a>
+                ))}
+              </nav>
+            </aside>
+          )}
         </div>
 
         <div className="art-footer" style={{ display: 'block' }}>
