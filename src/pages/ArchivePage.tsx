@@ -1,26 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
+import { ARTICLES_SORTED } from '../data/articles'
 import { POST_MINUTES } from '../data/generated-meta'
 import { getTagCounts, KIND_LABELS, KIND_ORDER } from '../lib/blog'
+import { filterArticles, groupArticlesByYear } from '../lib/archive'
 import { setPageMeta } from '../lib/seo'
-
-interface YearGroup {
-  year: string
-  items: ArticleMeta[]
-}
-
-function groupByYear(articles: ArticleMeta[]): YearGroup[] {
-  const map: Record<string, ArticleMeta[]> = {}
-  articles.forEach(a => {
-    const y = a.date.slice(0, 4)
-    if (!map[y]) map[y] = []
-    map[y].push(a)
-  })
-  return Object.keys(map)
-    .sort((a, b) => b.localeCompare(a))
-    .map(year => ({ year, items: map[year] }))
-}
 
 export default function ArchivePage() {
   const [params, setParams] = useSearchParams()
@@ -37,7 +21,9 @@ export default function ArchivePage() {
   const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
   const kindCounts = useMemo(() => {
     const counts: Record<string, number> = { all: ARTICLES_SORTED.length }
-    ARTICLES_SORTED.forEach(a => { counts[a.kind] = (counts[a.kind] || 0) + 1 })
+    ARTICLES_SORTED.forEach((a) => {
+      counts[a.kind] = (counts[a.kind] || 0) + 1
+    })
     return counts
   }, [])
 
@@ -45,21 +31,21 @@ export default function ArchivePage() {
     setPageMeta('文章归档 - 萌神小天')
   }, [])
 
-  const filtered = useMemo(() => {
-    let list = ARTICLES_SORTED
-    if (kind !== 'all') list = list.filter(a => a.kind === kind)
-    if (tag !== 'all') list = list.filter(a => a.tags && a.tags.includes(tag))
-    const q = query.trim().toLowerCase()
-    if (q) list = list.filter(a => (a.title + ' ' + a.tags.join(' ') + ' ' + a.slug).toLowerCase().includes(q))
-    return list
-  }, [kind, tag, query])
+  const filtered = useMemo(
+    () => filterArticles(ARTICLES_SORTED, { kind, tag, query }),
+    [kind, tag, query],
+  )
 
-  const groups = useMemo(() => groupByYear(filtered), [filtered])
-  const activeFilterCount = Number(kind !== 'all') + Number(tag !== 'all') + Number(Boolean(query.trim()))
-  const archiveYears = useMemo(() => new Set(ARTICLES_SORTED.map(article => article.date.slice(0, 4))).size, [])
+  const groups = useMemo(() => groupArticlesByYear(filtered), [filtered])
+  const activeFilterCount =
+    Number(kind !== 'all') + Number(tag !== 'all') + Number(Boolean(query.trim()))
+  const archiveYears = useMemo(
+    () => new Set(ARTICLES_SORTED.map((article) => article.date.slice(0, 4))).size,
+    [],
+  )
 
   const toggleYear = (year: string) => {
-    setCollapsed(c => ({ ...c, [year]: !c[year] }))
+    setCollapsed((c) => ({ ...c, [year]: !c[year] }))
   }
 
   return (
@@ -72,21 +58,35 @@ export default function ArchivePage() {
             <p className="archive-intro">按主题和年份，找到你想读的开发记录。</p>
           </div>
           <div className="archive-stats" aria-label="归档统计">
-            <span><strong>{ARTICLES_SORTED.length}</strong> 篇文章</span>
-            <span><strong>{archiveYears}</strong> 年记录</span>
-            <span><strong>{tagCounts.length}</strong> 个主题</span>
+            <span>
+              <strong>{ARTICLES_SORTED.length}</strong> 篇文章
+            </span>
+            <span>
+              <strong>{archiveYears}</strong> 年记录
+            </span>
+            <span>
+              <strong>{tagCounts.length}</strong> 个主题
+            </span>
           </div>
         </div>
         <label className="archive-search">
           <span>搜索归档</span>
-          <input value={query} onChange={e => updateFilter('q', e.target.value)} placeholder="按标题、标签搜索…" type="search" />
+          <input
+            value={query}
+            onChange={(e) => updateFilter('q', e.target.value)}
+            placeholder="按标题、标签搜索…"
+            type="search"
+          />
         </label>
 
         <div className="archive-kind-tabs">
-          <button className={'archive-tag-btn' + (kind === 'all' ? ' active' : '')} onClick={() => updateFilter('kind', 'all')}>
+          <button
+            className={'archive-tag-btn' + (kind === 'all' ? ' active' : '')}
+            onClick={() => updateFilter('kind', 'all')}
+          >
             全部 ({kindCounts.all || 0})
           </button>
-          {KIND_ORDER.map(k => {
+          {KIND_ORDER.map((k) => {
             const c = kindCounts[k] || 0
             if (c === 0) return null
             return (
@@ -102,10 +102,13 @@ export default function ArchivePage() {
         </div>
 
         <div className="archive-tag-filters">
-          <button className={'archive-tag-btn' + (tag === 'all' ? ' active' : '')} onClick={() => updateFilter('tag', 'all')}>
+          <button
+            className={'archive-tag-btn' + (tag === 'all' ? ' active' : '')}
+            onClick={() => updateFilter('tag', 'all')}
+          >
             全部 ({ARTICLES_SORTED.length})
           </button>
-          {tagCounts.map(tc => (
+          {tagCounts.map((tc) => (
             <button
               key={tc.tag}
               className={'archive-tag-btn' + (tag === tc.tag ? ' active' : '')}
@@ -118,23 +121,52 @@ export default function ArchivePage() {
 
         <div className="archive-content">
           <div className="archive-results-head">
-            <p className="archive-result-count">找到 <strong>{filtered.length}</strong> 篇文章{query.trim() ? ` · 关键词“${query.trim()}”` : ''}</p>
-            {activeFilterCount > 0 && <button type="button" className="archive-clear" onClick={() => setParams(new URLSearchParams())}>清除筛选 <span aria-hidden="true">×</span></button>}
+            <p className="archive-result-count">
+              找到 <strong>{filtered.length}</strong> 篇文章
+              {query.trim() ? ` · 关键词“${query.trim()}”` : ''}
+            </p>
+            {activeFilterCount > 0 && (
+              <button
+                type="button"
+                className="archive-clear"
+                onClick={() => setParams(new URLSearchParams())}
+              >
+                清除筛选 <span aria-hidden="true">×</span>
+              </button>
+            )}
           </div>
           {groups.length === 0 && (
-            <div className="archive-empty"><span aria-hidden="true">⌕</span><strong>没有找到匹配的文章</strong><p>试试更短的关键词，或清除部分筛选条件。</p><button type="button" onClick={() => setParams(new URLSearchParams())}>查看全部文章</button></div>
+            <div className="archive-empty">
+              <span aria-hidden="true">⌕</span>
+              <strong>没有找到匹配的文章</strong>
+              <p>试试更短的关键词，或清除部分筛选条件。</p>
+              <button type="button" onClick={() => setParams(new URLSearchParams())}>
+                查看全部文章
+              </button>
+            </div>
           )}
-          {groups.map(g => (
+          {groups.map((g) => (
             <section className="archive-year" key={g.year} data-year={g.year}>
               <h2 className="archive-year-title">
-                <button type="button" aria-expanded={!collapsed[g.year]} aria-controls={'archive-year-' + g.year} onClick={() => toggleYear(g.year)}>
+                <button
+                  type="button"
+                  aria-expanded={!collapsed[g.year]}
+                  aria-controls={'archive-year-' + g.year}
+                  onClick={() => toggleYear(g.year)}
+                >
                   <span className="archive-year-label">{g.year} 年</span>
                   <span className="archive-count">{g.items.length} 篇</span>
-                  <span className="archive-toggle" aria-hidden="true">{collapsed[g.year] ? '+' : '−'}</span>
+                  <span className="archive-toggle" aria-hidden="true">
+                    {collapsed[g.year] ? '+' : '−'}
+                  </span>
                 </button>
               </h2>
-              <div className="archive-year-body" id={'archive-year-' + g.year} hidden={collapsed[g.year]}>
-                {g.items.map(a => {
+              <div
+                className="archive-year-body"
+                id={'archive-year-' + g.year}
+                hidden={collapsed[g.year]}
+              >
+                {g.items.map((a) => {
                   const mins = POST_MINUTES[a.slug] || 1
                   return (
                     <div className="archive-item" key={a.path}>
