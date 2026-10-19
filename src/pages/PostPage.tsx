@@ -159,7 +159,20 @@ export default function PostPage() {
   const [views, setViews] = useState(0)
   const [copied, setCopied] = useState(false)
   const [fontSize, setFontSize] = useState(16)
+  const [focusMode, setFocusMode] = useState(false)
   const active = useScrollSpy(toc.map(t => t.id))
+
+  useEffect(() => {
+    document.body.classList.toggle('reading-focus', focusMode)
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setFocusMode(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.classList.remove('reading-focus')
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [focusMode])
   const related = useMemo(() => (article ? pickRelated(article, ARTICLES_SORTED) : []), [article])
   const relatedRef = useRef<HTMLDivElement>(null)
   const index = article ? ARTICLES_SORTED.findIndex(a => a.slug === article.slug) : -1
@@ -300,7 +313,9 @@ export default function PostPage() {
             <button type="button" aria-label="缩小字号" title="缩小字号" disabled={fontSize <= 14} onClick={() => setFontSize(size => { const next = Math.max(14, size - 1); contentRef.current?.style.setProperty('--article-font-size', `${next}px`); return next })}>A−</button>
             <span className="article-font-value">{fontSize}px</span>
             <button type="button" aria-label="放大字号" title="放大字号" disabled={fontSize >= 22} onClick={() => setFontSize(size => { const next = Math.min(22, size + 1); contentRef.current?.style.setProperty('--article-font-size', `${next}px`); return next })}>A+</button>
+            <button type="button" className="focus-mode-toggle" aria-pressed={focusMode} onClick={() => setFocusMode(value => !value)}>{focusMode ? '退出专注' : '专注阅读'}</button>
           </div>
+          {focusMode && <button type="button" className="focus-mode-exit" onClick={() => setFocusMode(false)}>退出专注阅读 <kbd>Esc</kbd></button>}
           <div className="art-tags">
             {(article.tags || []).map(t => {
               const tc = getTagColors(t)

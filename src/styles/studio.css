@@ -154,3 +154,22 @@
   .article-reading-tools button, .pagination-card, .toc-chevron { transition: none; }
   .pagination-card:hover { transform: none; }
 }
+
+/* Distraction-free reading mode */
+.focus-mode-toggle[aria-pressed="true"] { border-color: var(--brand); color: var(--brand); background: var(--brand-ghost); }
+body.reading-focus .art-nav,
+body.reading-focus .kawaii-mascot,
+body.reading-focus .fl-trigger,
+body.reading-focus .crt-strip,
+body.reading-focus #back-to-top { display: none !important; }
+body.reading-focus .art-container { max-width: 900px; padding-top: clamp(34px, 7vh, 72px); }
+body.reading-focus .art-header { margin-bottom: 30px; }
+body.reading-focus .art-content { max-width: 720px; }
+.focus-mode-exit { position: fixed; z-index: 1100; top: 16px; right: 18px; display: inline-flex; align-items: center; gap: 10px; min-height: 38px; padding: 7px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); font: .72rem var(--font-mono); cursor: pointer; }
+.focus-mode-exit:hover { color: var(--brand); border-color: var(--brand); }
+.focus-mode-exit kbd { padding: 2px 5px; border: 1px solid var(--kbd-border); border-radius: 3px; background: var(--kbd-bg); font: .62rem var(--font-mono); }
+@media (max-width: 600px) {
+  .focus-mode-exit { top: 10px; right: 10px; min-height: 36px; font-size: .64rem; }
+  body.reading-focus .art-container { padding-top: 54px; }
+}
+body.reading-focus .site-nav { display: none !important; }
