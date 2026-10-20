@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ThemeToggleButton } from '../components/widgets'
 import { setPageMeta } from '../lib/seo'
 import { ARTICLES_SORTED } from '../data/articles'
 import { fetchRemoteStats, type RemoteStats } from '../lib/stats'
@@ -29,7 +28,7 @@ export default function StatsPage() {
 
   useEffect(() => {
     let alive = true
-    fetchRemoteStats().then(s => {
+    fetchRemoteStats().then((s) => {
       if (alive) {
         setRemote(s)
         setRemoteReady(true)
@@ -41,30 +40,21 @@ export default function StatsPage() {
   }, [])
 
   const data = useMemo(() => {
-    const list = ARTICLES_SORTED.map(a => ({ ...a, views: remote?.articles[a.slug] || 0 }))
+    const list = ARTICLES_SORTED.map((a) => ({ ...a, views: remote?.articles[a.slug] || 0 }))
     const sitePv = remote?.site || 0
     const totalPv = list.reduce((s, a) => s + a.views, 0)
     const hot = list
-      .filter(a => a.views > 0)
+      .filter((a) => a.views > 0)
       .sort((x, y) => y.views - x.views || y.date.localeCompare(x.date))
       .slice(0, 10)
     const tagCounts = getTagCounts(ARTICLES_SORTED)
     return { list, sitePv, totalPv, hot, tagCounts }
   }, [remote])
 
-  const maxViews = Math.max(1, ...data.list.map(a => a.views))
+  const maxViews = Math.max(1, ...data.list.map((a) => a.views))
 
   return (
     <>
-      <nav className="archive-nav">
-        <Link to="/" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>统计仪表盘 / STATS.SYS</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
-
       <main className="stats-container">
         <div className="stats-hero">
           <div className="stats-title">STATS.SYS</div>
@@ -96,7 +86,8 @@ export default function StatsPage() {
           <h2>热门文章 TOP 10</h2>
           {remoteReady && data.hot.length === 0 ? (
             <div className="stats-empty">
-              暂无阅读数据 —— 每篇文章的阅读量会在打开时自动上报到服务端（同一浏览器同一天只计一次）。
+              暂无阅读数据 ——
+              每篇文章的阅读量会在打开时自动上报到服务端（同一浏览器同一天只计一次）。
             </div>
           ) : (
             <div className="stats-hot-list">
@@ -104,7 +95,10 @@ export default function StatsPage() {
                 <Link key={a.slug} className="stats-hot-item" to={'/post/' + a.slug}>
                   <span className="stats-hot-rank">{String(i + 1).padStart(2, '0')}</span>
                   <span className="stats-hot-title">{a.title}</span>
-                  <span className="stats-hot-bar" style={{ width: Math.max(8, (a.views / maxViews) * 100) + '%' }} />
+                  <span
+                    className="stats-hot-bar"
+                    style={{ width: Math.max(8, (a.views / maxViews) * 100) + '%' }}
+                  />
                   <span className="stats-hot-views">{a.views} 次</span>
                 </Link>
               ))}
@@ -124,7 +118,7 @@ export default function StatsPage() {
                 </tr>
               </thead>
               <tbody>
-                {data.list.map(a => (
+                {data.list.map((a) => (
                   <tr key={a.slug}>
                     <td>
                       <Link to={'/post/' + a.slug} className="stats-table-link">
@@ -149,16 +143,22 @@ export default function StatsPage() {
                   exportedAt: new Date().toISOString(),
                   sitePv: data.sitePv,
                   totalPv: data.totalPv,
-                  articles: data.list.map(a => ({ title: a.title, slug: a.slug, date: a.date, views: a.views })),
+                  articles: data.list.map((a) => ({
+                    title: a.title,
+                    slug: a.slug,
+                    date: a.date,
+                    views: a.views,
+                  })),
                 },
-                'msxt-blog-stats-' + new Date().toISOString().slice(0, 10) + '.json'
+                'msxt-blog-stats-' + new Date().toISOString().slice(0, 10) + '.json',
               )
             }
           >
             ⬇ 导出 JSON
           </button>
           <span className="stats-note">
-            注：统计存储于 Upstash Redis 服务端（经 /api/pv 读写），非浏览器本地口径。首页访问按浏览器会话计一次；文章阅读同一浏览器同一天只计一次。
+            注：统计存储于 Upstash Redis 服务端（经 /api/pv
+            读写），非浏览器本地口径。首页访问按浏览器会话计一次；文章阅读同一浏览器同一天只计一次。
           </span>
         </div>
       </main>

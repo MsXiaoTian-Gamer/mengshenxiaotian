@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { setPageMeta } from '../lib/seo'
-import { ThemeToggleButton } from '../components/widgets'
 import { TAPTAP_PROFILE_URL } from '../data/links'
 
 // Tiny Pet Sand Wars —— Unity WebGL 导出版（独立 Vercel 项目 tiny-sand-war，Git 集成 main 分支自动部署）
@@ -13,20 +12,14 @@ export default function PlayPage() {
   const frameRef = useRef<HTMLIFrameElement>(null)
 
   useEffect(() => {
-    setPageMeta('试玩：Tiny Pet Sand Wars - 萌神小天', 'Unity WebGL 即时试玩《Tiny Pet Sand Wars》，浏览器直接开玩')
+    setPageMeta(
+      '试玩：Tiny Pet Sand Wars - 萌神小天',
+      'Unity WebGL 即时试玩《Tiny Pet Sand Wars》，浏览器直接开玩',
+    )
   }, [])
 
   return (
     <>
-      <nav className="archive-nav">
-        <Link to="/" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>WebGL 试玩 / PLAY.SYS</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
-
       <div className="tsw-page">
         <div className="tsw-head">
           <span className="tsw-brand">TINY PET SAND WARS</span>
@@ -34,7 +27,12 @@ export default function PlayPage() {
             <a className="tsw-ext" href={TAPTAP_PROFILE_URL} target="_blank" rel="noreferrer">
               TapTap 作品主页 ↗
             </a>
-            <a className="tsw-ext" href="https://msxiaotian.itch.io/tiny-pet-sand-wars" target="_blank" rel="noreferrer">
+            <a
+              className="tsw-ext"
+              href="https://msxiaotian.itch.io/tiny-pet-sand-wars"
+              target="_blank"
+              rel="noreferrer"
+            >
               itch.io ↗
             </a>
             <Link className="tsw-ext" to="/play/pong" title="终端彩蛋小游戏">
@@ -70,7 +68,8 @@ export default function PlayPage() {
         </div>
 
         <p className="tsw-foot">
-          Unity WebGL 导出 · 首次加载较慢（84MB 资源按需传输）· 键盘 WASD / 方向键操作 · 独立游戏练习作品
+          Unity WebGL 导出 · 首次加载较慢（84MB 资源按需传输）· 键盘 WASD / 方向键操作 ·
+          独立游戏练习作品
         </p>
       </div>
     </>

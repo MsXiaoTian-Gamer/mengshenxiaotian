@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { setPageMeta } from '../lib/seo'
-import { ThemeToggleButton } from '../components/widgets'
 
 export default function NotFoundPage() {
   useEffect(() => {
@@ -9,14 +8,6 @@ export default function NotFoundPage() {
   }, [])
   return (
     <>
-      <nav className="art-nav">
-        <Link to="/" className="home-link" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span className="nav-title">404</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
       <main className="art-container" style={{ textAlign: 'center', padding: '80px 16px' }}>
         <h1 style={{ fontSize: '3rem', color: 'var(--brand)', marginBottom: 8 }}>404</h1>
         <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>页面不存在或已被移动</p>

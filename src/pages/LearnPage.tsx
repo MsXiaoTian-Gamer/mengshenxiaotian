@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { UNITY_LEARNING_PATH } from '../data/learningPath'
 import { POST_MINUTES } from '../data/generated-meta'
 import { setPageMeta } from '../lib/seo'
-import { ThemeToggleButton } from '../components/widgets'
 
 const CHECK_KEY = 'msxt-learn-checks-v1'
 
@@ -22,21 +21,21 @@ export default function LearnPage() {
   useEffect(() => {
     setPageMeta(
       'Unity 学习路线 - 萌神小天',
-      '从零开始到工程化的 Unity 学习地图：分阶段文章、配套练习与能力自检'
+      '从零开始到工程化的 Unity 学习地图：分阶段文章、配套练习与能力自检',
     )
   }, [])
 
   const total = UNITY_LEARNING_PATH.length
-  const doneStages = UNITY_LEARNING_PATH.filter(s => s.status === 'done').length
+  const doneStages = UNITY_LEARNING_PATH.filter((s) => s.status === 'done').length
 
   const totalChecks = UNITY_LEARNING_PATH.reduce((n, s) => n + (s.checks?.length || 0), 0)
   const doneChecks = UNITY_LEARNING_PATH.reduce(
     (n, s) => n + (s.checks?.filter((_, i) => checks[`${s.slug}:${i}`])?.length || 0),
-    0
+    0,
   )
 
   const toggleCheck = (key: string) => {
-    setChecks(prev => {
+    setChecks((prev) => {
       const next = { ...prev, [key]: !prev[key] }
       try {
         localStorage.setItem(CHECK_KEY, JSON.stringify(next))
@@ -49,22 +48,14 @@ export default function LearnPage() {
 
   return (
     <>
-      <nav className="archive-nav">
-        <Link to="/" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>学习路线</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
-
       <div className="learn-container">
         <h1 className="learn-title">Unity 学习路线</h1>
         <p className="learn-sub">
           文章阶段 {doneStages}/{total} 完成 · 能力自检 {doneChecks}/{totalChecks} 已勾选
         </p>
         <p className="learn-intro">
-          这是一条面向 Unity 游戏客户端学习者的实践路线：先跑通场景和脚本，再学习代码结构，最后进入项目架构与工程化。每一步都配有文章、练习和能力自检，建议按顺序完成。
+          这是一条面向 Unity
+          游戏客户端学习者的实践路线：先跑通场景和脚本，再学习代码结构，最后进入项目架构与工程化。每一步都配有文章、练习和能力自检，建议按顺序完成。
         </p>
 
         <div className="learn-progress" aria-label="学习路线总进度">
@@ -83,25 +74,31 @@ export default function LearnPage() {
                   {s.status === 'done' ? '已完成' : '更新中'}
                 </span>
               )}
-              <span className="learn-stage-idx">{si + 1}/{total}</span>
+              <span className="learn-stage-idx">
+                {si + 1}/{total}
+              </span>
             </div>
 
             <div className="learn-stage-main">
-              {s.slug.startsWith('20') ? <Link to={'/post/' + s.slug} className="learn-article-link">
-                <span className="learn-article-title">{s.title}</span>
-                <span className="learn-article-meta">
-                  📄 阅读约 {POST_MINUTES[s.slug] || 1} 分钟
-                </span>
-              </Link> : <div className="learn-article-link">
-                <span className="learn-article-title">{s.title}</span>
-                <span className="learn-article-meta">🎬 视频专项</span>
-              </div>}
+              {s.slug.startsWith('20') ? (
+                <Link to={'/post/' + s.slug} className="learn-article-link">
+                  <span className="learn-article-title">{s.title}</span>
+                  <span className="learn-article-meta">
+                    📄 阅读约 {POST_MINUTES[s.slug] || 1} 分钟
+                  </span>
+                </Link>
+              ) : (
+                <div className="learn-article-link">
+                  <span className="learn-article-title">{s.title}</span>
+                  <span className="learn-article-meta">🎬 视频专项</span>
+                </div>
+              )}
               <p className="learn-stage-desc">{s.desc}</p>
 
               {s.related && s.related.length > 0 && (
                 <div className="learn-block">
                   <span className="learn-block-label">配套文章</span>
-                  {s.related.map(r => (
+                  {s.related.map((r) => (
                     <Link key={r.slug} to={'/post/' + r.slug} className="learn-related">
                       <span>{r.title}</span>
                       {r.note && <span className="learn-related-note">{r.note}</span>}
@@ -113,8 +110,14 @@ export default function LearnPage() {
               {s.external && s.external.length > 0 && (
                 <div className="learn-block">
                   <span className="learn-block-label">推荐视频</span>
-                  {s.external.map(r => (
-                    <a key={r.url} href={r.url} className="learn-related" target="_blank" rel="noopener noreferrer">
+                  {s.external.map((r) => (
+                    <a
+                      key={r.url}
+                      href={r.url}
+                      className="learn-related"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <span>{r.title} ↗</span>
                       {r.note && <span className="learn-related-note">{r.note}</span>}
                     </a>

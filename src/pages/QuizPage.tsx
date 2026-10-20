@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { setPageMeta } from '../lib/seo'
-import { ThemeToggleButton } from '../components/widgets'
 import {
   UNITY_QUESTIONS,
   getDailyQuestion,
@@ -22,7 +21,10 @@ export default function QuizPage() {
   const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setPageMeta('Unity 八股每日一题 - 萌神小天', 'Unity 客户端面试八股题库：每日一题 + 全题库刷题复习')
+    setPageMeta(
+      'Unity 八股每日一题 - 萌神小天',
+      'Unity 客户端面试八股题库：每日一题 + 全题库刷题复习',
+    )
     const on = () => setOffline(!navigator.onLine)
     setOffline(!navigator.onLine)
     window.addEventListener('online', on)
@@ -38,7 +40,7 @@ export default function QuizPage() {
 
   const list = useMemo(() => {
     if (cat === '全部') return UNITY_QUESTIONS
-    return UNITY_QUESTIONS.filter(q => q.category === cat)
+    return UNITY_QUESTIONS.filter((q) => q.category === cat)
   }, [cat])
 
   // 分批渲染：接近底部时自动追加一批（虚拟滚动的轻量替代，兼容所有既有交互）
@@ -50,19 +52,19 @@ export default function QuizPage() {
     const el = sentinelRef.current
     if (!el) return
     const io = new IntersectionObserver(
-      entries => {
+      (entries) => {
         if (entries[0].isIntersecting) {
-          setVisible(v => (v >= list.length ? v : Math.min(list.length, v + BATCH)))
+          setVisible((v) => (v >= list.length ? v : Math.min(list.length, v + BATCH)))
         }
       },
-      { rootMargin: '400px 0px' }
+      { rootMargin: '400px 0px' },
     )
     io.observe(el)
     return () => io.disconnect()
   }, [list.length, cat])
 
   const showMore = useCallback(() => {
-    setVisible(v => Math.min(list.length, v + BATCH * 2))
+    setVisible((v) => Math.min(list.length, v + BATCH * 2))
   }, [list.length])
 
   const renderPoints = (q: { points: string[] }) => (
@@ -85,15 +87,6 @@ export default function QuizPage() {
 
   return (
     <>
-      <nav className="archive-nav">
-        <Link to="/" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Unity 八股题库</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
-
       {offline && (
         <div className="quiz-offline-banner">
           📡 离线模式：题库已随站点缓存，可继续刷题（PWA Service Worker）
@@ -119,7 +112,7 @@ export default function QuizPage() {
             </div>
             <h1 className="quiz-today-question">{today.question}</h1>
             <div className="quiz-actions">
-              <button className="quiz-btn" onClick={() => setTodayOpen(v => !v)}>
+              <button className="quiz-btn" onClick={() => setTodayOpen((v) => !v)}>
                 {todayOpen ? '收起答案' : '查看答案 / 要点'}
               </button>
               <Link className="quiz-link" to="/archive">
@@ -139,7 +132,9 @@ export default function QuizPage() {
         <section className="quiz-bank">
           <div className="quiz-bank-head">
             <h2 className="quiz-bank-title">全部题库</h2>
-            <span className="quiz-bank-count">共 {UNITY_QUESTIONS.length} 题 · 点击题目展开答案</span>
+            <span className="quiz-bank-count">
+              共 {UNITY_QUESTIONS.length} 题 · 点击题目展开答案
+            </span>
           </div>
           <div className="quiz-cats">
             <button
@@ -148,8 +143,8 @@ export default function QuizPage() {
             >
               全部 ({UNITY_QUESTIONS.length})
             </button>
-            {QUESTION_CATEGORIES.map(c => {
-              const n = UNITY_QUESTIONS.filter(q => q.category === c).length
+            {QUESTION_CATEGORIES.map((c) => {
+              const n = UNITY_QUESTIONS.filter((q) => q.category === c).length
               return (
                 <button
                   key={c}
@@ -169,7 +164,10 @@ export default function QuizPage() {
               const open = expanded === q.id
               return (
                 <div className={'quiz-item' + (open ? ' open' : '')} key={q.id}>
-                  <button className="quiz-item-head" onClick={() => setExpanded(open ? null : q.id)}>
+                  <button
+                    className="quiz-item-head"
+                    onClick={() => setExpanded(open ? null : q.id)}
+                  >
                     <span className="quiz-item-no">{String(i + 1).padStart(2, '0')}</span>
                     <span className="quiz-item-q">{q.question}</span>
                     <span className="quiz-item-diff">{DIFF_TEXT[q.difficulty]}</span>

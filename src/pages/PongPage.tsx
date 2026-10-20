@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { setPageMeta } from '../lib/seo'
-import { ThemeToggleButton } from '../components/widgets'
 
 /* ============ PHOSPHOR PONG —— 纯手写 WebGL1（无外部库） ============ */
 
@@ -77,7 +75,10 @@ export default function PongPage() {
   const score2Ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    setPageMeta('WebGL 试玩：PHOSPHOR PONG - 萌神小天', '萌神小天博客内置 WebGL 小游戏：磷光 CRT 风格 PONG，纯手写渲染')
+    setPageMeta(
+      'WebGL 试玩：PHOSPHOR PONG - 萌神小天',
+      '萌神小天博客内置 WebGL 小游戏：磷光 CRT 风格 PONG，纯手写渲染',
+    )
     const canvas = canvasRef.current
     if (!canvas) return
     const gl = (canvas.getContext('webgl', { antialias: false }) ||
@@ -110,7 +111,11 @@ export default function PongPage() {
 
     const buf = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, buf)
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, -1, 1, 1, -1, 1]), gl.STATIC_DRAW)
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([-1, -1, 1, -1, -1, 1, 1, -1, 1, 1, -1, 1]),
+      gl.STATIC_DRAW,
+    )
     const locPos = gl.getAttribLocation(prog, 'a_pos')
     gl.enableVertexAttribArray(locPos)
     gl.vertexAttribPointer(locPos, 2, gl.FLOAT, false, 0, 0)
@@ -271,7 +276,11 @@ export default function PongPage() {
         s.bvx = Math.min(8, Math.abs(s.bvx) + 0.35)
         s.bvy = s.bvy * 1.04 + (s.by - (s.p1y + PAD_H / 2)) * 0.012
         if (Math.abs(s.bvy) < 1) s.bvy = s.bvy >= 0 ? 1 : -1
-      } else if (s.bvx > 0 && s.bx + BALL_R > W - PAD_OFF - PAD_W && hitPaddle(W - PAD_OFF - PAD_W, s.p2y)) {
+      } else if (
+        s.bvx > 0 &&
+        s.bx + BALL_R > W - PAD_OFF - PAD_W &&
+        hitPaddle(W - PAD_OFF - PAD_W, s.p2y)
+      ) {
         s.bx = W - PAD_OFF - PAD_W - BALL_R - 0.1
         s.bvx = -Math.min(8, Math.abs(s.bvx) + 0.35)
         s.bvy = s.bvy * 1.04 + (s.by - (s.p2y + PAD_H / 2)) * 0.012
@@ -336,22 +345,17 @@ export default function PongPage() {
 
   return (
     <>
-      <nav className="archive-nav">
-        <Link to="/" title="回到首页">
-          ← 萌神小天
-        </Link>
-        <span className="nav-divider"></span>
-        <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>WebGL 试玩 / PLAY.SYS</span>
-        <ThemeToggleButton className="theme-btn" />
-      </nav>
-
       <div className="play-page">
         <div className="play-header">
           <span className="play-brand">PHOSPHOR PONG</span>
           <div className="play-score">
-            <span ref={score1Ref} className="play-score-num">00</span>
+            <span ref={score1Ref} className="play-score-num">
+              00
+            </span>
             <span className="play-score-colon">:</span>
-            <span ref={score2Ref} className="play-score-num">00</span>
+            <span ref={score2Ref} className="play-score-num">
+              00
+            </span>
           </div>
           <span className="play-tip">↑↓ / W S · SPACE · R</span>
         </div>

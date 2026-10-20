@@ -1,456 +1,138 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ARTICLES, ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
-import { POST_MINUTES, POST_SUMMARY } from '../data/generated-meta'
-import { getTagCounts, getTagColors } from '../lib/blog'
-import { ThemeToggleButton } from '../components/widgets'
-import { CmdKbdBadge } from '../components/CmdHint'
+import { ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
+import { getTagCounts } from '../lib/blog'
 import { setPageMeta } from '../lib/seo'
-import { reportSiteVisit, fetchRemoteStats, type RemoteStats } from '../lib/stats'
-import { TAPTAP_PROFILE_URL } from '../data/links'
+import { fetchRemoteStats, reportSiteVisit, type RemoteStats } from '../lib/stats'
+import HomeDashboard, { type DailyQuestion } from '../components/home/HomeDashboard'
+import HomeSidebar from '../components/home/HomeSidebar'
 
 const QUOTES = [
-  { text: '游戏是让人快乐的，做游戏也是。', author: '萌神小天' },
-  { text: 'Bug 不是缺陷，是尚未被理解的特性。', author: '萌神小天' },
-  { text: '代码能跑就行，但能跑得优雅更好。', author: '萌神小天' },
-  { text: '独立开发是一场马拉松，不是百米冲刺。', author: '萌神小天' },
-  { text: '每一个伟大的游戏都从一个简单的想法开始。', author: '萌神小天' },
-  { text: '不要等待灵感，动手就是最好的灵感。', author: '萌神小天' },
-  { text: '学习 Unity 最好的方式就是做一个游戏。', author: '萌神小天' },
+  '游戏是让人快乐的，做游戏也是。',
+  'Bug 不是缺陷，是尚未被理解的特性。',
+  '代码能跑就行，但能跑得优雅更好。',
+  '独立开发是一场马拉松，不是百米冲刺。',
+  '每一个伟大的游戏都从一个简单的想法开始。',
+  '不要等待灵感，动手就是最好的灵感。',
+  '学习 Unity 最好的方式就是做一个游戏。',
 ]
 
-function postUrl(a: ArticleMeta): string {
-  return '/post/' + a.slug
-}
-
-function readingMinutes(a: ArticleMeta): number {
-  return POST_MINUTES[a.slug] || 1
-}
-
 function filterArticles(query: string, tag: string): ArticleMeta[] {
-  let list = ARTICLES_SORTED
-  if (tag !== 'all') {
-    list = list.filter(a => a.tags && a.tags.includes(tag))
-  }
-  const q = query.trim().toLowerCase()
-  if (q) {
-    list = list.filter(a => {
-      const hay = (a.title + ' ' + (a.tags || []).join(' ') + ' ' + a.slug).toLowerCase()
-      return hay.includes(q)
-    })
-  }
-  return list
+  const normalizedQuery = query.trim().toLocaleLowerCase()
+  return ARTICLES_SORTED.filter((article) => {
+    if (tag !== 'all' && !article.tags.includes(tag)) return false
+    if (!normalizedQuery) return true
+    const searchable = [article.title, ...article.tags, article.slug].join(' ').toLocaleLowerCase()
+    return searchable.includes(normalizedQuery)
+  })
+}
+
+function getOnlineDays(): number {
+  const launchDate = new Date('2025-10-11T00:00:00')
+  return Math.max(1, Math.floor((Date.now() - launchDate.getTime()) / 86_400_000) + 1)
 }
 
 export default function HomePage() {
   const [query, setQuery] = useState('')
-  const [tag, setTag] = useState('all')
-  const [navOpen, setNavOpen] = useState(false)
-  const [quizOpen, setQuizOpen] = useState(false)
-
-  useEffect(() => {
-    setPageMeta('萌神小天 - 独立游戏开发博客', '萌神小天的独立游戏开发博客，分享Unity学习、游戏开发和独立游戏心得')
-  }, [])
-
-  const filtered = useMemo(() => filterArticles(query, tag), [query, tag])
-  const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
+  const [selectedTag, setSelectedTag] = useState('all')
+  const [menuOpen, setMenuOpen] = useState(false)
   const [remote, setRemote] = useState<RemoteStats | null>(null)
-  const [siteVisits, setSiteVisits] = useState(0)
+  const [question, setQuestion] = useState<DailyQuestion | null>(null)
+  const [questionDay, setQuestionDay] = useState(0)
 
-  useEffect(() => {
-    let alive = true
-    reportSiteVisit()
-    fetchRemoteStats().then(s => {
-      if (alive) {
-        setRemote(s)
-        if (s) setSiteVisits(s.site)
-      }
-    })
-    return () => {
-      alive = false
-    }
-  }, [])
-
+  const articles = useMemo(() => filterArticles(query, selectedTag), [query, selectedTag])
+  const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
   const hotArticles = useMemo(() => {
     if (!remote) return []
-    const scored = ARTICLES_SORTED.map(a => ({ a, v: remote.articles[a.slug] || 0 }))
-      .filter(x => x.v > 0)
-      .sort((x, y) => y.v - x.v || y.a.date.localeCompare(x.a.date))
-    return scored.slice(0, 5).map(x => x.a)
+    return ARTICLES_SORTED.map((article) => ({
+      article,
+      views: remote.articles[article.slug] || 0,
+    }))
+      .filter((item) => item.views > 0)
+      .sort(
+        (left, right) =>
+          right.views - left.views || right.article.date.localeCompare(left.article.date),
+      )
+      .slice(0, 5)
+      .map((item) => item.article)
   }, [remote])
-
-  const viewOf = (slug: string) => remote?.articles[slug] || 0
-
-  const stats = useMemo(() => {
-    return siteVisits
-  }, [siteVisits])
-
-  const daysOnline = useMemo(() => {
-    const start = new Date('2025-10-11T00:00:00')
-    return Math.max(1, Math.floor((Date.now() - start.getTime()) / 86400000) + 1)
-  }, [])
-
   const quote = useMemo(() => {
-    const d = new Date()
-    return QUOTES[(d.getFullYear() + d.getMonth() + d.getDate()) % QUOTES.length]
+    const today = new Date()
+    return QUOTES[(today.getFullYear() + today.getMonth() + today.getDate()) % QUOTES.length]
   }, [])
-  const [daily, setDaily] = useState<{
-    q: { category: string; question: string; points: string[]; talk: string }
-    dayNo: number
-  } | null>(null)
 
   useEffect(() => {
-    let alive = true
-    import('../data/unityQuestions')
-      .then(m => {
-        if (!alive) return
-        setDaily({ q: m.getDailyQuestion(), dayNo: Math.max(1, m.dayIndex() + 1) })
-      })
-      .catch(() => {
-        /* ignore */
-      })
+    setPageMeta(
+      '萌神小天 - 独立游戏开发博客',
+      '萌神小天的独立游戏开发博客，分享 Unity 学习、游戏开发和独立游戏心得',
+    )
+  }, [])
+
+  useEffect(() => {
+    let active = true
+    reportSiteVisit()
+    fetchRemoteStats().then((stats) => {
+      if (active) setRemote(stats)
+    })
     return () => {
-      alive = false
+      active = false
     }
   }, [])
 
-  const quizToday = daily?.q
-  const quizDayNo = daily ? daily.dayNo : 0
-  const onHamburger = () => {
-    setNavOpen(v => !v)
-    const layout = document.getElementById('layout')
-    if (layout) layout.classList.toggle('nav-open', !navOpen)
-  }
+  useEffect(() => {
+    let active = true
+    import('../data/unityQuestions')
+      .then((module) => {
+        if (!active) return
+        setQuestion(module.getDailyQuestion())
+        setQuestionDay(Math.max(1, module.dayIndex() + 1))
+      })
+      .catch(() => undefined)
+    return () => {
+      active = false
+    }
+  }, [])
 
-  const setTagAndRefresh = (t: string) => {
-    setTag(t)
-    setNavOpen(false)
-    const layout = document.getElementById('layout')
-    if (layout) layout.classList.remove('nav-open')
+  const handleTagSelect = (tag: string) => {
+    setSelectedTag(tag)
+    setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-
-  const renderSidebarItems = (list: ArticleMeta[]) => {
-    if (list.length === 0) return <div className="empty-state">暂无文章</div>
-    return (
-      <>
-        {list.slice(0, 8).map(a => {
-          const time = readingMinutes(a)
-          return (
-            <Link key={a.path} to={postUrl(a)} className="article-item">
-              <div className="item-body">
-                <div className="item-title">{a.title}</div>
-                <div className="item-meta">
-                  <span>{a.date}</span>
-                  <span className="reading-time">{time} min</span>
-                </div>
-                <div className="item-tags">
-                  {(a.tags || []).map(t => {
-                    const c = getTagColors(t)
-                    return (
-                      <span key={t} className="item-tag" style={{ '--item-tag-color': c.color, '--item-tag-bg': c.bg } as React.CSSProperties}>
-                        {t}
-                      </span>
-                    )
-                  })}
-                </div>
-              </div>
-            </Link>
-          )
-        })}
-      </>
-    )
-  }
-
-  const renderCards = (list: ArticleMeta[]) => {
-    if (list.length === 0) return null
-    return (
-      <>
-        {list.map(a => {
-          const summary = POST_SUMMARY[a.slug] || ''
-          return (
-            <Link key={a.path} to={postUrl(a)} className="article-card">
-              <div className="card-date"><time dateTime={a.date}>{a.date}</time><span>{readingMinutes(a)} min read</span></div>
-              <h3 className="card-title">{a.title}</h3>
-              <div className="card-tags">
-                {(a.tags || []).map(t => {
-                  const tc = getTagColors(t)
-                  return (
-                    <span key={t} className="card-tag" style={{ background: tc.bg, color: tc.color }}>
-                      {t}
-                    </span>
-                  )
-                })}
-              </div>
-              <div className="card-summary">{summary}</div>
-              <div className="card-bottom"><span>阅读全文</span><span aria-hidden="true">↗</span></div>
-            </Link>
-          )
-        })}
-      </>
-    )
   }
 
   return (
     <>
-      <button className="hamburger" id="hamburgerBtn" onClick={onHamburger} aria-label="菜单" aria-expanded={navOpen} aria-controls="sidebar">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button
+        className="hamburger"
+        id="hamburgerBtn"
+        type="button"
+        aria-label={menuOpen ? '关闭文章筛选菜单' : '打开文章筛选菜单'}
+        aria-expanded={menuOpen}
+        aria-controls="sidebar"
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span />
+        <span />
+        <span />
       </button>
-
-      <div className="layout home-layout" id="layout">
-        {/* ===== Sidebar ===== */}
-        <aside className="sidebar" id="sidebar">
-          <div className="sidebar-header">
-            <div className="sidebar-header-left">
-              <Link to="/">萌神小天</Link>
-              <p>独立游戏开发者</p>
-            </div>
-            <div className="header-actions">
-              <ThemeToggleButton />
-            </div>
-          </div>
-
-          <div className="search-wrap">
-            <span className="search-icon">🔍</span>
-            <input
-              type="text"
-              className="search-input has-badge"
-              id="searchInput"
-              placeholder="搜索文章..."
-              aria-label="搜索文章"
-              autoComplete="off"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-            />
-            <CmdKbdBadge />
-          </div>
-
-          <div className="tag-filters" id="tagFilters">
-            <button
-              className={'tag-filter' + (tag === 'all' ? ' active' : '')}
-              onClick={() => setTagAndRefresh('all')}
-            >
-              全部
-            </button>
-            {tagCounts.map(tc => (
-              <button
-                key={tc.tag}
-                className={'tag-filter' + (tag === tc.tag ? ' active' : '')}
-                onClick={() => setTagAndRefresh(tc.tag)}
-              >
-                {tc.tag} ({tc.count})
-              </button>
-            ))}
-          </div>
-
-          {hotArticles.length > 0 && (
-            <div className="hot-articles">
-              <div className="article-list-title hot-title">
-                🔥 热门文章
-              </div>
-              {hotArticles.map((a, idx) => (
-                <Link key={a.path} to={postUrl(a)} className="article-item">
-                  <div className="item-body">
-                    <div className="item-title">
-                      <span className="hot-rank">{idx + 1}.</span>{' '}
-                      {a.title}
-                    </div>
-                    <div className="item-meta">
-                      <span>{a.date}</span>
-                      <span className="reading-time">{viewOf(a.slug)} 次阅读</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
-
-          <div className="article-list">
-            <div className="article-list-title">文章列表</div>
-            <div id="sidebarArticles">{renderSidebarItems(filtered)}</div>
-          </div>
-
-          <div className="sidebar-footer">
-            <div id="siteStats">
-              <div>
-                👀 本站访问 {stats} 次 · 已运行 {daysOnline} 天
-              </div>
-              <div>
-                ✍️ {ARTICLES.length} 篇文章 · {tagCounts.length} 个标签
-              </div>
-            </div>
-            <div className="social-links" id="socialLinks">
-              <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-              <a href={TAPTAP_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-                TapTap 主页
-              </a>
-              <a href="https://msxiaotian.itch.io/tiny-pet-sand-wars" target="_blank" rel="noopener noreferrer">
-                itch.io
-              </a>
-              <a href="https://github.com/MsXiaoTian-Gamer/mengshenxiaotian/discussions" target="_blank" rel="noopener noreferrer">
-                讨论区
-              </a>
-              <a href="/feed.xml" target="_blank" rel="noopener noreferrer" title="RSS 订阅">
-                RSS
-              </a>
-            </div>
-          </div>
-        </aside>
-
-        {/* ===== Main ===== */}
-        <main className="main" id="mainContent">
-          <section className="hero" id="heroSection">
-            <div className="hero-inner">
-              <div className="studio-status"><span aria-hidden="true" /> 记录学习，也创造快乐</div>
-              <span className="hero-eyebrow">THE INDEPENDENT DEV JOURNAL</span>
-              <h1>
-                <span>把想法写成代码，</span><br />把热爱做成游戏。
-              </h1>
-              <p>一个独立游戏开发者的学习笔记与创作记录。分享 Unity 开发经验、游戏设计心得和 TapTap 聚光灯参赛历程。</p>
-              <div className="hero-meta">
-                <span>
-                  ✍️ {ARTICLES.length} 篇文章
-                </span>
-                <span>
-                  🏷️ {tagCounts.length} 个标签
-                </span>
-              </div>
-              <div className="hero-actions">
-                <Link className="hero-btn hero-btn-primary" to="/play">
-                  🎮 试玩我的游戏 ↗
-                </Link>
-                <a
-                  className="hero-btn hero-btn-secondary"
-                  href={TAPTAP_PROFILE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  TapTap 作品主页 ↗
-                </a>
-              </div>
-            </div>
-            <div className="studio-console" aria-label="开发者档案">
-              <div className="console-caption"><span aria-hidden="true">⌘</span> developer.profile</div>
-              <div className="console-prompt"><span>~/xiaotian</span> $ cat about.md</div>
-              <div className="console-avatar" aria-hidden="true">&lt; / &gt;</div>
-              <strong>你好，我是萌神小天。</strong>
-              <p>独立游戏开发者 / Unity 探索者</p>
-              <div className="console-stack"><span>Unity</span><span>C#</span><span>Game Design</span></div>
-              <div className="console-foot"><span>小步迭代，持续创造</span><span aria-hidden="true">█</span></div>
-            </div>
-          </section>
-
-          <section className="content-lanes" aria-labelledby="content-lanes-title">
-            <div className="lp-head">
-              <span className="lp-title" id="content-lanes-title">从这里开始</span>
-              <Link to="/archive" className="lp-more">查看全部文章 →</Link>
-            </div>
-            <div className="content-lane-grid">
-              {[
-                { kind: 'learn', icon: '🧭', title: '学 Unity', desc: '从零基础到项目工程化', link: '/learn' },
-                { kind: 'interview', icon: '💬', title: '看面试复盘', desc: '客户端岗位题目与答题思路', link: '/archive?kind=interview' },
-                { kind: 'release', icon: '🛠️', title: '看项目进展', desc: 'Tiny Pet Sand Wars 的开发记录', link: '/archive?kind=release' },
-              ].map(lane => {
-                const count = ARTICLES_SORTED.filter(a => a.kind === lane.kind).length
-                return <Link className="content-lane" to={lane.link} key={lane.kind}>
-                  <span className="content-lane-icon" aria-hidden="true">{lane.icon}</span>
-                  <span><strong>{lane.title}</strong><small>{lane.desc}</small></span>
-                  <em>{count} 篇 →</em>
-                </Link>
-              })}
-            </div>
-          </section>
-
-          <section className="quiz-home" id="quizHome">
-            <div className="quiz-home-window">
-              <div className="quiz-home-bar">
-                <span className="quiz-home-bar-title">~/dev/unity-interview — 每日八股</span>
-                <Link to="/quiz" className="quiz-home-bar-link">
-                  完整题库 →
-                </Link>
-              </div>
-              <div className="quiz-home-body">
-                {!quizToday ? (
-                  <div className="quiz-home-loading">LOADING_QUESTION█</div>
-                ) : (
-                  <>
-                    <div className="quiz-home-meta">
-                      <span className="quiz-home-day">DAY {String(quizDayNo).padStart(3, '0')}</span>
-                      <span className="quiz-home-cat">{quizToday.category}</span>
-                    </div>
-                    <div className="quiz-home-question">{quizToday.question}</div>
-                    <button className="quiz-home-btn" onClick={() => setQuizOpen(v => !v)}>
-                      {quizOpen ? '收起答案 ▲' : '查看答案 / 面试话术 ▼'}
-                    </button>
-                    {quizOpen && (
-                      <>
-                        <ul className="quiz-home-points">
-                          {quizToday.points.map((p, i) => (
-                            <li key={i}>{p}</li>
-                          ))}
-                        </ul>
-                        <div className="quiz-home-talk">
-                          <span className="quiz-home-talk-label">面试话术</span>
-                          <p>{quizToday.talk}</p>
-                        </div>
-                      </>
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
-          </section>
-
-          <div className="daily-quote" id="dailyQuote">
-            <div className="quote-text">“{quote.text}”</div>
-            <div className="quote-author">—— {quote.author}</div>
-          </div>
-
-          <div className="journal-heading">
-            <div><span className="journal-kicker">THE JOURNAL / 开发手记</span><h2>{query || tag !== 'all' ? '筛选结果' : '最近写下的故事'}</h2></div>
-            <span className="journal-count">{filtered.length} 篇记录</span>
-          </div>
-          {filtered.length > 0 ? (
-            <>
-              <div className="article-cards-grid" id="articleCardsGrid">
-                {renderCards(filtered)}
-              </div>
-              <div className="mobile-article-list mobile-only" id="mobileArticleList">
-                <div className="mobile-article-list-title">最新文章</div>
-                <div className="mobile-article-cards" id="mobileCards">
-                  {filtered.map(a => {
-                    const time = readingMinutes(a)
-                    return (
-                      <Link key={a.path} to={postUrl(a)} className="mobile-card">
-                        <div className="mobile-card-title">{a.title}</div>
-                        <div className="mobile-card-meta">
-                          <span className="mobile-card-time">{a.date}</span>
-                          <span>{time} min</span>
-                        </div>
-                        <div className="mobile-card-tags">
-                          {(a.tags || []).map(t => (
-                            <span key={t} className="mobile-card-tag">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      </Link>
-                    )
-                  })}
-                </div>
-              </div>
-            </>
-          ) : (
-            <div className="no-results" id="noResults">
-              <p>没有找到匹配的文章，试试其他关键词吧~</p>
-            </div>
-          )}
-        </main>
+      <div className={'layout home-layout' + (menuOpen ? ' nav-open' : '')} id="layout">
+        <HomeSidebar
+          query={query}
+          onQueryChange={setQuery}
+          selectedTag={selectedTag}
+          onTagSelect={handleTagSelect}
+          tagCounts={tagCounts}
+          articles={articles}
+          hotArticles={hotArticles}
+          remote={remote}
+          onlineDays={getOnlineDays()}
+        />
+        <HomeDashboard
+          articles={articles}
+          query={query}
+          selectedTag={selectedTag}
+          quote={quote}
+          question={question}
+          questionDay={questionDay}
+        />
       </div>
     </>
   )
