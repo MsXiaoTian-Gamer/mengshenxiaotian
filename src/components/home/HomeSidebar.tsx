@@ -156,12 +156,13 @@ export default function HomeSidebar({
             {ARTICLES.length} 篇文章 · {tagCounts.length} 个主题
           </div>
         </div>
+        <h2 className="sidebar-social-title">社交与订阅</h2>
         <nav className="social-links" id="socialLinks" aria-label="外部链接">
           <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
           <a href={TAPTAP_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-            TapTap 主页
+            TapTap
           </a>
           <a
             href="https://msxiaotian.itch.io/tiny-pet-sand-wars"
@@ -178,7 +179,7 @@ export default function HomeSidebar({
             讨论区
           </a>
           <a href="/feed.xml" target="_blank" rel="noopener noreferrer" title="RSS 订阅">
-            RSS
+            RSS 订阅
           </a>
         </nav>
       </footer>
