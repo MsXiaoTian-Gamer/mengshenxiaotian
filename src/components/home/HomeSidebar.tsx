@@ -148,14 +148,24 @@ export default function HomeSidebar({
       </section>
 
       <footer className="sidebar-footer">
-        <div id="siteStats">
+        <dl className="sidebar-stats" id="siteStats" aria-label="站点概况">
           <div>
-            本站访问 {remote?.site || 0} 次 · 已运行 {onlineDays} 天
+            <dt>文章</dt>
+            <dd>{ARTICLES.length}</dd>
           </div>
           <div>
-            {ARTICLES.length} 篇文章 · {tagCounts.length} 个主题
+            <dt>主题</dt>
+            <dd>{tagCounts.length}</dd>
           </div>
-        </div>
+          <div>
+            <dt>运行天数</dt>
+            <dd>{onlineDays}</dd>
+          </div>
+          <div>
+            <dt>访问次数</dt>
+            <dd>{remote ? remote.site.toLocaleString() : '—'}</dd>
+          </div>
+        </dl>
         <h2 className="sidebar-social-title">社交与订阅</h2>
         <nav className="social-links" id="socialLinks" aria-label="外部链接">
           <a href="https://github.com/MsXiaoTian-Gamer" target="_blank" rel="noopener noreferrer">
