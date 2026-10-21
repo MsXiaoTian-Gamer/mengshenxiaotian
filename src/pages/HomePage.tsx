@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
+import { ARTICLES_SORTED } from '../data/articles'
+import { filterArticles } from '../lib/archive'
 import { getTagCounts } from '../lib/blog'
 import { setPageMeta } from '../lib/seo'
 import { fetchRemoteStats, reportSiteVisit, type RemoteStats } from '../lib/stats'
@@ -16,16 +17,6 @@ const QUOTES = [
   '学习 Unity 最好的方式就是做一个游戏。',
 ]
 
-function filterArticles(query: string, tag: string): ArticleMeta[] {
-  const normalizedQuery = query.trim().toLocaleLowerCase()
-  return ARTICLES_SORTED.filter((article) => {
-    if (tag !== 'all' && !article.tags.includes(tag)) return false
-    if (!normalizedQuery) return true
-    const searchable = [article.title, ...article.tags, article.slug].join(' ').toLocaleLowerCase()
-    return searchable.includes(normalizedQuery)
-  })
-}
-
 function getOnlineDays(): number {
   const launchDate = new Date('2025-10-11T00:00:00')
   return Math.max(1, Math.floor((Date.now() - launchDate.getTime()) / 86_400_000) + 1)
@@ -39,7 +30,10 @@ export default function HomePage() {
   const [question, setQuestion] = useState<DailyQuestion | null>(null)
   const [questionDay, setQuestionDay] = useState(0)
 
-  const articles = useMemo(() => filterArticles(query, selectedTag), [query, selectedTag])
+  const articles = useMemo(
+    () => filterArticles(ARTICLES_SORTED, { kind: 'all', tag: selectedTag, query }),
+    [query, selectedTag],
+  )
   const tagCounts = useMemo(() => getTagCounts(ARTICLES_SORTED), [])
   const hotArticles = useMemo(() => {
     if (!remote) return []
@@ -92,6 +86,15 @@ export default function HomePage() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [menuOpen])
+
   const handleTagSelect = (tag: string) => {
     setSelectedTag(tag)
     setMenuOpen(false)
@@ -113,6 +116,14 @@ export default function HomePage() {
         <span />
         <span />
       </button>
+      {menuOpen && (
+        <button
+          className="sidebar-backdrop"
+          type="button"
+          aria-label="关闭文章筛选菜单"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
       <div className={'layout home-layout' + (menuOpen ? ' nav-open' : '')} id="layout">
         <HomeSidebar
           query={query}

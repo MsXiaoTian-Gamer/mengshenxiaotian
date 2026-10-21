@@ -57,8 +57,6 @@
 .home-layout .article-card .card-tags { margin-top: 0; }
 .home-layout .article-card .card-summary { font-size: .8rem; line-height: 1.9; margin-top: 0; }
 .card-bottom { display: flex; justify-content: space-between; padding-top: 16px; margin-top: 8px; border-top: 1px solid var(--border-light); color: var(--brand); font-size: .72rem; }
-.home-layout .mobile-card { border: 1px solid var(--border); border-radius: 8px; box-shadow: none; }
-.home-layout .mobile-article-list-title { display: none; }
 @media (min-width: 901px) and (max-width: 1200px) {
   .home-layout .hero { grid-template-columns: 1fr; }
   .studio-console { display: none; }

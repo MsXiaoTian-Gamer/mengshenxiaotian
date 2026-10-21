@@ -93,7 +93,7 @@ export default function QuizPage() {
         </div>
       )}
 
-      <div className="quiz-container">
+      <main className="quiz-container" id="mainContent">
         {/* ===== 今日题 ===== */}
         <section className="quiz-today">
           <div className="quiz-window-bar">
@@ -193,7 +193,7 @@ export default function QuizPage() {
           )}
           <div ref={sentinelRef} className="quiz-sentinel" aria-hidden="true"></div>
         </section>
-      </div>
+      </main>
     </>
   )
 }

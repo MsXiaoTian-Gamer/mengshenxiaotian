@@ -55,7 +55,7 @@ export default function StatsPage() {
 
   return (
     <>
-      <main className="stats-container">
+      <main className="stats-container" id="mainContent">
         <div className="stats-hero">
           <div className="stats-title">STATS.SYS</div>
           <div className="stats-sub">访问统计 · 服务端计数 · 随时导出</div>

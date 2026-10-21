@@ -50,7 +50,7 @@ export default function ArchivePage() {
 
   return (
     <>
-      <div className="archive-container">
+      <main className="archive-container" id="mainContent">
         <div className="archive-heading">
           <div>
             <p className="archive-kicker">THE JOURNAL / INDEX</p>
@@ -81,7 +81,9 @@ export default function ArchivePage() {
 
         <div className="archive-kind-tabs">
           <button
+            type="button"
             className={'archive-tag-btn' + (kind === 'all' ? ' active' : '')}
+            aria-pressed={kind === 'all'}
             onClick={() => updateFilter('kind', 'all')}
           >
             全部 ({kindCounts.all || 0})
@@ -92,7 +94,9 @@ export default function ArchivePage() {
             return (
               <button
                 key={k}
+                type="button"
                 className={'archive-tag-btn' + (kind === k ? ' active' : '')}
+                aria-pressed={kind === k}
                 onClick={() => updateFilter('kind', k)}
               >
                 {KIND_LABELS[k]} ({c})
@@ -103,7 +107,9 @@ export default function ArchivePage() {
 
         <div className="archive-tag-filters">
           <button
+            type="button"
             className={'archive-tag-btn' + (tag === 'all' ? ' active' : '')}
+            aria-pressed={tag === 'all'}
             onClick={() => updateFilter('tag', 'all')}
           >
             全部 ({ARTICLES_SORTED.length})
@@ -111,7 +117,9 @@ export default function ArchivePage() {
           {tagCounts.map((tc) => (
             <button
               key={tc.tag}
+              type="button"
               className={'archive-tag-btn' + (tag === tc.tag ? ' active' : '')}
+              aria-pressed={tag === tc.tag}
               onClick={() => updateFilter('tag', tc.tag)}
             >
               {tc.tag} ({tc.count})
@@ -182,7 +190,7 @@ export default function ArchivePage() {
             </section>
           ))}
         </div>
-      </div>
+      </main>
     </>
   )
 }

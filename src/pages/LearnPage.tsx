@@ -48,7 +48,7 @@ export default function LearnPage() {
 
   return (
     <>
-      <div className="learn-container">
+      <main className="learn-container" id="mainContent">
         <h1 className="learn-title">Unity 学习路线</h1>
         <p className="learn-sub">
           文章阶段 {doneStages}/{total} 完成 · 能力自检 {doneChecks}/{totalChecks} 已勾选
@@ -173,7 +173,7 @@ export default function LearnPage() {
           </a>{' '}
           交流。
         </p>
-      </div>
+      </main>
     </>
   )
 }

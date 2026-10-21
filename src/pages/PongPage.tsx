@@ -345,7 +345,7 @@ export default function PongPage() {
 
   return (
     <>
-      <div className="play-page">
+      <main className="play-page" id="mainContent">
         <div className="play-header">
           <span className="play-brand">PHOSPHOR PONG</span>
           <div className="play-score">
@@ -366,7 +366,7 @@ export default function PongPage() {
         <p className="play-foot">
           手写 WebGL1 渲染 · 辉光 + 扫描线 CRT 效果 · 先得 {WIN_SCORE} 分获胜
         </p>
-      </div>
+      </main>
     </>
   )
 }

@@ -20,7 +20,7 @@ export default function PlayPage() {
 
   return (
     <>
-      <div className="tsw-page">
+      <main className="tsw-page" id="mainContent">
         <div className="tsw-head">
           <span className="tsw-brand">TINY PET SAND WARS</span>
           <div className="tsw-links">
@@ -71,7 +71,7 @@ export default function PlayPage() {
           Unity WebGL 导出 · 首次加载较慢（84MB 资源按需传输）· 键盘 WASD / 方向键操作 ·
           独立游戏练习作品
         </p>
-      </div>
+      </main>
     </>
   )
 }

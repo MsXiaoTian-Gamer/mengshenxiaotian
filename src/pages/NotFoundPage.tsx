@@ -8,7 +8,11 @@ export default function NotFoundPage() {
   }, [])
   return (
     <>
-      <main className="art-container" style={{ textAlign: 'center', padding: '80px 16px' }}>
+      <main
+        className="art-container"
+        id="mainContent"
+        style={{ textAlign: 'center', padding: '80px 16px' }}
+      >
         <h1 style={{ fontSize: '3rem', color: 'var(--brand)', marginBottom: 8 }}>404</h1>
         <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>页面不存在或已被移动</p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTICLES, ARTICLES_SORTED, type ArticleMeta } from '../../data/articles'
-import { POST_MINUTES, POST_SUMMARY } from '../../data/generated-meta'
+import { POST_MINUTES } from '../../data/generated-meta'
 import { TAPTAP_PROFILE_URL } from '../../data/links'
+import { getArticleExcerpt } from '../../lib/articleExcerpt'
 import { getTagColors } from '../../lib/blog'
 
 export interface DailyQuestion {
@@ -43,7 +44,7 @@ function ArticleCard({ article }: { article: ArticleMeta }) {
           )
         })}
       </div>
-      <p className="card-summary">{POST_SUMMARY[article.slug] || ''}</p>
+      <p className="card-summary">{getArticleExcerpt(article)}</p>
       <div className="card-bottom">
         <span>阅读全文</span>
         <span aria-hidden="true">↗</span>
@@ -110,6 +111,36 @@ function HomeHero() {
           <span aria-hidden="true">●</span>
         </div>
       </aside>
+    </section>
+  )
+}
+
+function FeaturedStory() {
+  const article = ARTICLES_SORTED[0]
+  if (!article) return null
+  const excerpt = getArticleExcerpt(article)
+
+  return (
+    <section className="featured-story" aria-labelledby="featured-story-title">
+      <div className="featured-story-content">
+        <span className="featured-story-kicker">
+          LATEST NOTE <span aria-hidden="true">/</span> 最新发布
+        </span>
+        <h2 id="featured-story-title">
+          <Link to={`/post/${article.slug}`}>{article.title}</Link>
+        </h2>
+        <p>{excerpt}</p>
+        <Link className="featured-story-link" to={`/post/${article.slug}`}>
+          读这篇文章 <span aria-hidden="true">↗</span>
+        </Link>
+      </div>
+      <div className="featured-story-stamp" aria-hidden="true">
+        <span>DEV JOURNAL</span>
+        <strong>{article.date.slice(5).replace('-', '.')}</strong>
+        <small>
+          {article.date.slice(0, 4)} · {article.tags[0] || '创作记录'}
+        </small>
+      </div>
     </section>
   )
 }
@@ -226,9 +257,13 @@ export default function HomeDashboard({
   question,
   questionDay,
 }: HomeDashboardProps) {
+  const isFiltering = Boolean(query.trim()) || selectedTag !== 'all'
+  const visibleArticles = isFiltering ? articles : articles.slice(0, 8)
+
   return (
     <main className="main" id="mainContent">
       <HomeHero />
+      <FeaturedStory />
       <DiscoveryLanes />
       <DailyQuestion question={question} day={questionDay} />
       <blockquote className="daily-quote" id="dailyQuote">
@@ -239,42 +274,22 @@ export default function HomeDashboard({
         <div className="journal-heading">
           <div>
             <span className="journal-kicker">THE JOURNAL / 开发手记</span>
-            <h2 id="journal-title">
-              {query || selectedTag !== 'all' ? '筛选结果' : '最近写下的故事'}
-            </h2>
+            <h2 id="journal-title">{isFiltering ? '筛选结果' : '最近写下的故事'}</h2>
           </div>
           <span className="journal-count">{articles.length} 篇记录</span>
         </div>
         {articles.length ? (
           <>
             <div className="article-cards-grid" id="articleCardsGrid">
-              {articles.map((article) => (
+              {visibleArticles.map((article) => (
                 <ArticleCard key={article.path} article={article} />
               ))}
             </div>
-            <div className="mobile-article-list mobile-only" id="mobileArticleList">
-              <div className="mobile-article-list-title">最新文章</div>
-              <div className="mobile-article-cards" id="mobileCards">
-                {articles.map((article) => (
-                  <Link key={article.path} to={`/post/${article.slug}`} className="mobile-card">
-                    <span className="mobile-card-title">{article.title}</span>
-                    <span className="mobile-card-meta">
-                      <time className="mobile-card-time" dateTime={article.date}>
-                        {article.date}
-                      </time>
-                      <span>{POST_MINUTES[article.slug] || 1} min</span>
-                    </span>
-                    <span className="mobile-card-tags">
-                      {article.tags.map((tag) => (
-                        <span key={tag} className="mobile-card-tag">
-                          {tag}
-                        </span>
-                      ))}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            {!isFiltering && articles.length > visibleArticles.length && (
+              <Link className="journal-all-link" to="/archive">
+                浏览全部 {articles.length} 篇文章 <span aria-hidden="true">↗</span>
+              </Link>
+            )}
           </>
         ) : (
           <div className="no-results" id="noResults">

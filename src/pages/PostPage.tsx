@@ -2,26 +2,23 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ARTICLES, ARTICLES_SORTED, type ArticleMeta } from '../data/articles'
 import { POST_MINUTES, POST_SUMMARY } from '../data/generated-meta'
+import { getArticleExcerpt } from '../lib/articleExcerpt'
 import { getRawContent } from '../lib/content'
 import { formatDateCN, getTagColors, getPrimaryTag, pickRelated } from '../lib/blog'
 import { enhanceMarkdownDom, renderMarkdownHtml, copyText, buildDescription } from '../lib/render'
 import { setPageMeta } from '../lib/seo'
 import { getTheme, ensureHljsCss } from '../lib/theme'
 import { reportArticleView, fetchRemoteStats } from '../lib/stats'
-
-interface TocItem {
-  id: string
-  level: number
-  text: string
-}
+import { ReadingRail, TableOfContents, type TocItem } from '../components/post/ArticleOutline'
+import { GiscusComments, LikeButton } from '../components/post/PostEngagement'
 
 function slugifyHeading(text: string): string {
   return (
     'h-' +
-    text
-      .toLowerCase()
-      .replace(/[^\w\u4e00-\u9fff]+/g, '-')
-      .replace(/^-+|-+$/g, '') || 'h'
+      text
+        .toLowerCase()
+        .replace(/[^\w\u4e00-\u9fff]+/g, '-')
+        .replace(/^-+|-+$/g, '') || 'h'
   )
 }
 
@@ -29,7 +26,7 @@ function slugifyHeading(text: string): string {
 function collectToc(root: HTMLElement): TocItem[] {
   const items: TocItem[] = []
   const seen: Record<string, number> = {}
-  root.querySelectorAll('h2, h3').forEach(hRaw => {
+  root.querySelectorAll('h2, h3').forEach((hRaw) => {
     const h = hRaw as HTMLElement
     const base = slugifyHeading(h.textContent || '')
     seen[base] = (seen[base] || 0) + 1
@@ -58,109 +55,33 @@ function useScrollSpy(ids: string[]): string {
   return active
 }
 
-export function GiscusComments() {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    el.innerHTML = ''
-    const script = document.createElement('script')
-    script.src = 'https://giscus.app/client.js'
-    script.setAttribute('data-repo', 'MsXiaoTian-Gamer/mengshenxiaotian')
-    script.setAttribute('data-repo-id', 'R_kgDOToc_Fg')
-    script.setAttribute('data-category', 'General')
-    script.setAttribute('data-category-id', 'DIC_kwDOToc_Fs4DCXIO')
-    script.setAttribute('data-mapping', 'pathname')
-    script.setAttribute('data-strict', '0')
-    script.setAttribute('data-reactions-enabled', '1')
-    script.setAttribute('data-emit-metadata', '0')
-    script.setAttribute('data-input-position', 'bottom')
-    script.setAttribute('data-theme', 'preferred_color_scheme')
-    script.setAttribute('data-lang', 'zh-CN')
-    script.setAttribute('crossorigin', 'anonymous')
-    script.async = true
-    el.appendChild(script)
-    return () => {
-      el.innerHTML = ''
-    }
-  }, [])
-  return <div ref={ref}></div>
-}
-
-function LikeButton({ article }: { article: ArticleMeta }) {
-  const likeKey = 'blog_likes_' + article.path
-  const countKey = likeKey + '_count'
-  const [liked, setLiked] = useState(() => {
-    try {
-      return localStorage.getItem(likeKey) === '1'
-    } catch (e) {
-      return false
-    }
-  })
-  const [count, setCount] = useState(() => {
-    try {
-      return parseInt(localStorage.getItem(countKey) || '0', 10)
-    } catch (e) {
-      return 0
-    }
-  })
-
-  const onClick = () => {
-    try {
-      if (liked) {
-        localStorage.setItem(likeKey, '0')
-        const c = Math.max(0, count - 1)
-        localStorage.setItem(countKey, String(c))
-        setCount(c)
-        setLiked(false)
-      } else {
-        localStorage.setItem(likeKey, '1')
-        const c = count + 1
-        localStorage.setItem(countKey, String(c))
-        setCount(c)
-        setLiked(true)
-      }
-    } catch (e) {
-      /* ignore */
-    }
-  }
-
-  return (
-    <div className="like-section">
-      <button className={'like-btn' + (liked ? ' liked' : '')} onClick={onClick}>
-        <span className="like-icon">{liked ? '❤️' : '🤍'}</span>{' '}
-        <span className="like-count">{count}</span> 次喜欢
-      </button>
-    </div>
-  )
-}
-
-export default function PostPage() {
-  const { slug } = useParams<{ slug: string }>()
-  const article = useMemo(() => ARTICLES.find(a => a.slug === slug) || null, [slug])
-  const [md, setMd] = useState('')
+function PostArticle({ article }: { article: ArticleMeta }) {
+  const [md, setMd] = useState<string | null>(null)
   useEffect(() => {
     let alive = true
-    setMd('')
-    if (article) {
-      getRawContent(article.path).then(m => {
-        if (alive) setMd(m)
+    getRawContent(article.path)
+      .then((content) => {
+        if (alive) setMd(content)
       })
-    }
+      .catch(() => {
+        if (alive) setMd('')
+      })
     return () => {
       alive = false
     }
-  }, [article])
-  const html = useMemo(() => (article ? renderMarkdownHtml(md) : ''), [article, md])
+  }, [article.path])
+  const html = useMemo(() => (md ? renderMarkdownHtml(md) : ''), [md])
   const bodyRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const [toc, setToc] = useState<TocItem[]>([])
-  const [views, setViews] = useState(0)
+  const [views, setViews] = useState<number | null>(null)
+  const [viewsLoaded, setViewsLoaded] = useState(false)
   const [copied, setCopied] = useState(false)
   const [fontSize, setFontSize] = useState(16)
   const [focusMode, setFocusMode] = useState(false)
   const [readingProgress, setReadingProgress] = useState(0)
-  const active = useScrollSpy(toc.map(t => t.id))
+  const tocIds = useMemo(() => toc.map((t) => t.id), [toc])
+  const active = useScrollSpy(tocIds)
 
   useEffect(() => {
     document.body.classList.toggle('reading-focus', focusMode)
@@ -173,9 +94,8 @@ export default function PostPage() {
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [focusMode])
-  const related = useMemo(() => (article ? pickRelated(article, ARTICLES_SORTED) : []), [article])
-  const relatedRef = useRef<HTMLDivElement>(null)
-  const index = article ? ARTICLES_SORTED.findIndex(a => a.slug === article.slug) : -1
+  const related = useMemo(() => pickRelated(article, ARTICLES_SORTED), [article])
+  const index = ARTICLES_SORTED.findIndex((a) => a.slug === article.slug)
   const prev = index > 0 ? ARTICLES_SORTED[index - 1] : null
   const next = index >= 0 && index < ARTICLES_SORTED.length - 1 ? ARTICLES_SORTED[index + 1] : null
 
@@ -189,7 +109,9 @@ export default function PostPage() {
       const start = body.getBoundingClientRect().top + window.scrollY
       const end = start + body.offsetHeight - window.innerHeight
       const span = Math.max(1, end - start)
-      const progress = Math.round(Math.min(100, Math.max(0, ((window.scrollY - start) / span) * 100)))
+      const progress = Math.round(
+        Math.min(100, Math.max(0, ((window.scrollY - start) / span) * 100)),
+      )
       setReadingProgress(progress)
     }
     updateProgress()
@@ -202,10 +124,6 @@ export default function PostPage() {
   }, [html])
 
   useEffect(() => {
-    if (!article) {
-      setPageMeta('文章未找到 - 萌神小天')
-      return
-    }
     setPageMeta(article.title + ' - 萌神小天', buildDescription(POST_SUMMARY[article.slug] || ''), {
       path: '/post/' + article.slug,
     })
@@ -213,15 +131,16 @@ export default function PostPage() {
 
   // 阅读量：上报（同浏览器同一天一次），再拉取远端计数展示
   useEffect(() => {
-    if (!article) return
     let alive = true
     reportArticleView(article.slug)
       .then(() => fetchRemoteStats())
-      .then(s => {
-        if (alive && s) setViews(s.articles[article.slug] || 0)
+      .then((s) => {
+        if (!alive) return
+        if (s) setViews(s.articles[article.slug] || 0)
+        setViewsLoaded(true)
       })
       .catch(() => {
-        /* ignore */
+        if (alive) setViewsLoaded(true)
       })
     return () => {
       alive = false
@@ -229,7 +148,7 @@ export default function PostPage() {
   }, [article])
 
   useEffect(() => {
-    if (!article || !bodyRef.current) return
+    if (!bodyRef.current) return
     const root = bodyRef.current
     root.innerHTML = html
     // 正文含代码块才注入 hljs 主题 CSS；切主题后进入文章页以当前主题加载（幂等）
@@ -242,22 +161,8 @@ export default function PostPage() {
     window.scrollTo({ top: 0, behavior: 'auto' })
   }, [article, html])
 
-  if (!article) {
-    return (
-      <>
-        <main className="art-container">
-          <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--text-muted)' }}>
-            <h1 style={{ fontSize: '1.5rem', marginBottom: 12 }}>文章不存在或已被移动</h1>
-            <Link to="/archive" style={{ color: 'var(--brand)' }}>
-              去归档页看看 →
-            </Link>
-          </div>
-        </main>
-      </>
-    )
-  }
-
   const time = POST_MINUTES[article.slug] || 1
+  const excerpt = getArticleExcerpt(article)
   const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://msxiaotian.top'
   const shareTitle = encodeURIComponent(article.title + ' - 萌神小天')
 
@@ -277,15 +182,15 @@ export default function PostPage() {
     return (
       <div className="related-section">
         <h3>相关文章</h3>
-        <div className="related-cards" ref={relatedRef}>
-          {list.map(r => {
+        <div className="related-cards">
+          {list.map((r) => {
             const tc = getTagColors(getPrimaryTag(r) || '')
             return (
               <Link key={r.path} to={'/post/' + r.slug} className="related-card">
                 <div className="related-card-meta">{r.date}</div>
                 <div className="related-card-title">{r.title}</div>
                 <div className="related-card-tags">
-                  {(r.tags || []).slice(0, 3).map(t => (
+                  {(r.tags || []).slice(0, 3).map((t) => (
                     <span key={t} style={{ background: tc.bg, color: tc.color }}>
                       {t}
                     </span>
@@ -302,27 +207,75 @@ export default function PostPage() {
 
   return (
     <>
-      <main className="art-container">
-        <article className="art-header">
-          <div className="article-kicker"><span className="article-kicker-dot" /> 开发手记 <span>/</span> {formatDateCN(article.date)}</div>
+      <main className="art-container" id="mainContent">
+        <header className="art-header">
+          <div className="article-kicker">
+            <span className="article-kicker-dot" />
+            <Link to="/archive">文章归档</Link>
+            <span>/</span> 开发手记
+          </div>
           <h1>{article.title}</h1>
-          <div className="art-meta" style={{ marginTop: 10 }}>
-            <span>{formatDateCN(article.date)}</span>
-            <span> · </span>
+          {excerpt && <p className="art-deck">{excerpt}</p>}
+          <div className="art-meta">
+            <time dateTime={article.date}>{formatDateCN(article.date)}</time>
             <span>约 {time} 分钟</span>
-            <span> · </span>
-            <span>{views} 次阅读</span>
+            <span>
+              {views === null
+                ? viewsLoaded
+                  ? '阅读量暂不可用'
+                  : '阅读量加载中'
+                : `${views} 次阅读`}
+            </span>
           </div>
           <div className="article-reading-tools" aria-label="阅读设置">
             <span>字号</span>
-            <button type="button" aria-label="缩小字号" title="缩小字号" disabled={fontSize <= 14} onClick={() => setFontSize(size => { const next = Math.max(14, size - 1); contentRef.current?.style.setProperty('--article-font-size', `${next}px`); return next })}>A−</button>
+            <button
+              type="button"
+              aria-label="缩小字号"
+              title="缩小字号"
+              disabled={fontSize <= 14}
+              onClick={() =>
+                setFontSize((size) => {
+                  const next = Math.max(14, size - 1)
+                  contentRef.current?.style.setProperty('--article-font-size', `${next}px`)
+                  return next
+                })
+              }
+            >
+              A−
+            </button>
             <span className="article-font-value">{fontSize}px</span>
-            <button type="button" aria-label="放大字号" title="放大字号" disabled={fontSize >= 22} onClick={() => setFontSize(size => { const next = Math.min(22, size + 1); contentRef.current?.style.setProperty('--article-font-size', `${next}px`); return next })}>A+</button>
-            <button type="button" className="focus-mode-toggle" aria-pressed={focusMode} onClick={() => setFocusMode(value => !value)}>{focusMode ? '退出专注' : '专注阅读'}</button>
+            <button
+              type="button"
+              aria-label="放大字号"
+              title="放大字号"
+              disabled={fontSize >= 22}
+              onClick={() =>
+                setFontSize((size) => {
+                  const next = Math.min(22, size + 1)
+                  contentRef.current?.style.setProperty('--article-font-size', `${next}px`)
+                  return next
+                })
+              }
+            >
+              A+
+            </button>
+            <button
+              type="button"
+              className="focus-mode-toggle"
+              aria-pressed={focusMode}
+              onClick={() => setFocusMode((value) => !value)}
+            >
+              {focusMode ? '退出专注' : '专注阅读'}
+            </button>
           </div>
-          {focusMode && <button type="button" className="focus-mode-exit" onClick={() => setFocusMode(false)}>退出专注阅读 <kbd>Esc</kbd></button>}
+          {focusMode && (
+            <button type="button" className="focus-mode-exit" onClick={() => setFocusMode(false)}>
+              退出专注阅读 <kbd>Esc</kbd>
+            </button>
+          )}
           <div className="art-tags">
-            {(article.tags || []).map(t => {
+            {(article.tags || []).map((t) => {
               const tc = getTagColors(t)
               return (
                 <span key={t} className="post-tag" style={{ background: tc.bg, color: tc.color }}>
@@ -331,80 +284,68 @@ export default function PostPage() {
               )
             })}
           </div>
-        </article>
+        </header>
 
         {article.kind === 'interview' && (
           <aside className="interview-guide" aria-label="面试复盘阅读提示">
             <strong>面试复盘阅读提示</strong>
-            <span>建议按“面试背景 → 题目与回答 → 暴露的问题 → 后续复习”阅读，把经历记录转成自己的复习清单。</span>
+            <span>
+              建议按“面试背景 → 题目与回答 → 暴露的问题 →
+              后续复习”阅读，把经历记录转成自己的复习清单。
+            </span>
           </aside>
         )}
 
         <div className="article-reading-layout">
           <div className="article-main-column">
-        {toc.length > 0 && (
-          <details className="toc" open>
-            <summary className="toc-summary">
-              <span className="toc-title">📑 文章目录</span>
-              <span className="toc-summary-meta">{toc.length} 个章节 <span className="toc-chevron" aria-hidden="true">⌄</span></span>
-            </summary>
-            <ul className="toc-list">
-              {toc.map(t => (
-                <li key={t.id} className={'toc-item' + (t.level === 3 ? ' toc-h3' : '')}>
-                  <a
-                    href={'#' + t.id}
-                    aria-current={active === t.id ? 'location' : undefined}
-                    className={active === t.id ? 'active' : ''}
-                    onClick={e => {
-                      e.preventDefault()
-                      onTocClick(t.id)
-                    }}
-                  >
-                    {t.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </details>
-        )}
+            <TableOfContents items={toc} activeId={active} onNavigate={onTocClick} />
 
-        <div className="art-content" ref={contentRef}>
-          {!html && (
-            <div style={{ padding: '40px 0', color: 'var(--text-muted)' }}>正在加载正文…</div>
-          )}
-          <div className="art-body" ref={bodyRef}></div>
-        </div>
+            <div className="art-content" ref={contentRef}>
+              {!html && (
+                <div className="article-load-state" role="status">
+                  {md === null ? '正在加载正文…' : '正文暂时无法加载，请稍后刷新重试。'}
+                </div>
+              )}
+              <div className="art-body" ref={bodyRef}></div>
+            </div>
           </div>
-          {toc.length > 0 && (
-            <aside className="article-reading-rail" aria-label="阅读进度与章节导航">
-              <div className="reading-rail-heading"><span className="article-kicker-dot" /> 正在阅读</div>
-              <div className="reading-rail-progress-label"><span>阅读进度</span><strong>{readingProgress}%</strong></div>
-              <div className="reading-rail-track" role="progressbar" aria-label="正文阅读进度" aria-valuemin={0} aria-valuemax={100} aria-valuenow={readingProgress}>
-                <span style={{ width: `${readingProgress}%` }} />
-              </div>
-              <div className="reading-rail-time">约剩 {Math.max(0, Math.ceil(time * (1 - readingProgress / 100)))} 分钟</div>
-              <div className="reading-rail-divider" />
-              <div className="reading-rail-caption">文章章节</div>
-              <nav className="reading-rail-chapters" aria-label="文章章节导航">
-                {toc.map((item, itemIndex) => (
-                  <a key={item.id} href={'#' + item.id} className={(active === item.id ? 'active ' : '') + (item.level === 3 ? 'subchapter' : '')} aria-current={active === item.id ? 'location' : undefined} onClick={event => { event.preventDefault(); onTocClick(item.id) }}>
-                    <span>{String(itemIndex + 1).padStart(2, '0')}</span>{item.text}
-                  </a>
-                ))}
-              </nav>
-            </aside>
-          )}
+          <ReadingRail
+            items={toc}
+            activeId={active}
+            onNavigate={onTocClick}
+            progress={readingProgress}
+            minutes={time}
+          />
         </div>
 
         <div className="art-footer" style={{ display: 'block' }}>
-          <div className="art-share" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center', marginTop: 28 }}>
+          <div
+            className="art-share"
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 10,
+              alignItems: 'center',
+              marginTop: 28,
+            }}
+          >
             <span>分享：</span>
-            <button className={'share-btn' + (copied ? ' copied' : '')} onClick={onCopyLink} title="复制链接" aria-label="复制链接">
+            <button
+              className={'share-btn' + (copied ? ' copied' : '')}
+              onClick={onCopyLink}
+              title="复制链接"
+              aria-label="复制链接"
+            >
               🔗 复制链接
             </button>
             <a
               className="share-btn"
-              href={'https://service.weibo.com/share/share.php?url=' + encodeURIComponent(shareUrl) + '&title=' + shareTitle}
+              href={
+                'https://service.weibo.com/share/share.php?url=' +
+                encodeURIComponent(shareUrl) +
+                '&title=' +
+                shareTitle
+              }
               target="_blank"
               rel="noopener noreferrer"
               aria-label="分享到微博"
@@ -413,7 +354,12 @@ export default function PostPage() {
             </a>
             <a
               className="share-btn"
-              href={'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(shareUrl) + '&title=' + shareTitle}
+              href={
+                'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' +
+                encodeURIComponent(shareUrl) +
+                '&title=' +
+                shareTitle
+              }
               target="_blank"
               rel="noopener noreferrer"
               aria-label="分享到QQ空间"
@@ -432,9 +378,7 @@ export default function PostPage() {
                 <div className="download-item" key={i}>
                   <div>
                     <div className="download-name">{d.name}</div>
-                    {d.desc && (
-                      <div className="download-desc">{d.desc}</div>
-                    )}
+                    {d.desc && <div className="download-desc">{d.desc}</div>}
                   </div>
                   <a
                     className="download-btn"
@@ -459,14 +403,18 @@ export default function PostPage() {
               <span className="pagination-title">{prev.title}</span>
               <span className="pagination-date">{prev.date}</span>
             </Link>
-          ) : <span />}
+          ) : (
+            <span />
+          )}
           {next ? (
             <Link to={'/post/' + next.slug} className="pagination-card pagination-next">
               <span className="pagination-direction">下一篇 →</span>
               <span className="pagination-title">{next.title}</span>
               <span className="pagination-date">{next.date}</span>
             </Link>
-          ) : <span />}
+          ) : (
+            <span />
+          )}
         </nav>
 
         <div className="giscus-comments" style={{ marginTop: 40 }}>
@@ -495,4 +443,24 @@ export default function PostPage() {
       </main>
     </>
   )
+}
+
+export default function PostPage() {
+  const { slug } = useParams<{ slug: string }>()
+  const article = ARTICLES.find((item) => item.slug === slug)
+
+  useEffect(() => {
+    if (!article) setPageMeta('文章未找到 - 萌神小天')
+  }, [article])
+
+  if (!article) {
+    return (
+      <main className="art-container article-missing" id="mainContent">
+        <h1>文章不存在或已被移动</h1>
+        <Link to="/archive">去归档页看看 →</Link>
+      </main>
+    )
+  }
+
+  return <PostArticle key={article.slug} article={article} />
 }

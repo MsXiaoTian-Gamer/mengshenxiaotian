@@ -51,6 +51,8 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const { pathname } = useLocation()
+
   useEffect(() => {
     initTheme()
   }, [])
@@ -70,7 +72,7 @@ export default function App() {
       <CommandPalette />
       <CrtColorStrip />
       <CrBoot />
-      <AppErrorBoundary>
+      <AppErrorBoundary key={pathname}>
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             {appRoutes.map((route) => (
