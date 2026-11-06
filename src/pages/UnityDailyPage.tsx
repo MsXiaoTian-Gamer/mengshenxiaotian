@@ -5,6 +5,8 @@ import news from '../data/unityNews.json'
 interface NewsItem {
   title: string
   url: string
+  source: string
+  category: string
   publishedAt: string
 }
 const dateLabel = (value: string) =>
@@ -12,7 +14,10 @@ const dateLabel = (value: string) =>
 
 export default function UnityDailyPage() {
   useEffect(() => {
-    setPageMeta('Unity 日报 - 萌神小天', '每日同步 Unity 官方动态，关注引擎、开发技术和社区作品。')
+    setPageMeta(
+      'Unity 日报 - 萌神小天',
+      '每日汇集 Unity 官方资讯、社区讨论、开发者分享与行业动态。',
+    )
   }, [])
   const groups = new Map<string, NewsItem[]>()
   for (const item of news.items as NewsItem[]) {
@@ -25,17 +30,24 @@ export default function UnityDailyPage() {
       <h1>Unity 日报</h1>
       <p className="projects-intro">
         每天看看 Unity
-        发生了什么：官方新闻、开发技术、社区作品。保留原文标题，点击即可阅读官方全文。
+        发生了什么：官方资讯、社区讨论、开发者分享与行业动态。保留原文标题和来源，点击阅读原文。社区内容为作者观点，未经本站逐条核实。
       </p>
       <p>
         计划每天北京时间 09:00 同步，实际更新时间可能延迟。
         {news.updatedAt ? `最近同步：${dateLabel(news.updatedAt)}` : '首次同步尚未完成。'}
       </p>
       <p>
-        <a href="https://unity.com/blog" target="_blank" rel="noopener noreferrer">
-          Unity 官方博客 ↗
-        </a>
+        来源：Unity 官方博客、Unity Discussions、Reddit Unity3D、Game Developer（仅收录 Unity
+        相关内容）。单个来源暂时不可用时，保留历史内容并继续同步其他来源。
       </p>
+      <div aria-label="来源同步状态">
+        {news.sources.map((source) => (
+          <p key={source.name}>
+            {source.name}：
+            {source.ok ? `本次收录 ${source.count} 条` : '本次未能同步，保留历史内容'}
+          </p>
+        ))}
+      </div>
       {groups.size === 0 && (
         <div className="project-card">
           <h2>等待第一期动态</h2>
@@ -48,7 +60,9 @@ export default function UnityDailyPage() {
           <div className="project-grid">
             {items.map((item) => (
               <article className="project-card" key={item.url}>
-                <span className="project-status">Unity 官方动态</span>
+                <span className="project-status">
+                  {item.category} · {item.source}
+                </span>
                 <h3>{item.title}</h3>
                 <a href={item.url} target="_blank" rel="noopener noreferrer">
                   阅读原文 ↗
