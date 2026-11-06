@@ -7,6 +7,7 @@ export interface AppRoute {
   navLabel?: string
 }
 
+const UnityDailyPage = lazy(() => import('../pages/UnityDailyPage'))
 const PostPage = lazy(() => import('../pages/PostPage'))
 const LearnPage = lazy(() => import('../pages/LearnPage'))
 const ArchivePage = lazy(() => import('../pages/ArchivePage'))
@@ -21,6 +22,7 @@ const ProjectsPage = lazy(() => import('../pages/ProjectsPage'))
 export const appRoutes: AppRoute[] = [
   { path: '/', element: <HomePage /> },
   { path: '/post/:slug', element: <PostPage /> },
+  { path: '/unity-daily', element: <UnityDailyPage />, navLabel: 'Unity 日报' },
   { path: '/learn', element: <LearnPage />, navLabel: 'Unity 路线' },
   { path: '/archive', element: <ArchivePage />, navLabel: '文章' },
   { path: '/about', element: <AboutPage />, navLabel: '关于' },

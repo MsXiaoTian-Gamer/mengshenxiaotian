@@ -1,0 +1,28 @@
+name: Sync Unity daily news
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: unity-daily
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/sync-unity-news.py
+      - name: Commit updated news
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/data/unityNews.json
+          if ! git diff --cached --quiet; then
+            git commit -m "content: refresh Unity daily news"
+            git push
+          fi
