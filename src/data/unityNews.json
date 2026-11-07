@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T11:13:44.821169+00:00",
+  "updatedAt": "2026-11-07T06:50:45.634771+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -23,10 +23,192 @@
       "name": "Game Developer",
       "url": "https://www.gamedeveloper.com/rss.xml",
       "ok": true,
-      "count": 0
+      "count": 1
     }
   ],
   "items": [
+    {
+      "title": "Help regrouping hair bones",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpyol1/help_regrouping_hair_bones/",
+      "publishedAt": "2026-11-07T05:37:35+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I made a flight sim game about battling colossal kaiju and I think my rain effect on the cockpit canopy is starting to look good!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpw8fp/i_made_a_flight_sim_game_about_battling_colossal/",
+      "publishedAt": "2026-11-07T03:23:23+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Are the Unity 6.6 tutorials broken for everyone or just some people?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpw6vx/are_the_unity_66_tutorials_broken_for_everyone_or/",
+      "publishedAt": "2026-11-07T03:21:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Not all sound design has to be good... Right? RIGHT?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xptwut/not_all_sound_design_has_to_be_good_right_right/",
+      "publishedAt": "2026-11-07T01:24:32+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Made a procedural animation system for my mech",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpsuyn/made_a_procedural_animation_system_for_my_mech/",
+      "publishedAt": "2026-11-07T00:33:50+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "A gift to the community. A library of almost 600 3d assets. Claim it - keep it forever.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpsny3/a_gift_to_the_community_a_library_of_almost_600/",
+      "publishedAt": "2026-11-07T00:24:17+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Your AI agent can now create 3D models from one image (open source, runs locally)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpsg4z/your_ai_agent_can_now_create_3d_models_from_one/",
+      "publishedAt": "2026-11-07T00:14:01+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Toppings that stick to the ceiling",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xprzpe/toppings_that_stick_to_the_ceiling/",
+      "publishedAt": "2026-11-06T23:53:58+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Would this type of nudity affect the age rating of my game on Steam?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xprjua/would_this_type_of_nudity_affect_the_age_rating/",
+      "publishedAt": "2026-11-06T23:32:29+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I'm working on a game with weird parkour and a giant spider (Fallgrade).",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpp8f5/im_working_on_a_game_with_weird_parkour_and_a/",
+      "publishedAt": "2026-11-06T21:50:23+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Underwater Enemy AI",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpo8q6/underwater_enemy_ai/",
+      "publishedAt": "2026-11-06T21:08:56+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "[Nov 18 - Dec 18*] Any-engine (Unity Included) Game Jam: $100K in Cash Prizes (sponsored by ElevenLabs, fal.ai and Meshy)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpmx6j/nov_18_dec_18_anyengine_unity_included_game_jam/",
+      "publishedAt": "2026-11-06T20:14:04+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "We developed a limb-based combat and mastery system in Unity while combining 2D and 3D art for our first game!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpmsjj/we_developed_a_limbbased_combat_and_mastery/",
+      "publishedAt": "2026-11-06T20:09:00+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I love creams, so I made puzzle game about it",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xplx8l/i_love_creams_so_i_made_puzzle_game_about_it/",
+      "publishedAt": "2026-11-06T19:33:38+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Ocarina of Time remake: subtle, tasteful ground fog...me, an indie dev with no one to stop me:",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpl3x6/ocarina_of_time_remake_subtle_tasteful_ground/",
+      "publishedAt": "2026-11-06T19:01:26+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Best Mac that works for building unity iOS builds?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpkckl/best_mac_that_works_for_building_unity_ios_builds/",
+      "publishedAt": "2026-11-06T18:31:50+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Made a basic first character and combat prototype for my character action game based around teleporting mechanics!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpjpzg/made_a_basic_first_character_and_combat_prototype/",
+      "publishedAt": "2026-11-06T18:07:58+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Report: Silver Lake and the Saudi Arabia PIF hold talks with Unity to explore acquisition",
+      "url": "https://www.gamedeveloper.com/business/silver-lake-and-the-saudi-arabia-pif-hold-talks-with-unity-to-explore-acquisition",
+      "publishedAt": "2026-11-06T17:57:21+00:00",
+      "source": "Game Developer",
+      "category": "行业媒体"
+    },
+    {
+      "title": "He's not much, but this little dude is starting to grow on me.🌱",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpj489/hes_not_much_but_this_little_dude_is_starting_to/",
+      "publishedAt": "2026-11-06T17:44:40+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Please destroy my Brotato-inspired web game. It keeps getting rejected by CrazyGames and I am completely stuck.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpgasa/please_destroy_my_brotatoinspired_web_game_it/",
+      "publishedAt": "2026-11-06T15:56:23+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How we keep the player visible in our isometric Unity RPG",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpg0qd/how_we_keep_the_player_visible_in_our_isometric/",
+      "publishedAt": "2026-11-06T15:45:02+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Setting up environmental sounds and attenuation curves (Unity & FMOD)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpf7my/setting_up_environmental_sounds_and_attenuation/",
+      "publishedAt": "2026-11-06T15:12:28+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "how to make my pixel art texture not smear...outwards when it gets far away? but also not have the textures be all grainy",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpf7k6/how_to_make_my_pixel_art_texture_not/",
+      "publishedAt": "2026-11-06T15:12:22+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Night scenes coming soon to my game",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpeclw/night_scenes_coming_soon_to_my_game/",
+      "publishedAt": "2026-11-06T14:36:35+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "MacBook Air M5 for Quest VR dev in Unity: how bad is life without Quest Link?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpe1dz/macbook_air_m5_for_quest_vr_dev_in_unity_how_bad/",
+      "publishedAt": "2026-11-06T14:23:13+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Been prototyping a property damage simulator. It feels good to just destroy stuff. Am I just frustrated :D",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xpds6p/been_prototyping_a_property_damage_simulator_it/",
+      "publishedAt": "2026-11-06T14:12:19+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "No meshes, just lines that hear the music",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xp8qrq/no_meshes_just_lines_that_hear_the_music/",
@@ -96,6 +278,20 @@
       "publishedAt": "2026-11-06T01:57:32+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
+    },
+    {
+      "title": "Our new XR e-book is here: Build XR with Unity: Meta XR",
+      "url": "https://unity.com/blog/our-new-xr-e-book-is-here-build-xr-with-unity:-meta-xr",
+      "publishedAt": "2026-11-06T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "How SEED renders a world players never stop building",
+      "url": "https://unity.com/blog/seed-unity-rendering-performance",
+      "publishedAt": "2026-11-06T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
     },
     {
       "title": "dont look :p",
