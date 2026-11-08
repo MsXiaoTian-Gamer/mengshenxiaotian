@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T06:50:45.634771+00:00",
+  "updatedAt": "2026-11-08T06:56:22.264277+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,181 @@
     }
   ],
   "items": [
+    {
+      "title": "This jellyfish is entirely lines, rendered at 4K in Unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqqzku/this_jellyfish_is_entirely_lines_rendered_at_4k/",
+      "publishedAt": "2026-11-08T05:39:54+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I really need animation feedback 😭",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqqq9s/i_really_need_animation_feedback/",
+      "publishedAt": "2026-11-08T05:24:43+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "What do you think about this drifting? Still not perfect at high speed so hard to balance, but at lower speed it feels perfect (and this car can also ride on walls lmao)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqqpub/what_do_you_think_about_this_drifting_still_not/",
+      "publishedAt": "2026-11-08T05:24:02+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Need opinions about A Ghost in my Horror Game that stays strapped at all times and shoots back.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqny17/need_opinions_about_a_ghost_in_my_horror_game/",
+      "publishedAt": "2026-11-08T02:48:12+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Imported Blender model looks staticy",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqnkii/imported_blender_model_looks_staticy/",
+      "publishedAt": "2026-11-08T02:27:49+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "What do you think?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqn9bd/what_do_you_think/",
+      "publishedAt": "2026-11-08T02:11:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Bakery GPU Lightmapper – Extremely dark indirect lighting in interior scene",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqm9fa/bakery_gpu_lightmapper_extremely_dark_indirect/",
+      "publishedAt": "2026-11-08T01:19:45+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "The first mission in my helicopter support game. Burn aliens to the ground and conquer the island!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqllk7/the_first_mission_in_my_helicopter_support_game/",
+      "publishedAt": "2026-11-08T00:45:43+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "What is the better way of making clothing for a character?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqlkuh/what_is_the_better_way_of_making_clothing_for_a/",
+      "publishedAt": "2026-11-08T00:44:43+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "The free demo for my first-person incremental game is out: open unclaimed cargo, sell what’s inside, automate everything",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqjcx7/the_free_demo_for_my_firstperson_incremental_game/",
+      "publishedAt": "2026-11-07T22:58:00+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Weird new Unity bug in builds",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqj09j/weird_new_unity_bug_in_builds/",
+      "publishedAt": "2026-11-07T22:41:00+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Staying with Unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqg7hp/staying_with_unity/",
+      "publishedAt": "2026-11-07T20:33:52+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Porting my old app to vr",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqfyuw/porting_my_old_app_to_vr/",
+      "publishedAt": "2026-11-07T20:23:09+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Uncertainty of Unity 7",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqexn7/uncertainty_of_unity_7/",
+      "publishedAt": "2026-11-07T19:38:35+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Fixed Camera movement",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqemda/fixed_camera_movement/",
+      "publishedAt": "2026-11-07T19:25:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "My solution for porting the game to controller support",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqcq02/my_solution_for_porting_the_game_to_controller/",
+      "publishedAt": "2026-11-07T18:04:50+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "what now",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqclfg/what_now/",
+      "publishedAt": "2026-11-07T17:59:55+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I wrapped my horde shooter into a torus: a 51 m tube, 1 km around, with the horde on the walls and ceiling",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqc7u1/i_wrapped_my_horde_shooter_into_a_torus_a_51_m/",
+      "publishedAt": "2026-11-07T17:43:46+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I’ve been working through the feedback you gave on my mixed reality wave shooter. Is it going in the right direction?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqb2jr/ive_been_working_through_the_feedback_you_gave_on/",
+      "publishedAt": "2026-11-07T16:55:44+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Incremental graveyard game is not a joke",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xq7qi1/incremental_graveyard_game_is_not_a_joke/",
+      "publishedAt": "2026-11-07T14:32:04+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Added destructible environments and much more to my shooter. Feedback on the feel is welcome!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xq7c7y/added_destructible_environments_and_much_more_to/",
+      "publishedAt": "2026-11-07T14:14:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Inspect outfit animations added 🎬",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xq70uy/inspect_outfit_animations_added/",
+      "publishedAt": "2026-11-07T13:59:54+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I got tired of digging through Gradle logs, so I made a tool that tells me why my Unity Android build failed",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xq4kbh/i_got_tired_of_digging_through_gradle_logs_so_i/",
+      "publishedAt": "2026-11-07T11:50:42+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "We're just 2 developers and we've spent the last 1.5 years building our dream co-op restaurant game in Unity. Here's Pizzapoly!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xq1nzv/were_just_2_developers_and_weve_spent_the_last_15/",
+      "publishedAt": "2026-11-07T08:41:55+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Shipped my first Unity game on iOS – the whole UI is UI Toolkit, and the trailer was recorded by the game itself",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xq0uht/shipped_my_first_unity_game_on_ios_the_whole_ui/",
+      "publishedAt": "2026-11-07T07:49:35+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "Help regrouping hair bones",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xpyol1/help_regrouping_hair_bones/",
