@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T06:56:22.264277+00:00",
+  "updatedAt": "2026-11-09T07:40:13.565062+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,160 @@
     }
   ],
   "items": [
+    {
+      "title": "HybridCLR gotchas: things that only break on device when hot-updating C# in IL2CPP builds",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrj157/hybridclr_gotchas_things_that_only_break_on/",
+      "publishedAt": "2026-11-09T05:07:01+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "First footage of my modern military FPS in Unity 6 + URP, before our playtest",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrhjkn/first_footage_of_my_modern_military_fps_in_unity/",
+      "publishedAt": "2026-11-09T03:46:29+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How much of what you know is memory retention versus truly understanding its function and/or purpose?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrgond/how_much_of_what_you_know_is_memory_retention/",
+      "publishedAt": "2026-11-09T03:01:40+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "New Build crashes after 5 seconds",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrf6i0/new_build_crashes_after_5_seconds/",
+      "publishedAt": "2026-11-09T01:45:57+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "[Unity 7 Alpha 16] URP is getting some nice features, the future is looking exciting!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrdjqg/unity_7_alpha_16_urp_is_getting_some_nice/",
+      "publishedAt": "2026-11-09T00:25:29+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Software/Explorer tool. ¿Displaying the folder itself as a preview image? outside of Unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xraskw/softwareexplorer_tool_displaying_the_folder/",
+      "publishedAt": "2026-11-08T22:18:07+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I've added Dual Screen support to my game!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr8lom/ive_added_dual_screen_support_to_my_game/",
+      "publishedAt": "2026-11-08T20:43:22+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Testing game mechanics....",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr6rlc/testing_game_mechanics/",
+      "publishedAt": "2026-11-08T19:27:12+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Created an Origami engine",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr5z28/created_an_origami_engine/",
+      "publishedAt": "2026-11-08T18:55:26+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Flickering or no depth? Perspective vs orthographic camera in my 3D pixel art game, any advice?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr5xno/flickering_or_no_depth_perspective_vs/",
+      "publishedAt": "2026-11-08T18:53:50+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Anyone else hesitant to show their game/progress publicly?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr4veo/anyone_else_hesitant_to_show_their_gameprogress/",
+      "publishedAt": "2026-11-08T18:10:14+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I've been trying to get 3D pixel art looking like t3ssel8r's in Unity. Here's where it's at",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr2cor/ive_been_trying_to_get_3d_pixel_art_looking_like/",
+      "publishedAt": "2026-11-08T16:26:35+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Can somebody help me with a pickup/carry interaction system?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr06u3/can_somebody_help_me_with_a_pickupcarry/",
+      "publishedAt": "2026-11-08T14:52:31+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Error when building a VRChat avatar",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr041t/error_when_building_a_vrchat_avatar/",
+      "publishedAt": "2026-11-08T14:48:53+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "When you bomb in my comedy deckbuilder, the crowd lets you know",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xr01y6/when_you_bomb_in_my_comedy_deckbuilder_the_crowd/",
+      "publishedAt": "2026-11-08T14:46:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Juicy typewritters",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqzr03/juicy_typewritters/",
+      "publishedAt": "2026-11-08T14:31:59+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I think I overdid my game's main menu....",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqyy9l/i_think_i_overdid_my_games_main_menu/",
+      "publishedAt": "2026-11-08T13:54:31+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I’m making a first-person Data Center Simulator. Would you buy it on Steam? Feedback wanted on the menu, loading screen, first level and pause menu",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqx0n4/im_making_a_firstperson_data_center_simulator/",
+      "publishedAt": "2026-11-08T12:10:55+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Croquis 1.5 now available: faster, multi object editing, streamlined baking and more",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqwiel/croquis_15_now_available_faster_multi_object/",
+      "publishedAt": "2026-11-08T11:40:33+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "What did your start process look like?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqvpkp/what_did_your_start_process_look_like/",
+      "publishedAt": "2026-11-08T10:48:37+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Can the build run deleting all files problem happen if you place a folder inside a large directory?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqve97/can_the_build_run_deleting_all_files_problem/",
+      "publishedAt": "2026-11-08T10:27:29+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Editing lit shader broke my whole project, you have to love unity for allowing somehting like this without warninr that it will break project",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xqupq7/editing_lit_shader_broke_my_whole_project_you/",
+      "publishedAt": "2026-11-08T09:42:25+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "This jellyfish is entirely lines, rendered at 4K in Unity",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xqqzku/this_jellyfish_is_entirely_lines_rendered_at_4k/",
