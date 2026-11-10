@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T07:40:13.565062+00:00",
+  "updatedAt": "2026-11-10T08:00:22.773710+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,181 @@
     }
   ],
   "items": [
+    {
+      "title": "Aliquo Die - Visual style in Unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsfpj2/aliquo_die_visual_style_in_unity/",
+      "publishedAt": "2026-11-10T06:25:16+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Any idea how to fix this error? it's stopping me from pushing to the repository",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsfgxl/any_idea_how_to_fix_this_error_its_stopping_me/",
+      "publishedAt": "2026-11-10T06:11:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Lighting up a voxel city with nothing but glowing lines in Unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xse4tb/lighting_up_a_voxel_city_with_nothing_but_glowing/",
+      "publishedAt": "2026-11-10T04:56:17+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "stress testing 10000 zombies in my psx game prototype",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsbv8t/stress_testing_10000_zombies_in_my_psx_game/",
+      "publishedAt": "2026-11-10T02:58:37+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Concave wave inside volume",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsagtq/concave_wave_inside_volume/",
+      "publishedAt": "2026-11-10T01:50:48+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I added a Geometry Scan Effect to my project in Unity 6 using URP.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs97hj/i_added_a_geometry_scan_effect_to_my_project_in/",
+      "publishedAt": "2026-11-10T00:50:33+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I made a sheep-shearing mechanic in Unity. Here’s how it looks in Shear It! 🐑",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs7f8e/i_made_a_sheepshearing_mechanic_in_unity_heres/",
+      "publishedAt": "2026-11-09T23:32:17+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Moving back to version 2019?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs7c46/moving_back_to_version_2019/",
+      "publishedAt": "2026-11-09T23:28:27+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I wanted to share my 6 month development process, here are some Levels from my game. Do you have any suggestions regarding the light?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs5c67/i_wanted_to_share_my_6_month_development_process/",
+      "publishedAt": "2026-11-09T22:07:46+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Taking a lil' boat ride in my open world mushroom picking game that takes place in a reimagined Iceland!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs4dmt/taking_a_lil_boat_ride_in_my_open_world_mushroom/",
+      "publishedAt": "2026-11-09T21:30:09+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I used Unity's Particle System to give my Water character a constantly flowing head",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs2zpq/i_used_unitys_particle_system_to_give_my_water/",
+      "publishedAt": "2026-11-09T20:37:03+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Neat cigar smoke effect done with Unity's VFX graph and EmberGen",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs2isw/neat_cigar_smoke_effect_done_with_unitys_vfx/",
+      "publishedAt": "2026-11-09T20:18:43+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Development progression of my game over the last 10 months",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs1y1l/development_progression_of_my_game_over_the_last/",
+      "publishedAt": "2026-11-09T19:57:28+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "UITK world-space editing using \"Edit Mode\" like ProBuilder and Splines",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs1m2n/uitk_worldspace_editing_using_edit_mode_like/",
+      "publishedAt": "2026-11-09T19:44:55+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Does my game look too ugly? Will this art style cut it for casual Web target?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs1l5d/does_my_game_look_too_ugly_will_this_art_style/",
+      "publishedAt": "2026-11-09T19:43:58+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "It's uncanny to see anti-aliasing in the scene view of Unity, after 10 years of using it daily.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs10xw/its_uncanny_to_see_antialiasing_in_the_scene_view/",
+      "publishedAt": "2026-11-09T19:23:31+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Should I add hands or keep the floating items?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs0z9s/should_i_add_hands_or_keep_the_floating_items/",
+      "publishedAt": "2026-11-09T19:21:52+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Harvest Garden Farm II - Handling 450+ growth-stage variations without breaking the draw call budget (Technical breakdown + LOD workflow)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs0sdm/harvest_garden_farm_ii_handling_450_growthstage/",
+      "publishedAt": "2026-11-09T19:15:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Anyone using Unity 6.6 for production?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xs02m2/anyone_using_unity_66_for_production/",
+      "publishedAt": "2026-11-09T18:48:45+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Unity 6.3 Performance Help",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrzc5y/unity_63_performance_help/",
+      "publishedAt": "2026-11-09T18:21:43+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "is creating game engine with API that matches unity so unity projects could be ported to new game engine is it legal ? (not reverse engineered or de compiled )",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrz6yc/is_creating_game_engine_with_api_that_matches/",
+      "publishedAt": "2026-11-09T18:16:24+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Tip: you don’t need to model construction stages. One clip shader builds all 111 of my buildings",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrwn4t/tip_you_dont_need_to_model_construction_stages/",
+      "publishedAt": "2026-11-09T16:43:55+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I know water shaders are an old topic, but here is mine",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrvy8d/i_know_water_shaders_are_an_old_topic_but_here_is/",
+      "publishedAt": "2026-11-09T16:18:18+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "New update about the mobile game that i'm currently building , what do you guys think?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xrv1p4/new_update_about_the_mobile_game_that_im/",
+      "publishedAt": "2026-11-09T15:45:32+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "One year after release: 1,000+ copies sold after six quiet months. What worked for me",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xru2wm/one_year_after_release_1000_copies_sold_after_six/",
+      "publishedAt": "2026-11-09T15:08:29+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "HybridCLR gotchas: things that only break on device when hot-updating C# in IL2CPP builds",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xrj157/hybridclr_gotchas_things_that_only_break_on/",
