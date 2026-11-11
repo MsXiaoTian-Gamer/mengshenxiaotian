@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T08:00:22.773710+00:00",
+  "updatedAt": "2026-11-11T07:30:29.935718+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,181 @@
     }
   ],
   "items": [
+    {
+      "title": "[ VST2/3 | CLAP audio plugins ] (* Windows only & not all plugins are distributable with builds...)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xt5t49/vst23_clap_audio_plugins_windows_only_not_all/",
+      "publishedAt": "2026-11-11T02:17:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "9 Months Progress of My Game",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xt53uv/9_months_progress_of_my_game/",
+      "publishedAt": "2026-11-11T01:43:18+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Adding procedural animations to my colony sim",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xt4mgp/adding_procedural_animations_to_my_colony_sim/",
+      "publishedAt": "2026-11-11T01:20:01+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I made a tool that generates pixel-art VFX in seconds: explosions, fire, magic, impacts → sprite sheets for any engine",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xt4jul/i_made_a_tool_that_generates_pixelart_vfx_in/",
+      "publishedAt": "2026-11-11T01:16:41+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Hey Everyone Today I wanted to share a little 6-month development video of my game, The Song Must Go On, which I've been working on as a solo developer! Last time I shared only Pictures :D. Do you have any suggestions Regarding UI what can be changed ?! Placement of \"Notes\".",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xt3f6c/hey_everyone_today_i_wanted_to_share_a_little/",
+      "publishedAt": "2026-11-11T00:24:45+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I updated my Ori-inspired water system from last year",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xt2mpm/i_updated_my_oriinspired_water_system_from_last/",
+      "publishedAt": "2026-11-10T23:51:08+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How to put multiple characters on a multi-player game",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xt0wum/how_to_put_multiple_characters_on_a_multiplayer/",
+      "publishedAt": "2026-11-10T22:36:27+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Car door flickers at edge of screen",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xt08pq/car_door_flickers_at_edge_of_screen/",
+      "publishedAt": "2026-11-10T22:08:21+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Confused about things from diffrent versions of unity work with diffrent versions.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsz5xh/confused_about_things_from_diffrent_versions_of/",
+      "publishedAt": "2026-11-10T21:24:32+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "My procedural forest looks pretty rough. How can I make it better?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsxnqm/my_procedural_forest_looks_pretty_rough_how_can_i/",
+      "publishedAt": "2026-11-10T20:25:22+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Silly bug, four layers deep, with the most simple fix possible - STORY TIME",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsw7w3/silly_bug_four_layers_deep_with_the_most_simple/",
+      "publishedAt": "2026-11-10T19:29:44+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "is it still considered hard to make online games",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsvnbk/is_it_still_considered_hard_to_make_online_games/",
+      "publishedAt": "2026-11-10T19:07:30+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Before I build any further, I’d love honest feedback on my Viking survival concept",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xstsia/before_i_build_any_further_id_love_honest/",
+      "publishedAt": "2026-11-10T17:59:09+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "New Screenshots",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xstbhq/new_screenshots/",
+      "publishedAt": "2026-11-10T17:41:12+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Found some remains of my debugging",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsrv89/found_some_remains_of_my_debugging/",
+      "publishedAt": "2026-11-10T16:46:41+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "DOTS: Entity connected to another entity?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsrt38/dots_entity_connected_to_another_entity/",
+      "publishedAt": "2026-11-10T16:44:24+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "7 things that bit me building an online game with NGO 2.x + Multiplayer Services (Sessions, Relay, Vivox)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsqqgc/7_things_that_bit_me_building_an_online_game_with/",
+      "publishedAt": "2026-11-10T16:04:23+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Made some improvements to our monster's movement based on feedback. How's it looking now?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsnzsh/made_some_improvements_to_our_monsters_movement/",
+      "publishedAt": "2026-11-10T14:16:10+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "My tutorial on how to add flipbook animations to your UI with a simple shadergraph",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsns80/my_tutorial_on_how_to_add_flipbook_animations_to/",
+      "publishedAt": "2026-11-10T14:07:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Why do RPCs require the Rpc suffix?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsnd99/why_do_rpcs_require_the_rpc_suffix/",
+      "publishedAt": "2026-11-10T13:49:21+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Trying to replace prefab model",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsnab5/trying_to_replace_prefab_model/",
+      "publishedAt": "2026-11-10T13:45:43+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Your Unity game pays 3-4 MB for UI Toolkit even if you never use it",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsn5qz/your_unity_game_pays_34_mb_for_ui_toolkit_even_if/",
+      "publishedAt": "2026-11-10T13:40:09+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Adding post-battle choices to my creature RPG raised a design problem I hadn’t considered",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsmsrt/adding_postbattle_choices_to_my_creature_rpg/",
+      "publishedAt": "2026-11-10T13:23:53+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Yule Dads - Tony Hawk meets Jingle All The Way in our 8 player party game. Built with Unity 6.6",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsm065/yule_dads_tony_hawk_meets_jingle_all_the_way_in/",
+      "publishedAt": "2026-11-10T12:46:21+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Added a cat-petting feature to my cat game!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xsl25f/added_a_catpetting_feature_to_my_cat_game/",
+      "publishedAt": "2026-11-10T11:59:16+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "Aliquo Die - Visual style in Unity",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xsfpj2/aliquo_die_visual_style_in_unity/",
@@ -68,6 +243,20 @@
       "publishedAt": "2026-11-10T00:50:33+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
+    },
+    {
+      "title": "10 teams, 3 programs, and 7 years: Efficiently managing 3D assets in defense training",
+      "url": "https://unity.com/blog/3d-asset-management-defense-training",
+      "publishedAt": "2026-11-10T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "10 tips for organizing your first video game project with AI",
+      "url": "https://unity.com/blog/how-to-organize-a-game-project-with-ai",
+      "publishedAt": "2026-11-10T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
     },
     {
       "title": "I made a sheep-shearing mechanic in Unity. Here’s how it looks in Shear It! 🐑",
