@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T07:30:29.935718+00:00",
+  "updatedAt": "2026-11-12T07:58:04.785279+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,181 @@
     }
   ],
   "items": [
+    {
+      "title": "I passed the Unity Certified Associate: Game Developer exam. Here's my experience.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu604l/i_passed_the_unity_certified_associate_game/",
+      "publishedAt": "2026-11-12T06:57:27+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I Release my game called Beellionaire",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu3xlp/i_release_my_game_called_beellionaire/",
+      "publishedAt": "2026-11-12T04:59:20+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Did Unity stop accepting affiliate applications?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu3xiy/did_unity_stop_accepting_affiliate_applications/",
+      "publishedAt": "2026-11-12T04:59:13+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Training Mode in My Tekken-Styled Duck Fighting Game! 🦆🥊",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu2570/training_mode_in_my_tekkenstyled_duck_fighting/",
+      "publishedAt": "2026-11-12T03:24:56+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "[Hiring] I am a writer / game director looking to payout / partner with an existing game dev for their already existing, completed work!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu06cy/hiring_i_am_a_writer_game_director_looking_to/",
+      "publishedAt": "2026-11-12T01:49:02+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "DEMO is LIVE. Try out today Interstellar Consignment Shop",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xty8am/demo_is_live_try_out_today_interstellar/",
+      "publishedAt": "2026-11-12T00:17:34+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "in light of the recent controversy...",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtx7o2/in_light_of_the_recent_controversy/",
+      "publishedAt": "2026-11-11T23:32:58+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Here I’ll show you how to change the music in the pizzeria",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtv4tx/here_ill_show_you_how_to_change_the_music_in_the/",
+      "publishedAt": "2026-11-11T22:05:03+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "After 1.5 years of development, my \"live your life\" deckbuilder game is finally out! 🎲⏳",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtq8o5/after_15_years_of_development_my_live_your_life/",
+      "publishedAt": "2026-11-11T18:55:02+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "After months of development in Unity 6 URP, I finally released my first survival horror game!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtq4op/after_months_of_development_in_unity_6_urp_i/",
+      "publishedAt": "2026-11-11T18:50:51+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Foldvalley - Little Touches to Make a Game Story Personal",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtpiqn/foldvalley_little_touches_to_make_a_game_story/",
+      "publishedAt": "2026-11-11T18:27:55+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How do you handle floating fragments in a simple destructible environment?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xto39y/how_do_you_handle_floating_fragments_in_a_simple/",
+      "publishedAt": "2026-11-11T17:35:41+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "There will be fog, and water, and the water stream will push the fog, and it will be great",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtnhia/there_will_be_fog_and_water_and_the_water_stream/",
+      "publishedAt": "2026-11-11T17:13:50+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Two different sniper scope mechanics. Which one feels better?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtnfxf/two_different_sniper_scope_mechanics_which_one/",
+      "publishedAt": "2026-11-11T17:12:13+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "how do i make an image using a script?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtmkms/how_do_i_make_an_image_using_a_script/",
+      "publishedAt": "2026-11-11T16:40:51+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "What do you think about this UI design? I'm creating a UI kit, how can I make it sellable?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtl7cr/what_do_you_think_about_this_ui_design_im/",
+      "publishedAt": "2026-11-11T15:49:52+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I implemented a dynamic breathing system in Unity that reacts to player movement and enemy detection!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtkkl3/i_implemented_a_dynamic_breathing_system_in_unity/",
+      "publishedAt": "2026-11-11T15:25:18+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Why didn't my asset sell?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtkb32/why_didnt_my_asset_sell/",
+      "publishedAt": "2026-11-11T15:15:08+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I’m a mobile game developer, and I finally built a tool that helps me spot rendering bottlenecks right in Unity’s Scene view.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtk4hb/im_a_mobile_game_developer_and_i_finally_built_a/",
+      "publishedAt": "2026-11-11T15:08:04+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I'm a solo dev and I built an online FPS in Unity. Here's the first trailer.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtk0by/im_a_solo_dev_and_i_built_an_online_fps_in_unity/",
+      "publishedAt": "2026-11-11T15:03:25+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How to make a good gameplay trailer for your game",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtjd4e/how_to_make_a_good_gameplay_trailer_for_your_game/",
+      "publishedAt": "2026-11-11T14:37:34+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I created tool for myself to make racetracks/roads fast and simple, what do you think?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtipbi/i_created_tool_for_myself_to_make_racetracksroads/",
+      "publishedAt": "2026-11-11T14:10:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Full Screen Shader / Render Feature Unity 6 (Changes, not working and how to fix it)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xthpk4/full_screen_shader_render_feature_unity_6_changes/",
+      "publishedAt": "2026-11-11T13:27:02+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How to create horizont with huge environment objects on UnityURP",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xth18x/how_to_create_horizont_with_huge_environment/",
+      "publishedAt": "2026-11-11T12:55:42+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Teaching spiders to respect personal space (SDF swarm avoidance)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xtgqmz/teaching_spiders_to_respect_personal_space_sdf/",
+      "publishedAt": "2026-11-11T12:40:49+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "[ VST2/3 | CLAP audio plugins ] (* Windows only & not all plugins are distributable with builds...)",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xt5t49/vst23_clap_audio_plugins_windows_only_not_all/",
@@ -61,6 +236,13 @@
       "publishedAt": "2026-11-11T00:24:45+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
+    },
+    {
+      "title": "The gods are dead. But not forever: Inside Azra Games’ UnGodly",
+      "url": "https://unity.com/blog/ungodly-azra-games-mobile-rpg-unity",
+      "publishedAt": "2026-11-11T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
     },
     {
       "title": "I updated my Ori-inspired water system from last year",
