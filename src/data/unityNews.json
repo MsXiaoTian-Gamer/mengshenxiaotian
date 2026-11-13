@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T07:58:04.785279+00:00",
+  "updatedAt": "2026-11-13T07:38:00.939605+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,181 @@
     }
   ],
   "items": [
+    {
+      "title": "My first Teaser For My Game \"CHRONO\" ! Dark Fantasy Adventure !",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xv1i4b/my_first_teaser_for_my_game_chrono_dark_fantasy/",
+      "publishedAt": "2026-11-13T07:25:14+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "So my single man game released on steam with a new arena (Unity3d-URP)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xv10yd/so_my_single_man_game_released_on_steam_with_a/",
+      "publishedAt": "2026-11-13T06:56:07+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I was posting about my tool before, it was just about snapping roads together, i heard it was slow, so i upgraded it and now its generating whole racetracks with barriers, waypoints, terrain. It can also save tracks in code and it is all superfast, with few click original racetrack created.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xv0via/i_was_posting_about_my_tool_before_it_was_just/",
+      "publishedAt": "2026-11-13T06:47:01+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Call of Duty Mobile reverse engineering ,300+ characters",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xv052e/call_of_duty_mobile_reverse_engineering_300/",
+      "publishedAt": "2026-11-13T06:03:36+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Unity Virtual Geometry ULTRA forest 407.652 BILLION ANIMATED triangles foliage stress test",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xuurwd/unity_virtual_geometry_ultra_forest_407652/",
+      "publishedAt": "2026-11-13T01:27:56+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How do you debug Android-only UI input bugs when the editor behaves normally?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xuu0vy/how_do_you_debug_androidonly_ui_input_bugs_when/",
+      "publishedAt": "2026-11-13T00:52:33+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I am making a coop game called CTRL",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xurl0r/i_am_making_a_coop_game_called_ctrl/",
+      "publishedAt": "2026-11-12T23:03:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Don't look!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xuqav3/dont_look/",
+      "publishedAt": "2026-11-12T22:08:56+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Folding tutorials take shape, folding engine can now show arrows and creases",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xupw4f/folding_tutorials_take_shape_folding_engine_can/",
+      "publishedAt": "2026-11-12T21:52:43+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "URP forest: draw calls are solved, near-camera triangles are not. How do you handle tree shadows and LOD at 25k+ trees?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xup5r8/urp_forest_draw_calls_are_solved_nearcamera/",
+      "publishedAt": "2026-11-12T21:23:55+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Zonbi ゾンビ - A story-based stealth game 🧟‍♂️",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xunake/zonbi_ゾンビ_a_storybased_stealth_game/",
+      "publishedAt": "2026-11-12T20:09:49+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "[HELP] Looking for a free 3D art gallery room model for a school project!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xulw0t/help_looking_for_a_free_3d_art_gallery_room_model/",
+      "publishedAt": "2026-11-12T19:17:46+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Is it Possible to apply a fullscreen pass render feature to MR Pass through?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xuitth/is_it_possible_to_apply_a_fullscreen_pass_render/",
+      "publishedAt": "2026-11-12T17:25:07+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Build a Quest System in Unity 6: Create and Accept Quests (Part 1)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xui8x5/build_a_quest_system_in_unity_6_create_and_accept/",
+      "publishedAt": "2026-11-12T17:03:59+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Glowing heat sinks in HDRP: red emission over grey metal kept going pink, so the albedo darkens as it heats up",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xuhmvn/glowing_heat_sinks_in_hdrp_red_emission_over_grey/",
+      "publishedAt": "2026-11-12T16:41:32+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Are 2.5D games attractive to potential gamers?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xuei9v/are_25d_games_attractive_to_potential_gamers/",
+      "publishedAt": "2026-11-12T14:41:48+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I built a time-travel debugger for Unity that lets you inspect previous frame states",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xucn7a/i_built_a_timetravel_debugger_for_unity_that_lets/",
+      "publishedAt": "2026-11-12T13:22:54+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Polished up the core systems for my 2D survival RTS in Unity URP, here's a quick 30-second look at base building, squad micro-manangement, and outpost raids (sped up)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xubxwd/polished_up_the_core_systems_for_my_2d_survival/",
+      "publishedAt": "2026-11-12T12:50:36+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Game doesn't respond to Xbox Elite controller",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xubxi7/game_doesnt_respond_to_xbox_elite_controller/",
+      "publishedAt": "2026-11-12T12:50:01+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Here's Some Progress I've Made on My Dragon Adventure Game!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xuaw4b/heres_some_progress_ive_made_on_my_dragon/",
+      "publishedAt": "2026-11-12T11:57:13+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "HDRP + DLSS on DX12 leaks ~190 MB of VRAM on every scene reload (minimal repro, numbers inside)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xuaspb/hdrp_dlss_on_dx12_leaks_190_mb_of_vram_on_every/",
+      "publishedAt": "2026-11-12T11:51:41+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I'm working on a game where you have to handpaint a field of flower",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu9qr9/im_working_on_a_game_where_you_have_to_handpaint/",
+      "publishedAt": "2026-11-12T10:50:49+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I made some changes to my game's map UI. Does it look better now?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu90pf/i_made_some_changes_to_my_games_map_ui_does_it/",
+      "publishedAt": "2026-11-12T10:08:00+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How can we best show our disapproval for the possible buyout?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu8nug/how_can_we_best_show_our_disapproval_for_the/",
+      "publishedAt": "2026-11-12T09:45:58+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "#8 Player Combat - Let's Make a FPS Game in Unity!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xu7k7d/8_player_combat_lets_make_a_fps_game_in_unity/",
+      "publishedAt": "2026-11-12T08:34:30+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "I passed the Unity Certified Associate: Game Developer exam. Here's my experience.",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xu604l/i_passed_the_unity_certified_associate_game/",
@@ -607,6 +782,13 @@
       "publishedAt": "2026-11-09T00:25:29+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
+    },
+    {
+      "title": "“Follow the fun”: a crowdfunding Q&A with Catino Town",
+      "url": "https://unity.com/blog/funding-unity-game-catino-town",
+      "publishedAt": "2026-11-09T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
     },
     {
       "title": "Software/Explorer tool. ¿Displaying the folder itself as a preview image? outside of Unity",
