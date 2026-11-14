@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T07:38:00.939605+00:00",
+  "updatedAt": "2026-11-14T07:22:35.143419+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,181 @@
     }
   ],
   "items": [
+    {
+      "title": "Building my project for Mac for a friend, we can't figure out how to open the dang game on his Mac",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvtpty/building_my_project_for_mac_for_a_friend_we_cant/",
+      "publishedAt": "2026-11-14T04:56:46+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "New vibecoded Unity Hub is now a native app",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvt0bm/new_vibecoded_unity_hub_is_now_a_native_app/",
+      "publishedAt": "2026-11-14T04:18:01+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I never planned a desktop mode for my game. But some Reddit comments changed that. Today the game launches.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvs5sg/i_never_planned_a_desktop_mode_for_my_game_but/",
+      "publishedAt": "2026-11-14T03:32:09+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Made some updates to my grass system",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvr6dk/made_some_updates_to_my_grass_system/",
+      "publishedAt": "2026-11-14T02:41:30+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "It’s been 10 months, but it’s finally becoming a reality.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvqlih/its_been_10_months_but_its_finally_becoming_a/",
+      "publishedAt": "2026-11-14T02:12:36+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Fully procedural walk for a 6 m bipedal machine, no animation clips",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvq09o/fully_procedural_walk_for_a_6_m_bipedal_machine/",
+      "publishedAt": "2026-11-14T01:42:22+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Made a deck building rougelike where luck and fate is the main mechanic! (For Unity Game Jam 2026)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvpfxy/made_a_deck_building_rougelike_where_luck_and/",
+      "publishedAt": "2026-11-14T01:14:13+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Gather your friends for this new social deduction game: Gang Birds! (4-10 Players)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvp1bs/gather_your_friends_for_this_new_social_deduction/",
+      "publishedAt": "2026-11-14T00:54:49+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "3 years solo in Unity 6: the gameplay trailer for my action RPG with 4 realms and 500+ skill nodes",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvo4h0/3_years_solo_in_unity_6_the_gameplay_trailer_for/",
+      "publishedAt": "2026-11-14T00:11:31+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "AS A thank message for you guys Mobile Optimize-Free Low Poly Cars The Pack Have 10 review( 5 Stars) On unity assets store",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvnfwi/as_a_thank_message_for_you_guys_mobile/",
+      "publishedAt": "2026-11-13T23:41:41+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I made an Astroneer-like example scene for my movement toolkit.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvk682/i_made_an_astroneerlike_example_scene_for_my/",
+      "publishedAt": "2026-11-13T21:23:07+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "does anyone know if an oscilloscope shader exists?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvk2d1/does_anyone_know_if_an_oscilloscope_shader_exists/",
+      "publishedAt": "2026-11-13T21:18:56+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Packs / locations for semi-realistic cars with interiors?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvjs7g/packs_locations_for_semirealistic_cars_with/",
+      "publishedAt": "2026-11-13T21:08:00+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "URP bug, that fixed by Big Walk devs with 10 lines of code",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvjoan/urp_bug_that_fixed_by_big_walk_devs_with_10_lines/",
+      "publishedAt": "2026-11-13T21:03:39+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I built a fake desktop running multiple card-game instances entirely in uGUI: 3000+ RectTransforms updating at 60 FPS",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvgsiq/i_built_a_fake_desktop_running_multiple_cardgame/",
+      "publishedAt": "2026-11-13T19:11:45+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Full playthrough of the machine room in my dark sci-fi FPS",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xverb8/full_playthrough_of_the_machine_room_in_my_dark/",
+      "publishedAt": "2026-11-13T17:56:03+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Made 5 growth stages for 18 low poly flowers, here's how they look in unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvctsr/made_5_growth_stages_for_18_low_poly_flowers/",
+      "publishedAt": "2026-11-13T16:45:23+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Unite Tokyo Keynote and Roadmap are streaming live on YouTube (Nov 16 PT / Nov 17 JST)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvcmvy/unite_tokyo_keynote_and_roadmap_are_streaming/",
+      "publishedAt": "2026-11-13T16:37:58+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "After a year of development, I'm finally cutting together a trailer for my side project. At this point I've watched the trailer so many times that I can't judge it objectively anymore. Does the pacing feel right? Do any parts drag, move too fast or overstay their welcome? Would it interest you?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvan5y/after_a_year_of_development_im_finally_cutting/",
+      "publishedAt": "2026-11-13T15:22:12+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "My brother and I thought making a game from our bedroom would be a fun little project. Well, that little project took 4+ years lol! I finally have a release date: March 7, 2027! NEVER GIVE UP",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvaaro/my_brother_and_i_thought_making_a_game_from_our/",
+      "publishedAt": "2026-11-13T15:08:12+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Gave my chickens a proper landing after they get launched. He's fine. Mostly.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xva69g/gave_my_chickens_a_proper_landing_after_they_get/",
+      "publishedAt": "2026-11-13T15:03:08+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Interior and Exterior Sound Transition (Unity & FMOD)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xv9lle/interior_and_exterior_sound_transition_unity_fmod/",
+      "publishedAt": "2026-11-13T14:40:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I was working on shaders for our game, got a little carried away, and ended up with a multiverse.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xv8jx2/i_was_working_on_shaders_for_our_game_got_a/",
+      "publishedAt": "2026-11-13T13:57:32+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "StoneEra is out now in Early Access on Steam — watch the trailer!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xv7oax/stoneera_is_out_now_in_early_access_on_steam/",
+      "publishedAt": "2026-11-13T13:19:16+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "All the updates we did on our rally game!!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xv7ap3/all_the_updates_we_did_on_our_rally_game/",
+      "publishedAt": "2026-11-13T13:02:08+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "My first Teaser For My Game \"CHRONO\" ! Dark Fantasy Adventure !",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xv1i4b/my_first_teaser_for_my_game_chrono_dark_fantasy/",
@@ -243,6 +418,13 @@
       "publishedAt": "2026-11-12T00:17:34+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
+    },
+    {
+      "title": "Rules, states, and win conditions in video games: a guide",
+      "url": "https://unity.com/blog/video-game-rules-states-win-conditions",
+      "publishedAt": "2026-11-12T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
     },
     {
       "title": "in light of the recent controversy...",
