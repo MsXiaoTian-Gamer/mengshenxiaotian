@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T07:22:35.143419+00:00",
+  "updatedAt": "2026-11-15T07:35:01.414242+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,153 @@
     }
   ],
   "items": [
+    {
+      "title": "Is the Unity Asset Store dying for small publishers? What's happening",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwpb73/is_the_unity_asset_store_dying_for_small/",
+      "publishedAt": "2026-11-15T07:22:08+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Saving game data to a file?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwp88b/saving_game_data_to_a_file/",
+      "publishedAt": "2026-11-15T07:17:18+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "PBJ, the new ProBuilder, is finally ready to share. Real, rapid Level Design, for the Hammer/Quake folks. Love to get your thoughts!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwo4m1/pbj_the_new_probuilder_is_finally_ready_to_share/",
+      "publishedAt": "2026-11-15T06:11:27+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Resistor: I Made Robots Fall Apart (Devlog #2)",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwj6fu/resistor_i_made_robots_fall_apart_devlog_2/",
+      "publishedAt": "2026-11-15T01:41:49+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I made a horror game where you have to say the spell out loud using your microphone",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwe6ry/i_made_a_horror_game_where_you_have_to_say_the/",
+      "publishedAt": "2026-11-14T21:45:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Voxyte, my Voxel Engine for Unity, is finally out. Here’s a cinematic clip I made with it",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwdjiy/voxyte_my_voxel_engine_for_unity_is_finally_out/",
+      "publishedAt": "2026-11-14T21:16:25+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Game items. No AI. Cinema4D, Houdini, Substance Painter, Unity URP",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwdedr/game_items_no_ai_cinema4d_houdini_substance/",
+      "publishedAt": "2026-11-14T21:10:08+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I’ve been trying to find a way to add a custom run/walk/idle animation I created to a VRC avatar.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwcoh4/ive_been_trying_to_find_a_way_to_add_a_custom/",
+      "publishedAt": "2026-11-14T20:38:43+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "After 10+ years, I've turned my favorite Warcraft III mod into a standalone game built in Unity!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw9hpl/after_10_years_ive_turned_my_favorite_warcraft/",
+      "publishedAt": "2026-11-14T18:26:20+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Working on an iris transition for my deduction game. How does it feel?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw8ldf/working_on_an_iris_transition_for_my_deduction/",
+      "publishedAt": "2026-11-14T17:50:29+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Our main menu rebuilds a saved island tile by tile. The tricky part was making it stop",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw86rm/our_main_menu_rebuilds_a_saved_island_tile_by/",
+      "publishedAt": "2026-11-14T17:34:03+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Experimenting with spatial audio",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw7ash/experimenting_with_spatial_audio/",
+      "publishedAt": "2026-11-14T16:58:58+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "MicroVerse",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw70xw/microverse/",
+      "publishedAt": "2026-11-14T16:47:35+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Drive around Lunar Roving Vehicle",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw576g/drive_around_lunar_roving_vehicle/",
+      "publishedAt": "2026-11-14T15:32:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Our team has just released and submitted our game for the Official Unity Game Jam! Feedbacks are welcome!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw4d0i/our_team_has_just_released_and_submitted_our_game/",
+      "publishedAt": "2026-11-14T14:56:42+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Fired up",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw3tcg/fired_up/",
+      "publishedAt": "2026-11-14T14:32:27+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "My Real-time weather system for Unity URP",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw3s5r/my_realtime_weather_system_for_unity_urp/",
+      "publishedAt": "2026-11-14T14:31:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "More than 50 pages about vehicle physics for free!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw3s3n/more_than_50_pages_about_vehicle_physics_for_free/",
+      "publishedAt": "2026-11-14T14:30:59+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "unity_access v0.10-beta Released – A Screen Reader Accessibility Plugin for the Unity Editor",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw1dla/unity_access_v010beta_released_a_screen_reader/",
+      "publishedAt": "2026-11-14T12:35:39+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "What is causing this grungy artifact on some 3D models after light baking?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xw0jpg/what_is_causing_this_grungy_artifact_on_some_3d/",
+      "publishedAt": "2026-11-14T11:49:48+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Our New Running Animation After Feedbacks",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xvwz4y/our_new_running_animation_after_feedbacks/",
+      "publishedAt": "2026-11-14T08:06:09+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "Building my project for Mac for a friend, we can't figure out how to open the dang game on his Mac",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xvtpty/building_my_project_for_mac_for_a_friend_we_cant/",
@@ -1977,13 +2124,6 @@
       "title": "Keeping a VR giant fresh: Gorilla Tag’s two-week live ops cadence",
       "url": "https://unity.com/blog/another-axiom-gorilla-tag",
       "publishedAt": "2026-08-18T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Rendering at scale: Efficient strategies for massive object counts",
-      "url": "https://unity.com/blog/rendering-at-scale-efficient-strategies-for-massive-object-counts",
-      "publishedAt": "2026-08-14T00:00:00+00:00",
       "source": "Unity 官方博客",
       "category": "官方资讯"
     }
