@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T07:35:01.414242+00:00",
+  "updatedAt": "2026-11-16T07:40:18.956216+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,181 @@
     }
   ],
   "items": [
+    {
+      "title": "Weird Refraction Artifacts at Intersections Between Transparent Meshes",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxired/weird_refraction_artifacts_at_intersections/",
+      "publishedAt": "2026-11-16T06:59:50+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Flame thrower effect after almost 3 days of work.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxde8c/flame_thrower_effect_after_almost_3_days_of_work/",
+      "publishedAt": "2026-11-16T02:07:13+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I made a free multiplayer sci-fi survival game, and just pushed a big combat update",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxc83i/i_made_a_free_multiplayer_scifi_survival_game_and/",
+      "publishedAt": "2026-11-16T01:09:49+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Bnormal by Xiperius",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxasd7/bnormal_by_xiperius/",
+      "publishedAt": "2026-11-16T00:01:36+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Trailer for my game",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxa6zf/trailer_for_my_game/",
+      "publishedAt": "2026-11-15T23:35:19+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Made a tool so my worktrees can share one Unity editor, putting it out there in case it’s useful",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxa6vu/made_a_tool_so_my_worktrees_can_share_one_unity/",
+      "publishedAt": "2026-11-15T23:35:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Look at upcoming flight system for unity store: Fly by Mouse",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx90op/look_at_upcoming_flight_system_for_unity_store/",
+      "publishedAt": "2026-11-15T22:42:42+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Been tweaking the grappling hook in my game. Thoughts?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx8crl/been_tweaking_the_grappling_hook_in_my_game/",
+      "publishedAt": "2026-11-15T22:13:47+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Work, work... Do you like games that need you to do some resources management?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx56mv/work_work_do_you_like_games_that_need_you_to_do/",
+      "publishedAt": "2026-11-15T20:01:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "This is how I animate my characters. One state called \"PlayingAnimation\" and a script for setting and starting the animation. There is no transition in the controller. Very easy to add new animations and sequence them.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx5233/this_is_how_i_animate_my_characters_one_state/",
+      "publishedAt": "2026-11-15T19:56:47+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Stacked outlines, extrude and text animations for TextMeshPro, all in one draw call",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx3l5a/stacked_outlines_extrude_and_text_animations_for/",
+      "publishedAt": "2026-11-15T18:57:53+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I'm developing an arena combat game inspired by Crush Gear/BattleBots. Here's an early gameplay look!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx37mh/im_developing_an_arena_combat_game_inspired_by/",
+      "publishedAt": "2026-11-15T18:42:57+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Hi! I'm making a welding horror game, which mechanic is better? What would you add?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx2qli/hi_im_making_a_welding_horror_game_which_mechanic/",
+      "publishedAt": "2026-11-15T18:24:17+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "A mobile game I’m working on.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx28xq/a_mobile_game_im_working_on/",
+      "publishedAt": "2026-11-15T18:05:00+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "pre rendered lighting",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx17fm/pre_rendered_lighting/",
+      "publishedAt": "2026-11-15T17:24:40+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How to \"bake\" nodes for a PointGraph",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx16co/how_to_bake_nodes_for_a_pointgraph/",
+      "publishedAt": "2026-11-15T17:23:27+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Free Textures: Wood Planks & Panels",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xx0t01/free_textures_wood_planks_panels/",
+      "publishedAt": "2026-11-15T17:09:12+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Another week another robot ,feedback will be amazing 🩷",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwyy06/another_week_another_robot_feedback_will_be/",
+      "publishedAt": "2026-11-15T15:56:23+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Ten endgame planet shapes for my mobile idle game – one shared URP shader, max two 1024² textures per era",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwxvin/ten_endgame_planet_shapes_for_my_mobile_idle_game/",
+      "publishedAt": "2026-11-15T15:11:49+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Dead Metro — A WIP Look at BLOODSTATE’s new map",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwwsz0/dead_metro_a_wip_look_at_bloodstates_new_map/",
+      "publishedAt": "2026-11-15T14:26:24+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "[WIP] Yet Another Weather System – Real-time weather for Unity URP",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwwno5/wip_yet_another_weather_system_realtime_weather/",
+      "publishedAt": "2026-11-15T14:20:16+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Our composer made a Dark Jazz track for our 1920s horror blackjack game!",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwv6ux/our_composer_made_a_dark_jazz_track_for_our_1920s/",
+      "publishedAt": "2026-11-15T13:13:19+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "IOS Cocopods help",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwudax/ios_cocopods_help/",
+      "publishedAt": "2026-11-15T12:32:22+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "1 year of solo Unity development in 1 minute - from prototype to dungeon chaos",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwt9pa/1_year_of_solo_unity_development_in_1_minute_from/",
+      "publishedAt": "2026-11-15T11:31:18+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Loving Unity 6 URP so far. WIP Mobile Shooter",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xwt9ct/loving_unity_6_urp_so_far_wip_mobile_shooter/",
+      "publishedAt": "2026-11-15T11:30:44+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
     {
       "title": "Is the Unity Asset Store dying for small publishers? What's happening",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xwpb73/is_the_unity_asset_store_dying_for_small/",
@@ -1949,181 +2124,6 @@
       "title": "Spooky games made with Unity: Your 2026 Halloween playlist",
       "url": "https://unity.com/blog/horror-games-made-with-unity-halloween-2026",
       "publishedAt": "2026-10-09T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Echo Weaver: Building a time-loop metroidbrainia in Unity 6",
-      "url": "https://unity.com/blog/echo-weaver-time-loop-unity",
-      "publishedAt": "2026-10-08T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Why we built Unity Spark",
-      "url": "https://unity.com/blog/why-we-built-unity-spark",
-      "publishedAt": "2026-10-07T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "New for Unity Industry: Automotive HMI sample for embedded-style hardware",
-      "url": "https://unity.com/blog/unity-industry-hmi-template-for-embedded-systems",
-      "publishedAt": "2026-10-06T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "From attention to action: why the state of play matters for marketers",
-      "url": "https://unity.com/blog/mobile-gaming-attention-economy-driving-marketing-performance",
-      "publishedAt": "2026-10-02T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Meeting you where you work: Unity Plugin for Grok Build",
-      "url": "https://unity.com/blog/unity-plugin-grok",
-      "publishedAt": "2026-10-01T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Games made with Unity: September 2026 in review",
-      "url": "https://unity.com/blog/games-made-with-unity-september-2026-releases",
-      "publishedAt": "2026-10-01T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Unity Announces External Dependency Manager Package",
-      "url": "https://unity.com/blog/external-dependency-manager",
-      "publishedAt": "2026-09-29T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Scaling Scritchy Scratchy across platforms",
-      "url": "https://unity.com/blog/scaling-scritchy-scratchy-across-platforms",
-      "publishedAt": "2026-09-28T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "How RUST LTD built the deep firearm simulation for Hot Dogs, Horseshoes & Hand Grenades 2",
-      "url": "https://unity.com/blog/rust-ltd-hot-dogs-horseshoes-hand-grenades-2",
-      "publishedAt": "2026-09-25T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Meta VR Glasses are coming. Build with Unity from day one.",
-      "url": "https://unity.com/blog/build-for-meta-vr-glasses-with-unity",
-      "publishedAt": "2026-09-24T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "From simulation to real-world deployment: Unity Simulation Pro early access",
-      "url": "https://unity.com/blog/unity-simulation-pro-early-access",
-      "publishedAt": "2026-09-22T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Content directories: Beyond the AssetBundle",
-      "url": "https://unity.com/blog/content-directories-beyond-the-assetbundle",
-      "publishedAt": "2026-09-22T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Optimizing Deep Rock Galactic Survivor for mobile",
-      "url": "https://unity.com/blog/optimizing-deep-rock-galactic-survivor-for-mobile",
-      "publishedAt": "2026-09-18T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "5 tips for speeding up your XR dev workflows with Unity CLI",
-      "url": "https://unity.com/blog/5-tips-for-speeding-up-your-xr-dev-workflows-with-unity-cli",
-      "publishedAt": "2026-09-17T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "The Official Unity Plugin for Codex",
-      "url": "https://unity.com/blog/unity-plugin-codex",
-      "publishedAt": "2026-09-16T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "CICD Made Easier with Unity CLI",
-      "url": "https://unity.com/blog/cicd-made-easier-with-unity-cli",
-      "publishedAt": "2026-09-15T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Official Unity Plugin for Claude Code",
-      "url": "https://unity.com/blog/unity-plugin-for-claude-code",
-      "publishedAt": "2026-09-09T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "DrakkenRidge: Building an open-world adventure for mobile VR",
-      "url": "https://unity.com/blog/drakkenridge-building-open-world-mobile-vr-rpg-unity-ecs",
-      "publishedAt": "2026-09-08T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "How Project Ember is transforming burn care training through mixed reality",
-      "url": "https://unity.com/blog/project-ember-mixed-reality-transforming-burn-care-training",
-      "publishedAt": "2026-09-03T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "The Immersive Edge: August 2026 industry content wrap-up",
-      "url": "https://unity.com/blog/immersive-edge-august-2026",
-      "publishedAt": "2026-09-02T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Games made with Unity: August 2026 in review",
-      "url": "https://unity.com/blog/games-made-with-unity-august-2026-releases",
-      "publishedAt": "2026-09-01T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Three games, 10 years, one Unity project: Piecing together The Immortal John Triptych",
-      "url": "https://unity.com/blog/immortal-john-triptych-joe-richardson-interview",
-      "publishedAt": "2026-08-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Made with Unity: gamescom 2026 recap",
-      "url": "https://unity.com/blog/made-with-unity-gamescom-2026-recap",
-      "publishedAt": "2026-08-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "How Hologryph built SAND: Raiders of Sophie for a sustainable live ops cadence",
-      "url": "https://unity.com/blog/hologryph-sand-raiders-of-sophie",
-      "publishedAt": "2026-08-26T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Keeping a VR giant fresh: Gorilla Tag’s two-week live ops cadence",
-      "url": "https://unity.com/blog/another-axiom-gorilla-tag",
-      "publishedAt": "2026-08-18T00:00:00+00:00",
       "source": "Unity 官方博客",
       "category": "官方资讯"
     }
