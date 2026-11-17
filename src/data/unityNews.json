@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T07:40:18.956216+00:00",
+  "updatedAt": "2026-11-17T08:50:05.960382+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -23,10 +23,206 @@
       "name": "Game Developer",
       "url": "https://www.gamedeveloper.com/rss.xml",
       "ok": true,
-      "count": 1
+      "count": 3
     }
   ],
   "items": [
+    {
+      "title": "Testing portal effect – INFERNAL",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xyexbz/testing_portal_effect_infernal/",
+      "publishedAt": "2026-11-17T08:14:37+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "A Conversational Roguelite Shop Keeper Game",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xyehrh/a_conversational_roguelite_shop_keeper_game/",
+      "publishedAt": "2026-11-17T07:46:52+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Can't upload avatar",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xybtfe/cant_upload_avatar/",
+      "publishedAt": "2026-11-17T05:08:34+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I got tired of re-exporting sprites every time a designer changed a corner radius, so I built a shader-based alternative",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xyb32p/i_got_tired_of_reexporting_sprites_every_time_a/",
+      "publishedAt": "2026-11-17T04:28:52+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Decided my last virtual geometry demo didn't have enough triangles, 410 billion source triangles wasn't enough so I added more + World Space Voxel GI + Virtual Shadows",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xyabwp/decided_my_last_virtual_geometry_demo_didnt_have/",
+      "publishedAt": "2026-11-17T03:49:47+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Synty Studios is joining Unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xya9ts/synty_studios_is_joining_unity/",
+      "publishedAt": "2026-11-17T03:46:46+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Character Customisation",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy9d4w/character_customisation/",
+      "publishedAt": "2026-11-17T03:01:44+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I am so stuck right now ;). How can I fix this?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy88hz/i_am_so_stuck_right_now_how_can_i_fix_this/",
+      "publishedAt": "2026-11-17T02:07:13+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "You can pet cats in my dark fantasy ARPG now. Because why not?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy7xr1/you_can_pet_cats_in_my_dark_fantasy_arpg_now/",
+      "publishedAt": "2026-11-17T01:53:20+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Unite Tokyo 2026 Keynote is live now",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy6ihq/unite_tokyo_2026_keynote_is_live_now/",
+      "publishedAt": "2026-11-17T00:46:03+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Free — 26 Low-Poly 3D Trunks (GLB + PBR textures) for Godot & Unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy61m0/free_26_lowpoly_3d_trunks_glb_pbr_textures_for/",
+      "publishedAt": "2026-11-17T00:24:14+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I was told my trailer was too slow and not telling enough about the game. So here's the MkII. Is it more obvious what kind of game this is now? I've tried to get how the game is played front and center, designed the layout with mobile devices in mind and dramatically ramped up the pacing. Better?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy601q/i_was_told_my_trailer_was_too_slow_and_not/",
+      "publishedAt": "2026-11-17T00:22:20+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How we decided to handle death in our upcoming co-op game",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy5ssi/how_we_decided_to_handle_death_in_our_upcoming/",
+      "publishedAt": "2026-11-17T00:13:08+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "[Update] The stylized shaders project, 4 months later",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy5k95/update_the_stylized_shaders_project_4_months_later/",
+      "publishedAt": "2026-11-17T00:02:41+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "The Unity CLI 1.0 is here!",
+      "url": "https://unity.com/the-unity-cli-1.0-is-here",
+      "publishedAt": "2026-11-17T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "Autumn has arrived",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy32e3/autumn_has_arrived/",
+      "publishedAt": "2026-11-16T22:17:33+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I hate unity",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xy2b1d/i_hate_unity/",
+      "publishedAt": "2026-11-16T21:46:39+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I made my game's trailer in Unity, using DOTween sequence for animation",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxxiu6/i_made_my_games_trailer_in_unity_using_dotween/",
+      "publishedAt": "2026-11-16T18:45:28+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Synchronizing thousands of fully destructible voxel objects in realtime",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxxcm3/synchronizing_thousands_of_fully_destructible/",
+      "publishedAt": "2026-11-16T18:39:12+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "'It's common for there to be speculation and headlines:' Unity exec addresses acquisition rumors",
+      "url": "https://www.gamedeveloper.com/business/-it-s-common-for-there-to-be-speculation-and-headlines-unity-exec-addresses-acquisition-rumors",
+      "publishedAt": "2026-11-16T18:14:49+00:00",
+      "source": "Game Developer",
+      "category": "行业媒体"
+    },
+    {
+      "title": "One player sees the light beam, the other places the mirrors. Started this in Unity 1.5 years ago",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxvvb6/one_player_sees_the_light_beam_the_other_places/",
+      "publishedAt": "2026-11-16T17:44:10+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Poster and Asset Showcase",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxvokx/poster_and_asset_showcase/",
+      "publishedAt": "2026-11-16T17:37:05+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "I keep my convoy truck at the world origin and slide the road underneath it, so passengers on the truck stay stable",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxu92y/i_keep_my_convoy_truck_at_the_world_origin_and/",
+      "publishedAt": "2026-11-16T16:44:47+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "How do I make a scrolling background in a 2D Unity game. I'm a complete noob.",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxth4o/how_do_i_make_a_scrolling_background_in_a_2d/",
+      "publishedAt": "2026-11-16T16:15:29+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Any active coupon for the Asset Store?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxsrkb/any_active_coupon_for_the_asset_store/",
+      "publishedAt": "2026-11-16T15:48:10+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Playing Cards as a Health Bar?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxs4bb/playing_cards_as_a_health_bar/",
+      "publishedAt": "2026-11-16T15:23:11+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "URP Decal Blood Splatter Washed Out No Matter What I Try?",
+      "url": "https://www.reddit.com/r/Unity3D/comments/1xxrg3e/urp_decal_blood_splatter_washed_out_no_matter/",
+      "publishedAt": "2026-11-16T14:57:26+00:00",
+      "source": "Reddit · Unity3D",
+      "category": "开发者分享"
+    },
+    {
+      "title": "Unity's new fellowship program offers cash and dedicated support for indie devs",
+      "url": "https://www.gamedeveloper.com/business/unity-to-support-indies-with-cash-and-dedicated-support-through-new-fellowship-program",
+      "publishedAt": "2026-11-16T13:00:00+00:00",
+      "source": "Game Developer",
+      "category": "行业媒体"
+    },
     {
       "title": "Weird Refraction Artifacts at Intersections Between Transparent Meshes",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xxired/weird_refraction_artifacts_at_intersections/",
@@ -54,6 +250,20 @@
       "publishedAt": "2026-11-16T00:01:36+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
+    },
+    {
+      "title": "“Follow the fun”: a crowdfunding Q&A with Catino Town",
+      "url": "https://unity.com/blog/funding-unity-game-catino-town",
+      "publishedAt": "2026-11-16T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "Synty Studios Joins Unity, Bringing Artist-Made Assets to Unity Spark",
+      "url": "https://unity.com/blog/synty-studios-acquisition",
+      "publishedAt": "2026-11-16T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
     },
     {
       "title": "Trailer for my game",
@@ -1288,13 +1498,6 @@
       "category": "开发者分享"
     },
     {
-      "title": "“Follow the fun”: a crowdfunding Q&A with Catino Town",
-      "url": "https://unity.com/blog/funding-unity-game-catino-town",
-      "publishedAt": "2026-11-09T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
       "title": "Software/Explorer tool. ¿Displaying the folder itself as a preview image? outside of Unity",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xraskw/softwareexplorer_tool_displaying_the_folder/",
       "publishedAt": "2026-11-08T22:18:07+00:00",
@@ -1923,209 +2126,6 @@
       "publishedAt": "2026-11-05T16:04:18+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
-    },
-    {
-      "title": "The steam page for our little colony management/adventure game is now live",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xojqn6/the_steam_page_for_our_little_colony/",
-      "publishedAt": "2026-11-05T14:16:12+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "Dream game",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xoj22w/dream_game/",
-      "publishedAt": "2026-11-05T13:47:26+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "My claymation game about collecting creatures and training them in your Dojo!",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xoifa7/my_claymation_game_about_collecting_creatures_and/",
-      "publishedAt": "2026-11-05T13:18:32+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "What do you think, was this game menu made with AI?",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xoh9da/what_do_you_think_was_this_game_menu_made_with_ai/",
-      "publishedAt": "2026-11-05T12:20:45+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "Pushing GSplat in Unity: Drones scanning and bringing a 3D World to Life",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xof1nf/pushing_gsplat_in_unity_drones_scanning_and/",
-      "publishedAt": "2026-11-05T10:12:29+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "How Ares Interactive runs live ops without waiting on client updates",
-      "url": "https://unity.com/blog/ares-interactive-live-service-games",
-      "publishedAt": "2026-11-04T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "The Immersive Edge: October 2026 industry content wrap-up",
-      "url": "https://unity.com/blog/october-2026-industry-content-wrap-up",
-      "publishedAt": "2026-11-04T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Games made with Unity: October 2026 in review",
-      "url": "https://unity.com/blog/games-made-with-unity-october-2026-releases",
-      "publishedAt": "2026-11-02T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "2026 Industry releases and what’s coming in Q4",
-      "url": "https://unity.com/blog/unity-industry-product-releases-2026",
-      "publishedAt": "2026-10-30T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Google Play Indie Games Fund in Africa 2026 - Games Made with Unity",
-      "url": "https://unity.com/blog/google-play-indie-games-fund-2026",
-      "publishedAt": "2026-10-28T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "XREAL AURA Is Here: Meet Seven Made With Unity Titles",
-      "url": "https://unity.com/blog/xreal-aura-games-made-with-unity",
-      "publishedAt": "2026-10-28T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "How does terrain work in video games?",
-      "url": "https://unity.com/blog/video-game-terrain-guide",
-      "publishedAt": "2026-10-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Frame rate explained: What is fps in video games?",
-      "url": "https://unity.com/blog/frame-rate-in-video-games-explained",
-      "publishedAt": "2026-10-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "10 things you need to know before building your first video game",
-      "url": "https://unity.com/blog/things-to-know-before-starting-your-first-game",
-      "publishedAt": "2026-10-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "How bosses and enemies decide what to do in video games",
-      "url": "https://unity.com/blog/how-enemy-ai-works-video-games",
-      "publishedAt": "2026-10-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Jump, match, build, or explore? How to find your core game loop",
-      "url": "https://unity.com/blog/find-your-core-game-loop",
-      "publishedAt": "2026-10-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Start with a feeling: How to define your first video game",
-      "url": "https://unity.com/blog/define-your-video-game",
-      "publishedAt": "2026-10-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "How much story does your video game need?",
-      "url": "https://unity.com/blog/how-much-story-does-your-video-game-need",
-      "publishedAt": "2026-10-27T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Video game UX and UI basics: How games talk to players",
-      "url": "https://unity.com/blog/video-game-ui-ux-basics",
-      "publishedAt": "2026-10-23T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Meeting you where you work: Inside 200M+ Unity CLI events",
-      "url": "https://unity.com/blog/unity-cli-usage-data-ai-coding-agents",
-      "publishedAt": "2026-10-22T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Skipping domain reload: faster iteration using the MethodReload feature",
-      "url": "https://unity.com/blog/skipping-domain-reload-faster-iteration-using-the-methodreload-feature",
-      "publishedAt": "2026-10-22T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Level design basics: Guiding players without telling them",
-      "url": "https://unity.com/blog/level-design-basics",
-      "publishedAt": "2026-10-22T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Rethinking the funnel: where mobile gaming really fits in the marketing mix",
-      "url": "https://unity.com/blog/mobile-gaming-advertising-full-funnel-strategy-for-marketers",
-      "publishedAt": "2026-10-21T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Accessibility basics: How to make your game more accessible",
-      "url": "https://unity.com/blog/video-game-accessibility-basics",
-      "publishedAt": "2026-10-20T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Camera 101: How to choose your game’s perspective",
-      "url": "https://unity.com/blog/video-game-camera-perspectives",
-      "publishedAt": "2026-10-16T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "How Soft Crunch Games built Foxy Dumplings for every platform",
-      "url": "https://unity.com/blog/foxy-dumplings-cross-platform-development",
-      "publishedAt": "2026-10-16T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Start simple: A one-page design document for your first game",
-      "url": "https://unity.com/blog/one-page-game-design-document",
-      "publishedAt": "2026-10-13T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Finding a visual style for your game: Tips for beginners",
-      "url": "https://unity.com/blog/game-art-styles-guide",
-      "publishedAt": "2026-10-12T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "Spooky games made with Unity: Your 2026 Halloween playlist",
-      "url": "https://unity.com/blog/horror-games-made-with-unity-halloween-2026",
-      "publishedAt": "2026-10-09T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
     }
   ]
 }
