@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T08:50:05.960382+00:00",
+  "updatedAt": "2026-11-18T08:14:28.517803+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -16,8 +16,8 @@
     {
       "name": "Reddit · Unity3D",
       "url": "https://www.reddit.com/r/Unity3D/new/.rss",
-      "ok": true,
-      "count": 25
+      "ok": false,
+      "count": 0
     },
     {
       "name": "Game Developer",
@@ -128,6 +128,13 @@
     {
       "title": "The Unity CLI 1.0 is here!",
       "url": "https://unity.com/the-unity-cli-1.0-is-here",
+      "publishedAt": "2026-11-17T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "Unite Tokyo 2026 Keynote recap: Built for the speed of your ideas",
+      "url": "https://unity.com/blog/unite-tokyo-2026-keynote-recap",
       "publishedAt": "2026-11-17T00:00:00+00:00",
       "source": "Unity 官方博客",
       "category": "官方资讯"
@@ -2117,13 +2124,6 @@
       "title": "You can't show unity logo in unity asset store asset but in epic store no problemo",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xoqa9o/you_cant_show_unity_logo_in_unity_asset_store/",
       "publishedAt": "2026-11-05T18:28:57+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "Tried my heatmap in the haunted house project. Here, it shows player movement density after hundreds rounds of play-tests.",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xomgca/tried_my_heatmap_in_the_haunted_house_project/",
-      "publishedAt": "2026-11-05T16:04:18+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
     }
