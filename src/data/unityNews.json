@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T08:14:28.517803+00:00",
+  "updatedAt": "2026-11-19T08:25:22.887298+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,20 @@
     }
   ],
   "items": [
+    {
+      "title": "The inflection point: why mobile gaming is becoming essential to the digital advertising mix",
+      "url": "https://unity.com/blog/the-inflection-point-why-mobile-gaming-is-becoming-essential-to-the-digital-advertising-mix",
+      "publishedAt": "2026-11-18T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "How to playtest your first video game",
+      "url": "https://unity.com/blog/how-to-playtest-your-first-video-game",
+      "publishedAt": "2026-11-18T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
     {
       "title": "Testing portal effect – INFERNAL",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xyexbz/testing_portal_effect_infernal/",
@@ -2110,20 +2124,6 @@
       "title": "Unity 7 has updated it's UI \"again\" and it is really fixed & improved imo, really addresses the feedback that was there in previous one in the previous version.",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xoql5y/unity_7_has_updated_its_ui_again_and_it_is_really/",
       "publishedAt": "2026-11-05T18:40:32+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "Is there anything I can do to improve my visuals? specifically with lighting and color",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xoqh56/is_there_anything_i_can_do_to_improve_my_visuals/",
-      "publishedAt": "2026-11-05T18:36:22+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "You can't show unity logo in unity asset store asset but in epic store no problemo",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xoqa9o/you_cant_show_unity_logo_in_unity_asset_store/",
-      "publishedAt": "2026-11-05T18:28:57+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
     }
