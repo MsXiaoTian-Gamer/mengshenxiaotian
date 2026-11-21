@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T08:06:06.782096+00:00",
+  "updatedAt": "2026-11-21T08:00:03.446376+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,20 @@
     }
   ],
   "items": [
+    {
+      "title": "Where 3D meets the real world: highlights from Unity Industry Summit Munich 2026",
+      "url": "https://unity.com/blog/unity-industry-summit-munich-2026-recap",
+      "publishedAt": "2026-11-20T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "Phone or computer? How to plan your video game controls",
+      "url": "https://unity.com/blog/video-game-controls-phone-or-computer",
+      "publishedAt": "2026-11-20T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
     {
       "title": "The inflection point: why mobile gaming is becoming essential to the digital advertising mix",
       "url": "https://unity.com/blog/the-inflection-point-why-mobile-gaming-is-becoming-essential-to-the-digital-advertising-mix",
@@ -2110,20 +2124,6 @@
       "title": "Digicam effect Unity URP",
       "url": "https://www.reddit.com/r/Unity3D/comments/1xoqtok/digicam_effect_unity_urp/",
       "publishedAt": "2026-11-05T18:49:35+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "One continuous shot from the Mediterranean down into Rome, then two slow orbits around a crossing. Built in URP as a solo dev",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xoqm8t/one_continuous_shot_from_the_mediterranean_down/",
-      "publishedAt": "2026-11-05T18:41:42+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "Unity 7 has updated it's UI \"again\" and it is really fixed & improved imo, really addresses the feedback that was there in previous one in the previous version.",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xoql5y/unity_7_has_updated_its_ui_again_and_it_is_really/",
-      "publishedAt": "2026-11-05T18:40:32+00:00",
       "source": "Reddit · Unity3D",
       "category": "开发者分享"
     }
