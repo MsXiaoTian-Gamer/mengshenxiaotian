@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T10:40:59.362209+00:00",
+  "updatedAt": "2026-11-25T09:34:59.009735+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -28,6 +28,20 @@
   ],
   "items": [
     {
+      "title": "Is your data telling you the whole story?",
+      "url": "https://unity.com/blog/data-fragmentation-ua-monetization-unity-vector",
+      "publishedAt": "2026-11-24T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "How Unimora is inspiring the next generation of aged care professionals through VR, built with Unity",
+      "url": "https://unity.com/blog/unimora-vr-care-careers",
+      "publishedAt": "2026-11-24T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
       "title": "Tearing through reality: The tech behind Hyper Visor on XREAL AURA",
       "url": "https://unity.com/blog/hyper-visor-xreal-aura-physics-scenes",
       "publishedAt": "2026-11-23T00:00:00+00:00",
@@ -37,6 +51,13 @@
     {
       "title": "Real-time 3D with Unity Industry: What to vibe code with Unity CLI and when to rely on the foundational infrastructure",
       "url": "https://unity.com/blog/ai-vibe-coding-vs-buying-managed-infrastructure",
+      "publishedAt": "2026-11-23T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
+    {
+      "title": "Access Asset Store and AI Generators using the Unity CLI",
+      "url": "https://unity.com/blog/unity-asset-store-ai-generators-coding-agents",
       "publishedAt": "2026-11-23T00:00:00+00:00",
       "source": "Unity 官方博客",
       "category": "官方资讯"
@@ -2105,27 +2126,6 @@
       "publishedAt": "2026-11-06T00:00:00+00:00",
       "source": "Unity 官方博客",
       "category": "官方资讯"
-    },
-    {
-      "title": "dont look :p",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xowpzn/dont_look_p/",
-      "publishedAt": "2026-11-05T22:46:28+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "A seamless camera move through a large environment is often harder than making the environment itself",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xowp9d/a_seamless_camera_move_through_a_large/",
-      "publishedAt": "2026-11-05T22:45:37+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
-    },
-    {
-      "title": "How we connect repair puzzles to story choices in our Unity game",
-      "url": "https://www.reddit.com/r/Unity3D/comments/1xou8f4/how_we_connect_repair_puzzles_to_story_choices_in/",
-      "publishedAt": "2026-11-05T21:04:01+00:00",
-      "source": "Reddit · Unity3D",
-      "category": "开发者分享"
     }
   ]
 }
