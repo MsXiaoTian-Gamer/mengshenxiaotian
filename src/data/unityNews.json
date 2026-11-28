@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T09:27:23.007034+00:00",
+  "updatedAt": "2026-11-28T08:41:17.131700+00:00",
   "sources": [
     {
       "name": "Unity 官方博客",
@@ -27,6 +27,13 @@
     }
   ],
   "items": [
+    {
+      "title": "From first campaign to ROAS: your step-by-step guide to user acquisition with Unity Ads",
+      "url": "https://unity.com/from-first-campaign-to-roas-your-step-by-step-guide-to-user-acquisition-with-unity-ads",
+      "publishedAt": "2026-11-27T00:00:00+00:00",
+      "source": "Unity 官方博客",
+      "category": "官方资讯"
+    },
     {
       "title": "Is your data telling you the whole story?",
       "url": "https://unity.com/blog/data-fragmentation-ua-monetization-unity-vector",
@@ -2116,13 +2123,6 @@
     {
       "title": "Our new XR e-book is here: Build XR with Unity: Meta XR",
       "url": "https://unity.com/blog/our-new-xr-e-book-is-here-build-xr-with-unity:-meta-xr",
-      "publishedAt": "2026-11-06T00:00:00+00:00",
-      "source": "Unity 官方博客",
-      "category": "官方资讯"
-    },
-    {
-      "title": "How SEED renders a world players never stop building",
-      "url": "https://unity.com/blog/seed-unity-rendering-performance",
       "publishedAt": "2026-11-06T00:00:00+00:00",
       "source": "Unity 官方博客",
       "category": "官方资讯"
